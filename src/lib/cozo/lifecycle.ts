@@ -1,277 +1,89 @@
 /**
- * UnifiedEntityLifecycle - Ensures all entity-aware operations synchronize:
- * 1. NotesContext (file system layer)
- * 2. EntityRegistry (entity graph layer)
- * 3. FolderRelationshipCreator (automatic relationships from folder structure)
- * 4. RelationshipRegistry (unified relationship management)
+ * UnifiedEntityLifecycle - LEGACY FILE
+ * 
+ * This module was intended to synchronize entity operations across layers.
+ * It is NOT actively used - entity registration now flows through:
+ * 1. smartGraphRegistry (TypeScript) -> Rust GraphRegistry (CozoDB)
+ * 
+ * Keeping this file for reference and potential reactivation.
+ * All methods are stubbed to log deprecation warnings.
  */
 
-import { entityRegistry } from '@/lib/cozo/graph/adapters';
-// import { getGraphSyncManager } from '@/lib/graph/integration';
-// TODO: These modules don't exist yet - stub them out
-// import { autoSaveEntityRegistry } from '@/lib/storage/entityStorage';
-// import { folderRelationshipCreator } from '@/lib/folders/relationship-creator';
-import { relationshipRegistry, RelationshipSource } from '@/lib/relationships';
 import type { Note, Folder } from '@/types/noteTypes';
 import type { EntityKind } from '@/lib/types/entityTypes';
-import { parseEntityFromTitle, parseFolderEntityFromName, parseEntityWithRelation } from '@/lib/utils/titleParser';
 
 // Stub for missing autoSaveEntityRegistry
-const autoSaveEntityRegistry = (registry: any) => {
-    // TODO: Implement persistence when entityStorage module is created
-    console.debug('[UnifiedLifecycle] autoSaveEntityRegistry stub called');
+const autoSaveEntityRegistry = () => {
+    console.debug('[LEGACY] autoSaveEntityRegistry stub - use smartGraphRegistry instead');
 };
 
 // Stub for missing folderRelationshipCreator
 const folderRelationshipCreator = {
-    onSubfolderCreated: (parent: Folder, child: Folder) => { },
-    onNoteCreated: (parent: Folder, note: Note) => { },
-    onNoteMoved: (note: Note, oldFolder: Folder | null, newFolder: Folder) => { },
-    onFolderMoved: (folder: Folder, oldParent: Folder | null, newParent: Folder | null) => { },
-    onFolderDeleted: (folderId: string) => { },
+    onSubfolderCreated: () => { },
+    onNoteCreated: () => { },
+    onNoteMoved: () => { },
+    onFolderMoved: () => { },
+    onFolderDeleted: () => { },
     getStats: () => ({ totalRelationships: 0, byType: {} }),
 };
 
 /**
- * Unified entity lifecycle - ensures all layers stay in sync
+ * @deprecated Use smartGraphRegistry directly instead
  */
 export class UnifiedEntityLifecycle {
-    /**
-     * Handle note creation with entity awareness
-     */
+    /** @deprecated Use smartGraphRegistry.registerEntity() */
     static onNoteCreated(note: Note): void {
-        const parsed = parseEntityWithRelation(note.title);
-
-        if (parsed && parsed.label) {
-            const entity = entityRegistry.registerEntity(
-                parsed.label,
-                parsed.kind,
-                note.id,
-                {
-                    subtype: parsed.subtype,
-                    attributes: {
-                        createdVia: 'note_creation',
-                        folderId: note.folderId,
-                        noteTitle: note.title
-                    }
-                }
-            );
-
-            if (parsed.inlineRelation) {
-                const targetEntity = entityRegistry.findEntity(parsed.inlineRelation.targetLabel);
-                if (targetEntity) {
-                    relationshipRegistry.add({
-                        sourceEntityId: (entity as any).id,
-                        targetEntityId: targetEntity.id,
-                        type: parsed.inlineRelation.type,
-                        provenance: [{
-                            source: RelationshipSource.MANUAL,
-                            originId: note.id,
-                            timestamp: new Date(),
-                            confidence: 1.0,
-                            context: `Inline relationship in note title: ${note.title}`
-                        }]
-                    });
-                }
-            }
-
-            autoSaveEntityRegistry(entityRegistry);
-        }
-
-        // getGraphSyncManager().onNoteCreated(note);
+        console.warn('[LEGACY] UnifiedEntityLifecycle.onNoteCreated - use smartGraphRegistry instead');
     }
 
-    /**
-     * Handle note title change (entity rename/retype)
-     */
+    /** @deprecated Use smartGraphRegistry directly */
     static onNoteTitleChanged(note: Note, oldTitle: string): void {
-        const oldParsed = parseEntityFromTitle(oldTitle);
-        const newParsed = parseEntityFromTitle(note.title);
-
-        // Entity removed (was entity, now regular note)
-        if (oldParsed && oldParsed.label && !newParsed) {
-            const entity = entityRegistry.findEntity(oldParsed.label);
-            if (entity && (entity as any).firstMentionNoteId === note.id) {
-                // This note was the defining note - delete entity
-                entityRegistry.deleteEntity(entity.id);
-            } else if (entity) {
-                // Remove this note from mentions
-                entityRegistry.updateNoteMentions(entity.id, note.id, 0);
-            }
-        }
-
-        // Entity added (was regular, now entity)
-        else if (!oldParsed && newParsed && newParsed.label) {
-            entityRegistry.registerEntity(
-                newParsed.label,
-                newParsed.kind,
-                note.id,
-                { subtype: newParsed.subtype }
-            );
-        }
-
-        // Entity changed (label or kind changed)
-        else if (oldParsed && oldParsed.label && newParsed && newParsed.label &&
-            (oldParsed.label !== newParsed.label || oldParsed.kind !== newParsed.kind)) {
-
-            const oldEntity = entityRegistry.findEntity(oldParsed.label);
-
-            // If label changed but kind same, use updateEntity (rename)
-            if (oldEntity && oldParsed.kind === newParsed.kind) {
-                entityRegistry.updateEntity(oldEntity.id, {
-                    label: newParsed.label,
-                    subtype: newParsed.subtype,
-                });
-            }
-            // If kind changed, delete old and create new
-            else {
-                if (oldEntity) entityRegistry.deleteEntity(oldEntity.id);
-                entityRegistry.registerEntity(
-                    newParsed.label,
-                    newParsed.kind,
-                    note.id,
-                    { subtype: newParsed.subtype }
-                );
-            }
-        }
-
-        // Persist and sync
-        autoSaveEntityRegistry(entityRegistry);
+        console.warn('[LEGACY] UnifiedEntityLifecycle.onNoteTitleChanged - use smartGraphRegistry instead');
     }
 
-    /**
-     * Handle note deletion
-     */
+    /** @deprecated Use smartGraphRegistry.deleteEntity() */
     static onNoteDeleted(noteId: string, wasEntity: boolean, entityLabel?: string): void {
-        // Clean up EntityRegistry
-        entityRegistry.onNoteDeleted(noteId);
-
-        // If this was a defining entity note, delete the entity
-        if (wasEntity && entityLabel) {
-            const entity = entityRegistry.findEntity(entityLabel);
-            if (entity && (entity as any).firstMentionNoteId === noteId) {
-                entityRegistry.deleteEntity(entity.id);
-            }
-        }
-
-        // Persist and sync
-        autoSaveEntityRegistry(entityRegistry);
-        // getGraphSyncManager().onNoteDeleted(noteId);
+        console.warn('[LEGACY] UnifiedEntityLifecycle.onNoteDeleted - use smartGraphRegistry instead');
     }
 
-    /**
-     * Handle folder creation with entity awareness
-     */
+    /** @deprecated Use smartGraphRegistry.registerEntity() */
     static onFolderCreated(folder: Folder): void {
-        const parsed = parseFolderEntityFromName(folder.name);
-
-        if (parsed && (parsed.isTypedRoot || parsed.isSubtypeRoot)) {
-            // Register folder as entity CONTAINER
-            entityRegistry.registerEntity(
-                parsed.label || folder.name,
-                parsed.kind,
-                folder.id, // Use folder ID as source
-                {
-                    subtype: parsed.subtype,
-                    attributes: {
-                        type: 'folder_container',
-                        isTypedRoot: parsed.isTypedRoot,
-                        isSubtypeRoot: parsed.isSubtypeRoot,
-                        parentId: folder.parentId,
-                    }
-                }
-            );
-
-            // Persist
-            autoSaveEntityRegistry(entityRegistry);
-        }
-
-        // Sync to SQLite
-        // getGraphSyncManager().onFolderCreated(folder);
+        console.warn('[LEGACY] UnifiedEntityLifecycle.onFolderCreated - use smartGraphRegistry instead');
     }
 
-    /**
-     * Handle folder creation with parent context for relationship creation.
-     * This is the preferred method when the parent folder is known, as it
-     * enables automatic relationship creation based on folder schemas.
-     */
+    /** @deprecated */
     static onFolderCreatedWithParent(folder: Folder, parentFolder: Folder | null): void {
-        // First do standard folder creation logic
-        this.onFolderCreated(folder);
-
-        // Then create automatic relationships if parent is typed
-        if (parentFolder?.entityKind) {
-            folderRelationshipCreator.onSubfolderCreated(parentFolder, folder);
-        }
+        console.warn('[LEGACY] UnifiedEntityLifecycle.onFolderCreatedWithParent');
     }
 
-    /**
-     * Handle note creation with parent folder context for relationship creation.
-     * Creates automatic relationships based on folder schemas.
-     */
+    /** @deprecated */
     static onNoteCreatedWithFolder(note: Note, parentFolder: Folder | null): void {
-        // First do standard note creation logic
-        this.onNoteCreated(note);
-
-        // Then create automatic relationships if folder is typed
-        if (parentFolder?.entityKind) {
-            folderRelationshipCreator.onNoteCreated(parentFolder, note);
-        }
+        console.warn('[LEGACY] UnifiedEntityLifecycle.onNoteCreatedWithFolder');
     }
 
-    /**
-     * Handle note moved between folders
-     */
+    /** @deprecated */
     static onNoteMoved(note: Note, oldFolder: Folder | null, newFolder: Folder | null): void {
-        // Update folder relationships
-        if (newFolder) {
-            folderRelationshipCreator.onNoteMoved(note, oldFolder, newFolder);
-        }
-
-        // Note: This doesn't re-register entities, just updates folder-based relationships
+        console.warn('[LEGACY] UnifiedEntityLifecycle.onNoteMoved');
     }
 
-    /**
-     * Handle folder moved to new parent
-     */
+    /** @deprecated */
     static onFolderMoved(folder: Folder, oldParent: Folder | null, newParent: Folder | null): void {
-        folderRelationshipCreator.onFolderMoved(folder, oldParent, newParent);
+        console.warn('[LEGACY] UnifiedEntityLifecycle.onFolderMoved');
     }
 
-    /**
-     * Handle folder deletion
-     */
+    /** @deprecated */
     static onFolderDeleted(folderId: string, wasTyped: boolean, entityKind?: EntityKind): void {
-        // Clean up folder-based relationships first
-        folderRelationshipCreator.onFolderDeleted(folderId);
-
-        if (wasTyped && entityKind) {
-            // Find and delete folder entity
-            const folderEntities = entityRegistry.getAllEntities().filter(
-                e => (e as any).attributes?.type === 'folder_container' && (e as any).firstMentionNoteId === folderId
-            );
-
-            for (const folderEntity of folderEntities) {
-                entityRegistry.deleteEntity(folderEntity.id);
-            }
-        }
-
-        // Persist and sync
-        autoSaveEntityRegistry(entityRegistry);
-        // getGraphSyncManager().onFolderDeleted(folderId);
+        console.warn('[LEGACY] UnifiedEntityLifecycle.onFolderDeleted');
     }
 
-    /**
-     * Get statistics about folder-created relationships
-     */
+    /** @deprecated */
     static getFolderRelationshipStats(): { totalRelationships: number; byType: Record<string, number> } {
         return folderRelationshipCreator.getStats();
     }
 
-    /**
-     * Get unified relationship statistics
-     */
+    /** @deprecated */
     static getRelationshipStats() {
-        return relationshipRegistry.getStats();
+        return { total: 0, byType: {}, bySource: {} };
     }
 }
+

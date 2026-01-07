@@ -1,0 +1,84 @@
+﻿cargo :     Blocking 
+waiting for file lock on 
+build directory
+At line:1 char:1
++ cargo check 2>&1 | 
+Out-File -FilePath 
+check_temporal.txt 
+-Encoding ut ...
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (    B  
+  locking wa...build dire   
+ ctory:String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+    Checking varant v0.1.0 (
+C:\Users\shuga\1kittroot\1co
+de\daswundebar\src-tauri)
+warning: unused import: 
+`std::collections::HashMap`
+  --> src\temporal.rs:18:5
+   |
+18 | use 
+std::collections::HashMap;
+   |     
+^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: 
+`#[warn(unused_imports)]` 
+on by default
+
+warning: methods 
+`add_entity` and `clear` 
+are never used
+   --> 
+src\implicit.rs:343:12
+    |
+196 | impl ImplicitCortex {
+    | ------------------- 
+methods in this 
+implementation
+...
+343 |     pub fn 
+add_entity(&mut self, 
+entity: EntityDefinition) {
+    |            ^^^^^^^^^^
+...
+390 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+    |
+    = note: 
+`#[warn(dead_code)]` on by 
+default
+
+warning: methods 
+`hydrate_calendar` and 
+`is_ready` are never used
+   --> 
+src\temporal.rs:363:12
+    |
+267 | impl TemporalCortex {
+    | ------------------- 
+methods in this 
+implementation
+...
+363 |     pub fn 
+hydrate_calendar(
+    |            
+^^^^^^^^^^^^^^^^
+...
+407 |     pub fn 
+is_ready(&self) -> bool {
+    |            ^^^^^^^^
+
+warning: `varant` (lib) 
+generated 3 warnings (run 
+`cargo fix --lib -p varant` 
+to apply 1 suggestion)
+    Finished `dev` profile 
+[unoptimized + debuginfo] 
+target(s) in 31.62s

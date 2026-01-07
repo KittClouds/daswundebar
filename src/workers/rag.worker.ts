@@ -1,7 +1,30 @@
 /// <reference lib="webworker" />
 
-import init, { RagPipeline } from '@/lib/wasm/kittcore/kittcore';
+// NOTE: RAG WASM temporarily disabled during Tauri migration
+// Phase 4 will implement via Tauri commands
+// import init, { RagPipeline } from '@/lib/wasm/kittcore/kittcore';
+
 import { normalizeEmbedding, getEmbeddingMeta, validateDimension, truncateEmbedding } from '@/lib/rag/embedding-utils';
+
+// Stub class for Tauri migration
+class RagPipeline {
+    loadModel(_onnx: Uint8Array, _tokenizer: string) { }
+    indexNotes(_notes: any[]) { return 0; }
+    insertChunk(_chunk: any) { }
+    buildRaptorTree(_clusterSize: number) { return {}; }
+    search(_query: string, _k: number) { return []; }
+    searchHybrid(_query: string, _k: number, _weight: number) { return []; }
+    searchRaptor(_embedding: Float32Array, _k: number, _mode: string, _n: number) { return []; }
+    embed(_text: string) { return new Float32Array(); }
+    getChunks() { return []; }
+    getStats() { return { total_chunks: 0 }; }
+    isModelLoaded() { return false; }
+}
+
+// Stub init function
+async function init() {
+    console.log('[RagWorker] Stub mode - WASM disabled during Tauri migration');
+}
 
 // Types for messages
 type WorkerMessage =

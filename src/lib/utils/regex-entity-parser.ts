@@ -11,7 +11,7 @@
 
 import type { JSONContent } from '@tiptap/react';
 import type { EntityKind } from '@/lib/types/entityTypes';
-import type { RegisteredEntity } from '@/lib/cozo/graph/adapters';
+import type { RegisteredEntity } from '@/lib/tauri';
 import { getContextExtractor } from './context-extractor';
 
 export interface ParsedEntity {

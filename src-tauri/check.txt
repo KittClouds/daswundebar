@@ -1,0 +1,237 @@
+﻿cargo :     Checking varant 
+v0.1.0 (C:\Users\shuga\1kitt
+root\1code\daswundebar\src-t
+auri)
+At line:1 char:1
++ cargo check 2>&1 | 
+Out-File check.txt 
+-Encoding utf8; 
+Select-String - ...
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (    C  
+  hecking va...ebar\src-t   
+ auri):String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+error[E0433]: failed to 
+resolve: could not find 
+`api` in `super`
+   --> src\reality\entity_la
+yer.rs:126:23
+    |
+126 |         span: 
+&super::api::InputSpan,
+    |                       
+^^^ could not find `api` in 
+`super`
+
+warning: unused import: 
+`std::collections::HashMap`
+  --> src\temporal.rs:18:5
+   |
+18 | use 
+std::collections::HashMap;
+   |     
+^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: 
+`#[warn(unused_imports)]` 
+on by default
+
+warning: unused import: 
+`TextRange`
+  --> src\attacher.rs:25:40
+   |
+25 | use 
+super::chunker::{Chunk, 
+ChunkKind, TextRange};
+   |                        
+                ^^^^^^^^^
+
+warning: unused imports: 
+`ProjectionStats`, 
+`project_all`, 
+`project_attributions`, 
+`project_quads`, and 
+`project_state_changes`
+  --> 
+src\reality\engine.rs:16:22
+   |
+16 |     project_triples, 
+project_quads, 
+project_attributions, 
+project_state_changes,
+   |                      
+^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^^
+17 |     project_all, 
+project_all_with_stats,
+   |     ^^^^^^^^^^^
+18 |     Triple, QuadPlus, 
+Attribution, StateChange, 
+Projection, ProjectionStats,
+   |                        
+                            
+         ^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+  --> 
+src\reality\engine.rs:20:60
+   |
+20 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+   |                        
+                            
+        ^^^^^^^^
+
+warning: unused import: 
+`ConceptEdge`
+  --> 
+src\reality\global.rs:11:47
+   |
+11 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge};
+   |                        
+                       
+^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge` and 
+`ConceptNode`
+ --> src\reality\algorithms.
+rs:9:34
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge};
+  |                         
+         ^^^^^^^^^^^  
+^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+ --> 
+src\reality\temporal.rs:9:60
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+  |                         
+                            
+       ^^^^^^^^
+
+warning: unused imports: 
+`RealityLanguage` and 
+`SyntaxKind`
+  --> 
+src\reality\mod.rs:21:18
+   |
+21 | pub use 
+syntax::{SyntaxKind, 
+RealityLanguage};
+   |                  
+^^^^^^^^^^  ^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge`, 
+`ConceptGraph`, 
+`ConceptNode`, and 
+`EdgeKind`
+  --> 
+src\reality\mod.rs:22:17
+   |
+22 | pub use 
+graph::{ConceptGraph, 
+ConceptNode, ConceptEdge, 
+EdgeKind};
+   |                 
+^^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^
+
+warning: unused import: 
+`synapse::SynapseBridge`
+  --> 
+src\reality\mod.rs:23:9
+   |
+23 | pub use 
+synapse::SynapseBridge;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`engine::RealityEngine`
+  --> 
+src\reality\mod.rs:24:9
+   |
+24 | pub use 
+engine::RealityEngine;
+   |         
+^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Attribution`, 
+`Projection`, `QuadPlus`, 
+`StateChange`, and `Triple`
+  --> 
+src\reality\mod.rs:25:22
+   |
+25 | pub use 
+projection::{Triple, 
+QuadPlus, Attribution, 
+StateChange, Projection};
+   |                      
+^^^^^^  ^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^
+
+warning: unused import: 
+`global::GlobalGraph`
+  --> 
+src\reality\mod.rs:26:9
+   |
+26 | pub use 
+global::GlobalGraph;
+   |         
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`unification::EntityUnifier`
+  --> 
+src\reality\mod.rs:27:9
+   |
+27 | pub use 
+unification::EntityUnifier;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: value assigned to 
+`head_idx` is never read
+   --> src\chunker.rs:464:17
+    |
+464 |         let mut 
+head_idx = None;
+    |                 
+^^^^^^^^
+    |
+    = help: maybe it is 
+overwritten before being 
+read?
+    = note: `#[warn(unused_a
+ssignments)]` on by default
+
+For more information about 
+this error, try `rustc 
+--explain E0433`.
+warning: `varant` (lib) 
+generated 15 warnings
+error: could not compile 
+`varant` (lib) due to 1 
+previous error; 15 warnings 
+emitted

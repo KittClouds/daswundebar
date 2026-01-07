@@ -125,6 +125,8 @@ pub use rag::{
 #[cfg(feature = "sqlite_wasm")]
 pub use db::WasmDatabase;
 
+// WASM bindings - only when wasm feature is enabled
+#[cfg(feature = "wasm")]
 use wasm_bindgen::prelude::*;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
@@ -134,27 +136,27 @@ use wasm_bindgen::prelude::*;
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 /// Initialize panic hook for better error messages in browser console
-#[wasm_bindgen(start)]
+#[cfg_attr(feature = "wasm", wasm_bindgen(start))]
 pub fn main() {
     #[cfg(feature = "console_error_panic_hook")]
     console_error_panic_hook::set_once();
 }
 
 /// Greet function for testing WASM binding
-#[wasm_bindgen]
+#[cfg_attr(feature = "wasm", wasm_bindgen)]
 pub fn greet(name: &str) -> String {
-    format!("Hello, {}! KittCore WASM is ready.", name)
+    format!("Hello, {}! KittCore is ready.", name)
 }
 
 /// Get version information
-#[wasm_bindgen]
+#[cfg_attr(feature = "wasm", wasm_bindgen)]
 pub fn version() -> String {
     format!("kittcore v{}", env!("CARGO_PKG_VERSION"))
 }
 
 /// Get build timestamp for detecting stale WASM binaries
 /// This changes every time the WASM is rebuilt
-#[wasm_bindgen]
+#[cfg_attr(feature = "wasm", wasm_bindgen)]
 pub fn build_timestamp() -> String {
     // This is set at compile time
     option_env!("BUILD_TIMESTAMP")
@@ -164,7 +166,7 @@ pub fn build_timestamp() -> String {
 
 /// Check if this build has catch_unwind protection
 /// Used to verify the binary isn't stale
-#[wasm_bindgen]
+#[cfg_attr(feature = "wasm", wasm_bindgen)]
 pub fn has_panic_protection() -> bool {
     true // This version has catch_unwind in scan()
 }

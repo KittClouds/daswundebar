@@ -12,43 +12,57 @@ keywords = ["scanner", "search", "bm25", "wasm", "aho-corasick", "nlp"]
 crate-type = ["cdylib", "rlib"]
 
 [features]
-default = ["console_error_panic_hook", "sqlite_wasm"]
+default = ["wasm"]
+# WASM target (browser) - full WASM/JS dependencies
+wasm = [
+    "dep:wasm-bindgen",
+    "dep:js-sys",
+    "dep:wasm-bindgen-futures",
+    "dep:serde-wasm-bindgen",
+    "dep:console_error_panic_hook",
+    "dep:web-sys",
+    "dep:instant",
+    "dep:getrandom02",
+    "dep:getrandom",
+]
+# Native target (Tauri) - no WASM deps, standard Rust
+native = []
+# Optional features
 wee_alloc = ["dep:wee_alloc"]
 sqlite_wasm = ["dep:sqlite-wasm-rs", "dep:sqlite-wasm-vfs"]
+# Embeddings (expensive - ONNX + tokenizers)
+embeddings = ["dep:tract-onnx", "dep:tract-core", "dep:tokenizers"]
 
 [dependencies]
-wasm-bindgen = "0.2"
-js-sys = "0.3"
+# Core dependencies (always included)
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-wasm-bindgen-futures = "0.4"
-console_error_panic_hook = { version = "0.1", optional = true }
-wee_alloc = { version = "0.4", optional = true }
-serde-wasm-bindgen = "0.6.5"
 aho-corasick = "1.1"
 daachorse = "1.0.0"
 regex = "1.12.2"
 chrono = "0.4.42"
-instant = { version = "0.1", features = ["wasm-bindgen"] }
-web-sys = { version = "0.3", features = ["console"] }
 rowan = "0.16.1"
 unicode-segmentation = "1.10"
-rustworkx-core = "0.17"  # Graph algorithms + re-exports petgraph 0.8
+rustworkx-core = "0.17"
 lasso = { version = "0.7", features = ["multi-threaded"] }
-
-# Embeddings module (Rust-native ONNX inference for WASM)
-tract-onnx = { version = "0.21", default-features = false }
-tract-core = { version = "0.21", default-features = false }
 ndarray = "0.16"
-# Tokenizers for BERT-style models (Rust port of HuggingFace tokenizers)
-# NOTE: Not using onig feature as it requires C compilation, incompatible with WASM
-tokenizers = { version = "0.19", default-features = false, features = ["unstable_wasm"] }
-# WASM RNG support (required by tokenizers and tract via rand)
-# WASM RNG support:
-# - getrandom 0.2 (for tract/tokenizers via rand 0.8) needs "js"
-# - getrandom 0.3 (for rustworkx-core via rand 0.9) needs "wasm-bindgen"
-getrandom02 = { package = "getrandom", version = "0.2", features = ["js"] }
-getrandom = { version = "0.3", features = ["wasm_js"] }
+
+# WASM-specific dependencies (optional via wasm feature)
+wasm-bindgen = { version = "0.2", optional = true }
+js-sys = { version = "0.3", optional = true }
+wasm-bindgen-futures = { version = "0.4", optional = true }
+console_error_panic_hook = { version = "0.1", optional = true }
+wee_alloc = { version = "0.4", optional = true }
+serde-wasm-bindgen = { version = "0.6.5", optional = true }
+instant = { version = "0.1", features = ["wasm-bindgen"], optional = true }
+web-sys = { version = "0.3", features = ["console"], optional = true }
+getrandom02 = { package = "getrandom", version = "0.2", features = ["js"], optional = true }
+getrandom = { version = "0.3", features = ["wasm_js"], optional = true }
+
+# Embeddings (optional via embeddings feature)
+tract-onnx = { version = "0.21", default-features = false, optional = true }
+tract-core = { version = "0.21", default-features = false, optional = true }
+tokenizers = { version = "0.19", default-features = false, features = ["unstable_wasm"], optional = true }
 
 
 # RAG Pipeline (Phase 1)

@@ -1,0 +1,155 @@
+﻿cargo :     Blocking 
+waiting for file lock on 
+build directory
+At line:1 char:1
++ cargo test 2>&1 | 
+Out-File -FilePath 
+test_triple.txt -Encoding 
+utf8;  ...
++ ~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (    B  
+  locking wa...build dire   
+ ctory:String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+   Compiling varant v0.1.0 (
+C:\Users\shuga\1kittroot\1co
+de\daswundebar\src-tauri)
+warning: unused import: 
+`std::collections::HashMap`
+  --> src\temporal.rs:18:5
+   |
+18 | use 
+std::collections::HashMap;
+   |     
+^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: 
+`#[warn(unused_imports)]` 
+on by default
+
+warning: methods 
+`add_entity` and `clear` 
+are never used
+   --> 
+src\implicit.rs:343:12
+    |
+196 | impl ImplicitCortex {
+    | ------------------- 
+methods in this 
+implementation
+...
+343 |     pub fn 
+add_entity(&mut self, 
+entity: EntityDefinition) {
+    |            ^^^^^^^^^^
+...
+390 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+    |
+    = note: 
+`#[warn(dead_code)]` on by 
+default
+
+warning: methods 
+`hydrate_calendar` and 
+`is_ready` are never used
+   --> 
+src\temporal.rs:363:12
+    |
+267 | impl TemporalCortex {
+    | ------------------- 
+methods in this 
+implementation
+...
+363 |     pub fn 
+hydrate_calendar(
+    |            
+^^^^^^^^^^^^^^^^
+...
+407 |     pub fn 
+is_ready(&self) -> bool {
+    |            ^^^^^^^^
+
+warning: method 
+`hydrate_calendar` is never 
+used
+   --> 
+src\temporal.rs:363:12
+    |
+267 | impl TemporalCortex {
+    | ------------------- 
+method in this 
+implementation
+...
+363 |     pub fn 
+hydrate_calendar(
+    |            
+^^^^^^^^^^^^^^^^
+
+warning: `varant` (lib 
+test) generated 3 warnings 
+(2 duplicates)
+warning: `varant` (lib) 
+generated 3 warnings (run 
+`cargo fix --lib -p varant` 
+to apply 1 suggestion)
+    Finished `test` profile 
+[unoptimized + debuginfo] 
+target(s) in 44.35s
+     Running unittests 
+src\lib.rs (target\debug\dep
+s\app_lib-6c2ff372f7674e07.e
+xe)
+
+running 28 tests
+test implicit::tests::test_case_insensitive_matching ... ok
+test implicit::tests::test_overlapping_keeps_longer ... ok
+test implicit::tests::test_alias_matching ... ok
+test implicit::tests::test_hydrate_and_find_single_entity ... ok
+test implicit::tests::test_faction_acronym ... ok
+test implicit::tests::test_smart_alias_luffy ... ok
+test implicit::tests::test_confidence_scores ... ok
+test temporal::tests::test_relative_phrase ... ok
+test temporal::tests::test_era_marker ... ok
+test temporal::tests::test_weekday_detection ... ok
+test temporal::tests::test_connector_direction ... ok
+test temporal::tests::test_word_boundary ... ok
+test temporal::tests::test_narrative_marker_with_number ... ok
+test triple::tests::test_backward_arrow ... ok
+test triple::tests::test_basic_wiki_triple ... ok
+test triple::tests::test_empty_text ... ok
+test triple::tests::test_forward_arrow ... ok
+test triple::tests::test_mixed_case_predicate ... ok
+test triple::tests::test_multiple_triples ... ok
+test triple::tests::test_bidirectional_arrow ... ok
+test triple::tests::test_no_triples ... ok
+test scanner::tests::test_wikilink ... ok
+test scanner::tests::test_triple ... ok
+test scanner::tests::test_overlap_resolution ... ok
+test triple::tests::test_parenthesized_triple ... ok
+test scanner::tests::test_basic_entity ... ok
+test triple::tests::test_position_tracking ... ok
+test triple::tests::test_whitespace_handling ... ok
+
+test result: ok. 28 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+     Running unittests 
+src\main.rs (target\debug\de
+ps\varant-9d82a7e11edc964e.e
+xe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests app_lib
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

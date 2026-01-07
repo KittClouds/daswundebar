@@ -1,0 +1,4016 @@
+﻿cargo : warning: unused 
+import: 
+`std::collections::HashMap`
+At line:1 char:1
++ cargo test reality:: 2>&1 
+| Out-File test3.txt 
+-Encoding utf8; Select ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (warni  
+  ng: unused...tions::Has   
+ hMap`:String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+  --> src\temporal.rs:18:5
+   |
+18 | use 
+std::collections::HashMap;
+   |     
+^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: 
+`#[warn(unused_imports)]` 
+on by default
+
+warning: unused import: 
+`TextRange`
+  --> src\attacher.rs:25:40
+   |
+25 | use 
+super::chunker::{Chunk, 
+ChunkKind, TextRange};
+   |                        
+                ^^^^^^^^^
+
+warning: unused imports: 
+`ProjectionStats`, 
+`project_all`, 
+`project_attributions`, 
+`project_quads`, and 
+`project_state_changes`
+  --> 
+src\reality\engine.rs:16:22
+   |
+16 |     project_triples, 
+project_quads, 
+project_attributions, 
+project_state_changes,
+   |                      
+^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^^
+17 |     project_all, 
+project_all_with_stats,
+   |     ^^^^^^^^^^^
+18 |     Triple, QuadPlus, 
+Attribution, StateChange, 
+Projection, ProjectionStats,
+   |                        
+                            
+         ^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+  --> 
+src\reality\engine.rs:20:60
+   |
+20 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+   |                        
+                            
+        ^^^^^^^^
+
+warning: unused import: 
+`ConceptEdge`
+  --> 
+src\reality\global.rs:11:47
+   |
+11 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge};
+   |                        
+                       
+^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge` and 
+`ConceptNode`
+ --> src\reality\algorithms.
+rs:9:34
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge};
+  |                         
+         ^^^^^^^^^^^  
+^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+ --> 
+src\reality\temporal.rs:9:60
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+  |                         
+                            
+       ^^^^^^^^
+
+warning: unused imports: 
+`RealityLanguage` and 
+`SyntaxKind`
+  --> 
+src\reality\mod.rs:21:18
+   |
+21 | pub use 
+syntax::{SyntaxKind, 
+RealityLanguage};
+   |                  
+^^^^^^^^^^  ^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge`, 
+`ConceptGraph`, 
+`ConceptNode`, and 
+`EdgeKind`
+  --> 
+src\reality\mod.rs:22:17
+   |
+22 | pub use 
+graph::{ConceptGraph, 
+ConceptNode, ConceptEdge, 
+EdgeKind};
+   |                 
+^^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^
+
+warning: unused import: 
+`synapse::SynapseBridge`
+  --> 
+src\reality\mod.rs:23:9
+   |
+23 | pub use 
+synapse::SynapseBridge;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`engine::RealityEngine`
+  --> 
+src\reality\mod.rs:24:9
+   |
+24 | pub use 
+engine::RealityEngine;
+   |         
+^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Attribution`, 
+`Projection`, `QuadPlus`, 
+`StateChange`, and `Triple`
+  --> 
+src\reality\mod.rs:25:22
+   |
+25 | pub use 
+projection::{Triple, 
+QuadPlus, Attribution, 
+StateChange, Projection};
+   |                      
+^^^^^^  ^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^
+
+warning: unused import: 
+`global::GlobalGraph`
+  --> 
+src\reality\mod.rs:26:9
+   |
+26 | pub use 
+global::GlobalGraph;
+   |         
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`unification::EntityUnifier`
+  --> 
+src\reality\mod.rs:27:9
+   |
+27 | pub use 
+unification::EntityUnifier;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: value assigned to 
+`head_idx` is never read
+   --> src\chunker.rs:464:17
+    |
+464 |         let mut 
+head_idx = None;
+    |                 
+^^^^^^^^
+    |
+    = help: maybe it is 
+overwritten before being 
+read?
+    = note: `#[warn(unused_a
+ssignments)]` on by default
+
+warning: methods 
+`add_entity` and `clear` 
+are never used
+   --> 
+src\implicit.rs:343:12
+    |
+196 | impl ImplicitCortex {
+    | ------------------- 
+methods in this 
+implementation
+...
+343 |     pub fn 
+add_entity(&mut self, 
+entity: EntityDefinition) {
+    |            ^^^^^^^^^^
+...
+390 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+    |
+    = note: 
+`#[warn(dead_code)]` on by 
+default
+
+warning: methods 
+`hydrate_calendar` and 
+`is_ready` are never used
+   --> 
+src\temporal.rs:363:12
+    |
+267 | impl TemporalCortex {
+    | ------------------- 
+methods in this 
+implementation
+...
+363 |     pub fn 
+hydrate_calendar(
+    |            
+^^^^^^^^^^^^^^^^
+...
+407 |     pub fn 
+is_ready(&self) -> bool {
+    |            ^^^^^^^^
+
+warning: variant 
+`DoubleConsonant` is never 
+constructed
+  --> 
+src\verb_morphology.rs:25:5
+   |
+19 | pub enum VerbPattern {
+   |          ----------- 
+variant in this enum
+...
+25 |     DoubleConsonant,
+   |     ^^^^^^^^^^^^^^^
+   |
+   = note: `VerbPattern` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: variants 
+`Ambitransitive` and 
+`Ditransitive` are never 
+constructed
+  --> 
+src\verb_morphology.rs:61:5
+   |
+55 | pub enum Transitivity {
+   |          ------------ 
+variants in this enum
+...
+61 |     Ambitransitive,
+   |     ^^^^^^^^^^^^^^
+62 |     /// Takes two 
+objects: "X gave Y to Z"
+63 |     Ditransitive,
+   |     ^^^^^^^^^^^^
+   |
+   = note: `Transitivity` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: associated 
+function `double_consonant` 
+is never used
+  --> 
+src\verb_morphology.rs:97:18
+   |
+76 | impl VerbEntry {
+   | -------------- 
+associated function in this 
+implementation
+...
+97 |     pub const fn 
+double_consonant(base: 
+&'static str, relation: 
+&'static str, domain: 
+VerbDomain) -> Self {
+   |                  
+^^^^^^^^^^^^^^^^
+
+warning: methods 
+`get_domain`, 
+`get_transitivity`, and 
+`form_count` are never used
+   --> src\verb_morphology.r
+s:501:12
+    |
+452 | impl VerbLexicon {
+    | ---------------- 
+methods in this 
+implementation
+...
+501 |     pub fn 
+get_domain(&self, word: 
+&str) -> Option<VerbDomain> 
+{
+    |            ^^^^^^^^^^
+...
+506 |     pub fn 
+get_transitivity(&self, 
+word: &str) -> 
+Option<Transitivity> {
+    |            
+^^^^^^^^^^^^^^^^
+...
+511 |     pub fn 
+form_count(&self) -> usize {
+    |            ^^^^^^^^^^
+
+warning: method `as_str` is 
+never used
+  --> src\chunker.rs:41:12
+   |
+40 | impl ChunkKind {
+   | -------------- method 
+in this implementation
+41 |     pub fn 
+as_str(&self) -> &'static 
+str {
+   |            ^^^^^^
+
+warning: methods `len`, 
+`is_empty`, `contains`, and 
+`overlaps` are never used
+  --> src\chunker.rs:69:12
+   |
+59 | impl TextRange {
+   | -------------- methods 
+in this implementation
+...
+69 |     pub fn len(&self) 
+-> usize {
+   |            ^^^
+...
+73 |     pub fn 
+is_empty(&self) -> bool {
+   |            ^^^^^^^^
+...
+83 |     pub fn 
+contains(&self, other: 
+&TextRange) -> bool {
+   |            ^^^^^^^^
+...
+88 |     pub fn 
+overlaps(&self, other: 
+&TextRange) -> bool {
+   |            ^^^^^^^^
+
+warning: method `head_text` 
+is never used
+   --> src\chunker.rs:128:12
+    |
+112 | impl Chunk {
+    | ---------- method in 
+this implementation
+...
+128 |     pub fn 
+head_text<'a>(&self, 
+source: &'a str) -> &'a str 
+{
+    |            ^^^^^^^^^
+
+warning: methods 
+`is_verbal` and 
+`is_modifier` are never used
+   --> src\chunker.rs:173:12
+    |
+168 | impl POS {
+    | -------- methods in 
+this implementation
+...
+173 |     pub fn 
+is_verbal(&self) -> bool {
+    |            ^^^^^^^^^
+...
+177 |     pub fn 
+is_modifier(&self) -> bool {
+    |            ^^^^^^^^^^^
+
+warning: associated 
+function `from_chunks` is 
+never used
+   --> src\chunker.rs:221:12
+    |
+220 | impl ChunkStats {
+    | --------------- 
+associated function in this 
+implementation
+221 |     pub fn 
+from_chunks(chunks: 
+&[Chunk], token_count: 
+usize) -> Self {
+    |            ^^^^^^^^^^^
+
+warning: method `get_stats` 
+is never used
+   --> src\chunker.rs:295:12
+    |
+263 | impl Chunker {
+    | ------------ method 
+in this implementation
+...
+295 |     pub fn 
+get_stats(&self, text: 
+&str) -> ChunkStats {
+    |            ^^^^^^^^^
+
+warning: method 
+`to_extracted` is never used
+  --> src\relation.rs:94:12
+   |
+92 | impl UnifiedRelation {
+   | -------------------- 
+method in this 
+implementation
+93 |     /// Convert to 
+backward-compatible 
+ExtractedRelation
+94 |     pub fn 
+to_extracted(&self) -> 
+ExtractedRelation {
+   |            ^^^^^^^^^^^^
+
+warning: type alias 
+`RelationCortex` is never 
+used
+   --> 
+src\relation.rs:125:10
+    |
+125 | pub type 
+RelationCortex = 
+RelationEngine;
+    |          
+^^^^^^^^^^^^^^
+
+warning: methods 
+`set_cst_threshold`, 
+`set_inference_enabled`, 
+`build`, and 
+`pattern_count` are never 
+used
+   --> 
+src\relation.rs:153:12
+    |
+143 | impl RelationEngine {
+    | ------------------- 
+methods in this 
+implementation
+...
+153 |     pub fn 
+set_cst_threshold(&mut 
+self, threshold: f32) {
+    |            
+^^^^^^^^^^^^^^^^^
+...
+158 |     pub fn 
+set_inference_enabled(&mut 
+self, enabled: bool) {
+    |            
+^^^^^^^^^^^^^^^^^^^^^
+...
+163 |     pub fn build(&mut 
+self) -> Result<(), String> 
+{
+    |            ^^^^^
+...
+168 |     pub fn 
+pattern_count(&self) -> 
+usize {
+    |            
+^^^^^^^^^^^^^
+
+warning: function 
+`normalize_verb` is never 
+used
+   --> src\relation.rs:411:8
+    |
+411 | pub fn 
+normalize_verb(verb: &str) 
+-> String {
+    |        ^^^^^^^^^^^^^^
+
+warning: function 
+`find_entity_in_span` is 
+never used
+   --> src\relation.rs:422:8
+    |
+422 | pub fn 
+find_entity_in_span<'a>(
+    |        
+^^^^^^^^^^^^^^^^^^^
+
+warning: field 
+`max_distance` is never read
+   --> src\structured_relati
+on.rs:153:5
+    |
+145 | pub struct 
+StructuredRelationExtractor 
+{
+    |            
+--------------------------- 
+field in this struct
+...
+153 |     max_distance: 
+usize,
+    |     ^^^^^^^^^^^^
+
+warning: method 
+`set_max_distance` is never 
+used
+   --> src\structured_relati
+on.rs:496:12
+    |
+162 | impl 
+StructuredRelationExtractor 
+{
+    | ----------------------
+---------- method in this 
+implementation
+...
+496 |     pub fn 
+set_max_distance(&mut self, 
+distance: usize) {
+    |            
+^^^^^^^^^^^^^^^^
+
+warning: method `is_empty` 
+is never used
+  --> 
+src\incremental.rs:68:12
+   |
+52 | impl Chunk {
+   | ---------- method in 
+this implementation
+...
+68 |     pub fn 
+is_empty(&self) -> bool {
+   |            ^^^^^^^^
+
+warning: multiple variants 
+are never constructed
+  --> 
+src\relation_schema.rs:23:5
+   |
+22 | pub enum Kind {
+   |          ---- variants 
+in this enum
+23 |     Any       = 
+0b0000_0000_0001,
+   |     ^^^
+24 |     Entity    = 
+0b0000_0000_0010,
+   |     ^^^^^^
+25 |     Character = 
+0b0000_0000_0100,
+   |     ^^^^^^^^^
+26 |     Creature  = 
+0b0000_0000_1000,
+   |     ^^^^^^^^
+27 |     Faction   = 
+0b0000_0001_0000,
+   |     ^^^^^^^
+28 |     Location  = 
+0b0000_0010_0000,
+   |     ^^^^^^^^
+29 |     Item      = 
+0b0000_0100_0000,
+   |     ^^^^
+30 |     Artifact  = 
+0b0000_1000_0000,
+   |     ^^^^^^^^
+31 |     Spell     = 
+0b0001_0000_0000,
+   |     ^^^^^
+32 |     Event     = 
+0b0010_0000_0000,
+   |     ^^^^^
+33 |     Concept   = 
+0b0100_0000_0000,
+   |     ^^^^^^^
+34 |     Document  = 
+0b1000_0000_0000,
+   |     ^^^^^^^^
+   |
+   = note: `Kind` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: associated items 
+`new`, `with`, `contains`, 
+and `contains_str` are 
+never used
+  --> 
+src\relation_schema.rs:42:18
+   |
+41 | impl KindSet {
+   | ------------ 
+associated items in this 
+implementation
+42 |     pub const fn new() 
+-> Self {
+   |                  ^^^
+...
+46 |     pub const fn 
+with(self, kind: Kind) -> 
+Self {
+   |                  ^^^^
+...
+50 |     pub const fn 
+contains(&self, kind: Kind) 
+-> bool {
+   |                  
+^^^^^^^^
+...
+54 |     pub fn 
+contains_str(&self, 
+kind_str: &str) -> bool {
+   |            ^^^^^^^^^^^^
+
+warning: multiple variants 
+are never constructed
+   --> 
+src\relation_schema.rs:94:5
+    |
+92  | pub enum Relation {
+    |          -------- 
+variants in this enum
+93  |     // Combat
+94  |     Killed,
+    |     ^^^^^^
+95  |     KilledBy,
+    |     ^^^^^^^^
+96  |     Defeated,
+    |     ^^^^^^^^
+97  |     DefeatedBy,
+    |     ^^^^^^^^^^
+98  |     Wounded,
+    |     ^^^^^^^
+99  |     WoundedBy,
+    |     ^^^^^^^^^
+100 |     Attacked,
+    |     ^^^^^^^^
+101 |     AttackedBy,
+    |     ^^^^^^^^^^
+102 |     Fought,
+    |     ^^^^^^
+103 |     Captured,
+    |     ^^^^^^^^
+104 |     CapturedBy,
+    |     ^^^^^^^^^^
+...
+107 |     Loves,
+    |     ^^^^^
+108 |     LovedBy,
+    |     ^^^^^^^
+109 |     Hates,
+    |     ^^^^^
+110 |     HatedBy,
+    |     ^^^^^^^
+111 |     Married,
+    |     ^^^^^^^
+112 |     ParentOf,
+    |     ^^^^^^^^
+113 |     ChildOf,
+    |     ^^^^^^^
+114 |     SiblingOf,
+    |     ^^^^^^^^^
+115 |     Betrayed,
+    |     ^^^^^^^^
+116 |     BetrayedBy,
+    |     ^^^^^^^^^^
+117 |     Befriended,
+    |     ^^^^^^^^^^
+118 |     Rescued,
+    |     ^^^^^^^
+119 |     RescuedBy,
+    |     ^^^^^^^^^
+...
+122 |     Leads,
+    |     ^^^^^
+123 |     LedBy,
+    |     ^^^^^
+124 |     Commands,
+    |     ^^^^^^^^
+125 |     CommandedBy,
+    |     ^^^^^^^^^^^
+126 |     Rules,
+    |     ^^^^^
+127 |     RuledBy,
+    |     ^^^^^^^
+128 |     MemberOf,
+    |     ^^^^^^^^
+129 |     HasMember,
+    |     ^^^^^^^^^
+130 |     Serves,
+    |     ^^^^^^
+131 |     ServedBy,
+    |     ^^^^^^^^
+132 |     Obeys,
+    |     ^^^^^
+133 |     ObeyedBy,
+    |     ^^^^^^^^
+134 |     Founded,
+    |     ^^^^^^^
+135 |     FoundedBy,
+    |     ^^^^^^^^^
+...
+138 |     Taught,
+    |     ^^^^^^
+139 |     TaughtBy,
+    |     ^^^^^^^^
+140 |     Mentored,
+    |     ^^^^^^^^
+141 |     MentoredBy,
+    |     ^^^^^^^^^^
+142 |     Trained,
+    |     ^^^^^^^
+143 |     TrainedBy,
+    |     ^^^^^^^^^
+144 |     LearnedFrom,
+    |     ^^^^^^^^^^^
+145 |     KnowsSecretOf,
+    |     ^^^^^^^^^^^^^
+146 |     Discovered,
+    |     ^^^^^^^^^^
+147 |     DiscoveredBy,
+    |     ^^^^^^^^^^^^
+...
+150 |     Owns,
+    |     ^^^^
+151 |     OwnedBy,
+    |     ^^^^^^^
+152 |     Possesses,
+    |     ^^^^^^^^^
+153 |     PossessedBy,
+    |     ^^^^^^^^^^^
+154 |     Wields,
+    |     ^^^^^^
+155 |     WieldedBy,
+    |     ^^^^^^^^^
+156 |     Guards,
+    |     ^^^^^^
+157 |     GuardedBy,
+    |     ^^^^^^^^^
+158 |     Stole,
+    |     ^^^^^
+159 |     StolenBy,
+    |     ^^^^^^^^
+160 |     Gave,
+    |     ^^^^
+161 |     Received,
+    |     ^^^^^^^^
+162 |     Created,
+    |     ^^^^^^^
+163 |     CreatedBy,
+    |     ^^^^^^^^^
+164 |     Destroyed,
+    |     ^^^^^^^^^
+165 |     DestroyedBy,
+    |     ^^^^^^^^^^^
+...
+168 |     LocatedIn,
+    |     ^^^^^^^^^
+169 |     Contains,
+    |     ^^^^^^^^
+170 |     PartOf,
+    |     ^^^^^^
+171 |     HasPart,
+    |     ^^^^^^^
+172 |     LivesIn,
+    |     ^^^^^^^
+173 |     TraveledTo,
+    |     ^^^^^^^^^^
+174 |     EnteredFrom,
+    |     ^^^^^^^^^^^
+175 |     Left,
+    |     ^^^^
+176 |     FledFrom,
+    |     ^^^^^^^^
+177 |     OriginatedFrom,
+    |     ^^^^^^^^^^^^^^
+178 |     Borders,
+    |     ^^^^^^^
+...
+181 |     Told,
+    |     ^^^^
+182 |     ToldBy,
+    |     ^^^^^^
+183 |     Warned,
+    |     ^^^^^^
+184 |     WarnedBy,
+    |     ^^^^^^^^
+185 |     Promised,
+    |     ^^^^^^^^
+186 |     LiedTo,
+    |     ^^^^^^
+187 |     RevealedTo,
+    |     ^^^^^^^^^^
+...
+190 |     Cast,
+    |     ^^^^
+191 |     Enchanted,
+    |     ^^^^^^^^^
+192 |     EnchantedBy,
+    |     ^^^^^^^^^^^
+193 |     Cursed,
+    |     ^^^^^^
+194 |     CursedBy,
+    |     ^^^^^^^^
+195 |     Blessed,
+    |     ^^^^^^^
+196 |     BlessedBy,
+    |     ^^^^^^^^^
+197 |     Summoned,
+    |     ^^^^^^^^
+198 |     SummonedBy,
+    |     ^^^^^^^^^^
+199 |     Banished,
+    |     ^^^^^^^^
+200 |     BanishedBy,
+    |     ^^^^^^^^^^
+201 |     Bound,
+    |     ^^^^^
+202 |     BoundBy,
+    |     ^^^^^^^
+203 |     Sealed,
+    |     ^^^^^^
+204 |     SealedBy,
+    |     ^^^^^^^^
+...
+207 |     IsA,
+    |     ^^^
+208 |     Became,
+    |     ^^^^^^
+209 |     Died,
+    |     ^^^^
+210 |     Resurrected,
+    |     ^^^^^^^^^^^
+211 |     ResurrectedBy,
+    |     ^^^^^^^^^^^^^
+212 |     Imprisoned,
+    |     ^^^^^^^^^^
+213 |     ImprisonedBy,
+    |     ^^^^^^^^^^^^
+214 |     Freed,
+    |     ^^^^^
+215 |     FreedBy,
+    |     ^^^^^^^
+...
+218 |     Precedes,
+    |     ^^^^^^^^
+219 |     Follows,
+    |     ^^^^^^^
+220 |     Caused,
+    |     ^^^^^^
+221 |     CausedBy,
+    |     ^^^^^^^^
+222 |     Prevented,
+    |     ^^^^^^^^^
+223 |     PreventedBy,
+    |     ^^^^^^^^^^^
+224 |     Witnessed,
+    |     ^^^^^^^^^
+    |
+    = note: `Relation` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: associated items 
+`as_str` and `from_str` are 
+never used
+   --> src\relation_schema.r
+s:229:12
+    |
+227 | impl Relation {
+    | ------------- 
+associated items in this 
+implementation
+228 |     /// Convert 
+relation enum to canonical 
+string form
+229 |     pub fn 
+as_str(&self) -> &'static 
+str {
+    |            ^^^^^^
+...
+367 |     pub fn 
+from_str(s: &str) -> 
+Option<Self> {
+    |            ^^^^^^^^
+
+warning: multiple variants 
+are never constructed
+   --> 
+src\relation_schema.rs:504:5
+    |
+503 | pub enum Role {
+    |          ---- 
+variants in this enum
+504 |     Subject,  // 
+Primary actor
+    |     ^^^^^^^
+505 |     Object,   // 
+Primary target
+    |     ^^^^^^
+506 |     Actor,    // 
+Alternative to Subject for 
+action verbs
+    |     ^^^^^
+507 |     Target,   // 
+Alternative to Object
+    |     ^^^^^^
+508 |     Where,    // 
+Location argument
+    |     ^^^^^
+509 |     Tool,     // 
+Instrument used
+    |     ^^^^
+510 |     Result,   // 
+Outcome/product
+    |     ^^^^^^
+    |
+    = note: `Role` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: struct `SlotSpec` 
+is never constructed
+   --> src\relation_schema.r
+s:515:12
+    |
+515 | pub struct SlotSpec {
+    |            ^^^^^^^^
+    |
+    = note: `SlotSpec` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: associated 
+functions `new` and 
+`optional` are never used
+   --> src\relation_schema.r
+s:522:18
+    |
+521 | impl SlotSpec {
+    | ------------- 
+associated functions in 
+this implementation
+522 |     pub const fn 
+new(role: Role, kinds: 
+KindSet) -> Self {
+    |                  ^^^
+...
+526 |     pub const fn 
+optional(role: Role, kinds: 
+KindSet) -> Self {
+    |                  
+^^^^^^^^
+
+warning: struct 
+`RelationSchema` is never 
+constructed
+   --> src\relation_schema.r
+s:537:12
+    |
+537 | pub struct 
+RelationSchema {
+    |            
+^^^^^^^^^^^^^^
+    |
+    = note: 
+`RelationSchema` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: methods `arity`, 
+`is_binary`, and `is_unary` 
+are never used
+   --> src\relation_schema.r
+s:546:12
+    |
+545 | impl RelationSchema {
+    | ------------------- 
+methods in this 
+implementation
+546 |     pub fn 
+arity(&self) -> usize {
+    |            ^^^^^
+...
+550 |     pub fn 
+is_binary(&self) -> bool {
+    |            ^^^^^^^^^
+...
+554 |     pub fn 
+is_unary(&self) -> bool {
+    |            ^^^^^^^^
+
+warning: struct 
+`SchemaRegistry` is never 
+constructed
+   --> src\relation_schema.r
+s:565:12
+    |
+565 | pub struct 
+SchemaRegistry {
+    |            
+^^^^^^^^^^^^^^
+    |
+    = note: 
+`SchemaRegistry` has a 
+derived impl for the trait 
+`Debug`, but this is 
+intentionally ignored 
+during dead code analysis
+
+warning: associated items 
+`new`, `get`, `get_by_str`, 
+`get_inverse`, 
+`get_transitivity`, and 
+`is_symmetric` are never 
+used
+   --> src\relation_schema.r
+s:571:12
+    |
+570 | impl SchemaRegistry {
+    | ------------------- 
+associated items in this 
+implementation
+571 |     pub fn 
+new(schemas: &'static 
+[RelationSchema]) -> Self {
+    |            ^^^
+...
+583 |     pub fn get(&self, 
+rel: Relation) -> 
+Option<&'static 
+RelationSchema> {
+    |            ^^^
+...
+587 |     pub fn 
+get_by_str(&self, rel_str: 
+&str) -> Option<&'static 
+RelationSchema> {
+    |            ^^^^^^^^^^
+...
+591 |     pub fn 
+get_inverse(&self, rel: 
+Relation) -> 
+Option<Relation> {
+    |            ^^^^^^^^^^^
+...
+595 |     pub fn 
+get_transitivity(&self, 
+rel: Relation) -> 
+Option<f32> {
+    |            
+^^^^^^^^^^^^^^^^
+...
+599 |     pub fn 
+is_symmetric(&self, rel: 
+Relation) -> bool {
+    |            
+^^^^^^^^^^^^
+
+warning: variants 
+`MissingInverse`, 
+`InverseDoesNotPointBack`, 
+`ArityMismatch`, and 
+`SymmetricWithInverse` are 
+never constructed
+   --> 
+src\relation_schema.rs:611:5
+    |
+610 | pub enum SchemaError {
+    |          ----------- 
+variants in this enum
+611 |     
+MissingInverse(Relation),
+    |     ^^^^^^^^^^^^^^
+612 |     
+InverseDoesNotPointBack { 
+rel: Relation, inv: 
+Relation },
+    |     
+^^^^^^^^^^^^^^^^^^^^^^^
+613 |     ArityMismatch { 
+rel: Relation, inv: 
+Relation, a: usize, b: 
+usize },
+    |     ^^^^^^^^^^^^^
+614 |     SymmetricWithInver
+se(Relation),
+    |     
+^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `SchemaError` 
+has a derived impl for the 
+trait `Debug`, but this is 
+intentionally ignored 
+during dead code analysis
+
+warning: function 
+`validate_schemas` is never 
+used
+   --> 
+src\relation_schema.rs:634:8
+    |
+634 | pub fn 
+validate_schemas(all: 
+&[RelationSchema]) -> 
+Result<(), SchemaError> {
+    |        
+^^^^^^^^^^^^^^^^
+
+warning: function `kinds` 
+is never used
+   --> src\relation_schema.r
+s:671:10
+    |
+671 | const fn kinds(k: 
+Kind) -> KindSet {
+    |          ^^^^^
+
+warning: function `kinds2` 
+is never used
+   --> src\relation_schema.r
+s:675:10
+    |
+675 | const fn kinds2(a: 
+Kind, b: Kind) -> KindSet {
+    |          ^^^^^^
+
+warning: function `kinds3` 
+is never used
+   --> src\relation_schema.r
+s:679:10
+    |
+679 | const fn kinds3(a: 
+Kind, b: Kind, c: Kind) -> 
+KindSet {
+    |          ^^^^^^
+
+warning: static 
+`RELATION_SCHEMAS` is never 
+used
+   --> src\relation_schema.r
+s:684:12
+    |
+684 | pub static 
+RELATION_SCHEMAS: 
+&[RelationSchema] = &[
+    |            
+^^^^^^^^^^^^^^^^
+
+warning: method `skip_rate` 
+is never used
+   --> src\document.rs:107:8
+    |
+80  | impl ChangeDetector {
+    | ------------------- 
+method in this 
+implementation
+...
+107 |     fn 
+skip_rate(&self) -> f64 {
+    |        ^^^^^^^^^
+
+warning: method `skip_rate` 
+is never used
+   --> 
+src\document.rs:168:12
+    |
+146 | impl DocumentCortex {
+    | ------------------- 
+method in this 
+implementation
+...
+168 |     pub fn 
+skip_rate(&self) -> f64 {
+    |            ^^^^^^^^^
+
+warning: method `is_ready` 
+is never used
+  --> src\conductor.rs:87:12
+   |
+54 | impl ScanConductor {
+   | ------------------ 
+method in this 
+implementation
+...
+87 |     pub fn 
+is_ready(&self) -> bool {
+   |            ^^^^^^^^
+
+warning: field `config` is 
+never read
+  --> 
+src\relation_filter.rs:81:5
+   |
+80 | pub struct 
+RelationFilter {
+   |            
+-------------- field in 
+this struct
+81 |     config: 
+FilterConfig,
+   |     ^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> 
+src\relation_filter.rs:99:12
+    |
+90  | impl RelationFilter {
+    | ------------------- 
+associated items in this 
+implementation
+...
+99  |     pub fn 
+with_config(config: 
+FilterConfig) -> Self {
+    |            ^^^^^^^^^^^
+...
+104 |     pub fn 
+set_min_confidence(&mut 
+self, threshold: f64) {
+    |            
+^^^^^^^^^^^^^^^^^^
+...
+109 |     pub fn 
+set_distance_decay(&mut 
+self, enabled: bool) {
+    |            
+^^^^^^^^^^^^^^^^^^
+...
+114 |     pub fn set_same_se
+ntence_bonus(&mut self, 
+bonus: f64) {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^
+...
+119 |     pub fn set_cross_s
+entence_penalty(&mut self, 
+penalty: f64) {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+124 |     pub fn 
+set_max_distance(&mut self, 
+distance: usize) {
+    |            
+^^^^^^^^^^^^^^^^
+...
+129 |     pub fn 
+config(&self) -> 
+&FilterConfig {
+    |            ^^^^^^
+...
+134 |     pub fn filter(
+    |            ^^^^^^
+...
+231 |     pub fn 
+filter_kept(&self, text: 
+&str, relations: 
+Vec<ExtractedRelation>) -> 
+Vec<FilteredRelation> {
+    |            ^^^^^^^^^^^
+...
+237 |     fn 
+calculate_distance(&self, 
+relation: 
+&ExtractedRelation) -> 
+usize {
+    |        
+^^^^^^^^^^^^^^^^^^
+...
+248 |     fn 
+distance_factor(&self, 
+distance: usize) -> f64 {
+    |        ^^^^^^^^^^^^^^^
+...
+261 |     fn 
+same_sentence(&self, text: 
+&str, pos1: usize, pos2: 
+usize) -> bool {
+    |        ^^^^^^^^^^^^^
+
+warning: associated 
+function `new` is never used
+  --> src\attacher.rs:65:12
+   |
+64 | impl Dependency {
+   | --------------- 
+associated function in this 
+implementation
+65 |     pub fn 
+new(head_idx: usize, 
+dep_idx: usize, kind: 
+DependencyKind, score: f64) 
+-> Self {
+   |            ^^^
+
+warning: field 
+`proximity_weight` is never 
+read
+  --> src\attacher.rs:89:5
+   |
+88 | pub struct Attacher {
+   |            -------- 
+field in this struct
+89 |     proximity_weight: 
+f64,
+   |     ^^^^^^^^^^^^^^^^
+
+warning: methods `attach`, 
+`find_best_attachment`, 
+`score_attachment`, and 
+`determine_relation` are 
+never used
+   --> 
+src\attacher.rs:109:12
+    |
+100 | impl Attacher {
+    | ------------- methods 
+in this implementation
+...
+109 |     pub fn 
+attach(&self, chunks: 
+&[Chunk]) -> 
+DependencyGraph {
+    |            ^^^^^^
+...
+140 |     fn 
+find_best_attachment(
+    |        
+^^^^^^^^^^^^^^^^^^^^
+...
+170 |     fn 
+score_attachment(
+    |        
+^^^^^^^^^^^^^^^^
+...
+214 |     fn 
+determine_relation(
+    |        
+^^^^^^^^^^^^^^^^^^
+
+warning: field 
+`max_history` is never read
+  --> src\resolver.rs:69:5
+   |
+63 | pub struct 
+NarrativeContext {
+   |            
+---------------- field in 
+this struct
+...
+69 |     max_history: usize,
+   |     ^^^^^^^^^^^
+   |
+   = note: 
+`NarrativeContext` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: methods `register` 
+and `push_mention` are 
+never used
+   --> 
+src\resolver.rs:114:12
+    |
+79  | impl NarrativeContext 
+{
+    | --------------------- 
+methods in this 
+implementation
+...
+114 |     pub fn 
+register(&mut self, entity: 
+EntityMetadata) {
+    |            ^^^^^^^^
+...
+119 |     pub fn 
+push_mention(&mut self, 
+entity_id: &str) {
+    |            
+^^^^^^^^^^^^
+
+warning: methods 
+`observe_mention` and 
+`register_entity` are never 
+used
+   --> 
+src\resolver.rs:199:12
+    |
+170 | impl Resolver {
+    | ------------- methods 
+in this implementation
+...
+199 |     pub fn 
+observe_mention(&mut self, 
+entity_id: &str) {
+    |            
+^^^^^^^^^^^^^^^
+...
+204 |     pub fn 
+register_entity(
+    |            
+^^^^^^^^^^^^^^^
+
+warning: associated 
+function `attribute_simple` 
+is never used
+  --> src\dialogue.rs:79:12
+   |
+39 | impl 
+DialogueAttributor {
+   | 
+----------------------- 
+associated function in this 
+implementation
+...
+79 |     pub fn 
+attribute_simple(
+   |            
+^^^^^^^^^^^^^^^^
+
+warning: function 
+`get_predicate_rules` is 
+never used
+  --> 
+src\constraints.rs:17:4
+   |
+17 | fn get_predicate_rules(
+entity_kind: &str) -> 
+Option<&'static [&'static 
+str]> {
+   |    ^^^^^^^^^^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> 
+src\constraints.rs:94:12
+    |
+93  | impl ConstraintEngine 
+{
+    | --------------------- 
+associated items in this 
+implementation
+94  |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+99  |     pub fn 
+validate(&self, ref_input: 
+&RefInput) -> 
+ConstraintResult {
+    |            ^^^^^^^^
+...
+131 |     fn 
+validate_entity(
+    |        ^^^^^^^^^^^^^^^
+...
+158 |     fn 
+validate_triple(
+    |        ^^^^^^^^^^^^^^^
+...
+195 |     pub fn 
+validate_predicate(&self, 
+entity_kind: &str, 
+predicate: &str) -> bool {
+    |            
+^^^^^^^^^^^^^^^^^^
+...
+203 |     pub fn get_allowed
+_predicates(&self, 
+entity_kind: &str) -> 
+Vec<String> {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^
+...
+210 |     pub fn 
+enforce_uniqueness(&self, 
+refs: Vec<RefInput>) -> 
+Vec<RefInput> {
+    |            
+^^^^^^^^^^^^^^^^^^
+...
+230 |     fn 
+get_unique_key(&self, 
+ref_input: &RefInput) -> 
+String {
+    |        ^^^^^^^^^^^^^^
+...
+279 |     pub fn 
+filter_by_scope(
+    |            
+^^^^^^^^^^^^^^^
+
+warning: method `to_gender` 
+is never used
+  --> src\narrative.rs:71:8
+   |
+70 | impl EntityInput {
+   | ---------------- 
+method in this 
+implementation
+71 |     fn 
+to_gender(&self) -> Gender {
+   |        ^^^^^^^^^
+
+warning: fields `chunker`, 
+`attacher`, and `resolver` 
+are never read
+  --> src\narrative.rs:91:5
+   |
+90 | pub struct 
+NarrativeGraph {
+   |            
+-------------- fields in 
+this struct
+91 |     chunker: Chunker,
+   |     ^^^^^^^
+92 |     attacher: Attacher,
+   |     ^^^^^^^^
+93 |     resolver: Resolver,
+   |     ^^^^^^^^
+
+warning: methods `analyze`, 
+`hydrate_entities`, 
+`hydrate_entity`, 
+`resolve`, 
+`observe_mention`, and 
+`attribute_speaker` are 
+never used
+   --> 
+src\narrative.rs:116:12
+    |
+104 | impl NarrativeGraph {
+    | ------------------- 
+methods in this 
+implementation
+...
+116 |     pub fn 
+analyze(&self, text: &str) 
+-> NarrativeResult {
+    |            ^^^^^^^
+...
+148 |     pub fn 
+hydrate_entities(&mut self, 
+entities: Vec<EntityInput>) 
+{
+    |            
+^^^^^^^^^^^^^^^^
+...
+156 |     pub fn 
+hydrate_entity(&mut self, 
+id: &str, name: &str, 
+gender: Gender, aliases: 
+Vec<String>) {
+    |            
+^^^^^^^^^^^^^^
+...
+161 |     pub fn 
+resolve(&mut self, text: 
+&str) -> Option<String> {
+    |            ^^^^^^^
+...
+166 |     pub fn 
+observe_mention(&mut self, 
+entity_id: &str) {
+    |            
+^^^^^^^^^^^^^^^
+...
+171 |     pub fn 
+attribute_speaker(&mut 
+self, text: &str, 
+quote_pos: QuotePosition) 
+-> Option<EntityId> {
+    |            
+^^^^^^^^^^^^^^^^^
+
+warning: fields 
+`check_count` and 
+`skip_count` are never read
+  --> src\change.rs:34:5
+   |
+30 | pub struct 
+ChangeDetector {
+   |            
+-------------- fields in 
+this struct
+...
+34 |     check_count: u64,
+   |     ^^^^^^^^^^^
+35 |     /// Number of 
+skipped (unchanged) checks
+36 |     skip_count: u64,
+   |     ^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> src\change.rs:55:12
+    |
+45  | impl ChangeDetector {
+    | ------------------- 
+associated items in this 
+implementation
+...
+55  |     pub fn 
+skip_rate(&self) -> f64 {
+    |            ^^^^^^^^^
+...
+63  |     pub fn 
+check_count(&self) -> u64 {
+    |            ^^^^^^^^^^^
+...
+68  |     pub fn 
+skip_count(&self) -> u64 {
+    |            ^^^^^^^^^^
+...
+73  |     pub fn reset(&mut 
+self) {
+    |            ^^^^^
+...
+81  |     pub fn 
+has_changed(&mut self, 
+text: &str) -> bool {
+    |            ^^^^^^^^^^^
+...
+100 |     pub fn check(&mut 
+self, text: &str) -> 
+ChangeResult {
+    |            ^^^^^
+...
+125 |     fn 
+compute_hash(text: &str) -> 
+u64 {
+    |        ^^^^^^^^^^^^
+...
+132 |     pub fn 
+last_hash(&self) -> 
+Option<u64> {
+    |            ^^^^^^^^^
+
+warning: type alias 
+`SyntaxToken` is never used
+ --> src\reality\ast.rs:5:10
+  |
+5 | pub type SyntaxToken = r
+owan::SyntaxToken<RealityLan
+guage>;
+  |          ^^^^^^^^^^^
+
+warning: type alias 
+`SyntaxElement` is never 
+used
+ --> src\reality\ast.rs:6:10
+  |
+6 | pub type SyntaxElement 
+= rowan::SyntaxElement<Reali
+tyLanguage>;
+  |          ^^^^^^^^^^^^^
+
+warning: trait 
+`SemanticSpan` is never used
+ --> 
+src\reality\parser.rs:9:11
+  |
+9 | pub trait SemanticSpan {
+  |           ^^^^^^^^^^^^
+
+warning: function 
+`detect_paragraphs` is 
+never used
+  --> 
+src\reality\parser.rs:21:8
+   |
+21 | pub fn 
+detect_paragraphs(text: 
+&str) -> Vec<(usize, 
+usize)> {
+   |        
+^^^^^^^^^^^^^^^^^
+
+warning: constant 
+`ABBREVIATIONS` is never 
+used
+   --> 
+src\reality\parser.rs:114:7
+    |
+114 | const ABBREVIATIONS: 
+&[&str] = &[
+    |       ^^^^^^^^^^^^^
+
+warning: function 
+`detect_sentences` is never 
+used
+   --> 
+src\reality\parser.rs:124:8
+    |
+124 | pub fn 
+detect_sentences(text: 
+&str) -> Vec<(usize, 
+usize)> {
+    |        
+^^^^^^^^^^^^^^^^
+
+warning: function 
+`is_abbreviation` is never 
+used
+   --> 
+src\reality\parser.rs:216:4
+    |
+216 | fn 
+is_abbreviation(text: &str, 
+period_offset: usize) -> 
+bool {
+    |    ^^^^^^^^^^^^^^^
+
+warning: function 
+`zip_reality` is never used
+   --> 
+src\reality\parser.rs:245:8
+    |
+245 | pub fn zip_reality<S: 
+SemanticSpan>(text: &str, 
+spans: &[S]) -> GreenNode {
+    |        ^^^^^^^^^^^
+
+warning: function 
+`zip_range` is never used
+   --> 
+src\reality\parser.rs:309:4
+    |
+309 | fn zip_range<S: 
+SemanticSpan>(
+    |    ^^^^^^^^^
+
+warning: function 
+`tokenize_range` is never 
+used
+   --> 
+src\reality\parser.rs:377:4
+    |
+377 | fn 
+tokenize_range(builder: 
+&mut GreenNodeBuilder, 
+text: &str) {
+    |    ^^^^^^^^^^^^^^
+
+warning: function 
+`is_punctuation_char` is 
+never used
+   --> 
+src\reality\parser.rs:391:4
+    |
+391 | fn 
+is_punctuation_char(c: 
+char) -> bool {
+    |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`is_contraction_apostrophe` 
+is never used
+   --> 
+src\reality\parser.rs:406:4
+    |
+406 | fn is_contraction_apos
+trophe(c: char) -> bool {
+    |    
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`lex_next_token` is never 
+used
+   --> 
+src\reality\parser.rs:410:4
+    |
+410 | fn 
+lex_next_token(text: &str) 
+-> (usize, SyntaxKind) {
+    |    ^^^^^^^^^^^^^^
+
+warning: enum `MixedSpan` 
+is never used
+   --> 
+src\reality\parser.rs:650:10
+    |
+650 | pub enum 
+MixedSpan<'a, S: 
+SemanticSpan> {
+    |          ^^^^^^^^^
+    |
+    = note: `MixedSpan` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: methods `start`, 
+`end`, and `syntax_kind` 
+are never used
+   --> 
+src\reality\parser.rs:656:8
+    |
+655 | impl<'a, S: 
+SemanticSpan> MixedSpan<'a, 
+S> {
+    | ----------------------
+-------------------- 
+methods in this 
+implementation
+656 |     fn start(&self) 
+-> usize {
+    |        ^^^^^
+...
+663 |     fn end(&self) -> 
+usize {
+    |        ^^^
+...
+670 |     fn 
+syntax_kind(&self) -> 
+SyntaxKind {
+    |        ^^^^^^^^^^^
+
+warning: function 
+`chunk_kind_to_syntax_kind` 
+is never used
+   --> 
+src\reality\parser.rs:679:8
+    |
+679 | pub fn chunk_kind_to_s
+yntax_kind(kind: ChunkKind) 
+-> SyntaxKind {
+    |        
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`zip_reality_enhanced` is 
+never used
+   --> 
+src\reality\parser.rs:714:8
+    |
+714 | pub fn 
+zip_reality_enhanced<S: 
+SemanticSpan>(
+    |        
+^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`zip_range_enhanced` is 
+never used
+   --> 
+src\reality\parser.rs:800:4
+    |
+800 | fn 
+zip_range_enhanced<S: 
+SemanticSpan>(
+    |    ^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`project_triples` is never 
+used
+  --> src\reality\projection
+.rs:41:8
+   |
+41 | pub fn 
+project_triples(root: &Synta
+xNode<RealityLanguage>) -> 
+Vec<Triple> {
+   |        ^^^^^^^^^^^^^^^
+
+warning: function 
+`project_quads` is never 
+used
+   --> src\reality\projectio
+n.rs:109:8
+    |
+109 | pub fn 
+project_quads(root: &SyntaxN
+ode<RealityLanguage>) -> 
+Vec<QuadPlus> {
+    |        ^^^^^^^^^^^^^
+
+warning: function 
+`find_pp_modifiers` is 
+never used
+   --> src\reality\projectio
+n.rs:156:4
+    |
+156 | fn 
+find_pp_modifiers(node: &Syn
+taxNode<RealityLanguage>) 
+-> Vec<SyntaxNode<RealityLan
+guage>> {
+    |    ^^^^^^^^^^^^^^^^^
+
+warning: function 
+`classify_modifiers` is 
+never used
+   --> src\reality\projectio
+n.rs:180:4
+    |
+180 | fn 
+classify_modifiers(pps: &[Sy
+ntaxNode<RealityLanguage>]) 
+-> (Option<String>, 
+Option<String>, 
+Option<String>) {
+    |    ^^^^^^^^^^^^^^^^^^
+
+warning: constant 
+`DIALOGUE_VERBS` is never 
+used
+   --> src\reality\projectio
+n.rs:248:7
+    |
+248 | const DIALOGUE_VERBS: 
+&[&str] = &[
+    |       ^^^^^^^^^^^^^^
+
+warning: function 
+`project_attributions` is 
+never used
+   --> src\reality\projectio
+n.rs:273:8
+    |
+273 | pub fn 
+project_attributions(root: &
+SyntaxNode<RealityLanguage>)
+ -> Vec<Attribution> {
+    |        
+^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`try_extract_attribution` 
+is never used
+   --> src\reality\projectio
+n.rs:299:4
+    |
+299 | fn 
+try_extract_attribution(
+    |    
+^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`find_quote_near` is never 
+used
+   --> src\reality\projectio
+n.rs:324:4
+    |
+324 | fn 
+find_quote_near(node: &Synta
+xNode<RealityLanguage>, 
+root: &SyntaxNode<RealityLan
+guage>) -> Option<(String, 
+(usize, usize))> {
+    |    ^^^^^^^^^^^^^^^
+
+warning: constant 
+`STATE_CHANGE_VERBS` is 
+never used
+   --> src\reality\projectio
+n.rs:387:7
+    |
+387 | const 
+STATE_CHANGE_VERBS: &[&str] 
+= &[
+    |       
+^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`project_state_changes` is 
+never used
+   --> src\reality\projectio
+n.rs:404:8
+    |
+404 | pub fn 
+project_state_changes(root: 
+&SyntaxNode<RealityLanguage>
+) -> Vec<StateChange> {
+    |        
+^^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`try_extract_state_change` 
+is never used
+   --> src\reality\projectio
+n.rs:427:4
+    |
+427 | fn try_extract_state_c
+hange(verb_node: &SyntaxNode
+<RealityLanguage>) -> 
+Option<StateChange> {
+    |    
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`find_state_after` is never 
+used
+   --> src\reality\projectio
+n.rs:449:4
+    |
+449 | fn 
+find_state_after(node: &Synt
+axNode<RealityLanguage>) -> 
+Option<String> {
+    |    ^^^^^^^^^^^^^^^^
+
+warning: function 
+`is_common_adjective` is 
+never used
+   --> src\reality\projectio
+n.rs:497:4
+    |
+497 | fn 
+is_common_adjective(word: 
+&str) -> bool {
+    |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`find_trigger_after` is 
+never used
+   --> src\reality\projectio
+n.rs:508:4
+    |
+508 | fn 
+find_trigger_after(node: &Sy
+ntaxNode<RealityLanguage>) 
+-> Option<String> {
+    |    ^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`project_all` is never used
+   --> src\reality\projectio
+n.rs:565:8
+    |
+565 | pub fn 
+project_all(root: &SyntaxNod
+e<RealityLanguage>) -> 
+Vec<Projection> {
+    |        ^^^^^^^^^^^
+
+warning: function 
+`project_all_with_stats` is 
+never used
+   --> src\reality\projectio
+n.rs:600:8
+    |
+600 | pub fn project_all_wit
+h_stats(root: &SyntaxNode<Re
+alityLanguage>) -> 
+(Vec<Projection>, 
+ProjectionStats) {
+    |        
+^^^^^^^^^^^^^^^^^^^^^^
+
+warning: enum `Direction` 
+is never used
+   --> src\reality\projectio
+n.rs:627:6
+    |
+627 | enum Direction {
+    |      ^^^^^^^^^
+
+warning: function 
+`find_neighbor_entity` is 
+never used
+   --> src\reality\projectio
+n.rs:632:4
+    |
+632 | fn 
+find_neighbor_entity(node: &
+SyntaxNode<RealityLanguage>,
+ dir: Direction) -> Option<S
+yntaxNode<RealityLanguage>> 
+{
+    |    
+^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`is_trivia` is never used
+   --> src\reality\projectio
+n.rs:674:4
+    |
+674 | fn is_trivia(kind: 
+SyntaxKind) -> bool {
+    |    ^^^^^^^^^
+
+warning: associated 
+function `new` is never used
+  --> 
+src\reality\graph.rs:30:12
+   |
+29 | impl ConceptNode {
+   | ---------------- 
+associated function in this 
+implementation
+30 |     pub fn new(id: 
+impl Into<String>, label: 
+impl Into<String>, kind: 
+impl Into<String>) -> Self {
+   |            ^^^
+
+warning: fields `relation`, 
+`weight`, `edge_kind`, 
+`source_doc`, 
+`source_span`, and 
+`created_at` are never read
+  --> 
+src\reality\graph.rs:43:9
+   |
+41 | pub struct ConceptEdge 
+{
+   |            ----------- 
+fields in this struct
+42 |     /// Relation type: 
+"owns", "created", 
+"located_in", etc.
+43 |     pub relation: 
+String,
+   |         ^^^^^^^^
+44 |     /// Confidence or 
+strength (0.0 to 1.0)
+45 |     pub weight: f64,
+   |         ^^^^^^
+46 |     /// Edge kind for 
+Phase 4 richer projections
+47 |     pub edge_kind: 
+EdgeKind,
+   |         ^^^^^^^^^
+...
+50 |     pub source_doc: 
+Option<String>,
+   |         ^^^^^^^^^^
+51 |     /// Source text 
+span (start, end) in bytes
+52 |     pub source_span: 
+Option<(u32, u32)>,
+   |         ^^^^^^^^^^^
+53 |     /// Creation 
+timestamp (epoch millis)
+54 |     pub created_at: 
+Option<u64>,
+   |         ^^^^^^^^^^
+   |
+   = note: `ConceptEdge` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: variants 
+`Attribution`, 
+`StateTransition`, and 
+`ModifiedRelation` are 
+never constructed
+  --> 
+src\reality\graph.rs:68:5
+   |
+62 | pub enum EdgeKind {
+   |          -------- 
+variants in this enum
+...
+68 |     Attribution {
+   |     ^^^^^^^^^^^
+...
+75 |     StateTransition {
+   |     ^^^^^^^^^^^^^^^
+...
+82 |     ModifiedRelation {
+   |     ^^^^^^^^^^^^^^^^
+   |
+   = note: `EdgeKind` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: multiple 
+associated items are never 
+used
+   --> 
+src\reality\graph.rs:99:12
+    |
+98  | impl ConceptEdge {
+    | ---------------- 
+associated items in this 
+implementation
+99  |     pub fn 
+new(relation: impl 
+Into<String>, weight: f64) 
+-> Self {
+    |            ^^^
+...
+111 |     pub fn 
+unweighted(relation: impl 
+Into<String>) -> Self {
+    |            ^^^^^^^^^^
+...
+116 |     pub fn 
+with_doc(mut self, doc_id: 
+impl Into<String>) -> Self {
+    |            ^^^^^^^^
+...
+122 |     pub fn 
+with_span(mut self, start: 
+u32, end: u32) -> Self {
+    |            ^^^^^^^^^
+...
+128 |     pub fn 
+with_timestamp(mut self, 
+ts: u64) -> Self {
+    |            
+^^^^^^^^^^^^^^
+...
+134 |     pub fn 
+with_kind(mut self, kind: 
+EdgeKind) -> Self {
+    |            ^^^^^^^^^
+...
+140 |     pub fn 
+attribution(verb: impl 
+Into<String>) -> Self {
+    |            ^^^^^^^^^^^
+...
+152 |     pub fn 
+state_transition(to_state: 
+impl Into<String>, trigger: 
+Option<String>) -> Self {
+    |            
+^^^^^^^^^^^^^^^^
+...
+164 |     pub fn 
+modified_relation(
+    |            
+^^^^^^^^^^^^^^^^^
+
+warning: fields `graph` and 
+`id_to_index` are never read
+   --> 
+src\reality\graph.rs:193:5
+    |
+191 | pub struct 
+ConceptGraph {
+    |            
+------------ fields in this 
+struct
+192 |     /// The 
+underlying petgraph 
+structure
+193 |     graph: 
+DiGraph<ConceptNode, 
+ConceptEdge>,
+    |     ^^^^^
+194 |     /// Fast lookup: 
+node ID ΓåÆ petgraph 
+NodeIndex
+195 |     id_to_index: 
+HashMap<String, NodeIndex>,
+    |     ^^^^^^^^^^^
+
+warning: multiple methods 
+are never used
+   --> 
+src\reality\graph.rs:217:12
+    |
+204 | impl ConceptGraph {
+    | ----------------- 
+methods in this 
+implementation
+...
+217 |     pub fn 
+ensure_node(&mut self, 
+node: ConceptNode) -> 
+NodeIndex {
+    |            ^^^^^^^^^^^
+...
+231 |     pub fn 
+add_edge(&mut self, 
+source_id: &str, target_id: 
+&str, edge: ConceptEdge) -> 
+Option<EdgeIndex> {
+    |            ^^^^^^^^
+...
+241 |     pub fn 
+add_edge_with_nodes(
+    |            
+^^^^^^^^^^^^^^^^^^^
+...
+253 |     pub fn 
+get_node(&self, id: &str) 
+-> Option<&ConceptNode> {
+    |            ^^^^^^^^
+...
+259 |     pub fn 
+get_index(&self, id: &str) 
+-> Option<NodeIndex> {
+    |            ^^^^^^^^^
+...
+266 |     pub fn 
+outgoing_edges(&self, id: 
+&str) -> Vec<(&ConceptNode, 
+&ConceptEdge)> {
+    |            
+^^^^^^^^^^^^^^
+...
+283 |     pub fn 
+incoming_edges(&self, id: 
+&str) -> Vec<(&ConceptNode, 
+&ConceptEdge)> {
+    |            
+^^^^^^^^^^^^^^
+...
+298 |     pub fn 
+neighbors(&self, id: &str) 
+-> Vec<&ConceptNode> {
+    |            ^^^^^^^^^
+...
+310 |     pub fn 
+node_count(&self) -> usize {
+    |            ^^^^^^^^^^
+...
+315 |     pub fn 
+edge_count(&self) -> usize {
+    |            ^^^^^^^^^^
+...
+320 |     pub fn 
+is_empty(&self) -> bool {
+    |            ^^^^^^^^
+...
+325 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+...
+331 |     pub fn 
+nodes(&self) -> impl 
+Iterator<Item = 
+&ConceptNode> {
+    |            ^^^^^
+...
+336 |     pub fn 
+edges(&self) -> impl 
+Iterator<Item = 
+(&ConceptNode, 
+&ConceptNode, 
+&ConceptEdge)> {
+    |            ^^^^^
+...
+347 |     pub fn 
+raw_graph(&self) -> 
+&DiGraph<ConceptNode, 
+ConceptEdge> {
+    |            ^^^^^^^^^
+...
+352 |     pub fn 
+graph(&self) -> 
+&DiGraph<ConceptNode, 
+ConceptEdge> {
+    |            ^^^^^
+...
+365 |     pub fn 
+subgraph(&self, center_id: 
+&str, depth: usize) -> 
+ConceptGraph {
+    |            ^^^^^^^^
+...
+424 |     pub fn 
+centrality_degree(&self) -> 
+Vec<(String, f64)> {
+    |            
+^^^^^^^^^^^^^^^^^
+...
+444 |     pub fn 
+orphan_nodes(&self) -> 
+Vec<&ConceptNode> {
+    |            
+^^^^^^^^^^^^
+...
+460 |     pub fn connected_c
+omponent_count(&self) -> 
+usize {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+497 |     pub fn 
+critical_nodes(&self) -> 
+Vec<&ConceptNode> {
+    |            
+^^^^^^^^^^^^^^
+...
+545 |     pub fn narrative_h
+ealth_score(&self) -> u32 {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^
+
+warning: fields 
+`span_to_node` and 
+`node_to_spans` are never 
+read
+  --> 
+src\reality\synapse.rs:27:5
+   |
+24 | pub struct 
+SynapseBridge {
+   |            
+------------- fields in 
+this struct
+...
+27 |     span_to_node: 
+HashMap<TextRange, (String, 
+NodeIndex)>,
+   |     ^^^^^^^^^^^^
+...
+31 |     node_to_spans: 
+HashMap<String, 
+Vec<TextRange>>,
+   |     ^^^^^^^^^^^^^
+   |
+   = note: `SynapseBridge` 
+has a derived impl for the 
+trait `Debug`, but this is 
+intentionally ignored 
+during dead code analysis
+
+warning: multiple 
+associated items are never 
+used
+   --> 
+src\reality\synapse.rs:36:12
+    |
+34  | impl SynapseBridge {
+    | ------------------ 
+associated items in this 
+implementation
+35  |     /// Create a new 
+empty synapse bridge
+36  |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+46  |     pub fn link(&mut 
+self, range: TextRange, 
+entity_id: String, index: 
+NodeIndex) {
+    |            ^^^^
+...
+58  |     pub fn 
+link_offsets(&mut self, 
+start: u32, end: u32, 
+entity_id: String, index: 
+NodeIndex) {
+    |            
+^^^^^^^^^^^^
+...
+64  |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+...
+70  |     pub fn 
+node_for_range(&self, 
+range: TextRange) -> 
+Option<(&str, NodeIndex)> {
+    |            
+^^^^^^^^^^^^^^
+...
+79  |     pub fn 
+node_at(&self, offset: u32) 
+-> Option<(&str, 
+NodeIndex)> {
+    |            ^^^^^^^
+...
+93  |     pub fn 
+spans_of(&self, entity_id: 
+&str) -> &[TextRange] {
+    |            ^^^^^^^^
+...
+101 |     pub fn 
+span_offsets_of(&self, 
+entity_id: &str) -> 
+Vec<(u32, u32)> {
+    |            
+^^^^^^^^^^^^^^^
+...
+109 |     pub fn 
+contains_range(&self, 
+range: TextRange) -> bool {
+    |            
+^^^^^^^^^^^^^^
+...
+114 |     pub fn 
+contains_entity(&self, 
+entity_id: &str) -> bool {
+    |            
+^^^^^^^^^^^^^^^
+...
+119 |     pub fn 
+link_count(&self) -> usize {
+    |            ^^^^^^^^^^
+...
+124 |     pub fn 
+entity_count(&self) -> 
+usize {
+    |            
+^^^^^^^^^^^^
+...
+129 |     pub fn 
+is_empty(&self) -> bool {
+    |            ^^^^^^^^
+...
+134 |     pub fn 
+iter(&self) -> impl 
+Iterator<Item = (TextRange, 
+&str, NodeIndex)> {
+    |            ^^^^
+...
+141 |     pub fn 
+entity_ids(&self) -> impl 
+Iterator<Item = &str> {
+    |            ^^^^^^^^^^
+...
+146 |     pub fn 
+unlink_entity(&mut self, 
+entity_id: &str) {
+    |            
+^^^^^^^^^^^^^
+...
+155 |     pub fn 
+unlink_range(&mut self, 
+range: TextRange) {
+    |            
+^^^^^^^^^^^^
+
+warning: type alias 
+`SyntaxNode` is never used
+  --> 
+src\reality\engine.rs:24:10
+   |
+24 | pub type SyntaxNode = r
+owan::SyntaxNode<RealityLang
+uage>;
+   |          ^^^^^^^^^^
+
+warning: fields `green`, 
+`graph`, `synapse`, and 
+`last_stats` are never read
+  --> 
+src\reality\engine.rs:39:5
+   |
+37 | pub struct 
+RealityEngine {
+   |            
+------------- fields in 
+this struct
+38 |     /// Current 
+document's CST root 
+(GreenNode is immutable, 
+cheap to clone)
+39 |     green: 
+Option<GreenNode>,
+   |     ^^^^^
+...
+42 |     graph: 
+ConceptGraph,
+   |     ^^^^^
+...
+45 |     synapse: 
+SynapseBridge,
+   |     ^^^^^^^
+...
+48 |     last_stats: 
+Option<ProcessStats>,
+   |     ^^^^^^^^^^
+
+warning: multiple fields 
+are never read
+  --> 
+src\reality\engine.rs:54:9
+   |
+53 | pub struct 
+ProcessStats {
+   |            
+------------ fields in this 
+struct
+54 |     pub 
+triples_extracted: usize,
+   |         
+^^^^^^^^^^^^^^^^^
+55 |     pub 
+quads_extracted: usize,
+   |         ^^^^^^^^^^^^^^^
+56 |     pub 
+attributions_extracted: 
+usize,
+   |         
+^^^^^^^^^^^^^^^^^^^^^^
+57 |     pub 
+state_changes_extracted: 
+usize,
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^
+58 |     pub nodes_created: 
+usize,
+   |         ^^^^^^^^^^^^^
+59 |     pub edges_created: 
+usize,
+   |         ^^^^^^^^^^^^^
+60 |     pub synapse_links: 
+usize,
+   |         ^^^^^^^^^^^^^
+   |
+   = note: `ProcessStats` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: multiple 
+associated items are never 
+used
+   --> 
+src\reality\engine.rs:65:12
+    |
+63  | impl RealityEngine {
+    | ------------------ 
+associated items in this 
+implementation
+64  |     /// Create a new 
+empty engine
+65  |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+78  |     pub fn process<S: 
+SemanticSpan>(&mut self, 
+text: &str, spans: &[S]) -> 
+usize {
+    |            ^^^^^^^
+...
+106 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+...
+114 |     pub fn 
+syntax_root(&self) -> 
+Option<SyntaxNode> {
+    |            ^^^^^^^^^^^
+...
+119 |     pub fn 
+graph(&self) -> 
+&ConceptGraph {
+    |            ^^^^^
+...
+124 |     pub fn 
+graph_mut(&mut self) -> 
+&mut ConceptGraph {
+    |            ^^^^^^^^^
+...
+129 |     pub fn 
+synapse(&self) -> 
+&SynapseBridge {
+    |            ^^^^^^^
+...
+134 |     pub fn 
+last_stats(&self) -> 
+Option<&ProcessStats> {
+    |            ^^^^^^^^^^
+...
+139 |     pub fn 
+stats(&self) -> EngineStats 
+{
+    |            ^^^^^
+...
+153 |     fn 
+ingest_triple(&mut self, 
+triple: &Triple, stats: 
+&mut ProcessStats) {
+    |        ^^^^^^^^^^^^^
+...
+198 |     fn link_standalone
+_entities(&mut self, root: 
+&SyntaxNode, stats: &mut 
+ProcessStats) {
+    |        
+^^^^^^^^^^^^^^^^^^^^^^^^
+...
+221 |     fn 
+make_entity_id(&self, 
+label: &str) -> String {
+    |        ^^^^^^^^^^^^^^
+...
+239 |     pub fn 
+process_with_projections<S: 
+SemanticSpan>(
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^^
+...
+276 |     pub fn populate_fr
+om_projections(&mut self, 
+projections: &[Projection], 
+stats: &mut ProcessStats) {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+288 |     fn 
+ingest_quad(&mut self, 
+quad: &QuadPlus, stats: 
+&mut ProcessStats) {
+    |        ^^^^^^^^^^^
+...
+325 |     fn 
+ingest_attribution(&mut 
+self, attr: &Attribution, 
+stats: &mut ProcessStats) {
+    |        
+^^^^^^^^^^^^^^^^^^
+...
+354 |     fn 
+ingest_state_change(&mut 
+self, change: &StateChange, 
+stats: &mut ProcessStats) {
+    |        
+^^^^^^^^^^^^^^^^^^^
+
+warning: struct 
+`EngineStats` is never 
+constructed
+   --> 
+src\reality\engine.rs:385:12
+    |
+385 | pub struct 
+EngineStats {
+    |            ^^^^^^^^^^^
+    |
+    = note: `EngineStats` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: associated items 
+`new`, `frequency`, and 
+`first_mention` are never 
+used
+  --> src\reality\entity_lay
+er.rs:50:12
+   |
+48 | impl EntityRecord {
+   | ----------------- 
+associated items in this 
+implementation
+49 |     /// Create a new 
+entity record
+50 |     pub fn new(id: 
+String, label: String, 
+kind: String) -> Self {
+   |            ^^^
+...
+60 |     pub fn 
+frequency(&self) -> usize {
+   |            ^^^^^^^^^
+...
+65 |     pub fn 
+first_mention(&self) -> 
+Option<&SpanRecord> {
+   |            
+^^^^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> src\reality\entity_la
+yer.rs:88:12
+    |
+86  | impl EntityLayer {
+    | ---------------- 
+associated items in this 
+implementation
+87  |     /// Create a new 
+empty EntityLayer
+88  |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+98  |     pub fn 
+record_span(
+    |            ^^^^^^^^^^^
+...
+124 |     pub fn 
+unique_entities(&self) -> 
+usize {
+    |            
+^^^^^^^^^^^^^^^
+...
+129 |     pub fn 
+total_spans(&self) -> usize 
+{
+    |            ^^^^^^^^^^^
+...
+134 |     pub fn 
+all_spans_for(&self, 
+entity_id: &str) -> 
+&[SpanRecord] {
+    |            
+^^^^^^^^^^^^^
+...
+141 |     pub fn 
+get_entity(&self, 
+entity_id: &str) -> 
+Option<&EntityRecord> {
+    |            ^^^^^^^^^^
+...
+146 |     pub fn 
+iter(&self) -> impl 
+Iterator<Item = (&String, 
+&EntityRecord)> {
+    |            ^^^^
+...
+151 |     pub fn 
+entity_ids(&self) -> impl 
+Iterator<Item = &String> {
+    |            ^^^^^^^^^^
+...
+156 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+...
+162 |     pub fn 
+clear_doc(&mut self, 
+doc_id: &str) {
+    |            ^^^^^^^^^
+
+warning: function 
+`normalize_id` is never used
+   --> src\reality\entity_la
+yer.rs:183:8
+    |
+183 | pub fn 
+normalize_id(label: &str) 
+-> String {
+    |        ^^^^^^^^^^^^
+
+warning: function 
+`extract_context` is never 
+used
+   --> src\reality\entity_la
+yer.rs:188:4
+    |
+188 | fn 
+extract_context(text: &str, 
+start: usize, end: usize) 
+-> String {
+    |    ^^^^^^^^^^^^^^^
+
+warning: function 
+`floor_char_boundary` is 
+never used
+   --> src\reality\entity_la
+yer.rs:203:4
+    |
+203 | fn 
+floor_char_boundary(s: 
+&str, pos: usize) -> usize {
+    |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`ceil_char_boundary` is 
+never used
+   --> src\reality\entity_la
+yer.rs:215:4
+    |
+215 | fn 
+ceil_char_boundary(s: &str, 
+pos: usize) -> usize {
+    |    ^^^^^^^^^^^^^^^^^^
+
+warning: associated items 
+`from_record`, 
+`is_cross_document`, and 
+`add_alias` are never used
+  --> src\reality\metadata_l
+ayer.rs:42:12
+   |
+40 | impl EntityMetadata {
+   | ------------------- 
+associated items in this 
+implementation
+41 |     /// Create new 
+metadata from an entity 
+record
+42 |     pub fn 
+from_record(id: &str, 
+record: &EntityRecord) -> 
+Self {
+   |            ^^^^^^^^^^^
+...
+62 |     pub fn 
+is_cross_document(&self) -> 
+bool {
+   |            
+^^^^^^^^^^^^^^^^^
+...
+67 |     pub fn 
+add_alias(&mut self, alias: 
+String) {
+   |            ^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> src\reality\metadata_
+layer.rs:92:12
+    |
+90  | impl MetadataLayer {
+    | ------------------ 
+associated items in this 
+implementation
+91  |     /// Create a new 
+empty MetadataLayer
+92  |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+99  |     pub fn compute_fro
+m_entity_layer(&mut self, 
+entity_layer: &EntityLayer) 
+{
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+124 |     fn compute_importa
+nce_scores(&mut self) {
+    |        
+^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+143 |     pub fn get(&self, 
+entity_id: &str) -> 
+Option<&EntityMetadata> {
+    |            ^^^
+...
+148 |     pub fn 
+get_mut(&mut self, 
+entity_id: &str) -> 
+Option<&mut EntityMetadata> 
+{
+    |            ^^^^^^^
+...
+153 |     pub fn 
+iter(&self) -> impl 
+Iterator<Item = (&String, 
+&EntityMetadata)> {
+    |            ^^^^
+...
+158 |     pub fn 
+by_frequency(&self) -> 
+Vec<&EntityMetadata> {
+    |            
+^^^^^^^^^^^^
+...
+165 |     pub fn 
+by_importance(&self) -> 
+Vec<&EntityMetadata> {
+    |            
+^^^^^^^^^^^^^
+...
+172 |     pub fn cross_docum
+ent_entities(&self) -> 
+Vec<&EntityMetadata> {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^
+...
+180 |     pub fn 
+entities_in_doc(&self, 
+doc_id: &str) -> 
+Vec<&EntityMetadata> {
+    |            
+^^^^^^^^^^^^^^^
+...
+188 |     pub fn len(&self) 
+-> usize {
+    |            ^^^
+...
+193 |     pub fn 
+is_empty(&self) -> bool {
+    |            ^^^^^^^^
+...
+198 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+...
+204 |     pub fn 
+add_alias(&mut self, 
+entity_id: &str, alias: 
+&str) {
+    |            ^^^^^^^^^
+...
+211 |     pub fn 
+is_stale(&self, 
+max_age_secs: u64) -> bool {
+    |            ^^^^^^^^
+
+warning: field `aliases` is 
+never read
+  --> src\reality\unificatio
+n.rs:23:5
+   |
+21 | pub struct 
+EntityUnifier {
+   |            
+------------- field in this 
+struct
+22 |     /// Alias ΓåÆ 
+Canonical ID (both 
+normalized to lowercase)
+23 |     aliases: 
+HashMap<String, String>,
+   |     ^^^^^^^
+   |
+   = note: `EntityUnifier` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: multiple methods 
+are never used
+   --> src\reality\unificati
+on.rs:35:12
+    |
+26  | impl EntityUnifier {
+    | ------------------ 
+methods in this 
+implementation
+...
+35  |     pub fn 
+add_alias(&mut self, alias: 
+&str, canonical: &str) {
+    |            ^^^^^^^^^
+...
+49  |     pub fn 
+resolve(&self, entity_id: 
+&str) -> String {
+    |            ^^^^^^^
+...
+70  |     pub fn 
+add_aliases(&mut self, 
+mappings: &[(&str, &str)]) {
+    |            ^^^^^^^^^^^
+...
+77  |     pub fn 
+aliases_of(&self, 
+canonical: &str) -> 
+Vec<String> {
+    |            ^^^^^^^^^^
+...
+87  |     pub fn 
+has_aliases(&self, 
+entity_id: &str) -> bool {
+    |            ^^^^^^^^^^^
+...
+96  |     pub fn 
+alias_count(&self) -> usize 
+{
+    |            ^^^^^^^^^^^
+...
+101 |     pub fn 
+is_empty(&self) -> bool {
+    |            ^^^^^^^^
+...
+106 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+
+warning: fields `doc_id`, 
+`synapse`, `entities`, and 
+`wikilinks` are never read
+  --> 
+src\reality\global.rs:26:9
+   |
+24 | pub struct 
+DocumentContext {
+   |            
+--------------- fields in 
+this struct
+25 |     /// Document/note 
+ID
+26 |     pub doc_id: String,
+   |         ^^^^^^
+27 |     /// Local synapse 
+links (textΓåögraph for 
+this document)
+28 |     pub synapse: 
+SynapseBridge,
+   |         ^^^^^^^
+29 |     /// Entity IDs 
+found in this document
+30 |     pub entities: 
+Vec<String>,
+   |         ^^^^^^^^
+31 |     /// Wikilink 
+targets from this document
+32 |     pub wikilinks: 
+Vec<String>,
+   |         ^^^^^^^^^
+   |
+   = note: 
+`DocumentContext` has a 
+derived impl for the trait 
+`Debug`, but this is 
+intentionally ignored 
+during dead code analysis
+
+warning: associated 
+function `new` is never used
+  --> 
+src\reality\global.rs:37:12
+   |
+35 | impl DocumentContext {
+   | -------------------- 
+associated function in this 
+implementation
+36 |     /// Create a new 
+document context
+37 |     pub fn new(doc_id: 
+impl Into<String>) -> Self {
+   |            ^^^
+
+warning: fields `doc_id`, 
+`projections_count`, 
+`nodes_merged`, 
+`edges_merged`, and 
+`new_entities` are never 
+read
+  --> 
+src\reality\global.rs:54:9
+   |
+53 | pub struct 
+ProcessDocResult {
+   |            
+---------------- fields in 
+this struct
+54 |     pub doc_id: String,
+   |         ^^^^^^
+55 |     pub 
+projections_count: usize,
+   |         
+^^^^^^^^^^^^^^^^^
+56 |     pub nodes_merged: 
+usize,
+   |         ^^^^^^^^^^^^
+57 |     pub edges_merged: 
+usize,
+   |         ^^^^^^^^^^^^
+58 |     pub new_entities: 
+usize,
+   |         ^^^^^^^^^^^^
+   |
+   = note: 
+`ProcessDocResult` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: struct 
+`MergeStats` is never 
+constructed
+  --> 
+src\reality\global.rs:66:8
+   |
+66 | struct MergeStats {
+   |        ^^^^^^^^^^
+   |
+   = note: `MergeStats` has 
+a derived impl for the 
+trait `Default`, but this 
+is intentionally ignored 
+during dead code analysis
+
+warning: fields `graph`, 
+`documents`, and `unifier` 
+are never read
+  --> 
+src\reality\global.rs:85:5
+   |
+83 | pub struct GlobalGraph 
+{
+   |            ----------- 
+fields in this struct
+84 |     /// The unified 
+concept graph
+85 |     graph: 
+ConceptGraph,
+   |     ^^^^^
+86 |     /// Document 
+contexts keyed by doc_id
+87 |     documents: 
+HashMap<String, 
+DocumentContext>,
+   |     ^^^^^^^^^
+88 |     /// Entity unifier 
+for alias resolution
+89 |     unifier: 
+EntityUnifier,
+   |     ^^^^^^^
+
+warning: multiple methods 
+are never used
+   --> 
+src\reality\global.rs:117:12
+    |
+98  | impl GlobalGraph {
+    | ---------------- 
+methods in this 
+implementation
+...
+117 |     pub fn 
+graph(&self) -> 
+&ConceptGraph {
+    |            ^^^^^
+...
+122 |     pub fn 
+graph_mut(&mut self) -> 
+&mut ConceptGraph {
+    |            ^^^^^^^^^
+...
+127 |     pub fn 
+unifier(&self) -> 
+&EntityUnifier {
+    |            ^^^^^^^
+...
+132 |     pub fn 
+unifier_mut(&mut self) -> 
+&mut EntityUnifier {
+    |            ^^^^^^^^^^^
+...
+137 |     pub fn 
+document(&self, doc_id: 
+&str) -> 
+Option<&DocumentContext> {
+    |            ^^^^^^^^
+...
+142 |     pub fn 
+document_ids(&self) -> 
+Vec<&str> {
+    |            
+^^^^^^^^^^^^
+...
+147 |     pub fn 
+document_count(&self) -> 
+usize {
+    |            
+^^^^^^^^^^^^^^
+...
+152 |     pub fn 
+is_empty(&self) -> bool {
+    |            ^^^^^^^^
+...
+166 |     pub fn 
+process_document<S: 
+SemanticSpan>(
+    |            
+^^^^^^^^^^^^^^^^
+...
+212 |     pub fn 
+entity_documents(&self) -> 
+HashMap<String, 
+Vec<String>> {
+    |            
+^^^^^^^^^^^^^^^^
+...
+236 |     pub fn 
+linked_documents(&self, 
+doc_id: &str) -> 
+Vec<String> {
+    |            
+^^^^^^^^^^^^^^^^
+...
+244 |     pub fn 
+related_documents(&self, 
+doc_id: &str) -> 
+Vec<String> {
+    |            
+^^^^^^^^^^^^^^^^^
+...
+277 |     pub fn 
+remove_document(&mut self, 
+doc_id: &str) -> bool {
+    |            
+^^^^^^^^^^^^^^^
+...
+282 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+...
+293 |     fn 
+merge_graph(&mut self, 
+local: &ConceptGraph) -> 
+MergeStats {
+    |        ^^^^^^^^^^^
+...
+327 |     fn 
+extract_entity_ids(&self, 
+projections: &[Projection]) 
+-> Vec<String> {
+    |        
+^^^^^^^^^^^^^^^^^^
+...
+359 |     fn 
+extract_wikilinks(&self, 
+_projections: 
+&[Projection]) -> 
+Vec<String> {
+    |        
+^^^^^^^^^^^^^^^^^
+
+warning: struct `Community` 
+is never constructed
+  --> src\reality\algorithms
+.rs:20:12
+   |
+20 | pub struct Community {
+   |            ^^^^^^^^^
+   |
+   = note: `Community` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: struct 
+`BridgeEntity` is never 
+constructed
+  --> src\reality\algorithms
+.rs:29:12
+   |
+29 | pub struct 
+BridgeEntity {
+   |            ^^^^^^^^^^^^
+   |
+   = note: `BridgeEntity` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: struct `Path` is 
+never constructed
+  --> src\reality\algorithms
+.rs:38:12
+   |
+38 | pub struct Path {
+   |            ^^^^
+   |
+   = note: `Path` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: struct 
+`RankedEntity` is never 
+constructed
+  --> src\reality\algorithms
+.rs:47:12
+   |
+47 | pub struct 
+RankedEntity {
+   |            ^^^^^^^^^^^^
+   |
+   = note: `RankedEntity` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: struct 
+`ImportanceReport` is never 
+constructed
+  --> src\reality\algorithms
+.rs:57:12
+   |
+57 | pub struct 
+ImportanceReport {
+   |            
+^^^^^^^^^^^^^^^^
+   |
+   = note: 
+`ImportanceReport` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: struct 
+`OutlierEntity` is never 
+constructed
+  --> src\reality\algorithms
+.rs:65:12
+   |
+65 | pub struct 
+OutlierEntity {
+   |            
+^^^^^^^^^^^^^
+   |
+   = note: `OutlierEntity` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: multiple methods 
+are never used
+   --> src\reality\algorithm
+s.rs:86:12
+    |
+77  | impl ConceptGraph {
+    | ----------------- 
+methods in this 
+implementation
+...
+86  |     pub fn 
+detect_communities(&self, 
+max_iterations: usize) -> 
+Vec<Community> {
+    |            
+^^^^^^^^^^^^^^^^^^
+...
+188 |     pub fn 
+community_of<'a>(&self, 
+entity_id: &str, 
+communities: &'a 
+[Community]) -> Option<&'a 
+Community> {
+    |            
+^^^^^^^^^^^^
+...
+194 |     pub fn 
+find_bridges(&self, 
+communities: &[Community]) 
+-> Vec<BridgeEntity> {
+    |            
+^^^^^^^^^^^^
+...
+245 |     fn 
+count_internal_edges(&self, 
+members: &[String]) -> 
+usize {
+    |        
+^^^^^^^^^^^^^^^^^^^^
+...
+265 |     pub fn 
+shortest_path(&self, 
+source: &str, target: &str) 
+-> Option<Path> {
+    |            
+^^^^^^^^^^^^^
+...
+322 |     pub fn 
+neighborhood(&self, 
+entity_id: &str, max_hops: 
+usize) -> Vec<(String, 
+usize)> {
+    |            
+^^^^^^^^^^^^
+...
+368 |     fn 
+reconstruct_path(
+    |        
+^^^^^^^^^^^^^^^^
+...
+406 |     fn generate_path_n
+arrative(&self, entity_ids: 
+&[String], edges: 
+&[String]) -> String {
+    |        
+^^^^^^^^^^^^^^^^^^^^^^^
+...
+436 |     pub fn 
+pagerank(&self, damping: 
+f64, iterations: usize) -> 
+Vec<RankedEntity> {
+    |            ^^^^^^^^
+...
+502 |     pub fn 
+top_entities(&self, n: 
+usize) -> Vec<RankedEntity> 
+{
+    |            
+^^^^^^^^^^^^
+...
+507 |     pub fn 
+importance_analysis(&self) 
+-> ImportanceReport {
+    |            
+^^^^^^^^^^^^^^^^^^^
+
+warning: variants 
+`Triggers`, `Enables`, and 
+`Prevents` are never 
+constructed
+  --> 
+src\reality\temporal.rs:19:5
+   |
+17 | pub enum CausalType {
+   |          ---------- 
+variants in this enum
+18 |     /// Event A 
+directly causes Event B
+19 |     Triggers,
+   |     ^^^^^^^^
+20 |     /// Event A makes 
+Event B possible (but 
+doesn't directly cause it)
+21 |     Enables,
+   |     ^^^^^^^
+22 |     /// Event A 
+prevents Event B from 
+happening
+23 |     Prevents,
+   |     ^^^^^^^^
+   |
+   = note: `CausalType` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: method `as_str` is 
+never used
+  --> src\reality\temporal.r
+s:27:12
+   |
+26 | impl CausalType {
+   | --------------- method 
+in this implementation
+27 |     pub fn 
+as_str(&self) -> &'static 
+str {
+   |            ^^^^^^
+
+warning: struct 
+`CausalChainItem` is never 
+constructed
+  --> src\reality\temporal.r
+s:38:12
+   |
+38 | pub struct 
+CausalChainItem {
+   |            
+^^^^^^^^^^^^^^^
+   |
+   = note: 
+`CausalChainItem` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: struct 
+`TemporalViolation` is 
+never constructed
+  --> src\reality\temporal.r
+s:48:12
+   |
+48 | pub struct 
+TemporalViolation {
+   |            
+^^^^^^^^^^^^^^^^^
+   |
+   = note: 
+`TemporalViolation` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: fields 
+`event_count`, 
+`causal_edge_count`, 
+`temporal_violations`, and 
+`max_chain_depth` are never 
+read
+  --> 
+src\reality\temporal.rs:61:9
+   |
+60 | pub struct 
+CausalityStats {
+   |            
+-------------- fields in 
+this struct
+61 |     pub event_count: 
+usize,
+   |         ^^^^^^^^^^^
+62 |     pub 
+causal_edge_count: usize,
+   |         
+^^^^^^^^^^^^^^^^^
+63 |     pub 
+temporal_violations: usize,
+   |         
+^^^^^^^^^^^^^^^^^^^
+64 |     pub 
+max_chain_depth: usize,
+   |         ^^^^^^^^^^^^^^^
+   |
+   = note: `CausalityStats` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: fields `graph` and 
+`temporal_order` are never 
+read
+  --> 
+src\reality\temporal.rs:79:5
+   |
+77 | pub struct 
+CausalityGraph {
+   |            
+-------------- fields in 
+this struct
+78 |     /// The underlying 
+concept graph (events as 
+nodes, causation as edges)
+79 |     graph: 
+ConceptGraph,
+   |     ^^^^^
+80 |     /// Temporal 
+ordering: event_id ΓåÆ 
+timestamp (epoch millis or 
+fantasy time)
+81 |     temporal_order: 
+HashMap<String, i64>,
+   |     ^^^^^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> src\reality\temporal.
+rs:100:12
+    |
+90  | impl CausalityGraph {
+    | ------------------- 
+associated items in this 
+implementation
+...
+100 |     pub fn 
+from_graph(graph: 
+ConceptGraph, timestamps: 
+HashMap<String, i64>) -> 
+Self {
+    |            ^^^^^^^^^^
+...
+108 |     pub fn 
+add_event(&mut self, id: 
+&str, name: &str, 
+timestamp: Option<i64>) {
+    |            ^^^^^^^^^
+...
+116 |     pub fn 
+add_causal_link(
+    |            
+^^^^^^^^^^^^^^^
+...
+128 |     pub fn 
+timestamp(&self, event_id: 
+&str) -> Option<i64> {
+    |            ^^^^^^^^^
+...
+133 |     pub fn 
+graph(&self) -> 
+&ConceptGraph {
+    |            ^^^^^
+...
+138 |     pub fn 
+graph_mut(&mut self) -> 
+&mut ConceptGraph {
+    |            ^^^^^^^^^
+...
+147 |     pub fn 
+causes_of(&self, event_id: 
+&str, max_depth: usize) -> 
+Vec<CausalChainItem> {
+    |            ^^^^^^^^^
+...
+152 |     pub fn 
+effects_of(&self, event_id: 
+&str, max_depth: usize) -> 
+Vec<CausalChainItem> {
+    |            ^^^^^^^^^^
+...
+157 |     fn 
+traverse_causal_chain(
+    |        
+^^^^^^^^^^^^^^^^^^^^^
+...
+231 |     pub fn validate_te
+mporal_order(&self) -> 
+Vec<TemporalViolation> {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^
+...
+268 |     pub fn 
+is_acyclic(&self) -> bool {
+    |            ^^^^^^^^^^
+...
+282 |     fn has_cycle_dfs(
+    |        ^^^^^^^^^^^^^
+...
+310 |     pub fn 
+stats(&self) -> 
+CausalityStats {
+    |            ^^^^^
+
+warning: static `INTERNER` 
+is never used
+  --> 
+src\reality\intern.rs:11:8
+   |
+11 | static INTERNER: 
+OnceLock<ThreadedRodeo> = 
+OnceLock::new();
+   |        ^^^^^^^^
+
+warning: function 
+`interner` is never used
+  --> 
+src\reality\intern.rs:14:8
+   |
+14 | pub fn interner() -> 
+&'static ThreadedRodeo {
+   |        ^^^^^^^^
+
+warning: function `intern` 
+is never used
+  --> 
+src\reality\intern.rs:22:8
+   |
+22 | pub fn intern(s: &str) 
+-> Spur {
+   |        ^^^^^^
+
+warning: function `resolve` 
+is never used
+  --> 
+src\reality\intern.rs:29:8
+   |
+29 | pub fn resolve(spur: 
+&Spur) -> &'static str {
+   |        ^^^^^^^
+
+warning: function 
+`contains` is never used
+  --> 
+src\reality\intern.rs:34:8
+   |
+34 | pub fn contains(s: 
+&str) -> bool {
+   |        ^^^^^^^^
+
+   Compiling varant v0.1.0 (
+C:\Users\shuga\1kittroot\1co
+de\daswundebar\src-tauri)
+warning: `varant` (lib) 
+generated 156 warnings (run 
+`cargo fix --lib -p varant` 
+to apply 14 suggestions)
+error[E0599]: no method 
+named `chunk_native` found 
+for struct 
+`chunker::Chunker` in the 
+current scope
+   --> 
+src\reality\parser.rs:948:36
+    |
+948 |         let 
+chunk_result = 
+chunker.chunk_native(text);
+    |                       
+             ^^^^^^^^^^^^ 
+method not found in 
+`Chunker`
+    |
+   ::: src\chunker.rs:250:1
+    |
+250 | pub struct Chunker {
+    | ------------------ 
+method `chunk_native` not 
+found for this struct
+
+error[E0599]: no method 
+named `chunk_native` found 
+for struct 
+`chunker::Chunker` in the 
+current scope
+   --> 
+src\reality\parser.rs:966:36
+    |
+966 |         let 
+chunk_result = 
+chunker.chunk_native(text);
+    |                       
+             ^^^^^^^^^^^^ 
+method not found in 
+`Chunker`
+    |
+   ::: src\chunker.rs:250:1
+    |
+250 | pub struct Chunker {
+    | ------------------ 
+method `chunk_native` not 
+found for this struct
+
+error[E0599]: no method 
+named `chunk_native` found 
+for struct 
+`chunker::Chunker` in the 
+current scope
+   --> 
+src\reality\parser.rs:984:36
+    |
+984 |         let 
+chunk_result = 
+chunker.chunk_native(text);
+    |                       
+             ^^^^^^^^^^^^ 
+method not found in 
+`Chunker`
+    |
+   ::: src\chunker.rs:250:1
+    |
+250 | pub struct Chunker {
+    | ------------------ 
+method `chunk_native` not 
+found for this struct
+
+error[E0599]: no method 
+named `chunk_native` found 
+for struct 
+`chunker::Chunker` in the 
+current scope
+    --> src\reality\parser.r
+s:1009:36
+     |
+1009 |         let 
+chunk_result = 
+chunker.chunk_native(text);
+     |                      
+              ^^^^^^^^^^^^ 
+method not found in 
+`Chunker`
+     |
+    ::: src\chunker.rs:250:1
+     |
+250  | pub struct Chunker {
+     | ------------------ 
+method `chunk_native` not 
+found for this struct
+
+error[E0599]: no method 
+named `chunk_native` found 
+for struct 
+`chunker::Chunker` in the 
+current scope
+    --> src\reality\parser.r
+s:1043:36
+     |
+1043 |         let 
+chunk_result = 
+chunker.chunk_native(text);
+     |                      
+              ^^^^^^^^^^^^ 
+method not found in 
+`Chunker`
+     |
+    ::: src\chunker.rs:250:1
+     |
+250  | pub struct Chunker {
+     | ------------------ 
+method `chunk_native` not 
+found for this struct
+
+error[E0599]: no method 
+named `chunk_native` found 
+for struct 
+`chunker::Chunker` in the 
+current scope
+    --> src\reality\parser.r
+s:1108:36
+     |
+1108 |         let 
+chunk_result = 
+chunker.chunk_native(text);
+     |                      
+              ^^^^^^^^^^^^ 
+method not found in 
+`Chunker`
+     |
+    ::: src\chunker.rs:250:1
+     |
+250  | pub struct Chunker {
+     | ------------------ 
+method `chunk_native` not 
+found for this struct
+
+warning: unused variable: 
+`projections`
+   --> 
+src\reality\engine.rs:791:14
+    |
+791 |         let 
+(projections, stats) = engin
+e.process_with_projections(t
+ext, &spans);
+    |              
+^^^^^^^^^^^ help: if this 
+is intentional, prefix it 
+with an underscore: 
+`_projections`
+    |
+    = note: 
+`#[warn(unused_variables)]` 
+on by default
+
+For more information about 
+this error, try `rustc 
+--explain E0599`.
+warning: `varant` (lib 
+test) generated 14 warnings 
+(13 duplicates)
+error: could not compile 
+`varant` (lib test) due to 
+6 previous errors; 14 
+warnings emitted

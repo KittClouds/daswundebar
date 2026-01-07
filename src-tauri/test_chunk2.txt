@@ -1,0 +1,613 @@
+﻿cargo :     Blocking 
+waiting for file lock on 
+build directory
+At line:1 char:1
++ cargo test 2>&1 | 
+Out-File -FilePath 
+test_chunk2.txt -Encoding 
+utf8;  ...
++ ~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (    B  
+  locking wa...build dire   
+ ctory:String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+   Compiling varant v0.1.0 (
+C:\Users\shuga\1kittroot\1co
+de\daswundebar\src-tauri)
+warning: unused import: 
+`std::collections::HashMap`
+  --> src\temporal.rs:18:5
+   |
+18 | use 
+std::collections::HashMap;
+   |     
+^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: 
+`#[warn(unused_imports)]` 
+on by default
+
+warning: value assigned to 
+`head_idx` is never read
+   --> src\chunker.rs:464:17
+    |
+464 |         let mut 
+head_idx = None;
+    |                 
+^^^^^^^^
+    |
+    = help: maybe it is 
+overwritten before being 
+read?
+    = note: `#[warn(unused_a
+ssignments)]` on by default
+
+warning: methods 
+`add_entity` and `clear` 
+are never used
+   --> 
+src\implicit.rs:343:12
+    |
+196 | impl ImplicitCortex {
+    | ------------------- 
+methods in this 
+implementation
+...
+343 |     pub fn 
+add_entity(&mut self, 
+entity: EntityDefinition) {
+    |            ^^^^^^^^^^
+...
+390 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+    |
+    = note: 
+`#[warn(dead_code)]` on by 
+default
+
+warning: methods 
+`hydrate_calendar` and 
+`is_ready` are never used
+   --> 
+src\temporal.rs:363:12
+    |
+267 | impl TemporalCortex {
+    | ------------------- 
+methods in this 
+implementation
+...
+363 |     pub fn 
+hydrate_calendar(
+    |            
+^^^^^^^^^^^^^^^^
+...
+407 |     pub fn 
+is_ready(&self) -> bool {
+    |            ^^^^^^^^
+
+warning: variant 
+`DoubleConsonant` is never 
+constructed
+  --> 
+src\verb_morphology.rs:25:5
+   |
+19 | pub enum VerbPattern {
+   |          ----------- 
+variant in this enum
+...
+25 |     DoubleConsonant,
+   |     ^^^^^^^^^^^^^^^
+   |
+   = note: `VerbPattern` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: variants 
+`Ambitransitive` and 
+`Ditransitive` are never 
+constructed
+  --> 
+src\verb_morphology.rs:61:5
+   |
+55 | pub enum Transitivity {
+   |          ------------ 
+variants in this enum
+...
+61 |     Ambitransitive,
+   |     ^^^^^^^^^^^^^^
+62 |     /// Takes two 
+objects: "X gave Y to Z"
+63 |     Ditransitive,
+   |     ^^^^^^^^^^^^
+   |
+   = note: `Transitivity` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: associated 
+function `double_consonant` 
+is never used
+  --> 
+src\verb_morphology.rs:97:18
+   |
+76 | impl VerbEntry {
+   | -------------- 
+associated function in this 
+implementation
+...
+97 |     pub const fn 
+double_consonant(base: 
+&'static str, relation: 
+&'static str, domain: 
+VerbDomain) -> Self {
+   |                  
+^^^^^^^^^^^^^^^^
+
+warning: field `lookup` is 
+never read
+   --> 
+src\verb_morphology.rs:443:5
+    |
+441 | pub struct 
+VerbLexicon {
+    |            
+----------- field in this 
+struct
+442 |     /// form ΓåÆ 
+(canonical relation, 
+domain, transitivity)
+443 |     lookup: 
+HashMap<String, (&'static 
+str, VerbDomain, 
+Transitivity)>,
+    |     ^^^^^^
+    |
+    = note: `VerbLexicon` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: methods `is_verb`, 
+`get_relation`, 
+`get_domain`, 
+`get_transitivity`, and 
+`form_count` are never used
+   --> src\verb_morphology.r
+s:491:12
+    |
+452 | impl VerbLexicon {
+    | ---------------- 
+methods in this 
+implementation
+...
+491 |     pub fn 
+is_verb(&self, word: &str) 
+-> bool {
+    |            ^^^^^^^
+...
+496 |     pub fn 
+get_relation(&self, word: 
+&str) -> Option<&'static 
+str> {
+    |            
+^^^^^^^^^^^^
+...
+501 |     pub fn 
+get_domain(&self, word: 
+&str) -> Option<VerbDomain> 
+{
+    |            ^^^^^^^^^^
+...
+506 |     pub fn 
+get_transitivity(&self, 
+word: &str) -> 
+Option<Transitivity> {
+    |            
+^^^^^^^^^^^^^^^^
+...
+511 |     pub fn 
+form_count(&self) -> usize {
+    |            ^^^^^^^^^^
+
+warning: method `as_str` is 
+never used
+  --> src\chunker.rs:41:12
+   |
+40 | impl ChunkKind {
+   | -------------- method 
+in this implementation
+41 |     pub fn 
+as_str(&self) -> &'static 
+str {
+   |            ^^^^^^
+
+warning: methods `len`, 
+`is_empty`, `slice`, 
+`contains`, and `overlaps` 
+are never used
+  --> src\chunker.rs:69:12
+   |
+59 | impl TextRange {
+   | -------------- methods 
+in this implementation
+...
+69 |     pub fn len(&self) 
+-> usize {
+   |            ^^^
+...
+73 |     pub fn 
+is_empty(&self) -> bool {
+   |            ^^^^^^^^
+...
+78 |     pub fn 
+slice<'a>(&self, source: 
+&'a str) -> &'a str {
+   |            ^^^^^
+...
+83 |     pub fn 
+contains(&self, other: 
+&TextRange) -> bool {
+   |            ^^^^^^^^
+...
+88 |     pub fn 
+overlaps(&self, other: 
+&TextRange) -> bool {
+   |            ^^^^^^^^
+
+warning: associated items 
+`new`, `with_modifiers`, 
+`head_text`, and `text` are 
+never used
+   --> src\chunker.rs:113:12
+    |
+112 | impl Chunk {
+    | ---------- associated 
+items in this implementation
+113 |     pub fn new(kind: 
+ChunkKind, range: 
+TextRange, head: TextRange) 
+-> Self {
+    |            ^^^
+...
+122 |     pub fn 
+with_modifiers(mut self, 
+modifiers: Vec<TextRange>) 
+-> Self {
+    |            
+^^^^^^^^^^^^^^
+...
+128 |     pub fn 
+head_text<'a>(&self, 
+source: &'a str) -> &'a str 
+{
+    |            ^^^^^^^^^
+...
+133 |     pub fn 
+text<'a>(&self, source: &'a 
+str) -> &'a str {
+    |            ^^^^
+
+warning: methods 
+`is_nominal`, `is_verbal`, 
+and `is_modifier` are never 
+used
+   --> src\chunker.rs:169:12
+    |
+168 | impl POS {
+    | -------- methods in 
+this implementation
+169 |     pub fn 
+is_nominal(&self) -> bool {
+    |            ^^^^^^^^^^
+...
+173 |     pub fn 
+is_verbal(&self) -> bool {
+    |            ^^^^^^^^^
+...
+177 |     pub fn 
+is_modifier(&self) -> bool {
+    |            ^^^^^^^^^^^
+
+warning: associated 
+function `new` is never used
+   --> src\chunker.rs:191:12
+    |
+190 | impl Token {
+    | ---------- associated 
+function in this 
+implementation
+191 |     pub fn new(text: 
+impl Into<String>, pos: 
+POS, range: TextRange) -> 
+Self {
+    |            ^^^
+
+warning: associated 
+function `from_chunks` is 
+never used
+   --> src\chunker.rs:221:12
+    |
+220 | impl ChunkStats {
+    | --------------- 
+associated function in this 
+implementation
+221 |     pub fn 
+from_chunks(chunks: 
+&[Chunk], token_count: 
+usize) -> Self {
+    |            ^^^^^^^^^^^
+
+warning: field 
+`verb_morphology` is never 
+read
+   --> src\chunker.rs:254:5
+    |
+250 | pub struct Chunker {
+    |            ------- 
+field in this struct
+...
+254 |     verb_morphology: 
+VerbMorphology,
+    |     ^^^^^^^^^^^^^^^
+
+warning: multiple methods 
+are never used
+   --> src\chunker.rs:275:12
+    |
+263 | impl Chunker {
+    | ------------ methods 
+in this implementation
+...
+275 |     pub fn 
+chunk(&self, text: &str) -> 
+ChunkResult {
+    |            ^^^^^
+...
+295 |     pub fn 
+get_stats(&self, text: 
+&str) -> ChunkStats {
+    |            ^^^^^^^^^
+...
+301 |     fn 
+tokenize(&self, text: &str) 
+-> Vec<TextRange> {
+    |        ^^^^^^^^
+...
+327 |     fn 
+tag_tokens(&self, 
+token_ranges: &[TextRange], 
+text: &str) -> Vec<Token> {
+    |        ^^^^^^^^^^
+...
+339 |     fn 
+lookup_pos(&self, word: 
+&str) -> POS {
+    |        ^^^^^^^^^^
+...
+357 |     fn 
+infer_pos(&self, word: 
+&str) -> POS {
+    |        ^^^^^^^^^
+...
+391 |     fn 
+find_chunks(&self, tokens: 
+&[Token], _text: &str) -> 
+Vec<Chunk> {
+    |        ^^^^^^^^^^^
+...
+427 |     fn 
+try_noun_phrase(&self, 
+tokens: &[Token], start: 
+usize) -> Option<(Chunk, 
+usize)> {
+    |        ^^^^^^^^^^^^^^^
+...
+461 |     fn 
+try_verb_phrase(&self, 
+tokens: &[Token], start: 
+usize) -> Option<(Chunk, 
+usize)> {
+    |        ^^^^^^^^^^^^^^^
+...
+501 |     fn 
+try_prep_phrase(&self, 
+tokens: &[Token], start: 
+usize) -> Option<(Chunk, 
+usize)> {
+    |        ^^^^^^^^^^^^^^^
+...
+522 |     fn 
+try_adj_phrase(&self, 
+tokens: &[Token], start: 
+usize) -> Option<(Chunk, 
+usize)> {
+    |        ^^^^^^^^^^^^^^
+...
+552 |     fn 
+try_clause(&self, tokens: 
+&[Token], start: usize) -> 
+Option<(Chunk, usize)> {
+    |        ^^^^^^^^^^
+
+warning: method 
+`hydrate_calendar` is never 
+used
+   --> 
+src\temporal.rs:363:12
+    |
+267 | impl TemporalCortex {
+    | ------------------- 
+method in this 
+implementation
+...
+363 |     pub fn 
+hydrate_calendar(
+    |            
+^^^^^^^^^^^^^^^^
+
+warning: methods 
+`get_domain` and 
+`get_transitivity` are 
+never used
+   --> src\verb_morphology.r
+s:501:12
+    |
+452 | impl VerbLexicon {
+    | ---------------- 
+methods in this 
+implementation
+...
+501 |     pub fn 
+get_domain(&self, word: 
+&str) -> Option<VerbDomain> 
+{
+    |            ^^^^^^^^^^
+...
+506 |     pub fn 
+get_transitivity(&self, 
+word: &str) -> 
+Option<Transitivity> {
+    |            
+^^^^^^^^^^^^^^^^
+
+warning: methods `contains` 
+and `overlaps` are never 
+used
+  --> src\chunker.rs:83:12
+   |
+59 | impl TextRange {
+   | -------------- methods 
+in this implementation
+...
+83 |     pub fn 
+contains(&self, other: 
+&TextRange) -> bool {
+   |            ^^^^^^^^
+...
+88 |     pub fn 
+overlaps(&self, other: 
+&TextRange) -> bool {
+   |            ^^^^^^^^
+
+warning: methods 
+`is_verbal` and 
+`is_modifier` are never used
+   --> src\chunker.rs:173:12
+    |
+168 | impl POS {
+    | -------- methods in 
+this implementation
+...
+173 |     pub fn 
+is_verbal(&self) -> bool {
+    |            ^^^^^^^^^
+...
+177 |     pub fn 
+is_modifier(&self) -> bool {
+    |            ^^^^^^^^^^^
+
+warning: method `get_stats` 
+is never used
+   --> src\chunker.rs:295:12
+    |
+263 | impl Chunker {
+    | ------------ method 
+in this implementation
+...
+295 |     pub fn 
+get_stats(&self, text: 
+&str) -> ChunkStats {
+    |            ^^^^^^^^^
+
+warning: `varant` (lib 
+test) generated 13 warnings 
+(7 duplicates) (run `cargo 
+fix --lib -p varant 
+--tests` to apply 1 
+suggestion)
+warning: `varant` (lib) 
+generated 17 warnings (1 
+duplicate)
+    Finished `test` profile 
+[unoptimized + debuginfo] 
+target(s) in 57.51s
+     Running unittests 
+src\lib.rs (target\debug\dep
+s\app_lib-6c2ff372f7674e07.e
+xe)
+
+running 43 tests
+test chunker::tests::test_text_range_basic ... ok
+test chunker::tests::test_text_range_slice ... ok
+test implicit::tests::test_case_insensitive_matching ... ok
+test implicit::tests::test_alias_matching ... ok
+test chunker::tests::test_full_sentence ... ok
+test chunker::tests::test_np_simple_noun ... ok
+test implicit::tests::test_faction_acronym ... ok
+test chunker::tests::test_vp_aux_verb ... ok
+test implicit::tests::test_confidence_scores ... ok
+test chunker::tests::test_vp_simple_verb ... ok
+test implicit::tests::test_hydrate_and_find_single_entity ... ok
+test chunker::tests::test_np_det_adj_noun ... ok
+test implicit::tests::test_overlapping_keeps_longer ... ok
+test chunker::tests::test_np_det_noun ... ok
+test implicit::tests::test_smart_alias_luffy ... ok
+test chunker::tests::test_pp_prep_np ... ok
+test temporal::tests::test_relative_phrase ... ok
+test temporal::tests::test_narrative_marker_with_number ... ok
+test temporal::tests::test_era_marker ... ok
+test temporal::tests::test_weekday_detection ... ok
+test temporal::tests::test_connector_direction ... ok
+test triple::tests::test_basic_wiki_triple ... ok
+test temporal::tests::test_word_boundary ... ok
+test triple::tests::test_backward_arrow ... ok
+test triple::tests::test_bidirectional_arrow ... ok
+test triple::tests::test_empty_text ... ok
+test triple::tests::test_forward_arrow ... ok
+test verb_morphology::tests::test_form_count ... ok
+test verb_morphology::tests::test_case_insensitive ... ok
+test scanner::tests::test_basic_entity ... ok
+test verb_morphology::tests::test_get_relation_synonyms ... ok
+test scanner::tests::test_triple ... ok
+test verb_morphology::tests::test_get_relation_basic ... ok
+test verb_morphology::tests::test_irregular_verb_forms ... ok
+test triple::tests::test_no_triples ... ok
+test verb_morphology::tests::test_is_verb ... ok
+test scanner::tests::test_wikilink ... ok
+test scanner::tests::test_overlap_resolution ... ok
+test triple::tests::test_mixed_case_predicate ... ok
+test triple::tests::test_multiple_triples ... ok
+test triple::tests::test_position_tracking ... ok
+test triple::tests::test_parenthesized_triple ... ok
+test triple::tests::test_whitespace_handling ... ok
+
+test result: ok. 43 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+     Running unittests 
+src\main.rs (target\debug\de
+ps\varant-9d82a7e11edc964e.e
+xe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests app_lib
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

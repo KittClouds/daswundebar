@@ -1,0 +1,36 @@
+﻿cargo :     Checking varant 
+v0.1.0 (C:\Users\shuga\1kitt
+root\1code\daswundebar\src-t
+auri)
+At line:1 char:1
++ cargo check 2>&1 | 
+Out-File -FilePath 
+tauri_check.txt -Encoding 
+utf8
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (    C  
+  hecking va...ebar\src-t   
+ auri):String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+warning: unused import: 
+`tauri::Manager`
+ --> src\lib.rs:6:5
+  |
+6 | use tauri::Manager;
+  |     ^^^^^^^^^^^^^^
+  |
+  = note: 
+`#[warn(unused_imports)]` 
+on by default
+
+warning: `varant` (lib) 
+generated 1 warning (run 
+`cargo fix --lib -p varant` 
+to apply 1 suggestion)
+    Finished `dev` profile 
+[unoptimized + debuginfo] 
+target(s) in 27.33s

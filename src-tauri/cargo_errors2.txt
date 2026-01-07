@@ -1,0 +1,3208 @@
+﻿cargo :     Updating 
+crates.io index
+At line:1 char:1
++ cargo check 2>&1 | 
+Out-File -FilePath 
+cargo_errors2.txt -Encoding 
+utf ...
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (    U  
+  pdating crates.io index   
+ :String) [], RemoteExce    
+ption
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+     Locking 1 package to 
+latest compatible version
+      Adding 
+serde-wasm-bindgen v0.6.5
+   Compiling varant v0.1.0 (
+C:\Users\shuga\1kittroot\1co
+de\daswundebar\src-tauri)
+error: visibility `pub` is 
+not followed by an item
+ --> src\wasm_compat.rs:8:1
+  |
+8 | pub #[cfg(target_arch = 
+"wasm32")]
+  | ^^^ the visibility
+  |
+  = help: you likely meant 
+to define an item, e.g., 
+`pub fn foo() {}`
+
+error: expected item after 
+attributes
+ --> src\wasm_compat.rs:7:1
+  |
+7 | #[cfg(target_arch = 
+"wasm32")]
+  | ^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> 
+src\scanner\core.rs:21:25
+   |
+21 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> 
+src\scanner\reflex.rs:18:25
+   |
+18 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> 
+src\scanner\syntax.rs:20:25
+   |
+20 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> src\scanner\temporal.r
+s:23:25
+   |
+23 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> src\scanner\relation.r
+s:51:25
+   |
+51 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> src\scanner\implicit.r
+s:14:25
+   |
+14 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+ --> 
+src\scanner\triple.rs:6:25
+  |
+6 | use crate::wasm_compat::
+prelude::*;
+  |                         
+^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> 
+src\scanner\change.rs:12:25
+   |
+12 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> src\scanner\document.r
+s:16:25
+   |
+16 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> src\scanner\conductor.
+rs:22:25
+   |
+22 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> 
+src\scanner\chunker.rs:24:25
+   |
+24 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> src\scanner\attacher.r
+s:26:25
+   |
+26 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> src\scanner\resolver.r
+s:16:25
+   |
+16 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> src\scanner\dialogue.r
+s:15:25
+   |
+15 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> src\scanner\narrative.
+rs:42:25
+   |
+42 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+   --> src\scanner\unified.r
+s:924:25
+    |
+924 | use crate::wasm_compat
+::prelude::*;
+    |                       
+  ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> src\scanner\constraint
+s.rs:16:25
+   |
+16 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> src\scanner\projection
+s.rs:16:25
+   |
+16 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> src\scanner\relation_f
+ilter.rs:26:25
+   |
+26 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+ --> src\reality\api.rs:8:25
+  |
+8 | use crate::wasm_compat::
+prelude::*;
+  |                         
+^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> 
+src\resorank\config.rs:10:25
+   |
+10 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+  --> src\resorank\increment
+al.rs:10:25
+   |
+10 | use crate::wasm_compat:
+:prelude::*;
+   |                        
+ ^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `crate::wasm_compat::
+prelude`
+ --> 
+src\resorank\scorer.rs:9:25
+  |
+9 | use crate::wasm_compat::
+prelude::*;
+  |                         
+^^^^^^^ could not find 
+`prelude` in `wasm_compat`
+
+error[E0432]: unresolved 
+import `serde_wasm_bindgen`
+  --> src\scanner\conductor.
+rs:23:5
+   |
+23 | use serde_wasm_bindgen;
+   |     ^^^^^^^^^^^^^^^^^^ 
+no external crate 
+`serde_wasm_bindgen`
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:629:3
+    |
+629 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:632:7
+    |
+632 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:655:7
+    |
+655 |     
+#[wasm_bindgen(js_name = 
+indexDocument)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:671:7
+    |
+671 |     
+#[wasm_bindgen(js_name = 
+search)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:683:7
+    |
+683 |     
+#[wasm_bindgen(js_name = 
+explainScore)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:695:7
+    |
+695 |     
+#[wasm_bindgen(js_name = 
+toJSON)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:702:7
+    |
+702 |     #[wasm_bindgen(sta
+tic_method_of = 
+ResoRankScorer, js_name = 
+fromJSON)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:709:7
+    |
+709 |     
+#[wasm_bindgen(js_name = 
+clear)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\resorank\scorer.rs:32:3
+   |
+32 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:302:3
+    |
+302 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:305:7
+    |
+305 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:317:7
+    |
+317 |     
+#[wasm_bindgen(js_name = 
+nextTerm)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:323:7
+    |
+323 |     
+#[wasm_bindgen(js_name = 
+reset)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:329:7
+    |
+329 |     
+#[wasm_bindgen(js_name = 
+addFieldContribution)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:343:7
+    |
+343 |     
+#[wasm_bindgen(js_name = 
+finalizeTerm)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:349:7
+    |
+349 |     
+#[wasm_bindgen(js_name = 
+getScores)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:361:7
+    |
+361 |     
+#[wasm_bindgen(js_name = 
+getScoresWithExplanations)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> src\resorank\increment
+al.rs:26:3
+   |
+26 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\resorank\config.rs:32:3
+   |
+32 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\resorank\config.rs:34:7
+   |
+34 |     
+#[wasm_bindgen(constructor)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\resorank\config.rs:24:3
+   |
+24 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:623:3
+    |
+623 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:630:7
+    |
+630 |     
+#[wasm_bindgen(js_name = 
+recomputeMetadata)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:636:7
+    |
+636 |     
+#[wasm_bindgen(js_name = 
+getEntityMetadata)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:648:7
+    |
+648 |     
+#[wasm_bindgen(js_name = 
+getAllMetadata)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:659:7
+    |
+659 |     
+#[wasm_bindgen(js_name = 
+getEntitiesByFrequency)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:671:7
+    |
+671 |     
+#[wasm_bindgen(js_name = 
+getEntitiesByImportance)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:683:7
+    |
+683 |     
+#[wasm_bindgen(js_name = 
+getCrossDocumentEntities)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:695:7
+    |
+695 |     
+#[wasm_bindgen(js_name = 
+getEntitiesInDoc)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:707:7
+    |
+707 |     
+#[wasm_bindgen(js_name = 
+addEntityAlias)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:713:7
+    |
+713 |     
+#[wasm_bindgen(js_name = 
+clearMetadata)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:547:3
+    |
+547 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:554:7
+    |
+554 |     
+#[wasm_bindgen(js_name = 
+getEntitySpans)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:571:7
+    |
+571 |     
+#[wasm_bindgen(js_name = 
+getEntityRecord)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:583:7
+    |
+583 |     
+#[wasm_bindgen(js_name = 
+getAllEntityRecords)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:594:7
+    |
+594 |     
+#[wasm_bindgen(js_name = 
+uniqueEntityCount)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:600:7
+    |
+600 |     
+#[wasm_bindgen(js_name = 
+totalSpanCount)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:606:7
+    |
+606 |     
+#[wasm_bindgen(js_name = 
+clearDocSpans)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:612:7
+    |
+612 |     
+#[wasm_bindgen(js_name = 
+clearEntityLayer)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:195:3
+    |
+195 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:198:7
+    |
+198 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:214:7
+    |
+214 |     
+#[wasm_bindgen(js_name = 
+setDocId)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:220:7
+    |
+220 |     
+#[wasm_bindgen(js_name = 
+addRelationPattern)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:232:7
+    |
+232 |     
+#[wasm_bindgen(js_name = 
+hydrateRelationPatterns)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:249:7
+    |
+249 |     
+#[wasm_bindgen(js_name = 
+processEnhanced)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:320:7
+    |
+320 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:353:7
+    |
+353 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:365:7
+    |
+365 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:382:7
+    |
+382 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:397:7
+    |
+397 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:412:7
+    |
+412 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:427:7
+    |
+427 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:443:7
+    |
+443 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:460:7
+    |
+460 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:477:7
+    |
+477 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:497:7
+    |
+497 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:510:7
+    |
+510 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:516:7
+    |
+516 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:522:7
+    |
+522 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:186:3
+    |
+186 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:285:3
+    |
+285 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:288:7
+    |
+288 |     
+#[wasm_bindgen(js_name = 
+filterRelations)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:313:7
+    |
+313 |     
+#[wasm_bindgen(js_name = 
+filterWithStats)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:108:3
+    |
+108 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:111:7
+    |
+111 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:119:7
+    |
+119 |     
+#[wasm_bindgen(js_name = 
+setMinConfidence)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:125:7
+    |
+125 |     
+#[wasm_bindgen(js_name = 
+setDistanceDecay)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:131:7
+    |
+131 |     
+#[wasm_bindgen(js_name = 
+setSameSentenceBonus)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:137:7
+    |
+137 |     
+#[wasm_bindgen(js_name = 
+setCrossSentencePenalty)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:143:7
+    |
+143 |     
+#[wasm_bindgen(js_name = 
+setMaxDistance)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:149:7
+    |
+149 |     
+#[wasm_bindgen(js_name = 
+getConfig)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> src\scanner\relation_f
+ilter.rs:97:3
+   |
+97 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\projectio
+ns.rs:837:3
+    |
+837 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\projectio
+ns.rs:839:7
+    |
+839 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\projectio
+ns.rs:847:7
+    |
+847 |     
+#[wasm_bindgen(js_name = 
+buildTimeline)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\projectio
+ns.rs:858:7
+    |
+858 |     
+#[wasm_bindgen(js_name = 
+buildRelationshipGraph)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\projectio
+ns.rs:869:7
+    |
+869 |     
+#[wasm_bindgen(js_name = 
+buildLinkGraph)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\projectio
+ns.rs:880:7
+    |
+880 |     
+#[wasm_bindgen(js_name = 
+buildCharacterSheet)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\projectio
+ns.rs:832:3
+    |
+832 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\constrain
+ts.rs:474:3
+    |
+474 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\constrain
+ts.rs:476:7
+    |
+476 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\constrain
+ts.rs:484:7
+    |
+484 |     
+#[wasm_bindgen(js_name = 
+validate)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\constrain
+ts.rs:495:7
+    |
+495 |     
+#[wasm_bindgen(js_name = 
+validatePredicate)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\constrain
+ts.rs:501:7
+    |
+501 |     
+#[wasm_bindgen(js_name = 
+getAllowedPredicates)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\constrain
+ts.rs:509:7
+    |
+509 |     
+#[wasm_bindgen(js_name = 
+enforceUniqueness)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\constrain
+ts.rs:469:3
+    |
+469 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\unified.rs:935:3
+    |
+935 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\unified.rs:938:7
+    |
+938 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\unified.rs:949:7
+    |
+949 |     
+#[wasm_bindgen(js_name = 
+scan)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\unified.rs:976:7
+    |
+976 |     
+#[wasm_bindgen(js_name = 
+countSpans)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\unified.rs:930:3
+    |
+930 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\narrative
+.rs:123:3
+    |
+123 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\narrative
+.rs:126:7
+    |
+126 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\narrative
+.rs:109:3
+    |
+109 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\dialogue.rs:31:3
+   |
+31 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\dialogue.rs:33:7
+   |
+33 |     
+#[wasm_bindgen(constructor)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\dialogue.rs:22:3
+   |
+22 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\resolver.
+rs:164:3
+    |
+164 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\resolver.
+rs:166:7
+    |
+166 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\resolver.
+rs:159:3
+    |
+159 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\attacher.
+rs:101:3
+    |
+101 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\attacher.
+rs:103:7
+    |
+103 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\attacher.rs:88:3
+   |
+88 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\chunker.rs:273:3
+    |
+273 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\chunker.rs:276:7
+    |
+276 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\chunker.rs:259:3
+    |
+259 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:157:3
+    |
+157 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:160:7
+    |
+160 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:166:7
+    |
+166 |     
+#[wasm_bindgen(js_name = 
+"init")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:173:7
+    |
+173 |     
+#[wasm_bindgen(js_name = 
+"hydrateEntities")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:182:7
+    |
+182 |     
+#[wasm_bindgen(js_name = 
+"hydrateCalendar")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:195:7
+    |
+195 |     
+#[wasm_bindgen(js_name = 
+"isReady")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:201:7
+    |
+201 |     
+#[wasm_bindgen(js_name = 
+"stateName")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:208:7
+    |
+208 |     
+#[wasm_bindgen(js_name = 
+"scan")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:220:7
+    |
+220 |     
+#[wasm_bindgen(js_name = 
+"scanForce")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:229:7
+    |
+229 |     
+#[wasm_bindgen(js_name = 
+"entityCount")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:235:7
+    |
+235 |     
+#[wasm_bindgen(js_name = 
+"incrementalStats")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:241:7
+    |
+241 |     
+#[wasm_bindgen(js_name = 
+"reset")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> src\scanner\conductor.
+rs:47:3
+   |
+47 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:114:3
+    |
+114 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:116:7
+    |
+116 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:135:7
+    |
+135 |     
+#[wasm_bindgen(js_name = 
+relationPatternCount)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:141:7
+    |
+141 |     
+#[wasm_bindgen(js_name = 
+implicitPatternCount)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:147:7
+    |
+147 |     
+#[wasm_bindgen(js_name = 
+skipRate)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:153:7
+    |
+153 |     
+#[wasm_bindgen(js_name = 
+reset)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:160:7
+    |
+160 |     
+#[wasm_bindgen(js_name = 
+hydrateEntities)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:171:7
+    |
+171 |     
+#[wasm_bindgen(js_name = 
+hydrateCalendar)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:180:7
+    |
+180 |     
+#[wasm_bindgen(js_name = 
+scan)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\document.rs:92:3
+   |
+92 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\change.rs:50:3
+   |
+50 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\change.rs:52:7
+   |
+52 |     
+#[wasm_bindgen(constructor)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\change.rs:62:7
+   |
+62 |     
+#[wasm_bindgen(js_name = 
+getSkipRate)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\change.rs:71:7
+   |
+71 |     
+#[wasm_bindgen(js_name = 
+getCheckCount)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\change.rs:77:7
+   |
+77 |     
+#[wasm_bindgen(js_name = 
+getSkipCount)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\change.rs:83:7
+   |
+83 |     #[wasm_bindgen]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\change.rs:34:3
+   |
+34 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\triple.rs:56:3
+   |
+56 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\triple.rs:58:7
+   |
+58 |     
+#[wasm_bindgen(constructor)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\triple.rs:102:7
+    |
+102 |     
+#[wasm_bindgen(js_name = 
+extract)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\triple.rs:34:3
+   |
+34 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\implicit.rs:74:3
+   |
+74 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\implicit.rs:76:7
+   |
+76 |     
+#[wasm_bindgen(constructor)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\implicit.rs:87:7
+   |
+87 |     
+#[wasm_bindgen(js_name = 
+patternCount)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\implicit.rs:60:3
+   |
+60 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:570:3
+    |
+570 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:573:7
+    |
+573 |     
+#[wasm_bindgen(js_name = 
+"extract")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:593:7
+    |
+593 |     
+#[wasm_bindgen(js_name = 
+"extractWithStats")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:624:7
+    |
+624 |     
+#[wasm_bindgen(js_name = 
+"addPattern")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:638:7
+    |
+638 |     
+#[wasm_bindgen(js_name = 
+"hydratePatterns")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:213:3
+    |
+213 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:216:7
+    |
+216 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:225:7
+    |
+225 |     
+#[wasm_bindgen(js_name = 
+"setCstThreshold")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:231:7
+    |
+231 |     
+#[wasm_bindgen(js_name = 
+"setInferenceEnabled")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:241:7
+    |
+241 |     
+#[wasm_bindgen(js_name = 
+"build")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:249:7
+    |
+249 |     
+#[wasm_bindgen(js_name = 
+"patternCount")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:199:3
+    |
+199 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\temporal.
+rs:313:3
+    |
+313 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\temporal.
+rs:316:7
+    |
+316 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\temporal.
+rs:453:7
+    |
+453 |     
+#[wasm_bindgen(js_name = 
+hydrateCalendar)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\temporal.
+rs:524:7
+    |
+524 |     
+#[wasm_bindgen(js_name = 
+scan)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\temporal.
+rs:677:7
+    |
+677 |     
+#[wasm_bindgen(js_name = 
+getStats)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\temporal.
+rs:683:7
+    |
+683 |     
+#[wasm_bindgen(js_name = 
+isReady)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\temporal.
+rs:292:3
+    |
+292 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\syntax.rs:90:3
+   |
+90 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\syntax.rs:93:7
+   |
+93 |     
+#[wasm_bindgen(constructor)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\syntax.rs:158:7
+    |
+158 |     
+#[wasm_bindgen(js_name = 
+scan)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\syntax.rs:305:7
+    |
+305 |     
+#[wasm_bindgen(js_name = 
+scanEntitiesOnly)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\syntax.rs:331:7
+    |
+331 |     
+#[wasm_bindgen(js_name = 
+getStats)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\syntax.rs:78:3
+   |
+78 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\reflex.rs:93:3
+   |
+93 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\reflex.rs:99:7
+   |
+99 |     
+#[wasm_bindgen(constructor)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\reflex.rs:113:7
+    |
+113 |     
+#[wasm_bindgen(js_name = 
+addEntity)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\reflex.rs:181:7
+    |
+181 |     
+#[wasm_bindgen(js_name = 
+build)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\reflex.rs:200:7
+    |
+200 |     
+#[wasm_bindgen(js_name = 
+isBuilt)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\reflex.rs:206:7
+    |
+206 |     
+#[wasm_bindgen(js_name = 
+scan)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\reflex.rs:236:7
+    |
+236 |     
+#[wasm_bindgen(js_name = 
+containsAny)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\reflex.rs:247:7
+    |
+247 |     
+#[wasm_bindgen(js_name = 
+getStats)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\reflex.rs:258:7
+    |
+258 |     
+#[wasm_bindgen(js_name = 
+clear)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\reflex.rs:71:3
+   |
+71 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:122:3
+    |
+122 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:128:7
+    |
+128 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:156:7
+    |
+156 |     
+#[wasm_bindgen(js_name = 
+hydrateEntities)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:179:7
+    |
+179 |     
+#[wasm_bindgen(js_name = 
+hydrateCalendar)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:198:7
+    |
+198 |     
+#[wasm_bindgen(js_name = 
+scan)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:291:7
+    |
+291 |     
+#[wasm_bindgen(js_name = 
+scanReflex)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:300:7
+    |
+300 |     
+#[wasm_bindgen(js_name = 
+scanSyntax)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:306:7
+    |
+306 |     
+#[wasm_bindgen(js_name = 
+scanTemporal)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:312:7
+    |
+312 |     
+#[wasm_bindgen(js_name = 
+scanRelations)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:325:7
+    |
+325 |     
+#[wasm_bindgen(js_name = 
+hydrateRelationPatterns)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:333:7
+    |
+333 |     
+#[wasm_bindgen(js_name = 
+containsEntities)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:342:7
+    |
+342 |     
+#[wasm_bindgen(js_name = 
+getStatus)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:364:7
+    |
+364 |     
+#[wasm_bindgen(js_name = 
+getReflexStats)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:370:7
+    |
+370 |     
+#[wasm_bindgen(js_name = 
+getTemporalStats)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:376:7
+    |
+376 |     
+#[wasm_bindgen(js_name = 
+getRelationPatternCount)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:110:3
+    |
+110 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+warning: unused import: 
+`ChunkResult`
+  --> src\scanner\attacher.r
+s:21:49
+   |
+21 | use crate::scanner::chu
+nker::{Chunk, ChunkKind, 
+ChunkResult};
+   |                        
+                         
+^^^^^^^^^^^
+   |
+   = note: 
+`#[warn(unused_imports)]` 
+on by default
+
+warning: unused import: 
+`ChunkResult`
+  --> src\scanner\dialogue.r
+s:10:49
+   |
+10 | use crate::scanner::chu
+nker::{Chunk, ChunkKind, 
+ChunkResult};
+   |                        
+                         
+^^^^^^^^^^^
+
+warning: unused import: 
+`NarrativeContext`
+  --> src\scanner\dialogue.r
+s:11:32
+   |
+11 | use crate::scanner::res
+olver::{NarrativeContext, 
+EntityId, Resolver};
+   |                        
+        ^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Deserialize` and 
+`Serialize`
+  --> src\scanner\dialogue.r
+s:16:13
+   |
+16 | use 
+serde::{Deserialize, 
+Serialize};
+   |             
+^^^^^^^^^^^  ^^^^^^^^^
+
+warning: unused import: 
+`POS`
+  --> src\scanner\structured
+_relation.rs:35:73
+   |
+35 | use 
+super::chunker::{Chunk, 
+ChunkKind, ChunkResult, 
+Chunker, TextRange, POS};
+   |                        
+                            
+                     ^^^
+
+warning: unused import: 
+`ChunkResult`
+   --> 
+src\reality\parser.rs:643:49
+    |
+643 | use crate::scanner::ch
+unker::{Chunk, ChunkKind, 
+ChunkResult};
+    |                       
+                          
+^^^^^^^^^^^
+
+warning: unused imports: 
+`ProjectionStats`, 
+`project_all`, 
+`project_attributions`, 
+`project_quads`, and 
+`project_state_changes`
+  --> 
+src\reality\engine.rs:16:22
+   |
+16 |     project_triples, 
+project_quads, 
+project_attributions, 
+project_state_changes,
+   |                      
+^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^^
+17 |     project_all, 
+project_all_with_stats,
+   |     ^^^^^^^^^^^
+18 |     Triple, QuadPlus, 
+Attribution, StateChange, 
+Projection, ProjectionStats,
+   |                        
+                            
+         ^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+  --> 
+src\reality\engine.rs:20:60
+   |
+20 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+   |                        
+                            
+        ^^^^^^^^
+
+warning: unused import: 
+`ExtractedRelation`
+   --> 
+src\reality\api.rs:103:82
+    |
+103 | use crate::scanner::re
+lation::{RelationCortex, 
+EntitySpan as 
+RelationEntitySpan, 
+ExtractedRelation};
+    |                       
+                            
+                            
+   ^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`SpanRecord`
+   --> 
+src\reality\api.rs:104:40
+    |
+104 | use super::entity_laye
+r::{EntityLayer, 
+SpanRecord, EntityRecord};
+    |                       
+                 ^^^^^^^^^^
+
+warning: unused import: 
+`ConceptEdge`
+  --> 
+src\reality\global.rs:11:47
+   |
+11 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge};
+   |                        
+                       
+^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge` and 
+`ConceptNode`
+ --> src\reality\algorithms.
+rs:9:34
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge};
+  |                         
+         ^^^^^^^^^^^  
+^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+ --> 
+src\reality\temporal.rs:9:60
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+  |                         
+                            
+       ^^^^^^^^
+
+warning: unexpected `cfg` 
+condition value: 
+`sqlite_wasm`
+  --> 
+src\graphdb\mod.rs:10:7
+   |
+10 | #[cfg(feature = 
+"sqlite_wasm")]
+   |       
+^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values 
+for `feature` are: 
+`default`, `js-sys`, 
+`serde-wasm-bindgen`, 
+`wasm-bindgen`, and 
+`web-sys`
+   = help: consider adding 
+`sqlite_wasm` as a feature 
+in `Cargo.toml`
+   = note: see <https://doc.
+rust-lang.org/nightly/rustc/
+check-cfg/cargo-specifics.ht
+ml> for more information 
+about checking conditional 
+configuration
+   = note: 
+`#[warn(unexpected_cfgs)]` 
+on by default
+
+warning: unexpected `cfg` 
+condition value: 
+`sqlite_wasm`
+ --> 
+src\graphdb\storage.rs:6:7
+  |
+6 | #[cfg(feature = 
+"sqlite_wasm")]
+  |       
+^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: expected values 
+for `feature` are: 
+`default`, `js-sys`, 
+`serde-wasm-bindgen`, 
+`wasm-bindgen`, and 
+`web-sys`
+  = help: consider adding 
+`sqlite_wasm` as a feature 
+in `Cargo.toml`
+  = note: see <https://doc.r
+ust-lang.org/nightly/rustc/c
+heck-cfg/cargo-specifics.htm
+l> for more information 
+about checking conditional 
+configuration
+
+warning: unexpected `cfg` 
+condition value: 
+`sqlite_wasm`
+  --> 
+src\graphdb\storage.rs:11:7
+   |
+11 | #[cfg(feature = 
+"sqlite_wasm")]
+   |       
+^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values 
+for `feature` are: 
+`default`, `js-sys`, 
+`serde-wasm-bindgen`, 
+`wasm-bindgen`, and 
+`web-sys`
+   = help: consider adding 
+`sqlite_wasm` as a feature 
+in `Cargo.toml`
+   = note: see <https://doc.
+rust-lang.org/nightly/rustc/
+check-cfg/cargo-specifics.ht
+ml> for more information 
+about checking conditional 
+configuration
+
+warning: unexpected `cfg` 
+condition value: 
+`sqlite_wasm`
+  --> 
+src\graphdb\storage.rs:16:7
+   |
+16 | #[cfg(feature = 
+"sqlite_wasm")]
+   |       
+^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values 
+for `feature` are: 
+`default`, `js-sys`, 
+`serde-wasm-bindgen`, 
+`wasm-bindgen`, and 
+`web-sys`
+   = help: consider adding 
+`sqlite_wasm` as a feature 
+in `Cargo.toml`
+   = note: see <https://doc.
+rust-lang.org/nightly/rustc/
+check-cfg/cargo-specifics.ht
+ml> for more information 
+about checking conditional 
+configuration
+
+warning: unexpected `cfg` 
+condition value: 
+`sqlite_wasm`
+   --> src\graphdb\storage.r
+s:152:17
+    |
+152 | #[cfg(all(test, 
+feature = "sqlite_wasm"))]
+    |                 
+^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values 
+for `feature` are: 
+`default`, `js-sys`, 
+`serde-wasm-bindgen`, 
+`wasm-bindgen`, and 
+`web-sys`
+    = help: consider adding 
+`sqlite_wasm` as a feature 
+in `Cargo.toml`
+    = note: see <https://doc
+.rust-lang.org/nightly/rustc
+/check-cfg/cargo-specifics.h
+tml> for more information 
+about checking conditional 
+configuration
+
+warning: unexpected `cfg` 
+condition value: 
+`sqlite_wasm`
+   --> src\graphdb\storage.r
+s:210:11
+    |
+210 | #[cfg(not(feature = 
+"sqlite_wasm"))]
+    |           
+^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values 
+for `feature` are: 
+`default`, `js-sys`, 
+`serde-wasm-bindgen`, 
+`wasm-bindgen`, and 
+`web-sys`
+    = help: consider adding 
+`sqlite_wasm` as a feature 
+in `Cargo.toml`
+    = note: see <https://doc
+.rust-lang.org/nightly/rustc
+/check-cfg/cargo-specifics.h
+tml> for more information 
+about checking conditional 
+configuration
+
+warning: unexpected `cfg` 
+condition value: 
+`sqlite_wasm`
+   --> src\graphdb\storage.r
+s:213:11
+    |
+213 | #[cfg(not(feature = 
+"sqlite_wasm"))]
+    |           
+^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values 
+for `feature` are: 
+`default`, `js-sys`, 
+`serde-wasm-bindgen`, 
+`wasm-bindgen`, and 
+`web-sys`
+    = help: consider adding 
+`sqlite_wasm` as a feature 
+in `Cargo.toml`
+    = note: see <https://doc
+.rust-lang.org/nightly/rustc
+/check-cfg/cargo-specifics.h
+tml> for more information 
+about checking conditional 
+configuration
+
+warning: unused imports: 
+`ConceptEdge`, 
+`ConceptNode`, and 
+`EdgeKind`
+ --> 
+src\graphdb\storage.rs:8:29
+  |
+8 | use crate::reality::grap
+h::{ConceptNode, 
+ConceptEdge, EdgeKind};
+  |                         
+    ^^^^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^
+
+warning: unused import: 
+`tauri::Manager`
+  --> src\lib.rs:20:5
+   |
+20 | use tauri::Manager;
+   |     ^^^^^^^^^^^^^^
+
+error[E0061]: this function 
+takes 3 arguments but 0 
+arguments were supplied
+  --> src\commands.rs:36:16
+   |
+36 |     Mutex::new(ResoRank
+Scorer::new())
+   |                
+^^^^^^^^^^^^^^^^^^^-- three 
+arguments of type 
+`ResoRankConfig`, 
+`CorpusStatistics`, and 
+`ProximityStrategy` are 
+missing
+   |
+note: associated function 
+defined here
+  --> 
+src\resorank\scorer.rs:55:12
+   |
+55 |     pub fn new(
+   |            ^^^
+56 |         config: 
+ResoRankConfig,
+   |         
+----------------------
+57 |         corpus_stats: 
+CorpusStatistics,
+   |         ---------------
+---------------
+58 |         
+proximity_strategy: 
+ProximityStrategy,
+   |         ---------------
+----------------------
+help: provide the arguments
+   |
+36 |     Mutex::new(ResoRank
+Scorer::new(/* 
+ResoRankConfig */, /* 
+CorpusStatistics */, /* 
+ProximityStrategy */))
+   |                        
+           ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+error[E0599]: no method 
+named `hydrate_entities` 
+found for struct 
+`MutexGuard<'_, 
+UnifiedScanner>` in the 
+current scope
+  --> src\commands.rs:95:13
+   |
+95 |     scanner.hydrate_ent
+ities(definitions);
+   |             
+^^^^^^^^^^^^^^^^ method not 
+found in `MutexGuard<'_, 
+UnifiedScanner>`
+
+error[E0063]: missing field 
+`entity_id` in initializer 
+of `relation::EntitySpan`
+   --> 
+src\commands.rs:110:18
+    |
+110 |         .map(|e| crate
+::scanner::relation::EntityS
+pan {
+    |                  ^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^ missing `entity_id`
+
+error[E0061]: this method 
+takes 1 argument but 2 
+arguments were supplied
+   --> 
+src\commands.rs:118:13
+    |
+118 |     
+scanner.scan(&text, 
+&entity_spans)
+    |             ^^^^      
+  ------------- unexpected 
+argument #2 of type 
+`&Vec<relation::EntitySpan>`
+    |
+note: method defined here
+   --> src\scanner\unified.r
+s:728:12
+    |
+728 |     pub fn 
+scan(&self, text: &str) -> 
+ScanResult {
+    |            ^^^^       
+ ----------
+help: remove the extra 
+argument
+    |
+118 -     
+scanner.scan(&text, 
+&entity_spans)
+118 +     
+scanner.scan(&text)
+    |
+
+error[E0599]: no method 
+named `map_err` found for 
+struct `UnifiedScanResult` 
+in the current scope
+   --> 
+src\commands.rs:119:10
+    |
+118 | /     
+scanner.scan(&text, 
+&entity_spans)
+119 | |         
+.map_err(|e| format!("Scan 
+error: {:?}", e))
+    | |         -^^^^^^^ 
+method not found in 
+`UnifiedScanResult`
+    | |_________|
+    |
+    |
+   ::: 
+src\scanner\unified.rs:81:1
+    |
+81  |   pub struct 
+UnifiedScanResult {
+    |   --------------------
+-------- method `map_err` 
+not found for this struct
+    |
+    = help: items from 
+traits can only be used if 
+the trait is implemented 
+and in scope
+    = note: the following 
+traits define an item 
+`map_err`, perhaps you need 
+to implement one of them:
+            candidate #1: `f
+allible_iterator::FallibleIt
+erator`
+            candidate #2: `f
+allible_streaming_iterator::
+FallibleStreamingIterator`
+            candidate #3: 
+`winnow::parser::Parser`
+
+error[E0063]: missing field 
+`entity_id` in initializer 
+of `relation::EntitySpan`
+   --> 
+src\commands.rs:136:18
+    |
+136 |         .map(|e| crate
+::scanner::relation::EntityS
+pan {
+    |                  ^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^ missing `entity_id`
+
+error[E0599]: no method 
+named `map_err` found for 
+struct 
+`document::ScanResult` in 
+the current scope
+   --> 
+src\commands.rs:145:10
+    |
+144 |       let result = 
+cortex.scan(&text, 
+&entity_spans)
+    |  __________________-
+145 | |         
+.map_err(|e| format!("Scan 
+error: {:?}", e))?;
+    | |         -^^^^^^^ 
+method not found in 
+`ScanResult`
+    | |_________|
+    |
+    |
+   ::: 
+src\scanner\document.rs:72:1
+    |
+72  |   pub struct 
+ScanResult {
+    |   
+--------------------- 
+method `map_err` not found 
+for this struct
+    |
+    = help: items from 
+traits can only be used if 
+the trait is implemented 
+and in scope
+    = note: the following 
+traits define an item 
+`map_err`, perhaps you need 
+to implement one of them:
+            candidate #1: `f
+allible_iterator::FallibleIt
+erator`
+            candidate #2: `f
+allible_streaming_iterator::
+FallibleStreamingIterator`
+            candidate #3: 
+`winnow::parser::Parser`
+
+error[E0599]: no method 
+named `project_timeline` 
+found for struct 
+`Projector` in the current 
+scope
+   --> 
+src\commands.rs:192:28
+    |
+192 |     let events = proje
+ctor.project_timeline(&scan_
+result);
+    |                       
+     ^^^^^^^^^^^^^^^^ 
+method not found in 
+`Projector`
+    |
+   ::: src\scanner\projectio
+ns.rs:484:1
+    |
+484 | pub struct Projector;
+    | -------------------- 
+method `project_timeline` 
+not found for this struct
+
+error[E0599]: no method 
+named 
+`project_relationships` 
+found for struct 
+`Projector` in the current 
+scope
+   --> 
+src\commands.rs:205:27
+    |
+205 |     let graph = projec
+tor.project_relationships(&s
+can_result);
+    |                       
+    ^^^^^^^^^^^^^^^^^^^^^ 
+method not found in 
+`Projector`
+    |
+   ::: src\scanner\projectio
+ns.rs:484:1
+    |
+484 | pub struct Projector;
+    | -------------------- 
+method 
+`project_relationships` not 
+found for this struct
+
+error[E0599]: no method 
+named `project_links` found 
+for struct `Projector` in 
+the current scope
+   --> 
+src\commands.rs:218:27
+    |
+218 |     let graph = projec
+tor.project_links(&scan_resu
+lt);
+    |                       
+    ^^^^^^^^^^^^^ method 
+not found in `Projector`
+    |
+   ::: src\scanner\projectio
+ns.rs:484:1
+    |
+484 | pub struct Projector;
+    | -------------------- 
+method `project_links` not 
+found for this struct
+
+error[E0061]: this method 
+takes 4 arguments but 2 
+arguments were supplied
+   --> 
+src\commands.rs:233:12
+    |
+233 |     scorer.index_docum
+ent(&doc_id, &content);
+    |            ^^^^^^^^^^^
+^^^-------------------
+    |                       
+   |         |
+    |                       
+   |         expected 
+`DocumentMetadata`, found 
+`&String`
+    |                       
+   two arguments of type `Ha
+shMap<std::string::String, 
+TokenMetadata>` and `bool` 
+are missing
+    |
+note: method defined here
+   --> src\resorank\scorer.r
+s:100:12
+    |
+100 |     pub fn 
+index_document(
+    |            
+^^^^^^^^^^^^^^
+101 |         &mut self,
+102 |         doc_id: &str,
+    |         ------------
+103 |         doc_meta: 
+DocumentMetadata,
+    |         
+--------------------------
+104 |         tokens: 
+HashMap<String, 
+TokenMetadata>,
+    |         --------------
+------------------------
+105 |         
+use_adaptive_segments: bool,
+    |         
+---------------------------
+help: provide the arguments
+    |
+233 |     scorer.index_docum
+ent(&doc_id, /* 
+DocumentMetadata */, /* Hash
+Map<std::string::String, 
+TokenMetadata> */, /* bool 
+*/);
+    |                       
+   ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+
+error[E0308]: mismatched 
+types
+   --> 
+src\commands.rs:243:33
+    |
+243 |     let results = 
+scorer.search(&query, 
+limit);
+    |                       
+   ------ ^^^^^^ expected 
+`&[String]`, found `&String`
+    |                       
+   |
+    |                       
+   arguments to this method 
+are incorrect
+    |
+    = note: expected 
+reference 
+`&[std::string::String]`
+               found 
+reference 
+`&std::string::String`
+note: method defined here
+   --> src\resorank\scorer.r
+s:558:12
+    |
+558 |     pub fn 
+search(&mut self, query: 
+&[String], limit: usize) -> 
+Vec<SearchResult> {
+    |            ^^^^^^     
+       ----------------
+
+warning: unused variable: 
+`stats`
+   --> src\scanner\relation.
+rs:282:36
+    |
+282 |         let 
+(structured_relations, 
+stats) = extractor.extract_w
+ith_stats(text, entities);
+    |                       
+             ^^^^^ help: if 
+this is intentional, prefix 
+it with an underscore: 
+`_stats`
+    |
+    = note: 
+`#[warn(unused_variables)]` 
+on by default
+
+warning: value assigned to 
+`head_idx` is never read
+   --> src\scanner\chunker.r
+s:494:17
+    |
+494 |         let mut 
+head_idx = None;
+    |                 
+^^^^^^^^
+    |
+    = help: maybe it is 
+overwritten before being 
+read?
+    = note: `#[warn(unused_a
+ssignments)]` on by default
+
+warning: unused variable: 
+`resolver`
+  --> src\scanner\dialogue.r
+s:77:49
+   |
+77 |     fn find_speaker_in_
+chunks(chunks: &[Chunk], 
+resolver: &mut Resolver) -> 
+Option<EntityId> {
+   |                        
+                         
+^^^^^^^^ help: if this is 
+intentional, prefix it with 
+an underscore: `_resolver`
+
+warning: unused variable: 
+`quote_pos`
+   --> src\scanner\dialogue.
+rs:100:9
+    |
+100 |         quote_pos: 
+QuotePosition,
+    |         ^^^^^^^^^ 
+help: if this is 
+intentional, prefix it with 
+an underscore: `_quote_pos`
+
+warning: unused variable: 
+`character_label`
+   --> src\scanner\projectio
+ns.rs:656:13
+    |
+656 |         let 
+character_label = character_
+ref.target.to_lowercase();
+    |             
+^^^^^^^^^^^^^^^ help: if 
+this is intentional, prefix 
+it with an underscore: 
+`_character_label`
+
+warning: unused variable: 
+`vp_verb_text`
+   --> src\scanner\structure
+d_relation.rs:307:17
+    |
+307 |             let 
+vp_verb_text = 
+vp.head.slice(text);
+    |                 
+^^^^^^^^^^^^ help: if this 
+is intentional, prefix it 
+with an underscore: 
+`_vp_verb_text`
+
+warning: unused variable: 
+`agent_pp`
+   --> src\scanner\structure
+d_relation.rs:552:13
+    |
+552 |         let agent_pp 
+= pattern.modifiers.iter().f
+ind(|pp| {
+    |             ^^^^^^^^ 
+help: if this is 
+intentional, prefix it with 
+an underscore: `_agent_pp`
+
+Some errors have detailed 
+explanations: E0061, E0063, 
+E0308, E0432, E0599.
+For more information about 
+an error, try `rustc 
+--explain E0061`.
+warning: `varant` (lib) 
+generated 29 warnings
+error: could not compile 
+`varant` (lib) due to 233 
+previous errors; 29 
+warnings emitted

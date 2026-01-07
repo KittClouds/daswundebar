@@ -9,7 +9,7 @@
  * @module scanner/constraints-facade
  */
 
-import type { WasmConstraintEngine } from '@/lib/wasm/kittcore';
+import { getScannerMode } from '@/lib/tauri';
 
 // =============================================================================
 // TYPES - Mirror TypeScript refs/constraints.ts exactly
@@ -88,12 +88,12 @@ const PREDICATE_RULES: Record<string, string[]> = {
  * ```
  */
 export class ConstraintsFacade {
-    private engine: WasmConstraintEngine | null = null;
+    // Engine removed - using TypeScript fallbacks until Tauri implements
     private initialized = false;
     private initPromise: Promise<void> | null = null;
 
     /**
-     * Initialize the WASM constraint engine
+     * Initialize the constraint engine
      */
     async initialize(): Promise<void> {
         if (this.initialized) return;
@@ -105,10 +105,14 @@ export class ConstraintsFacade {
 
     private async _doInit(): Promise<void> {
         try {
-            const wasmModule = await import('@/lib/wasm/kittcore');
-            await wasmModule.default();
+            const mode = getScannerMode();
 
-            this.engine = new wasmModule.WasmConstraintEngine();
+            if (mode === 'tauri') {
+                console.log('[ConstraintsFacade] Running with Tauri backend (using TS fallbacks)');
+            } else {
+                console.log('[ConstraintsFacade] Running in fallback mode');
+            }
+
             this.initialized = true;
             console.log('[ConstraintsFacade] Initialized successfully');
         } catch (error) {
@@ -121,70 +125,36 @@ export class ConstraintsFacade {
      * Check if the facade is ready
      */
     isReady(): boolean {
-        return this.initialized && this.engine !== null;
+        return this.initialized;
     }
 
     /**
      * Validate a single ref
      */
     validate(ref: RefInput): ConstraintResult {
-        if (!this.isReady()) {
-            // Fallback to TypeScript validation
-            return this.validateTS(ref);
-        }
-
-        try {
-            return this.engine!.validate(ref) as ConstraintResult;
-        } catch (error) {
-            console.error('[ConstraintsFacade] Validate failed:', error);
-            return this.validateTS(ref);
-        }
+        // Always use TypeScript fallback for now
+        return this.validateTS(ref);
     }
 
     /**
      * Validate predicate for entity kind
      */
     validatePredicate(entityKind: string, predicate: string): boolean {
-        if (!this.isReady()) {
-            return this.validatePredicateTS(entityKind, predicate);
-        }
-
-        try {
-            return this.engine!.validatePredicate(entityKind, predicate);
-        } catch (error) {
-            return this.validatePredicateTS(entityKind, predicate);
-        }
+        return this.validatePredicateTS(entityKind, predicate);
     }
 
     /**
      * Get allowed predicates for entity kind
      */
     getAllowedPredicates(entityKind: string): string[] {
-        if (!this.isReady()) {
-            return PREDICATE_RULES[entityKind] || [];
-        }
-
-        try {
-            return this.engine!.getAllowedPredicates(entityKind) as string[];
-        } catch (error) {
-            return PREDICATE_RULES[entityKind] || [];
-        }
+        return PREDICATE_RULES[entityKind] || [];
     }
 
     /**
      * Enforce uniqueness across refs
      */
     enforceUniqueness(refs: RefInput[]): RefInput[] {
-        if (!this.isReady()) {
-            return this.enforceUniquenessTS(refs);
-        }
-
-        try {
-            return this.engine!.enforceUniqueness(refs) as RefInput[];
-        } catch (error) {
-            console.error('[ConstraintsFacade] enforceUniqueness failed:', error);
-            return this.enforceUniquenessTS(refs);
-        }
+        return this.enforceUniquenessTS(refs);
     }
 
     /**

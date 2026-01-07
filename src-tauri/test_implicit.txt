@@ -1,0 +1,85 @@
+﻿cargo :    Compiling varant 
+v0.1.0 (C:\Users\shuga\1kitt
+root\1code\daswundebar\src-t
+auri)
+At line:1 char:1
++ cargo test 2>&1 | 
+Out-File -FilePath 
+test_implicit.txt -Encoding 
+utf8 ...
++ ~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (   Co  
+  mpiling va...ebar\src-t   
+ auri):String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+warning: methods 
+`add_entity` and `clear` 
+are never used
+   --> 
+src\implicit.rs:343:12
+    |
+196 | impl ImplicitCortex {
+    | ------------------- 
+methods in this 
+implementation
+...
+343 |     pub fn 
+add_entity(&mut self, 
+entity: EntityDefinition) {
+    |            ^^^^^^^^^^
+...
+390 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+    |
+    = note: 
+`#[warn(dead_code)]` on by 
+default
+
+warning: `varant` (lib 
+test) generated 1 warning 
+(1 duplicate)
+warning: `varant` (lib) 
+generated 1 warning
+    Finished `test` profile 
+[unoptimized + debuginfo] 
+target(s) in 1m 06s
+     Running unittests 
+src\lib.rs (target\debug\dep
+s\app_lib-6c2ff372f7674e07.e
+xe)
+
+running 11 tests
+test implicit::tests::test_hydrate_and_find_single_entity ... ok
+test implicit::tests::test_case_insensitive_matching ... ok
+test implicit::tests::test_overlapping_keeps_longer ... ok
+test implicit::tests::test_faction_acronym ... ok
+test implicit::tests::test_alias_matching ... ok
+test implicit::tests::test_smart_alias_luffy ... ok
+test implicit::tests::test_confidence_scores ... ok
+test scanner::tests::test_basic_entity ... ok
+test scanner::tests::test_overlap_resolution ... ok
+test scanner::tests::test_wikilink ... ok
+test scanner::tests::test_triple ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+     Running unittests 
+src\main.rs (target\debug\de
+ps\varant-9d82a7e11edc964e.e
+xe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests app_lib
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

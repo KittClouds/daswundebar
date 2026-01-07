@@ -9,7 +9,7 @@
  * @module scanner/projections-facade
  */
 
-import type { WasmProjector } from '@/lib/wasm/kittcore';
+import { getScannerMode } from '@/lib/tauri';
 import type { EntityKind } from '@/lib/entities/entityTypes';
 
 // =============================================================================
@@ -130,7 +130,7 @@ export interface ProjectionPayload {
  * ```
  */
 export class ProjectionsFacade {
-    private projector: WasmProjector | null = null;
+    // Projector removed - using TypeScript fallbacks until Tauri implements
     private initialized = false;
     private initPromise: Promise<void> | null = null;
 
@@ -147,10 +147,16 @@ export class ProjectionsFacade {
 
     private async _doInit(): Promise<void> {
         try {
-            const wasmModule = await import('@/lib/wasm/kittcore');
-            await wasmModule.default();
+            // Use Tauri/fallback mode - projections run in TypeScript fallback for now
+            const mode = getScannerMode();
 
-            this.projector = new wasmModule.WasmProjector();
+            if (mode === 'tauri') {
+                console.log('[ProjectionsFacade] Running with Tauri backend (using TS fallbacks)');
+            } else {
+                console.log('[ProjectionsFacade] Running in fallback mode');
+            }
+
+            // Projections use TypeScript fallback until Rust backend implements them
             this.initialized = true;
             console.log('[ProjectionsFacade] Initialized successfully');
         } catch (error) {
@@ -163,71 +169,39 @@ export class ProjectionsFacade {
      * Check if the facade is ready
      */
     isReady(): boolean {
-        return this.initialized && this.projector !== null;
+        return this.initialized;
     }
 
     /**
      * Build timeline from refs
      */
     buildTimeline(refs: ProjectionRef[]): TimelineEvent[] {
-        if (!this.isReady()) {
-            return this.buildTimelineTS(refs);
-        }
-
-        try {
-            return this.projector!.buildTimeline(refs) as TimelineEvent[];
-        } catch (error) {
-            console.error('[ProjectionsFacade] buildTimeline failed:', error);
-            return this.buildTimelineTS(refs);
-        }
+        // Always use TypeScript fallback for now
+        return this.buildTimelineTS(refs);
     }
 
     /**
      * Build relationship graph
      */
     buildRelationshipGraph(refs: ProjectionRef[]): RelationshipGraph {
-        if (!this.isReady()) {
-            return this.buildRelationshipGraphTS(refs);
-        }
-
-        try {
-            return this.projector!.buildRelationshipGraph(refs) as RelationshipGraph;
-        } catch (error) {
-            console.error('[ProjectionsFacade] buildRelationshipGraph failed:', error);
-            return this.buildRelationshipGraphTS(refs);
-        }
+        // Always use TypeScript fallback for now
+        return this.buildRelationshipGraphTS(refs);
     }
 
     /**
      * Build link graph from wikilinks
      */
     buildLinkGraph(refs: ProjectionRef[]): LinkGraph {
-        if (!this.isReady()) {
-            return this.buildLinkGraphTS(refs);
-        }
-
-        try {
-            return this.projector!.buildLinkGraph(refs) as LinkGraph;
-        } catch (error) {
-            console.error('[ProjectionsFacade] buildLinkGraph failed:', error);
-            return this.buildLinkGraphTS(refs);
-        }
+        // Always use TypeScript fallback for now
+        return this.buildLinkGraphTS(refs);
     }
 
     /**
      * Build character sheet
      */
     buildCharacterSheet(characterRef: ProjectionRef, allRefs: ProjectionRef[]): CharacterSheet {
-        if (!this.isReady()) {
-            return this.buildCharacterSheetTS(characterRef, allRefs);
-        }
-
-        try {
-            return this.projector!.buildCharacterSheet(characterRef, allRefs) as CharacterSheet;
-        } catch (error) {
-            console.error('[ProjectionsFacade] buildCharacterSheet failed:', error);
-            return this.buildCharacterSheetTS(characterRef, allRefs);
-        }
+        // Always use TypeScript fallback for now
+        return this.buildCharacterSheetTS(characterRef, allRefs);
     }
 
     // =========================================================================

@@ -2,7 +2,8 @@ import React, { useMemo, useEffect, useCallback, useState } from 'react';
 import { useJotaiNotes } from '@/hooks/useJotaiNotes';
 import { useEntitySelection, EntitySelectionProvider } from '@/contexts/EntitySelectionContext';
 import { useUnifiedEntityAttributes } from '@/hooks/useUnifiedEntityAttributes';
-import { parseNoteConnectionsFromDocument } from '@/lib/scanner/extractor-facade';
+// Use smartGraphRegistry (SYNC!) instead of async parseNoteConnectionsFromDocument
+import { smartGraphRegistry } from '@/lib/tauri';
 import type { ParsedEntity, EntityAttributes } from '@/types/factSheetTypes';
 import type { EntityKind } from '@/lib/types/entityTypes';
 import { FileQuestion, Sparkles, BrainCircuit, LayoutGrid, List, Plus } from 'lucide-react';
@@ -94,16 +95,19 @@ export function FactSheetContainer({ externalEntities, onEntityUpdate }: FactShe
     SettingsManager.updateLLMSettings({ extractorModel: id });
   }, []);
 
-  // Compute entities (either from selected note or external prop)
+  // Compute entities (either from selected note or external prop or SmartGraphRegistry)
   const allEntities = useMemo(() => {
     if (externalEntities) {
       return externalEntities;
     }
 
     const entities: ParsedEntity[] = [];
+    const seen = new Set<string>();
 
     // Check if note itself is an entity
     if (selectedNote?.isEntity && selectedNote.entityKind && selectedNote.entityLabel) {
+      const key = `${selectedNote.entityKind}|${selectedNote.entityLabel}`;
+      seen.add(key);
       entities.push({
         kind: selectedNote.entityKind as EntityKind,
         subtype: selectedNote.entitySubtype,
@@ -113,29 +117,23 @@ export function FactSheetContainer({ externalEntities, onEntityUpdate }: FactShe
       });
     }
 
-    // Parse inline entities from content
-    if (selectedNote?.content) {
-      try {
-        const parsed = JSON.parse(selectedNote.content);
-        const connections = parseNoteConnectionsFromDocument(parsed);
-
-        for (const entity of connections.entities) {
-          // Avoid duplicates (note entity already added)
-          const isDuplicate = entities.some(
-            e => e.kind === entity.kind && e.label === entity.label
-          );
-          if (!isDuplicate) {
-            entities.push({
-              kind: entity.kind as EntityKind,
-              subtype: entity.subtype,
-              label: entity.label,
-              attributes: entity.attributes || {},
-            });
-          }
+    // Get entities from SmartGraphRegistry (SYNC - from local cache!)
+    try {
+      const registryEntities = smartGraphRegistry.getAllEntities();
+      for (const entity of registryEntities) {
+        const key = `${entity.kind}|${entity.label}`;
+        if (!seen.has(key)) {
+          seen.add(key);
+          entities.push({
+            kind: entity.kind as EntityKind,
+            label: entity.label,
+            attributes: {},
+          });
         }
-      } catch {
-        // Invalid JSON, skip
       }
+    } catch (err) {
+      // Registry not ready yet - just use note entities
+      console.log('[FactSheetContainer] SmartGraphRegistry not ready');
     }
 
     return entities;

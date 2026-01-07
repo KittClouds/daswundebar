@@ -2,13 +2,29 @@
  * Graph Data Service
  * 
  * Transforms CozoDB query results into renderer-compatible GraphData structures.
- * Uses UnifiedRegistry for proper data access (entities/relationships relations).
+ * Uses SmartGraphRegistry for proper data access (entities/relationships from Rust).
  */
 
 import { cozoDb } from '@/lib/cozo/db';
-import { unifiedRegistry, type CozoEntity, type CozoRelationship } from '@/lib/cozo/graph/UnifiedRegistry';
+// MIGRATED: Use smartGraphRegistry instead of unifiedRegistry
+import { smartGraphRegistry, type RegisteredEntity } from '@/lib/tauri';
 import type { GraphData, GraphNode, GraphEdge, GraphStats } from '../types/graph-types';
 import { getEntityColor } from '../types/graph-types';
+
+// Adapter type for compatibility
+type CozoEntity = RegisteredEntity;
+interface CozoRelationship {
+    id: string;
+    sourceId: string;
+    targetId: string;
+    type: string;
+    inverseType?: string;
+    bidirectional: boolean;
+    confidence: number;
+    namespace?: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
 
 export class GraphDataService {
     /**
@@ -18,12 +34,12 @@ export class GraphDataService {
         await this.ensureReady();
 
         try {
-            // Use UnifiedRegistry for entities (correct schema)
-            const entities = await unifiedRegistry.getAllEntities();
+            // Use SmartGraphRegistry (SYNC - from local cache!)
+            const entities = smartGraphRegistry.getAllEntities();
             const nodes = this.transformCozoEntities(entities.slice(0, limit));
 
             if (nodes.length === 0) {
-                console.log('[GraphDataService] No entities found in UnifiedRegistry');
+                console.log('[GraphDataService] No entities found in SmartGraphRegistry');
                 return { nodes: [], links: [] };
             }
 
@@ -48,7 +64,7 @@ export class GraphDataService {
 
         try {
             // For now, filter global entities by checking if they mention this note
-            const allEntities = await unifiedRegistry.getAllEntities();
+            const allEntities = smartGraphRegistry.getAllEntities();
 
             // Filter entities that have the noteId in their mentions
             const scopedEntities = allEntities.filter(e => {
@@ -105,8 +121,8 @@ export class GraphDataService {
         if (!cozoDb.isReady()) {
             await cozoDb.init();
         }
-        // Also ensure UnifiedRegistry is initialized
-        await unifiedRegistry.init();
+        // SmartGraphRegistry init
+        await smartGraphRegistry.init();
     }
 
     /**

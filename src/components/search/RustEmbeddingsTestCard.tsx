@@ -62,8 +62,14 @@ export function RustEmbeddingsTestCard() {
         setSearchResults([]);
 
         try {
+            // NOTE: WASM embeddings temporarily disabled during Tauri migration
+            // Phase 4 will implement via Tauri commands
+            setError('Embeddings temporarily disabled during Tauri migration');
+            setStatus('error');
+            return;
+
+            /* Original WASM code - disabled during Tauri migration:
             const kittcore = await import(
-                /* webpackIgnore: true */
                 '@kittcore/wasm'
             );
             await kittcore.default();
@@ -90,6 +96,7 @@ export function RustEmbeddingsTestCard() {
             setCortex(newCortex);
             setStatus('ready');
             console.log(`[RustTest] ✓ Model ready (${newCortex.getDimensions()}d)`);
+            */
 
         } catch (err) {
             console.error('[RustTest] Load failed:', err);

@@ -1,0 +1,58 @@
+﻿cargo :     Blocking 
+waiting for file lock on 
+build directory
+At line:1 char:1
++ cargo check 2>&1 | 
+Out-File -FilePath 
+check_implicit.txt 
+-Encoding ut ...
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (    B  
+  locking wa...build dire   
+ ctory:String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+    Checking tauri-utils 
+v2.8.1
+    Checking tauri-runtime 
+v2.9.2
+    Checking 
+tauri-runtime-wry v2.9.3
+    Checking tauri v2.9.5
+    Checking 
+tauri-plugin-log v2.7.1
+    Checking varant v0.1.0 (
+C:\Users\shuga\1kittroot\1co
+de\daswundebar\src-tauri)
+warning: methods 
+`add_entity` and `clear` 
+are never used
+   --> 
+src\implicit.rs:343:12
+    |
+196 | impl ImplicitCortex {
+    | ------------------- 
+methods in this 
+implementation
+...
+343 |     pub fn 
+add_entity(&mut self, 
+entity: EntityDefinition) {
+    |            ^^^^^^^^^^
+...
+390 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+    |
+    = note: 
+`#[warn(dead_code)]` on by 
+default
+
+warning: `varant` (lib) 
+generated 1 warning
+    Finished `dev` profile 
+[unoptimized + debuginfo] 
+target(s) in 59.71s

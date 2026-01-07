@@ -1,0 +1,10001 @@
+﻿cargo :    Compiling 
+form_urlencoded v1.2.2
+At line:1 char:1
++ cargo check 2>&1 | 
+Out-File -FilePath 
+cargo_errors.txt -Encoding 
+utf8
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (   Co  
+  mpiling form_urlencoded   
+  v1.2.2:String) [], Rem    
+oteException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+   Compiling crc32fast 
+v1.5.0
+    Checking windows-sys 
+v0.60.2
+    Checking wry v0.53.5
+    Checking tauri-runtime 
+v2.9.2
+    Checking num-integer 
+v0.1.46
+    Checking num-complex 
+v0.4.6
+   Compiling url v2.5.8
+   Compiling flate2 v1.1.5
+    Checking ndarray v0.16.1
+   Compiling png v0.17.16
+    Checking 
+tauri-runtime-wry v2.9.3
+   Compiling schemars 
+v0.8.22
+   Compiling urlpattern 
+v0.3.0
+   Compiling ico v0.4.0
+   Compiling tauri-utils 
+v2.8.1
+    Checking rustworkx-core 
+v0.17.1
+    Checking socket2 v0.6.1
+    Checking muda v0.17.1
+    Checking tokio v1.49.0
+   Compiling tauri-build 
+v2.5.3
+   Compiling tauri-plugin 
+v2.5.2
+   Compiling tauri-codegen 
+v2.5.2
+   Compiling tauri v2.9.5
+   Compiling 
+tauri-plugin-log v2.7.1
+   Compiling tauri-macros 
+v2.5.2
+   Compiling varant v0.1.0 (
+C:\Users\shuga\1kittroot\1co
+de\daswundebar\src-tauri)
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> 
+src\scanner\core.rs:18:5
+   |
+18 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> 
+src\scanner\reflex.rs:15:5
+   |
+15 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> 
+src\scanner\syntax.rs:17:5
+   |
+17 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> 
+src\scanner\temporal.rs:20:5
+   |
+20 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> 
+src\scanner\relation.rs:48:5
+   |
+48 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> 
+src\scanner\implicit.rs:11:5
+   |
+11 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+ --> 
+src\scanner\triple.rs:3:5
+  |
+3 | use 
+wasm_bindgen::prelude::*;
+  |     ^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+ --> 
+src\scanner\change.rs:9:5
+  |
+9 | use 
+wasm_bindgen::prelude::*;
+  |     ^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> 
+src\scanner\document.rs:13:5
+   |
+13 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> src\scanner\conductor.
+rs:19:5
+   |
+19 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> 
+src\scanner\chunker.rs:21:5
+   |
+21 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> 
+src\scanner\attacher.rs:23:5
+   |
+23 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> 
+src\scanner\resolver.rs:13:5
+   |
+13 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> 
+src\scanner\dialogue.rs:12:5
+   |
+12 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> src\scanner\narrative.
+rs:39:5
+   |
+39 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+   --> 
+src\scanner\unified.rs:921:5
+    |
+921 | use 
+wasm_bindgen::prelude::*;
+    |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> src\scanner\constraint
+s.rs:13:5
+   |
+13 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> src\scanner\projection
+s.rs:13:5
+   |
+13 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+  --> src\scanner\relation_f
+ilter.rs:23:5
+   |
+23 | use 
+wasm_bindgen::prelude::*;
+   |     ^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+ --> src\reality\api.rs:5:5
+  |
+5 | use 
+wasm_bindgen::prelude::*;
+  |     ^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+ --> 
+src\resorank\config.rs:7:5
+  |
+7 | use 
+wasm_bindgen::prelude::*;
+  |     ^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+ --> src\resorank\incrementa
+l.rs:7:5
+  |
+7 | use 
+wasm_bindgen::prelude::*;
+  |     ^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`wasm_bindgen`
+ --> 
+src\resorank\scorer.rs:6:5
+  |
+6 | use 
+wasm_bindgen::prelude::*;
+  |     ^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`wasm_bindgen`
+
+error[E0432]: unresolved 
+import `serde_wasm_bindgen`
+  --> src\scanner\conductor.
+rs:20:5
+   |
+20 | use serde_wasm_bindgen;
+   |     ^^^^^^^^^^^^^^^^^^ 
+no external crate 
+`serde_wasm_bindgen`
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:626:3
+    |
+626 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:629:7
+    |
+629 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:652:7
+    |
+652 |     
+#[wasm_bindgen(js_name = 
+indexDocument)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:668:7
+    |
+668 |     
+#[wasm_bindgen(js_name = 
+search)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:680:7
+    |
+680 |     
+#[wasm_bindgen(js_name = 
+explainScore)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:692:7
+    |
+692 |     
+#[wasm_bindgen(js_name = 
+toJSON)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:699:7
+    |
+699 |     #[wasm_bindgen(sta
+tic_method_of = 
+ResoRankScorer, js_name = 
+fromJSON)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\resorank\scorer.rs:706:7
+    |
+706 |     
+#[wasm_bindgen(js_name = 
+clear)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\resorank\scorer.rs:29:3
+   |
+29 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:299:3
+    |
+299 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:302:7
+    |
+302 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:314:7
+    |
+314 |     
+#[wasm_bindgen(js_name = 
+nextTerm)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:320:7
+    |
+320 |     
+#[wasm_bindgen(js_name = 
+reset)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:326:7
+    |
+326 |     
+#[wasm_bindgen(js_name = 
+addFieldContribution)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:340:7
+    |
+340 |     
+#[wasm_bindgen(js_name = 
+finalizeTerm)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:346:7
+    |
+346 |     
+#[wasm_bindgen(js_name = 
+getScores)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\resorank\incremen
+tal.rs:358:7
+    |
+358 |     
+#[wasm_bindgen(js_name = 
+getScoresWithExplanations)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> src\resorank\increment
+al.rs:23:3
+   |
+23 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\resorank\config.rs:29:3
+   |
+29 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\resorank\config.rs:31:7
+   |
+31 |     
+#[wasm_bindgen(constructor)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\resorank\config.rs:21:3
+   |
+21 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:620:3
+    |
+620 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:627:7
+    |
+627 |     
+#[wasm_bindgen(js_name = 
+recomputeMetadata)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:633:7
+    |
+633 |     
+#[wasm_bindgen(js_name = 
+getEntityMetadata)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:645:7
+    |
+645 |     
+#[wasm_bindgen(js_name = 
+getAllMetadata)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:656:7
+    |
+656 |     
+#[wasm_bindgen(js_name = 
+getEntitiesByFrequency)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:668:7
+    |
+668 |     
+#[wasm_bindgen(js_name = 
+getEntitiesByImportance)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:680:7
+    |
+680 |     
+#[wasm_bindgen(js_name = 
+getCrossDocumentEntities)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:692:7
+    |
+692 |     
+#[wasm_bindgen(js_name = 
+getEntitiesInDoc)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:704:7
+    |
+704 |     
+#[wasm_bindgen(js_name = 
+addEntityAlias)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:710:7
+    |
+710 |     
+#[wasm_bindgen(js_name = 
+clearMetadata)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:544:3
+    |
+544 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:551:7
+    |
+551 |     
+#[wasm_bindgen(js_name = 
+getEntitySpans)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:568:7
+    |
+568 |     
+#[wasm_bindgen(js_name = 
+getEntityRecord)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:580:7
+    |
+580 |     
+#[wasm_bindgen(js_name = 
+getAllEntityRecords)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:591:7
+    |
+591 |     
+#[wasm_bindgen(js_name = 
+uniqueEntityCount)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:597:7
+    |
+597 |     
+#[wasm_bindgen(js_name = 
+totalSpanCount)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:603:7
+    |
+603 |     
+#[wasm_bindgen(js_name = 
+clearDocSpans)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:609:7
+    |
+609 |     
+#[wasm_bindgen(js_name = 
+clearEntityLayer)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:192:3
+    |
+192 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:195:7
+    |
+195 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:211:7
+    |
+211 |     
+#[wasm_bindgen(js_name = 
+setDocId)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:217:7
+    |
+217 |     
+#[wasm_bindgen(js_name = 
+addRelationPattern)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:229:7
+    |
+229 |     
+#[wasm_bindgen(js_name = 
+hydrateRelationPatterns)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:246:7
+    |
+246 |     
+#[wasm_bindgen(js_name = 
+processEnhanced)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:317:7
+    |
+317 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:350:7
+    |
+350 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:362:7
+    |
+362 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:379:7
+    |
+379 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:394:7
+    |
+394 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:409:7
+    |
+409 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:424:7
+    |
+424 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:440:7
+    |
+440 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:457:7
+    |
+457 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:474:7
+    |
+474 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:494:7
+    |
+494 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:507:7
+    |
+507 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:513:7
+    |
+513 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:519:7
+    |
+519 |     #[wasm_bindgen]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\reality\api.rs:183:3
+    |
+183 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:282:3
+    |
+282 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:285:7
+    |
+285 |     
+#[wasm_bindgen(js_name = 
+filterRelations)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:310:7
+    |
+310 |     
+#[wasm_bindgen(js_name = 
+filterWithStats)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:105:3
+    |
+105 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:108:7
+    |
+108 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:116:7
+    |
+116 |     
+#[wasm_bindgen(js_name = 
+setMinConfidence)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:122:7
+    |
+122 |     
+#[wasm_bindgen(js_name = 
+setDistanceDecay)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:128:7
+    |
+128 |     
+#[wasm_bindgen(js_name = 
+setSameSentenceBonus)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:134:7
+    |
+134 |     
+#[wasm_bindgen(js_name = 
+setCrossSentencePenalty)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:140:7
+    |
+140 |     
+#[wasm_bindgen(js_name = 
+setMaxDistance)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation_
+filter.rs:146:7
+    |
+146 |     
+#[wasm_bindgen(js_name = 
+getConfig)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> src\scanner\relation_f
+ilter.rs:94:3
+   |
+94 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\projectio
+ns.rs:834:3
+    |
+834 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\projectio
+ns.rs:836:7
+    |
+836 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\projectio
+ns.rs:844:7
+    |
+844 |     
+#[wasm_bindgen(js_name = 
+buildTimeline)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\projectio
+ns.rs:855:7
+    |
+855 |     
+#[wasm_bindgen(js_name = 
+buildRelationshipGraph)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\projectio
+ns.rs:866:7
+    |
+866 |     
+#[wasm_bindgen(js_name = 
+buildLinkGraph)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\projectio
+ns.rs:877:7
+    |
+877 |     
+#[wasm_bindgen(js_name = 
+buildCharacterSheet)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\projectio
+ns.rs:829:3
+    |
+829 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\constrain
+ts.rs:471:3
+    |
+471 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\constrain
+ts.rs:473:7
+    |
+473 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\constrain
+ts.rs:481:7
+    |
+481 |     
+#[wasm_bindgen(js_name = 
+validate)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\constrain
+ts.rs:492:7
+    |
+492 |     
+#[wasm_bindgen(js_name = 
+validatePredicate)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\constrain
+ts.rs:498:7
+    |
+498 |     
+#[wasm_bindgen(js_name = 
+getAllowedPredicates)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\constrain
+ts.rs:506:7
+    |
+506 |     
+#[wasm_bindgen(js_name = 
+enforceUniqueness)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\constrain
+ts.rs:466:3
+    |
+466 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\unified.rs:932:3
+    |
+932 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\unified.rs:935:7
+    |
+935 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\unified.rs:946:7
+    |
+946 |     
+#[wasm_bindgen(js_name = 
+scan)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\unified.rs:973:7
+    |
+973 |     
+#[wasm_bindgen(js_name = 
+countSpans)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\unified.rs:927:3
+    |
+927 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\narrative
+.rs:120:3
+    |
+120 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\narrative
+.rs:123:7
+    |
+123 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\narrative
+.rs:106:3
+    |
+106 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\dialogue.rs:28:3
+   |
+28 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\dialogue.rs:30:7
+   |
+30 |     
+#[wasm_bindgen(constructor)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\dialogue.rs:19:3
+   |
+19 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\resolver.
+rs:161:3
+    |
+161 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\resolver.
+rs:163:7
+    |
+163 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\resolver.
+rs:156:3
+    |
+156 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\attacher.rs:98:3
+   |
+98 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\attacher.
+rs:100:7
+    |
+100 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\attacher.rs:85:3
+   |
+85 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\chunker.rs:270:3
+    |
+270 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\chunker.rs:273:7
+    |
+273 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\chunker.rs:256:3
+    |
+256 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:154:3
+    |
+154 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:157:7
+    |
+157 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:163:7
+    |
+163 |     
+#[wasm_bindgen(js_name = 
+"init")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:170:7
+    |
+170 |     
+#[wasm_bindgen(js_name = 
+"hydrateEntities")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:179:7
+    |
+179 |     
+#[wasm_bindgen(js_name = 
+"hydrateCalendar")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:192:7
+    |
+192 |     
+#[wasm_bindgen(js_name = 
+"isReady")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:198:7
+    |
+198 |     
+#[wasm_bindgen(js_name = 
+"stateName")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:205:7
+    |
+205 |     
+#[wasm_bindgen(js_name = 
+"scan")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:217:7
+    |
+217 |     
+#[wasm_bindgen(js_name = 
+"scanForce")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:226:7
+    |
+226 |     
+#[wasm_bindgen(js_name = 
+"entityCount")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:232:7
+    |
+232 |     
+#[wasm_bindgen(js_name = 
+"incrementalStats")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\conductor
+.rs:238:7
+    |
+238 |     
+#[wasm_bindgen(js_name = 
+"reset")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> src\scanner\conductor.
+rs:44:3
+   |
+44 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:111:3
+    |
+111 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:113:7
+    |
+113 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:132:7
+    |
+132 |     
+#[wasm_bindgen(js_name = 
+relationPatternCount)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:138:7
+    |
+138 |     
+#[wasm_bindgen(js_name = 
+implicitPatternCount)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:144:7
+    |
+144 |     
+#[wasm_bindgen(js_name = 
+skipRate)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:150:7
+    |
+150 |     
+#[wasm_bindgen(js_name = 
+reset)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:157:7
+    |
+157 |     
+#[wasm_bindgen(js_name = 
+hydrateEntities)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:168:7
+    |
+168 |     
+#[wasm_bindgen(js_name = 
+hydrateCalendar)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\document.
+rs:177:7
+    |
+177 |     
+#[wasm_bindgen(js_name = 
+scan)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\document.rs:89:3
+   |
+89 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\change.rs:47:3
+   |
+47 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\change.rs:49:7
+   |
+49 |     
+#[wasm_bindgen(constructor)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\change.rs:59:7
+   |
+59 |     
+#[wasm_bindgen(js_name = 
+getSkipRate)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\change.rs:68:7
+   |
+68 |     
+#[wasm_bindgen(js_name = 
+getCheckCount)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\change.rs:74:7
+   |
+74 |     
+#[wasm_bindgen(js_name = 
+getSkipCount)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\change.rs:80:7
+   |
+80 |     #[wasm_bindgen]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\change.rs:31:3
+   |
+31 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\triple.rs:53:3
+   |
+53 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\triple.rs:55:7
+   |
+55 |     
+#[wasm_bindgen(constructor)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\triple.rs:99:7
+   |
+99 |     
+#[wasm_bindgen(js_name = 
+extract)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\triple.rs:31:3
+   |
+31 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\implicit.rs:71:3
+   |
+71 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\implicit.rs:73:7
+   |
+73 |     
+#[wasm_bindgen(constructor)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\implicit.rs:84:7
+   |
+84 |     
+#[wasm_bindgen(js_name = 
+patternCount)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\implicit.rs:57:3
+   |
+57 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:567:3
+    |
+567 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:570:7
+    |
+570 |     
+#[wasm_bindgen(js_name = 
+"extract")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:590:7
+    |
+590 |     
+#[wasm_bindgen(js_name = 
+"extractWithStats")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:621:7
+    |
+621 |     
+#[wasm_bindgen(js_name = 
+"addPattern")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:635:7
+    |
+635 |     
+#[wasm_bindgen(js_name = 
+"hydratePatterns")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:210:3
+    |
+210 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:213:7
+    |
+213 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:222:7
+    |
+222 |     
+#[wasm_bindgen(js_name = 
+"setCstThreshold")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:228:7
+    |
+228 |     
+#[wasm_bindgen(js_name = 
+"setInferenceEnabled")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:238:7
+    |
+238 |     
+#[wasm_bindgen(js_name = 
+"build")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:246:7
+    |
+246 |     
+#[wasm_bindgen(js_name = 
+"patternCount")]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\relation.
+rs:196:3
+    |
+196 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\temporal.
+rs:310:3
+    |
+310 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\temporal.
+rs:313:7
+    |
+313 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\temporal.
+rs:450:7
+    |
+450 |     
+#[wasm_bindgen(js_name = 
+hydrateCalendar)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\temporal.
+rs:521:7
+    |
+521 |     
+#[wasm_bindgen(js_name = 
+scan)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\temporal.
+rs:674:7
+    |
+674 |     
+#[wasm_bindgen(js_name = 
+getStats)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\temporal.
+rs:680:7
+    |
+680 |     
+#[wasm_bindgen(js_name = 
+isReady)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> src\scanner\temporal.
+rs:289:3
+    |
+289 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\syntax.rs:87:3
+   |
+87 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\syntax.rs:90:7
+   |
+90 |     
+#[wasm_bindgen(constructor)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\syntax.rs:155:7
+    |
+155 |     
+#[wasm_bindgen(js_name = 
+scan)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\syntax.rs:302:7
+    |
+302 |     
+#[wasm_bindgen(js_name = 
+scanEntitiesOnly)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\syntax.rs:328:7
+    |
+328 |     
+#[wasm_bindgen(js_name = 
+getStats)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\syntax.rs:75:3
+   |
+75 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\reflex.rs:90:3
+   |
+90 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\reflex.rs:96:7
+   |
+96 |     
+#[wasm_bindgen(constructor)]
+   |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\reflex.rs:110:7
+    |
+110 |     
+#[wasm_bindgen(js_name = 
+addEntity)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\reflex.rs:178:7
+    |
+178 |     
+#[wasm_bindgen(js_name = 
+build)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\reflex.rs:197:7
+    |
+197 |     
+#[wasm_bindgen(js_name = 
+isBuilt)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\reflex.rs:203:7
+    |
+203 |     
+#[wasm_bindgen(js_name = 
+scan)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\reflex.rs:233:7
+    |
+233 |     
+#[wasm_bindgen(js_name = 
+containsAny)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\reflex.rs:244:7
+    |
+244 |     
+#[wasm_bindgen(js_name = 
+getStats)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\reflex.rs:255:7
+    |
+255 |     
+#[wasm_bindgen(js_name = 
+clear)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+  --> 
+src\scanner\reflex.rs:68:3
+   |
+68 | #[wasm_bindgen]
+   |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:119:3
+    |
+119 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:125:7
+    |
+125 |     
+#[wasm_bindgen(constructor)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:153:7
+    |
+153 |     
+#[wasm_bindgen(js_name = 
+hydrateEntities)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:176:7
+    |
+176 |     
+#[wasm_bindgen(js_name = 
+hydrateCalendar)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:195:7
+    |
+195 |     
+#[wasm_bindgen(js_name = 
+scan)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:288:7
+    |
+288 |     
+#[wasm_bindgen(js_name = 
+scanReflex)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:297:7
+    |
+297 |     
+#[wasm_bindgen(js_name = 
+scanSyntax)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:303:7
+    |
+303 |     
+#[wasm_bindgen(js_name = 
+scanTemporal)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:309:7
+    |
+309 |     
+#[wasm_bindgen(js_name = 
+scanRelations)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:322:7
+    |
+322 |     
+#[wasm_bindgen(js_name = 
+hydrateRelationPatterns)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:330:7
+    |
+330 |     
+#[wasm_bindgen(js_name = 
+containsEntities)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:339:7
+    |
+339 |     
+#[wasm_bindgen(js_name = 
+getStatus)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:361:7
+    |
+361 |     
+#[wasm_bindgen(js_name = 
+getReflexStats)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:367:7
+    |
+367 |     
+#[wasm_bindgen(js_name = 
+getTemporalStats)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:373:7
+    |
+373 |     
+#[wasm_bindgen(js_name = 
+getRelationPatternCount)]
+    |       ^^^^^^^^^^^^
+
+error: cannot find 
+attribute `wasm_bindgen` in 
+this scope
+   --> 
+src\scanner\core.rs:107:3
+    |
+107 | #[wasm_bindgen]
+    |   ^^^^^^^^^^^^
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `web_sys`
+   --> src\scanner\document.
+rs:186:17
+    |
+186 |                 web_sy
+s::console::error_1(&format!
+("[DocumentCortex] 
+Serialization failed: 
+{:?}", e).into());
+    |                 
+^^^^^^^ use of undeclared 
+crate or module `web_sys`
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:126:24
+    |
+126 |     pub fn 
+new(config: JsValue) -> 
+Result<DocumentScanner, 
+JsValue> {
+    |                       
+ ^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:126:60
+    |
+126 |     pub fn 
+new(config: JsValue) -> 
+Result<DocumentScanner, 
+JsValue> {
+    |                       
+                            
+         ^^^^^^^ not found 
+in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+120 | impl<JsValue> 
+DocumentScanner {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:154:50
+    |
+154 |     pub fn 
+hydrate_entities(&mut self, 
+entities: JsValue) -> 
+Result<(), JsValue> {
+    |                       
+                           
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:154:73
+    |
+154 |     pub fn 
+hydrate_entities(&mut self, 
+entities: JsValue) -> 
+Result<(), JsValue> {
+    |                       
+                            
+                      
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+120 | impl<JsValue> 
+DocumentScanner {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:177:50
+    |
+177 |     pub fn 
+hydrate_calendar(&mut self, 
+calendar: JsValue) -> 
+Result<(), JsValue> {
+    |                       
+                           
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:177:73
+    |
+177 |     pub fn 
+hydrate_calendar(&mut self, 
+calendar: JsValue) -> 
+Result<(), JsValue> {
+    |                       
+                            
+                      
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+120 | impl<JsValue> 
+DocumentScanner {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:196:46
+    |
+196 |     pub fn 
+scan(&self, text: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                       
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+120 | impl<JsValue> 
+DocumentScanner {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:196:55
+    |
+196 |     pub fn 
+scan(&self, text: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+    ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+120 | impl<JsValue> 
+DocumentScanner {
+    |     +++++++++
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `js_sys`
+   --> 
+src\scanner\core.rs:197:21
+    |
+197 |         let start = 
+js_sys::Date::now();
+    |                     
+^^^^^^ use of undeclared 
+crate or module `js_sys`
+    |
+help: consider importing 
+this struct
+    |
+17  + use chrono::Date;
+    |
+help: if you import `Date`, 
+refer to it directly
+    |
+197 -         let start = 
+js_sys::Date::now();
+197 +         let start = 
+Date::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `js_sys`
+   --> 
+src\scanner\core.rs:207:22
+    |
+207 |             let t0 = 
+js_sys::Date::now();
+    |                      
+^^^^^^ use of undeclared 
+crate or module `js_sys`
+    |
+help: consider importing 
+this struct
+    |
+17  + use chrono::Date;
+    |
+help: if you import `Date`, 
+refer to it directly
+    |
+207 -             let t0 = 
+js_sys::Date::now();
+207 +             let t0 = 
+Date::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `js_sys`
+   --> 
+src\scanner\core.rs:209:27
+    |
+209 |             
+reflex_time = 
+js_sys::Date::now() - t0;
+    |                       
+    ^^^^^^ use of 
+undeclared crate or module 
+`js_sys`
+    |
+help: consider importing 
+this struct
+    |
+17  + use chrono::Date;
+    |
+help: if you import `Date`, 
+refer to it directly
+    |
+209 -             
+reflex_time = 
+js_sys::Date::now() - t0;
+209 +             
+reflex_time = Date::now() - 
+t0;
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `js_sys`
+   --> 
+src\scanner\core.rs:218:22
+    |
+218 |             let t0 = 
+js_sys::Date::now();
+    |                      
+^^^^^^ use of undeclared 
+crate or module `js_sys`
+    |
+help: consider importing 
+this struct
+    |
+17  + use chrono::Date;
+    |
+help: if you import `Date`, 
+refer to it directly
+    |
+218 -             let t0 = 
+js_sys::Date::now();
+218 +             let t0 = 
+Date::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `js_sys`
+   --> 
+src\scanner\core.rs:220:27
+    |
+220 |             
+syntax_time = 
+js_sys::Date::now() - t0;
+    |                       
+    ^^^^^^ use of 
+undeclared crate or module 
+`js_sys`
+    |
+help: consider importing 
+this struct
+    |
+17  + use chrono::Date;
+    |
+help: if you import `Date`, 
+refer to it directly
+    |
+220 -             
+syntax_time = 
+js_sys::Date::now() - t0;
+220 +             
+syntax_time = Date::now() - 
+t0;
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `js_sys`
+   --> 
+src\scanner\core.rs:229:22
+    |
+229 |             let t0 = 
+js_sys::Date::now();
+    |                      
+^^^^^^ use of undeclared 
+crate or module `js_sys`
+    |
+help: consider importing 
+this struct
+    |
+17  + use chrono::Date;
+    |
+help: if you import `Date`, 
+refer to it directly
+    |
+229 -             let t0 = 
+js_sys::Date::now();
+229 +             let t0 = 
+Date::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `js_sys`
+   --> 
+src\scanner\core.rs:231:29
+    |
+231 |             
+temporal_time = 
+js_sys::Date::now() - t0;
+    |                       
+      ^^^^^^ use of 
+undeclared crate or module 
+`js_sys`
+    |
+help: consider importing 
+this struct
+    |
+17  + use chrono::Date;
+    |
+help: if you import `Date`, 
+refer to it directly
+    |
+231 -             
+temporal_time = 
+js_sys::Date::now() - t0;
+231 +             
+temporal_time = Date::now() 
+- t0;
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `js_sys`
+   --> 
+src\scanner\core.rs:244:22
+    |
+244 |             let t0 = 
+js_sys::Date::now();
+    |                      
+^^^^^^ use of undeclared 
+crate or module `js_sys`
+    |
+help: consider importing 
+this struct
+    |
+17  + use chrono::Date;
+    |
+help: if you import `Date`, 
+refer to it directly
+    |
+244 -             let t0 = 
+js_sys::Date::now();
+244 +             let t0 = 
+Date::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `js_sys`
+   --> 
+src\scanner\core.rs:256:29
+    |
+256 |             
+relation_time = 
+js_sys::Date::now() - t0;
+    |                       
+      ^^^^^^ use of 
+undeclared crate or module 
+`js_sys`
+    |
+help: consider importing 
+this struct
+    |
+17  + use chrono::Date;
+    |
+help: if you import `Date`, 
+refer to it directly
+    |
+256 -             
+relation_time = 
+js_sys::Date::now() - t0;
+256 +             
+relation_time = Date::now() 
+- t0;
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `js_sys`
+   --> 
+src\scanner\core.rs:262:26
+    |
+262 |         let 
+total_time = 
+js_sys::Date::now() - start;
+    |                       
+   ^^^^^^ use of undeclared 
+crate or module `js_sys`
+    |
+help: consider importing 
+this struct
+    |
+17  + use chrono::Date;
+    |
+help: if you import `Date`, 
+refer to it directly
+    |
+262 -         let 
+total_time = 
+js_sys::Date::now() - start;
+262 +         let 
+total_time = Date::now() - 
+start;
+    |
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:289:53
+    |
+289 |     pub fn 
+scan_reflex(&self, text: 
+&str) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+  ^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+120 | impl<JsValue> 
+DocumentScanner {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:289:62
+    |
+289 |     pub fn 
+scan_reflex(&self, text: 
+&str) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+           ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+120 | impl<JsValue> 
+DocumentScanner {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:298:53
+    |
+298 |     pub fn 
+scan_syntax(&self, text: 
+&str) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+  ^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+120 | impl<JsValue> 
+DocumentScanner {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:298:62
+    |
+298 |     pub fn 
+scan_syntax(&self, text: 
+&str) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+           ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+120 | impl<JsValue> 
+DocumentScanner {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:304:55
+    |
+304 |     pub fn 
+scan_temporal(&self, text: 
+&str) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+    ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+120 | impl<JsValue> 
+DocumentScanner {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:304:64
+    |
+304 |     pub fn 
+scan_temporal(&self, text: 
+&str) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+             ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+120 | impl<JsValue> 
+DocumentScanner {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:310:60
+    |
+310 |     pub fn 
+scan_relations(&self, text: 
+&str, entity_spans: 
+JsValue) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+         ^^^^^^^ not found 
+in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:310:79
+    |
+310 |     pub fn 
+scan_relations(&self, text: 
+&str, entity_spans: 
+JsValue) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+                            
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+120 | impl<JsValue> 
+DocumentScanner {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:310:88
+    |
+310 |     pub fn 
+scan_relations(&self, text: 
+&str, entity_spans: 
+JsValue) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+                            
+         ^^^^^^^ not found 
+in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+120 | impl<JsValue> 
+DocumentScanner {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:323:59
+    |
+323 |     pub fn hydrate_rel
+ation_patterns(&mut self, 
+patterns: JsValue) -> 
+Result<(), JsValue> {
+    |                       
+                            
+        ^^^^^^^ not found 
+in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:323:82
+    |
+323 |     pub fn hydrate_rel
+ation_patterns(&mut self, 
+patterns: JsValue) -> 
+Result<(), JsValue> {
+    |                       
+                            
+                            
+   ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+120 | impl<JsValue> 
+DocumentScanner {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:340:33
+    |
+340 |     pub fn 
+get_status(&self) -> 
+JsValue {
+    |                       
+          ^^^^^^^ not found 
+in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:362:39
+    |
+362 |     pub fn 
+get_reflex_stats(&self) -> 
+JsValue {
+    |                       
+                ^^^^^^^ not 
+found in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\core.rs:368:41
+    |
+368 |     pub fn 
+get_temporal_stats(&self) 
+-> JsValue {
+    |                       
+                  ^^^^^^^ 
+not found in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\reflex.rs:179:43
+    |
+179 |     pub fn build(&mut 
+self) -> Result<(), 
+JsValue> {
+    |                       
+                    ^^^^^^^ 
+not found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+91  | impl<JsValue> 
+ReflexCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\reflex.rs:204:46
+    |
+204 |     pub fn 
+scan(&self, text: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                       
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+91  | impl<JsValue> 
+ReflexCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\reflex.rs:204:55
+    |
+204 |     pub fn 
+scan(&self, text: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+    ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+91  | impl<JsValue> 
+ReflexCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\reflex.rs:245:32
+    |
+245 |     pub fn 
+get_stats(&self) -> JsValue 
+{
+    |                       
+         ^^^^^^^ not found 
+in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\syntax.rs:156:46
+    |
+156 |     pub fn 
+scan(&self, text: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                       
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+88  | impl<JsValue> 
+SyntaxCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\syntax.rs:156:55
+    |
+156 |     pub fn 
+scan(&self, text: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+    ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+88  | impl<JsValue> 
+SyntaxCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\syntax.rs:303:60
+    |
+303 |     pub fn 
+scan_entities_only(&self, 
+text: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+         ^^^^^^^ not found 
+in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+88  | impl<JsValue> 
+SyntaxCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\syntax.rs:303:69
+    |
+303 |     pub fn 
+scan_entities_only(&self, 
+text: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                  ^^^^^^^ 
+not found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+88  | impl<JsValue> 
+SyntaxCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\syntax.rs:329:44
+    |
+329 |     pub fn 
+get_stats(&self, text: 
+&str) -> JsValue {
+    |                       
+                     
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\temporal.
+rs:453:17
+    |
+453 |         months: 
+JsValue,
+    |                 
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\temporal.
+rs:454:19
+    |
+454 |         weekdays: 
+JsValue,
+    |                   
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\temporal.
+rs:455:15
+    |
+455 |         eras: JsValue,
+    |               ^^^^^^^ 
+not found in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\temporal.
+rs:456:21
+    |
+456 |     ) -> Result<(), 
+JsValue> {
+    |                     
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+311 | impl<JsValue> 
+TemporalCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\temporal.
+rs:522:46
+    |
+522 |     pub fn 
+scan(&self, text: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                       
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+311 | impl<JsValue> 
+TemporalCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\temporal.
+rs:522:55
+    |
+522 |     pub fn 
+scan(&self, text: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+    ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+311 | impl<JsValue> 
+TemporalCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\temporal.
+rs:675:32
+    |
+675 |     pub fn 
+get_stats(&self) -> JsValue 
+{
+    |                       
+         ^^^^^^^ not found 
+in this scope
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\temporal.
+rs:696:21
+    |
+696 |         let start = 
+instant::Instant::now();
+    |                     
+^^^^^^^ use of undeclared 
+crate or module `instant`
+    |
+help: consider importing 
+one of these structs
+    |
+16  + use 
+std::time::Instant;
+    |
+16  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+696 -         let start = 
+instant::Instant::now();
+696 +         let start = 
+Instant::now();
+    |
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation.
+rs:239:43
+    |
+239 |     pub fn build(&mut 
+self) -> Result<(), 
+JsValue> {
+    |                       
+                    ^^^^^^^ 
+not found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+211 | impl<JsValue> 
+RelationEngine {
+    |     +++++++++
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\relation.
+rs:527:21
+    |
+527 |         let start = 
+instant::Instant::now();
+    |                     
+^^^^^^^ use of undeclared 
+crate or module `instant`
+    |
+help: consider importing 
+one of these structs
+    |
+48  + use 
+std::time::Instant;
+    |
+48  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+527 -         let start = 
+instant::Instant::now();
+527 +         let start = 
+Instant::now();
+    |
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation.
+rs:574:23
+    |
+574 |         entity_spans: 
+JsValue,
+    |                       
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation.
+rs:575:25
+    |
+575 |         
+existing_edges: JsValue,
+    |                       
+  ^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation.
+rs:576:17
+    |
+576 |     ) -> 
+Result<JsValue, JsValue> {
+    |                 
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+568 | impl<JsValue> 
+RelationEngine {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation.
+rs:576:26
+    |
+576 |     ) -> 
+Result<JsValue, JsValue> {
+    |                       
+   ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+568 | impl<JsValue> 
+RelationEngine {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation.
+rs:594:23
+    |
+594 |         entity_spans: 
+JsValue,
+    |                       
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation.
+rs:595:25
+    |
+595 |         
+existing_edges: JsValue,
+    |                       
+  ^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation.
+rs:596:17
+    |
+596 |     ) -> 
+Result<JsValue, JsValue> {
+    |                 
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+568 | impl<JsValue> 
+RelationEngine {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation.
+rs:596:26
+    |
+596 |     ) -> 
+Result<JsValue, JsValue> {
+    |                       
+   ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+568 | impl<JsValue> 
+RelationEngine {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation.
+rs:625:20
+    |
+625 |         _patterns: 
+JsValue,
+    |                    
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation.
+rs:628:21
+    |
+628 |     ) -> Result<(), 
+JsValue> {
+    |                     
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+568 | impl<JsValue> 
+RelationEngine {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation.
+rs:636:54
+    |
+636 |     pub fn 
+js_hydrate_patterns(&mut 
+self, _patterns: JsValue) 
+-> Result<(), JsValue> {
+    |                       
+                            
+   ^^^^^^^ not found in 
+this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation.
+rs:636:77
+    |
+636 |     pub fn 
+js_hydrate_patterns(&mut 
+self, _patterns: JsValue) 
+-> Result<(), JsValue> {
+    |                       
+                            
+                          
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+568 | impl<JsValue> 
+RelationEngine {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\scanner\triple.rs:100:45
+    |
+100 |     pub fn 
+js_extract(&self, text: 
+&str) -> JsValue {
+    |                       
+                      
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\document.
+rs:158:53
+    |
+158 |     pub fn 
+js_hydrate_entities(&mut 
+self, entities: JsValue) -> 
+Result<(), JsValue> {
+    |                       
+                            
+  ^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\document.
+rs:158:76
+    |
+158 |     pub fn 
+js_hydrate_entities(&mut 
+self, entities: JsValue) -> 
+Result<(), JsValue> {
+    |                       
+                            
+                         
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+112 | impl<JsValue> 
+DocumentCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\document.
+rs:169:51
+    |
+169 |     pub fn 
+js_hydrate_calendar(&mut 
+self, months: JsValue, 
+weekdays: JsValue, eras: 
+JsValue) -> Result<(), 
+JsValue> {
+    |                       
+                            
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\document.
+rs:169:70
+    |
+169 |     pub fn 
+js_hydrate_calendar(&mut 
+self, months: JsValue, 
+weekdays: JsValue, eras: 
+JsValue) -> Result<(), 
+JsValue> {
+    |                       
+                            
+                   ^^^^^^^ 
+not found in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\document.
+rs:169:85
+    |
+169 |     pub fn 
+js_hydrate_calendar(&mut 
+self, months: JsValue, 
+weekdays: JsValue, eras: 
+JsValue) -> Result<(), 
+JsValue> {
+    |                       
+                            
+                            
+      ^^^^^^^ not found in 
+this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\document.
+rs:169:108
+    |
+169 |     pub fn 
+js_hydrate_calendar(&mut 
+self, months: JsValue, 
+weekdays: JsValue, eras: 
+JsValue) -> Result<(), 
+JsValue> {
+    |                       
+                            
+                            
+                            
+ ^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+112 | impl<JsValue> 
+DocumentCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\document.
+rs:178:57
+    |
+178 |     pub fn 
+js_scan(&mut self, text: 
+&str, entity_spans: 
+JsValue) -> JsValue {
+    |                       
+                            
+      ^^^^^^^ not found in 
+this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\document.
+rs:178:69
+    |
+178 |     pub fn 
+js_scan(&mut self, text: 
+&str, entity_spans: 
+JsValue) -> JsValue {
+    |                       
+                            
+                  ^^^^^^^ 
+not found in this scope
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\document.
+rs:220:29
+    |
+220 |         let 
+overall_start = 
+instant::Instant::now();
+    |                       
+      ^^^^^^^ use of 
+undeclared crate or module 
+`instant`
+    |
+help: consider importing 
+one of these structs
+    |
+12  + use 
+std::time::Instant;
+    |
+12  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+220 -         let 
+overall_start = 
+instant::Instant::now();
+220 +         let 
+overall_start = 
+Instant::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\document.
+rs:272:29
+    |
+272 |         let 
+overall_start = 
+instant::Instant::now();
+    |                       
+      ^^^^^^^ use of 
+undeclared crate or module 
+`instant`
+    |
+help: consider importing 
+one of these structs
+    |
+12  + use 
+std::time::Instant;
+    |
+12  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+272 -         let 
+overall_start = 
+instant::Instant::now();
+272 +         let 
+overall_start = 
+Instant::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\document.
+rs:296:32
+    |
+296 |             let 
+triple_start = 
+instant::Instant::now();
+    |                       
+         ^^^^^^^ use of 
+undeclared crate or module 
+`instant`
+    |
+help: consider importing 
+one of these structs
+    |
+12  + use 
+std::time::Instant;
+    |
+12  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+296 -             let 
+triple_start = 
+instant::Instant::now();
+296 +             let 
+triple_start = 
+Instant::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\document.
+rs:305:34
+    |
+305 |             let 
+implicit_start = 
+instant::Instant::now();
+    |                       
+           ^^^^^^^ use of 
+undeclared crate or module 
+`instant`
+    |
+help: consider importing 
+one of these structs
+    |
+12  + use 
+std::time::Instant;
+    |
+12  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+305 -             let 
+implicit_start = 
+instant::Instant::now();
+305 +             let 
+implicit_start = 
+Instant::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\document.
+rs:325:34
+    |
+325 |             let 
+relation_start = 
+instant::Instant::now();
+    |                       
+           ^^^^^^^ use of 
+undeclared crate or module 
+`instant`
+    |
+help: consider importing 
+one of these structs
+    |
+12  + use 
+std::time::Instant;
+    |
+12  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+325 -             let 
+relation_start = 
+instant::Instant::now();
+325 +             let 
+relation_start = 
+Instant::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\document.
+rs:348:34
+    |
+348 |             let 
+temporal_start = 
+instant::Instant::now();
+    |                       
+           ^^^^^^^ use of 
+undeclared crate or module 
+`instant`
+    |
+help: consider importing 
+one of these structs
+    |
+12  + use 
+std::time::Instant;
+    |
+12  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+348 -             let 
+temporal_start = 
+instant::Instant::now();
+348 +             let 
+temporal_start = 
+Instant::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\document.
+rs:410:29
+    |
+410 |         let 
+overall_start = 
+instant::Instant::now();
+    |                       
+      ^^^^^^^ use of 
+undeclared crate or module 
+`instant`
+    |
+help: consider importing 
+one of these structs
+    |
+12  + use 
+std::time::Instant;
+    |
+12  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+410 -         let 
+overall_start = 
+instant::Instant::now();
+410 +         let 
+overall_start = 
+Instant::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\document.
+rs:415:28
+    |
+415 |         let 
+triple_start = 
+instant::Instant::now();
+    |                       
+     ^^^^^^^ use of 
+undeclared crate or module 
+`instant`
+    |
+help: consider importing 
+one of these structs
+    |
+12  + use 
+std::time::Instant;
+    |
+12  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+415 -         let 
+triple_start = 
+instant::Instant::now();
+415 +         let 
+triple_start = 
+Instant::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\document.
+rs:421:30
+    |
+421 |         let 
+implicit_start = 
+instant::Instant::now();
+    |                       
+       ^^^^^^^ use of 
+undeclared crate or module 
+`instant`
+    |
+help: consider importing 
+one of these structs
+    |
+12  + use 
+std::time::Instant;
+    |
+12  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+421 -         let 
+implicit_start = 
+instant::Instant::now();
+421 +         let 
+implicit_start = 
+Instant::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\document.
+rs:456:30
+    |
+456 |         let 
+temporal_start = 
+instant::Instant::now();
+    |                       
+       ^^^^^^^ use of 
+undeclared crate or module 
+`instant`
+    |
+help: consider importing 
+one of these structs
+    |
+12  + use 
+std::time::Instant;
+    |
+12  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+456 -         let 
+temporal_start = 
+instant::Instant::now();
+456 +         let 
+temporal_start = 
+Instant::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\document.
+rs:464:32
+    |
+464 |         let 
+structured_start = 
+instant::Instant::now();
+    |                       
+         ^^^^^^^ use of 
+undeclared crate or module 
+`instant`
+    |
+help: consider importing 
+one of these structs
+    |
+12  + use 
+std::time::Instant;
+    |
+12  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+464 -         let 
+structured_start = 
+instant::Instant::now();
+464 +         let 
+structured_start = 
+Instant::now();
+    |
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\document.
+rs:488:29
+    |
+488 |         let 
+unified_start = 
+instant::Instant::now();
+    |                       
+      ^^^^^^^ use of 
+undeclared crate or module 
+`instant`
+    |
+help: consider importing 
+one of these structs
+    |
+12  + use 
+std::time::Instant;
+    |
+12  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+488 -         let 
+unified_start = 
+instant::Instant::now();
+488 +         let 
+unified_start = 
+Instant::now();
+    |
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\document.
+rs:536:75
+    |
+536 |     pub fn 
+scan_js(&mut self, text: 
+&str, entity_spans: 
+&[EntitySpan]) -> JsValue {
+    |                       
+                            
+                        
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\conductor
+.rs:171:53
+    |
+171 |     pub fn 
+js_hydrate_entities(&mut 
+self, entities: JsValue) -> 
+Result<(), JsValue> {
+    |                       
+                            
+  ^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\conductor
+.rs:171:76
+    |
+171 |     pub fn 
+js_hydrate_entities(&mut 
+self, entities: JsValue) -> 
+Result<(), JsValue> {
+    |                       
+                            
+                         
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+155 | impl<JsValue> 
+ScanConductor {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\conductor
+.rs:180:51
+    |
+180 |     pub fn 
+js_hydrate_calendar(&mut 
+self, months: JsValue, 
+weekdays: JsValue, eras: 
+JsValue) -> Result<(), 
+JsValue> {
+    |                       
+                            
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\conductor
+.rs:180:70
+    |
+180 |     pub fn 
+js_hydrate_calendar(&mut 
+self, months: JsValue, 
+weekdays: JsValue, eras: 
+JsValue) -> Result<(), 
+JsValue> {
+    |                       
+                            
+                   ^^^^^^^ 
+not found in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\conductor
+.rs:180:85
+    |
+180 |     pub fn 
+js_hydrate_calendar(&mut 
+self, months: JsValue, 
+weekdays: JsValue, eras: 
+JsValue) -> Result<(), 
+JsValue> {
+    |                       
+                            
+                            
+      ^^^^^^^ not found in 
+this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\conductor
+.rs:180:108
+    |
+180 |     pub fn 
+js_hydrate_calendar(&mut 
+self, months: JsValue, 
+weekdays: JsValue, eras: 
+JsValue) -> Result<(), 
+JsValue> {
+    |                       
+                            
+                            
+                            
+ ^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+155 | impl<JsValue> 
+ScanConductor {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\conductor
+.rs:206:57
+    |
+206 |     pub fn 
+js_scan(&mut self, text: 
+&str, entity_spans: 
+JsValue) -> JsValue {
+    |                       
+                            
+      ^^^^^^^ not found in 
+this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\conductor
+.rs:206:69
+    |
+206 |     pub fn 
+js_scan(&mut self, text: 
+&str, entity_spans: 
+JsValue) -> JsValue {
+    |                       
+                            
+                  ^^^^^^^ 
+not found in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\conductor
+.rs:218:63
+    |
+218 |     pub fn 
+js_scan_force(&mut self, 
+text: &str, entity_spans: 
+JsValue) -> JsValue {
+    |                       
+                            
+            ^^^^^^^ not 
+found in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\conductor
+.rs:218:75
+    |
+218 |     pub fn 
+js_scan_force(&mut self, 
+text: &str, entity_spans: 
+JsValue) -> JsValue {
+    |                       
+                            
+                        
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\conductor
+.rs:233:43
+    |
+233 |     pub fn 
+js_incremental_stats(&self) 
+-> JsValue {
+    |                       
+                    ^^^^^^^ 
+not found in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\chunker.r
+s:284:47
+    |
+284 |     pub fn 
+chunk(&self, text: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                        
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+271 | impl<JsValue> Chunker 
+{
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\chunker.r
+s:284:56
+    |
+284 |     pub fn 
+chunk(&self, text: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+     ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+271 | impl<JsValue> Chunker 
+{
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\chunker.r
+s:291:44
+    |
+291 |     pub fn 
+get_stats(&self, text: 
+&str) -> JsValue {
+    |                       
+                     
+^^^^^^^ not found in this 
+scope
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\chunker.r
+s:302:21
+    |
+302 |         let start = 
+instant::Instant::now();
+    |                     
+^^^^^^^ use of undeclared 
+crate or module `instant`
+    |
+help: consider importing 
+one of these structs
+    |
+20  + use 
+std::time::Instant;
+    |
+20  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+302 -         let start = 
+instant::Instant::now();
+302 +         let start = 
+Instant::now();
+    |
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\attacher.
+rs:109:37
+    |
+109 |     pub fn 
+attach(&self, chunks_js: 
+JsValue) -> Result<JsValue, 
+JsValue> {
+    |                       
+              ^^^^^^^ not 
+found in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\attacher.
+rs:109:56
+    |
+109 |     pub fn 
+attach(&self, chunks_js: 
+JsValue) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+     ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+99  | impl<JsValue> 
+Attacher {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\attacher.
+rs:109:65
+    |
+109 |     pub fn 
+attach(&self, chunks_js: 
+JsValue) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+              ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+99  | impl<JsValue> 
+Attacher {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+  --> src\scanner\dialogue.r
+s:39:21
+   |
+39 |         _chunks_js: 
+JsValue,
+   |                     
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+  --> src\scanner\dialogue.r
+s:40:22
+   |
+40 |         _context_js: 
+JsValue // Using full 
+NarrativeContext object 
+from JS might be complex 
+due to serialization
+   |                      
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+  --> src\scanner\dialogue.r
+s:41:17
+   |
+41 |     ) -> 
+Result<JsValue, JsValue> {
+   |                 
+^^^^^^^ not found in this 
+scope
+   |
+help: you might be missing 
+a type parameter
+   |
+29 | impl<JsValue> 
+DialogueAttributor {
+   |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+  --> src\scanner\dialogue.r
+s:41:26
+   |
+41 |     ) -> 
+Result<JsValue, JsValue> {
+   |                        
+  ^^^^^^^ not found in this 
+scope
+   |
+help: you might be missing 
+a type parameter
+   |
+29 | impl<JsValue> 
+DialogueAttributor {
+   |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\narrative
+.rs:137:50
+    |
+137 |     pub fn 
+hydrate_entities(&mut self, 
+entities: JsValue) -> 
+Result<(), JsValue> {
+    |                       
+                           
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\narrative
+.rs:137:73
+    |
+137 |     pub fn 
+hydrate_entities(&mut self, 
+entities: JsValue) -> 
+Result<(), JsValue> {
+    |                       
+                            
+                      
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+121 | impl<JsValue> 
+NarrativeGraph {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\narrative
+.rs:157:49
+    |
+157 |     pub fn 
+analyze(&self, text: &str) 
+-> Result<JsValue, JsValue> 
+{
+    |                       
+                          
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+121 | impl<JsValue> 
+NarrativeGraph {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\narrative
+.rs:157:58
+    |
+157 |     pub fn 
+analyze(&self, text: &str) 
+-> Result<JsValue, JsValue> 
+{
+    |                       
+                            
+       ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+121 | impl<JsValue> 
+NarrativeGraph {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\narrative
+.rs:164:52
+    |
+164 |     pub fn 
+chunk_only(&self, text: 
+&str) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+ ^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+121 | impl<JsValue> 
+NarrativeGraph {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\narrative
+.rs:164:61
+    |
+164 |     pub fn 
+chunk_only(&self, text: 
+&str) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+          ^^^^^^^ not found 
+in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+121 | impl<JsValue> 
+NarrativeGraph {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\narrative
+.rs:181:40
+    |
+181 |     pub fn 
+get_context_state(&self) -> 
+JsValue {
+    |                       
+                 ^^^^^^^ 
+not found in this scope
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\narrative
+.rs:191:21
+    |
+191 |         let start = 
+instant::Instant::now();
+    |                     
+^^^^^^^ use of undeclared 
+crate or module `instant`
+    |
+help: consider importing 
+one of these structs
+    |
+38  + use 
+std::time::Instant;
+    |
+38  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+191 -         let start = 
+instant::Instant::now();
+191 +         let start = 
+Instant::now();
+    |
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\unified.r
+s:947:46
+    |
+947 |     pub fn 
+scan(&self, text: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                       
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+933 | impl<JsValue> 
+WasmUnifiedScanner {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\unified.r
+s:947:55
+    |
+947 |     pub fn 
+scan(&self, text: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+    ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+933 | impl<JsValue> 
+WasmUnifiedScanner {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\constrain
+ts.rs:482:36
+    |
+482 |     pub fn 
+validate(&self, ref_js: 
+JsValue) -> Result<JsValue, 
+JsValue> {
+    |                       
+             ^^^^^^^ not 
+found in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\constrain
+ts.rs:482:55
+    |
+482 |     pub fn 
+validate(&self, ref_js: 
+JsValue) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+    ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+472 | impl<JsValue> 
+WasmConstraintEngine {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\constrain
+ts.rs:482:64
+    |
+482 |     pub fn 
+validate(&self, ref_js: 
+JsValue) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+             ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+472 | impl<JsValue> 
+WasmConstraintEngine {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\constrain
+ts.rs:499:71
+    |
+499 |     pub fn get_allowed
+_predicates(&self, 
+entity_kind: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                    ^^^^^^^ 
+not found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+472 | impl<JsValue> 
+WasmConstraintEngine {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\constrain
+ts.rs:499:80
+    |
+499 |     pub fn get_allowed
+_predicates(&self, 
+entity_kind: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                            
+ ^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+472 | impl<JsValue> 
+WasmConstraintEngine {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\constrain
+ts.rs:507:47
+    |
+507 |     pub fn 
+enforce_uniqueness(&self, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                        
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\constrain
+ts.rs:507:66
+    |
+507 |     pub fn 
+enforce_uniqueness(&self, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+               ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+472 | impl<JsValue> 
+WasmConstraintEngine {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\constrain
+ts.rs:507:75
+    |
+507 |     pub fn 
+enforce_uniqueness(&self, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                        
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+472 | impl<JsValue> 
+WasmConstraintEngine {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\projectio
+ns.rs:845:43
+    |
+845 |     pub fn 
+build_timeline(&self, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                    ^^^^^^^ 
+not found in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\projectio
+ns.rs:845:62
+    |
+845 |     pub fn 
+build_timeline(&self, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+           ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+835 | impl<JsValue> 
+WasmProjector {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\projectio
+ns.rs:845:71
+    |
+845 |     pub fn 
+build_timeline(&self, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                    ^^^^^^^ 
+not found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+835 | impl<JsValue> 
+WasmProjector {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\projectio
+ns.rs:856:53
+    |
+856 |     pub fn build_relat
+ionship_graph(&self, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+  ^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\projectio
+ns.rs:856:72
+    |
+856 |     pub fn build_relat
+ionship_graph(&self, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                     
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+835 | impl<JsValue> 
+WasmProjector {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\projectio
+ns.rs:856:81
+    |
+856 |     pub fn build_relat
+ionship_graph(&self, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                            
+  ^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+835 | impl<JsValue> 
+WasmProjector {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\projectio
+ns.rs:867:45
+    |
+867 |     pub fn 
+build_link_graph(&self, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                      
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\projectio
+ns.rs:867:64
+    |
+867 |     pub fn 
+build_link_graph(&self, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+             ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+835 | impl<JsValue> 
+WasmProjector {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\projectio
+ns.rs:867:73
+    |
+867 |     pub fn 
+build_link_graph(&self, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                      
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+835 | impl<JsValue> 
+WasmProjector {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\projectio
+ns.rs:878:55
+    |
+878 |     pub fn build_chara
+cter_sheet(&self, 
+character_js: JsValue, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+    ^^^^^^^ not found in 
+this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\projectio
+ns.rs:878:73
+    |
+878 |     pub fn build_chara
+cter_sheet(&self, 
+character_js: JsValue, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                      
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\projectio
+ns.rs:878:92
+    |
+878 |     pub fn build_chara
+cter_sheet(&self, 
+character_js: JsValue, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                            
+             ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+835 | impl<JsValue> 
+WasmProjector {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\projectio
+ns.rs:878:101
+    |
+878 |     pub fn build_chara
+cter_sheet(&self, 
+character_js: JsValue, 
+refs_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                            
+                      
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+835 | impl<JsValue> 
+WasmProjector {
+    |     +++++++++
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `instant`
+   --> src\scanner\structure
+d_relation.rs:243:21
+    |
+243 |         let start = 
+instant::Instant::now();
+    |                     
+^^^^^^^ use of undeclared 
+crate or module `instant`
+    |
+help: consider importing 
+one of these structs
+    |
+33  + use 
+std::time::Instant;
+    |
+33  + use 
+tokio::time::Instant;
+    |
+help: if you import 
+`Instant`, refer to it 
+directly
+    |
+243 -         let start = 
+instant::Instant::now();
+243 +         let start = 
+Instant::now();
+    |
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation_
+filter.rs:147:33
+    |
+147 |     pub fn 
+get_config(&self) -> 
+JsValue {
+    |                       
+          ^^^^^^^ not found 
+in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation_
+filter.rs:286:52
+    |
+286 |     pub fn 
+js_filter(&self, text: 
+&str, relations: JsValue) 
+-> JsValue {
+    |                       
+                            
+ ^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation_
+filter.rs:286:64
+    |
+286 |     pub fn 
+js_filter(&self, text: 
+&str, relations: JsValue) 
+-> JsValue {
+    |                       
+                            
+             ^^^^^^^ not 
+found in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation_
+filter.rs:311:63
+    |
+311 |     pub fn 
+js_filter_with_stats(&self, 
+text: &str, relations: 
+JsValue) -> JsValue {
+    |                       
+                            
+            ^^^^^^^ not 
+found in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\scanner\relation_
+filter.rs:311:75
+    |
+311 |     pub fn 
+js_filter_with_stats(&self, 
+text: &str, relations: 
+JsValue) -> JsValue {
+    |                       
+                            
+                        
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:221:19
+    |
+221 |         patterns: 
+JsValue,
+    |                   
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:224:21
+    |
+224 |     ) -> Result<(), 
+JsValue> {
+    |                     
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:230:59
+    |
+230 |     pub fn hydrate_rel
+ation_patterns(&mut self, 
+patterns: JsValue) -> 
+Result<(), JsValue> {
+    |                       
+                            
+        ^^^^^^^ not found 
+in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:230:82
+    |
+230 |     pub fn hydrate_rel
+ation_patterns(&mut self, 
+patterns: JsValue) -> 
+Result<(), JsValue> {
+    |                       
+                            
+                            
+   ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:247:62
+    |
+247 |     pub fn 
+process_enhanced(&mut self, 
+text: &str, spans_js: 
+JsValue) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+           ^^^^^^^ not 
+found in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:247:81
+    |
+247 |     pub fn 
+process_enhanced(&mut self, 
+text: &str, spans_js: 
+JsValue) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+                            
+  ^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:247:90
+    |
+247 |     pub fn 
+process_enhanced(&mut self, 
+text: &str, spans_js: 
+JsValue) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+                            
+           ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:318:53
+    |
+318 |     pub fn 
+process(&mut self, text: 
+&str, spans_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+  ^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:318:72
+    |
+318 |     pub fn 
+process(&mut self, text: 
+&str, spans_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                     
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:318:81
+    |
+318 |     pub fn 
+process(&mut self, text: 
+&str, spans_js: JsValue) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                            
+  ^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:363:52
+    |
+363 |     pub fn 
+entity_at(&self, offset: 
+u32) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+ ^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:363:61
+    |
+363 |     pub fn 
+entity_at(&self, offset: 
+u32) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+          ^^^^^^^ not found 
+in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:380:55
+    |
+380 |     pub fn 
+spans_of(&self, entity_id: 
+&str) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+    ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:380:64
+    |
+380 |     pub fn 
+spans_of(&self, entity_id: 
+&str) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+             ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:395:45
+    |
+395 |     pub fn 
+linked_entities(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                      
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:395:54
+    |
+395 |     pub fn 
+linked_entities(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+   ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:410:43
+    |
+410 |     pub fn 
+get_all_nodes(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                    ^^^^^^^ 
+not found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:410:52
+    |
+410 |     pub fn 
+get_all_nodes(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+ ^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:425:43
+    |
+425 |     pub fn 
+get_all_edges(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                    ^^^^^^^ 
+not found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:425:52
+    |
+425 |     pub fn 
+get_all_edges(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+ ^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:441:61
+    |
+441 |     pub fn 
+outgoing_edges(&self, 
+entity_id: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+          ^^^^^^^ not found 
+in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:441:70
+    |
+441 |     pub fn 
+outgoing_edges(&self, 
+entity_id: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                   ^^^^^^^ 
+not found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:458:61
+    |
+458 |     pub fn 
+incoming_edges(&self, 
+entity_id: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+          ^^^^^^^ not found 
+in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:458:70
+    |
+458 |     pub fn 
+incoming_edges(&self, 
+entity_id: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                   ^^^^^^^ 
+not found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:475:55
+    |
+475 |     pub fn 
+get_node(&self, entity_id: 
+&str) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+    ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:475:64
+    |
+475 |     pub fn 
+get_node(&self, entity_id: 
+&str) -> Result<JsValue, 
+JsValue> {
+    |                       
+                            
+             ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:495:35
+    |
+495 |     pub fn 
+stats(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+            ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:495:44
+    |
+495 |     pub fn 
+stats(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                     
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+193 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:552:63
+    |
+552 |     pub fn 
+get_entity_spans(&self, 
+entity_id: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+            ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+545 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:552:72
+    |
+552 |     pub fn 
+get_entity_spans(&self, 
+entity_id: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                     
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+545 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:569:64
+    |
+569 |     pub fn 
+get_entity_record(&self, 
+entity_id: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+             ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+545 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:569:73
+    |
+569 |     pub fn 
+get_entity_record(&self, 
+entity_id: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                      
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+545 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:581:52
+    |
+581 |     pub fn get_all_ent
+ity_records(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+ ^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+545 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:581:61
+    |
+581 |     pub fn get_all_ent
+ity_records(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+          ^^^^^^^ not found 
+in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+545 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:634:66
+    |
+634 |     pub fn 
+get_entity_metadata(&self, 
+entity_id: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+               ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+621 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:634:75
+    |
+634 |     pub fn 
+get_entity_metadata(&self, 
+entity_id: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                        
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+621 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:646:46
+    |
+646 |     pub fn 
+get_all_metadata(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                       
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+621 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:646:55
+    |
+646 |     pub fn 
+get_all_metadata(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+    ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+621 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:657:55
+    |
+657 |     pub fn get_entitie
+s_by_frequency(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+    ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+621 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:657:64
+    |
+657 |     pub fn get_entitie
+s_by_frequency(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+             ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+621 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:669:56
+    |
+669 |     pub fn get_entitie
+s_by_importance(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+     ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+621 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:669:65
+    |
+669 |     pub fn get_entitie
+s_by_importance(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+              ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+621 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:681:57
+    |
+681 |     pub fn get_cross_d
+ocument_entities(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+      ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+621 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:681:66
+    |
+681 |     pub fn get_cross_d
+ocument_entities(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+               ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+621 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:693:63
+    |
+693 |     pub fn 
+get_entities_in_doc(&self, 
+doc_id: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+            ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+621 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> 
+src\reality\api.rs:693:72
+    |
+693 |     pub fn 
+get_entities_in_doc(&self, 
+doc_id: &str) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                     
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+621 | impl<JsValue> 
+RealityCortex {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\incremen
+tal.rs:303:31
+    |
+303 |     pub fn 
+js_new(config_val: JsValue, 
+corpus_stats_val: JsValue) 
+-> Result<ResoRankIncrementa
+lScorer, JsValue> {
+    |                       
+        ^^^^^^^ not found 
+in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\incremen
+tal.rs:303:58
+    |
+303 |     pub fn 
+js_new(config_val: JsValue, 
+corpus_stats_val: JsValue) 
+-> Result<ResoRankIncrementa
+lScorer, JsValue> {
+    |                       
+                            
+       ^^^^^^^ not found in 
+this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\incremen
+tal.rs:303:104
+    |
+303 |     pub fn 
+js_new(config_val: JsValue, 
+corpus_stats_val: JsValue) 
+-> Result<ResoRankIncrementa
+lScorer, JsValue> {
+    |                       
+                            
+                            
+                         
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+300 | impl<JsValue> 
+ResoRankIncrementalScorer {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\incremen
+tal.rs:347:73
+    |
+347 |     pub fn 
+js_get_scores(&self, 
+strategy_str: 
+Option<String>) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                      
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+300 | impl<JsValue> 
+ResoRankIncrementalScorer {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\incremen
+tal.rs:347:82
+    |
+347 |     pub fn 
+js_get_scores(&self, 
+strategy_str: 
+Option<String>) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                            
+   ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+300 | impl<JsValue> 
+ResoRankIncrementalScorer {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\incremen
+tal.rs:359:91
+    |
+359 |     pub fn js_get_scor
+es_with_explanations(&self, 
+strategy_str: 
+Option<String>) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                            
+            ^^^^^^^ not 
+found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+300 | impl<JsValue> 
+ResoRankIncrementalScorer {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\incremen
+tal.rs:359:100
+    |
+359 |     pub fn js_get_scor
+es_with_explanations(&self, 
+strategy_str: 
+Option<String>) -> 
+Result<JsValue, JsValue> {
+    |                       
+                            
+                            
+                     
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+300 | impl<JsValue> 
+ResoRankIncrementalScorer {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:631:21
+    |
+631 |         config_val: 
+JsValue,
+    |                     
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:632:27
+    |
+632 |         
+corpus_stats_val: JsValue,
+    |                       
+    ^^^^^^^ not found in 
+this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:634:33
+    |
+634 |     ) -> 
+Result<ResoRankScorer, 
+JsValue> {
+    |                       
+          ^^^^^^^ not found 
+in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+627 | impl<JsValue> 
+ResoRankScorer {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:656:23
+    |
+656 |         doc_meta_val: 
+JsValue,
+    |                       
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:657:21
+    |
+657 |         tokens_val: 
+JsValue,
+    |                     
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:659:21
+    |
+659 |     ) -> Result<(), 
+JsValue> {
+    |                     
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+627 | impl<JsValue> 
+ResoRankScorer {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:671:20
+    |
+671 |         query_val: 
+JsValue,
+    |                    
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:673:17
+    |
+673 |     ) -> 
+Result<JsValue, JsValue> {
+    |                 
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+627 | impl<JsValue> 
+ResoRankScorer {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:673:26
+    |
+673 |     ) -> 
+Result<JsValue, JsValue> {
+    |                       
+   ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+627 | impl<JsValue> 
+ResoRankScorer {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:683:20
+    |
+683 |         query_val: 
+JsValue,
+    |                    
+^^^^^^^ not found in this 
+scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:685:17
+    |
+685 |     ) -> 
+Result<JsValue, JsValue> {
+    |                 
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+627 | impl<JsValue> 
+ResoRankScorer {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:685:26
+    |
+685 |     ) -> 
+Result<JsValue, JsValue> {
+    |                       
+   ^^^^^^^ not found in 
+this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+627 | impl<JsValue> 
+ResoRankScorer {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:693:40
+    |
+693 |     pub fn 
+js_to_json(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                 ^^^^^^^ 
+not found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+627 | impl<JsValue> 
+ResoRankScorer {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:693:49
+    |
+693 |     pub fn 
+js_to_json(&self) -> 
+Result<JsValue, JsValue> {
+    |                       
+                          
+^^^^^^^ not found in this 
+scope
+    |
+help: you might be missing 
+a type parameter
+    |
+627 | impl<JsValue> 
+ResoRankScorer {
+    |     +++++++++
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:700:35
+    |
+700 |     pub fn 
+js_from_json(json_val: 
+JsValue) -> 
+Result<ResoRankScorer, 
+JsValue> {
+    |                       
+            ^^^^^^^ not 
+found in this scope
+
+error[E0412]: cannot find 
+type `JsValue` in this scope
+   --> src\resorank\scorer.r
+s:700:70
+    |
+700 |     pub fn 
+js_from_json(json_val: 
+JsValue) -> 
+Result<ResoRankScorer, 
+JsValue> {
+    |                       
+                            
+                   ^^^^^^^ 
+not found in this scope
+    |
+help: you might be missing 
+a type parameter
+    |
+627 | impl<JsValue> 
+ResoRankScorer {
+    |     +++++++++
+
+warning: unused import: 
+`ChunkResult`
+  --> src\scanner\attacher.r
+s:21:49
+   |
+21 | use crate::scanner::chu
+nker::{Chunk, ChunkKind, 
+ChunkResult};
+   |                        
+                         
+^^^^^^^^^^^
+   |
+   = note: 
+`#[warn(unused_imports)]` 
+on by default
+
+warning: unused import: 
+`ChunkResult`
+  --> src\scanner\dialogue.r
+s:10:49
+   |
+10 | use crate::scanner::chu
+nker::{Chunk, ChunkKind, 
+ChunkResult};
+   |                        
+                         
+^^^^^^^^^^^
+
+warning: unused import: 
+`NarrativeContext`
+  --> src\scanner\dialogue.r
+s:11:32
+   |
+11 | use crate::scanner::res
+olver::{NarrativeContext, 
+EntityId, Resolver};
+   |                        
+        ^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Deserialize` and 
+`Serialize`
+  --> src\scanner\dialogue.r
+s:13:13
+   |
+13 | use 
+serde::{Deserialize, 
+Serialize};
+   |             
+^^^^^^^^^^^  ^^^^^^^^^
+
+warning: unused import: 
+`POS`
+  --> src\scanner\structured
+_relation.rs:35:73
+   |
+35 | use 
+super::chunker::{Chunk, 
+ChunkKind, ChunkResult, 
+Chunker, TextRange, POS};
+   |                        
+                            
+                     ^^^
+
+warning: unused import: 
+`ChunkResult`
+   --> 
+src\reality\parser.rs:643:49
+    |
+643 | use crate::scanner::ch
+unker::{Chunk, ChunkKind, 
+ChunkResult};
+    |                       
+                          
+^^^^^^^^^^^
+
+warning: unused imports: 
+`ProjectionStats`, 
+`project_all`, 
+`project_attributions`, 
+`project_quads`, and 
+`project_state_changes`
+  --> 
+src\reality\engine.rs:16:22
+   |
+16 |     project_triples, 
+project_quads, 
+project_attributions, 
+project_state_changes,
+   |                      
+^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^^
+17 |     project_all, 
+project_all_with_stats,
+   |     ^^^^^^^^^^^
+18 |     Triple, QuadPlus, 
+Attribution, StateChange, 
+Projection, ProjectionStats,
+   |                        
+                            
+         ^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+  --> 
+src\reality\engine.rs:20:60
+   |
+20 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+   |                        
+                            
+        ^^^^^^^^
+
+warning: unused import: 
+`ExtractedRelation`
+   --> 
+src\reality\api.rs:100:82
+    |
+100 | use crate::scanner::re
+lation::{RelationCortex, 
+EntitySpan as 
+RelationEntitySpan, 
+ExtractedRelation};
+    |                       
+                            
+                            
+   ^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`SpanRecord`
+   --> 
+src\reality\api.rs:101:40
+    |
+101 | use super::entity_laye
+r::{EntityLayer, 
+SpanRecord, EntityRecord};
+    |                       
+                 ^^^^^^^^^^
+
+warning: unused import: 
+`ConceptEdge`
+  --> 
+src\reality\global.rs:11:47
+   |
+11 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge};
+   |                        
+                       
+^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge` and 
+`ConceptNode`
+ --> src\reality\algorithms.
+rs:9:34
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge};
+  |                         
+         ^^^^^^^^^^^  
+^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+ --> 
+src\reality\temporal.rs:9:60
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+  |                         
+                            
+       ^^^^^^^^
+
+warning: unexpected `cfg` 
+condition value: 
+`sqlite_wasm`
+  --> 
+src\graphdb\mod.rs:10:7
+   |
+10 | #[cfg(feature = 
+"sqlite_wasm")]
+   |       
+^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values 
+for `feature` are: `default`
+   = help: consider adding 
+`sqlite_wasm` as a feature 
+in `Cargo.toml`
+   = note: see <https://doc.
+rust-lang.org/nightly/rustc/
+check-cfg/cargo-specifics.ht
+ml> for more information 
+about checking conditional 
+configuration
+   = note: 
+`#[warn(unexpected_cfgs)]` 
+on by default
+
+warning: unexpected `cfg` 
+condition value: 
+`sqlite_wasm`
+ --> 
+src\graphdb\storage.rs:6:7
+  |
+6 | #[cfg(feature = 
+"sqlite_wasm")]
+  |       
+^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: expected values 
+for `feature` are: `default`
+  = help: consider adding 
+`sqlite_wasm` as a feature 
+in `Cargo.toml`
+  = note: see <https://doc.r
+ust-lang.org/nightly/rustc/c
+heck-cfg/cargo-specifics.htm
+l> for more information 
+about checking conditional 
+configuration
+
+warning: unexpected `cfg` 
+condition value: 
+`sqlite_wasm`
+  --> 
+src\graphdb\storage.rs:11:7
+   |
+11 | #[cfg(feature = 
+"sqlite_wasm")]
+   |       
+^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values 
+for `feature` are: `default`
+   = help: consider adding 
+`sqlite_wasm` as a feature 
+in `Cargo.toml`
+   = note: see <https://doc.
+rust-lang.org/nightly/rustc/
+check-cfg/cargo-specifics.ht
+ml> for more information 
+about checking conditional 
+configuration
+
+warning: unexpected `cfg` 
+condition value: 
+`sqlite_wasm`
+  --> 
+src\graphdb\storage.rs:16:7
+   |
+16 | #[cfg(feature = 
+"sqlite_wasm")]
+   |       
+^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values 
+for `feature` are: `default`
+   = help: consider adding 
+`sqlite_wasm` as a feature 
+in `Cargo.toml`
+   = note: see <https://doc.
+rust-lang.org/nightly/rustc/
+check-cfg/cargo-specifics.ht
+ml> for more information 
+about checking conditional 
+configuration
+
+warning: unexpected `cfg` 
+condition value: 
+`sqlite_wasm`
+   --> src\graphdb\storage.r
+s:152:17
+    |
+152 | #[cfg(all(test, 
+feature = "sqlite_wasm"))]
+    |                 
+^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values 
+for `feature` are: `default`
+    = help: consider adding 
+`sqlite_wasm` as a feature 
+in `Cargo.toml`
+    = note: see <https://doc
+.rust-lang.org/nightly/rustc
+/check-cfg/cargo-specifics.h
+tml> for more information 
+about checking conditional 
+configuration
+
+warning: unexpected `cfg` 
+condition value: 
+`sqlite_wasm`
+   --> src\graphdb\storage.r
+s:210:11
+    |
+210 | #[cfg(not(feature = 
+"sqlite_wasm"))]
+    |           
+^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values 
+for `feature` are: `default`
+    = help: consider adding 
+`sqlite_wasm` as a feature 
+in `Cargo.toml`
+    = note: see <https://doc
+.rust-lang.org/nightly/rustc
+/check-cfg/cargo-specifics.h
+tml> for more information 
+about checking conditional 
+configuration
+
+warning: unexpected `cfg` 
+condition value: 
+`sqlite_wasm`
+   --> src\graphdb\storage.r
+s:213:11
+    |
+213 | #[cfg(not(feature = 
+"sqlite_wasm"))]
+    |           
+^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values 
+for `feature` are: `default`
+    = help: consider adding 
+`sqlite_wasm` as a feature 
+in `Cargo.toml`
+    = note: see <https://doc
+.rust-lang.org/nightly/rustc
+/check-cfg/cargo-specifics.h
+tml> for more information 
+about checking conditional 
+configuration
+
+warning: unused imports: 
+`ConceptEdge`, 
+`ConceptNode`, and 
+`EdgeKind`
+ --> 
+src\graphdb\storage.rs:8:29
+  |
+8 | use crate::reality::grap
+h::{ConceptNode, 
+ConceptEdge, EdgeKind};
+  |                         
+    ^^^^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^
+
+warning: unused import: 
+`tauri::Manager`
+  --> src\lib.rs:19:5
+   |
+19 | use tauri::Manager;
+   |     ^^^^^^^^^^^^^^
+
+error[E0061]: this function 
+takes 3 arguments but 0 
+arguments were supplied
+  --> src\commands.rs:36:16
+   |
+36 |     Mutex::new(ResoRank
+Scorer::new())
+   |                
+^^^^^^^^^^^^^^^^^^^-- three 
+arguments of type 
+`ResoRankConfig`, 
+`CorpusStatistics`, and 
+`ProximityStrategy` are 
+missing
+   |
+note: associated function 
+defined here
+  --> 
+src\resorank\scorer.rs:52:12
+   |
+52 |     pub fn new(
+   |            ^^^
+53 |         config: 
+ResoRankConfig,
+   |         
+----------------------
+54 |         corpus_stats: 
+CorpusStatistics,
+   |         ---------------
+---------------
+55 |         
+proximity_strategy: 
+ProximityStrategy,
+   |         ---------------
+----------------------
+help: provide the arguments
+   |
+36 |     Mutex::new(ResoRank
+Scorer::new(/* 
+ResoRankConfig */, /* 
+CorpusStatistics */, /* 
+ProximityStrategy */))
+   |                        
+           ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\core.rs:130:13
+    |
+130 |             serde_wasm
+_bindgen::from_value(config)
+    |             
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\core.rs:131:30
+    |
+131 |                 
+.map_err(|e| JsValue::from_s
+tr(&format!("Invalid 
+config: {}", e)))?
+    |                       
+       ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\core.rs:135:38
+    |
+135 |         relation.build
+().map_err(|e| JsValue::from
+_str(&format!("RelationCorte
+x build error: {:?}", e)))?;
+    |                       
+               ^^^^^^^ use 
+of undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\core.rs:155:44
+    |
+155 |         let 
+entity_list: 
+Vec<EntityData> = serde_wasm
+_bindgen::from_value(entitie
+s)
+    |                       
+                     
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\core.rs:156:26
+    |
+156 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Invalid 
+entities: {}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\core.rs:178:38
+    |
+178 |         let cal_data: 
+CalendarData = serde_wasm_bi
+ndgen::from_value(calendar)
+    |                       
+               
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\core.rs:179:26
+    |
+179 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Invalid 
+calendar: {}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\core.rs:181:22
+    |
+181 |         let months = s
+erde_wasm_bindgen::to_value(
+&cal_data.months)?;
+    |                      
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\core.rs:182:24
+    |
+182 |         let weekdays 
+= serde_wasm_bindgen::to_val
+ue(&cal_data.weekdays)?;
+    |                       
+ ^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\core.rs:183:20
+    |
+183 |         let eras = ser
+de_wasm_bindgen::to_value(&c
+al_data.eras)?;
+    |                    
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\core.rs:210:13
+    |
+210 |             serde_wasm
+_bindgen::from_value(result)
+    |             
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\core.rs:211:30
+    |
+211 |                 
+.map_err(|e| JsValue::from_s
+tr(&format!("Entity parse 
+error: {}", e)))?
+    |                       
+       ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\core.rs:221:13
+    |
+221 |             serde_wasm
+_bindgen::from_value(result)
+    |             
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\core.rs:222:30
+    |
+222 |                 
+.map_err(|e| JsValue::from_s
+tr(&format!("Syntax parse 
+error: {}", e)))?
+    |                       
+       ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\core.rs:235:17
+    |
+235 |                 serde_
+wasm_bindgen::from_value(res
+ult)
+    |                 
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\core.rs:236:34
+    |
+236 |                     
+.map_err(|e| JsValue::from_s
+tr(&format!("Temporal parse 
+error: {}", e)))?;
+    |                       
+           ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\core.rs:283:9
+    |
+283 |         serde_wasm_bin
+dgen::to_value(&result)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\core.rs:284:26
+    |
+284 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialization 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\core.rs:291:23
+    |
+291 |             return Ok(
+serde_wasm_bindgen::to_value
+(&Vec::<EntityMatch>::new())
+?);
+    |                       
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\core.rs:311:41
+    |
+311 |         let entities: 
+Vec<EntitySpan> = serde_wasm
+_bindgen::from_value(entity_
+spans)
+    |                       
+                  
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\core.rs:312:26
+    |
+312 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Failed to 
+parse entities: {}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\core.rs:314:9
+    |
+314 |         serde_wasm_bin
+dgen::to_value(&relations)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\core.rs:315:26
+    |
+315 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Failed to 
+serialize: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\core.rs:357:9
+    |
+357 |         JsValue::from_
+str(&status.to_string())
+    |         ^^^^^^^ use 
+of undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\reflex.rs:181:24
+    |
+181 |             return 
+Err(JsValue::from_str("No 
+patterns to build. Add 
+entities first."));
+    |                       
+ ^^^^^^^ use of undeclared 
+type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\reflex.rs:188:26
+    |
+188 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("ReflexCortex 
+Build Error: {}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\reflex.rs:208:28
+    |
+208 |             
+.ok_or_else(|| JsValue::from
+_str("Automaton not built. 
+Call build() first."))?;
+    |                       
+     ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\reflex.rs:228:9
+    |
+228 |         serde_wasm_bin
+dgen::to_value(&matches)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\reflex.rs:229:26
+    |
+229 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialization 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\reflex.rs:251:9
+    |
+251 |         serde_wasm_bin
+dgen::to_value(&stats).unwra
+p_or(JsValue::NULL)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\reflex.rs:251:56
+    |
+251 |         serde_wasm_bin
+dgen::to_value(&stats).unwra
+p_or(JsValue::NULL)
+    |                       
+                            
+     ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\syntax.rs:297:9
+    |
+297 |         serde_wasm_bin
+dgen::to_value(&matches)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\syntax.rs:298:26
+    |
+298 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialization 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\syntax.rs:323:9
+    |
+323 |         serde_wasm_bin
+dgen::to_value(&matches)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\syntax.rs:324:26
+    |
+324 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialization 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\syntax.rs:339:9
+    |
+339 |         serde_wasm_bin
+dgen::to_value(&stats).unwra
+p_or(JsValue::NULL)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\syntax.rs:339:56
+    |
+339 |         serde_wasm_bin
+dgen::to_value(&stats).unwra
+p_or(JsValue::NULL)
+    |                       
+                            
+     ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\temporal.
+rs:470:43
+    |
+470 |             let 
+month_list: Vec<String> = se
+rde_wasm_bindgen::from_value
+(months)
+    |                       
+                    
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\temporal.
+rs:471:30
+    |
+471 |                 
+.map_err(|e| JsValue::from_s
+tr(&format!("Invalid 
+months: {}", e)))?;
+    |                       
+       ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\temporal.
+rs:485:45
+    |
+485 |             let 
+weekday_list: Vec<String> = 
+serde_wasm_bindgen::from_val
+ue(weekdays)
+    |                       
+                      
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\temporal.
+rs:486:30
+    |
+486 |                 
+.map_err(|e| JsValue::from_s
+tr(&format!("Invalid 
+weekdays: {}", e)))?;
+    |                       
+       ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\temporal.
+rs:500:41
+    |
+500 |             let 
+era_list: Vec<String> = serd
+e_wasm_bindgen::from_value(e
+ras)
+    |                       
+                  
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\temporal.
+rs:501:30
+    |
+501 |                 
+.map_err(|e| JsValue::from_s
+tr(&format!("Invalid eras: 
+{}", e)))?;
+    |                       
+       ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\temporal.
+rs:524:28
+    |
+524 |             
+.ok_or_else(|| JsValue::from
+_str("Automaton not 
+built"))?;
+    |                       
+     ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\temporal.
+rs:577:9
+    |
+577 |         serde_wasm_bin
+dgen::to_value(&result)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\temporal.
+rs:578:26
+    |
+578 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialization 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\temporal.
+rs:676:9
+    |
+676 |         serde_wasm_bin
+dgen::to_value(&self.stats).
+unwrap_or(JsValue::NULL)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\temporal.
+rs:676:61
+    |
+676 |         serde_wasm_bin
+dgen::to_value(&self.stats).
+unwrap_or(JsValue::NULL)
+    |                       
+                            
+          ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\relation.
+rs:577:41
+    |
+577 |         let entities: 
+Vec<EntitySpan> = serde_wasm
+_bindgen::from_value(entity_
+spans)
+    |                       
+                  
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\relation.
+rs:578:26
+    |
+578 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Failed to 
+parse entities: {}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\relation.
+rs:580:52
+    |
+580 |         let edges: 
+Vec<(String, String, 
+String)> = serde_wasm_bindge
+n::from_value(existing_edges
+)
+    |                       
+                            
+ ^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\relation.
+rs:585:9
+    |
+585 |         serde_wasm_bin
+dgen::to_value(&relations)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\relation.
+rs:586:26
+    |
+586 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Failed to 
+serialize: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\relation.
+rs:597:41
+    |
+597 |         let entities: 
+Vec<EntitySpan> = serde_wasm
+_bindgen::from_value(entity_
+spans)
+    |                       
+                  
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\relation.
+rs:598:26
+    |
+598 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Failed to 
+parse entities: {}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\relation.
+rs:600:52
+    |
+600 |         let edges: 
+Vec<(String, String, 
+String)> = serde_wasm_bindge
+n::from_value(existing_edges
+)
+    |                       
+                            
+ ^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\relation.
+rs:612:9
+    |
+612 |         serde_wasm_bin
+dgen::to_value(&result)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\relation.
+rs:613:26
+    |
+613 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Failed to 
+serialize: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\triple.rs:102:9
+    |
+102 |         serde_wasm_bin
+dgen::to_value(&triples).unw
+rap_or(JsValue::NULL)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\scanner\triple.rs:102:58
+    |
+102 |         serde_wasm_bin
+dgen::to_value(&triples).unw
+rap_or(JsValue::NULL)
+    |                       
+                            
+       ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\document.
+rs:159:47
+    |
+159 |         let entities: 
+Vec<EntityDefinition> = serd
+e_wasm_bindgen::from_value(e
+ntities)
+    |                       
+                        
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\document.
+rs:160:26
+    |
+160 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Failed to 
+parse entities: {}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\document.
+rs:164:26
+    |
+164 |             
+.map_err(|e| 
+JsValue::from_str(&e))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\document.
+rs:171:26
+    |
+171 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Failed to 
+hydrate calendar: {:?}", 
+e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\document.
+rs:179:38
+    |
+179 |         let spans: 
+Vec<EntitySpan> = serde_wasm
+_bindgen::from_value(entity_
+spans)
+    |                       
+               
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\document.
+rs:183:15
+    |
+183 |         match serde_wa
+sm_bindgen::to_value(&result
+) {
+    |               
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\document.
+rs:187:17
+    |
+187 |                 
+JsValue::NULL
+    |                 
+^^^^^^^ use of undeclared 
+type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\document.
+rs:538:9
+    |
+538 |         serde_wasm_bin
+dgen::to_value(&result).unwr
+ap_or(JsValue::NULL)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\document.
+rs:538:57
+    |
+538 |         serde_wasm_bin
+dgen::to_value(&result).unwr
+ap_or(JsValue::NULL)
+    |                       
+                            
+      ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\conductor
+.rs:173:26
+    |
+173 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Failed to 
+parse entities: {}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\conductor
+.rs:175:26
+    |
+175 |             
+.map_err(|e| 
+JsValue::from_str(&e))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\conductor
+.rs:182:26
+    |
+182 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Failed to 
+parse months: {}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\conductor
+.rs:184:26
+    |
+184 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Failed to 
+parse weekdays: {}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\conductor
+.rs:186:26
+    |
+186 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Failed to 
+parse eras: {}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\conductor
+.rs:211:77
+    |
+211 |             
+Some(result) => serde_wasm_b
+indgen::to_value(&result).un
+wrap_or(JsValue::NULL),
+    |                       
+                            
+                          
+^^^^^^^ use of undeclared 
+type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\conductor
+.rs:212:21
+    |
+212 |             None => 
+JsValue::NULL,
+    |                     
+^^^^^^^ use of undeclared 
+type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\conductor
+.rs:222:57
+    |
+222 |         serde_wasm_bin
+dgen::to_value(&result).unwr
+ap_or(JsValue::NULL)
+    |                       
+                            
+      ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\conductor
+.rs:234:81
+    |
+234 |         serde_wasm_bin
+dgen::to_value(self.cortex.i
+ncremental_stats()).unwrap_o
+r(JsValue::NULL)
+    |                       
+                            
+                            
+  ^^^^^^^ use of undeclared 
+type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\chunker.rs:286:9
+    |
+286 |         serde_wasm_bin
+dgen::to_value(&result)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\chunker.r
+s:287:26
+    |
+287 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialization 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\scanner\chunker.rs:294:9
+    |
+294 |         serde_wasm_bin
+dgen::to_value(&stats).unwra
+p_or(JsValue::NULL)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\chunker.r
+s:294:56
+    |
+294 |         serde_wasm_bin
+dgen::to_value(&stats).unwra
+p_or(JsValue::NULL)
+    |                       
+                            
+     ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\attacher.
+rs:110:34
+    |
+110 |         let chunks: 
+Vec<Chunk> = serde_wasm_bind
+gen::from_value(chunks_js)
+    |                       
+           
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\attacher.
+rs:111:26
+    |
+111 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Invalid 
+chunks: {}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\attacher.
+rs:115:9
+    |
+115 |         serde_wasm_bin
+dgen::to_value(&graph)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\attacher.
+rs:116:26
+    |
+116 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialization 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+  --> src\scanner\dialogue.r
+s:43:12
+   |
+43 |         
+Ok(JsValue::NULL)
+   |            ^^^^^^^ use 
+of undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\narrative
+.rs:138:40
+    |
+138 |         let inputs: 
+Vec<EntityInput> = serde_was
+m_bindgen::from_value(entiti
+es)
+    |                       
+                 
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\narrative
+.rs:139:26
+    |
+139 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Invalid 
+entities: {}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\narrative
+.rs:159:9
+    |
+159 |         serde_wasm_bin
+dgen::to_value(&result)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\narrative
+.rs:160:26
+    |
+160 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialization 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\narrative
+.rs:166:9
+    |
+166 |         serde_wasm_bin
+dgen::to_value(&result)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\narrative
+.rs:167:26
+    |
+167 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialization 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\narrative
+.rs:183:9
+    |
+183 |         JsValue::from_
+str("NarrativeGraph context 
+active")
+    |         ^^^^^^^ use 
+of undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\unified.r
+s:955:17
+    |
+955 |                 serde_
+wasm_bindgen::to_value(&scan
+_result)
+    |                 
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\unified.r
+s:956:34
+    |
+956 |                     
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialization 
+error: {}", e)))
+    |                       
+           ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\unified.r
+s:967:21
+    |
+967 |                 
+Err(JsValue::from_str(&msg))
+    |                     
+^^^^^^^ use of undeclared 
+type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\constrain
+ts.rs:483:35
+    |
+483 |         let 
+ref_input: RefInput = serde_
+wasm_bindgen::from_value(ref
+_js)
+    |                       
+            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\constrain
+ts.rs:484:26
+    |
+484 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Parse error: 
+{}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\constrain
+ts.rs:487:9
+    |
+487 |         serde_wasm_bin
+dgen::to_value(&result)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\constrain
+ts.rs:488:26
+    |
+488 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialize 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\constrain
+ts.rs:501:9
+    |
+501 |         serde_wasm_bin
+dgen::to_value(&predicates)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\constrain
+ts.rs:502:26
+    |
+502 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialize 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\constrain
+ts.rs:508:35
+    |
+508 |         let refs: 
+Vec<RefInput> = serde_wasm_b
+indgen::from_value(refs_js)
+    |                       
+            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\constrain
+ts.rs:509:26
+    |
+509 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Parse error: 
+{}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\constrain
+ts.rs:512:9
+    |
+512 |         serde_wasm_bin
+dgen::to_value(&unique)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\constrain
+ts.rs:513:26
+    |
+513 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialize 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\projectio
+ns.rs:846:40
+    |
+846 |         let refs: 
+Vec<ProjectionRef> = serde_w
+asm_bindgen::from_value(refs
+_js)
+    |                       
+                 
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\projectio
+ns.rs:847:26
+    |
+847 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Parse error: 
+{}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\projectio
+ns.rs:850:9
+    |
+850 |         serde_wasm_bin
+dgen::to_value(&timeline)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\projectio
+ns.rs:851:26
+    |
+851 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialize 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\projectio
+ns.rs:857:40
+    |
+857 |         let refs: 
+Vec<ProjectionRef> = serde_w
+asm_bindgen::from_value(refs
+_js)
+    |                       
+                 
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\projectio
+ns.rs:858:26
+    |
+858 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Parse error: 
+{}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\projectio
+ns.rs:861:9
+    |
+861 |         serde_wasm_bin
+dgen::to_value(&graph)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\projectio
+ns.rs:862:26
+    |
+862 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialize 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\projectio
+ns.rs:868:40
+    |
+868 |         let refs: 
+Vec<ProjectionRef> = serde_w
+asm_bindgen::from_value(refs
+_js)
+    |                       
+                 
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\projectio
+ns.rs:869:26
+    |
+869 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Parse error: 
+{}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\projectio
+ns.rs:872:9
+    |
+872 |         serde_wasm_bin
+dgen::to_value(&graph)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\projectio
+ns.rs:873:26
+    |
+873 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialize 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\projectio
+ns.rs:879:40
+    |
+879 |         let 
+character: ProjectionRef = s
+erde_wasm_bindgen::from_valu
+e(character_js)
+    |                       
+                 
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\projectio
+ns.rs:880:26
+    |
+880 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Parse error: 
+{}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\projectio
+ns.rs:881:40
+    |
+881 |         let refs: 
+Vec<ProjectionRef> = serde_w
+asm_bindgen::from_value(refs
+_js)
+    |                       
+                 
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\projectio
+ns.rs:882:26
+    |
+882 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Parse error: 
+{}", e)))?;
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\projectio
+ns.rs:885:9
+    |
+885 |         serde_wasm_bin
+dgen::to_value(&sheet)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\projectio
+ns.rs:886:26
+    |
+886 |             
+.map_err(|e| JsValue::from_s
+tr(&format!("Serialize 
+error: {}", e)))
+    |                       
+   ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\relation_
+filter.rs:148:9
+    |
+148 |         serde_wasm_bin
+dgen::to_value(&self.config)
+.unwrap_or(JsValue::NULL)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\relation_
+filter.rs:148:62
+    |
+148 |         serde_wasm_bin
+dgen::to_value(&self.config)
+.unwrap_or(JsValue::NULL)
+    |                       
+                            
+           ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\relation_
+filter.rs:287:55
+    |
+287 |         let 
+relations: 
+Vec<ExtractedRelation> = 
+match serde_wasm_bindgen::fr
+om_value(relations) {
+    |                       
+                            
+    ^^^^^^^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\relation_
+filter.rs:289:30
+    |
+289 |             Err(_) => 
+return JsValue::NULL,
+    |                       
+       ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\relation_
+filter.rs:306:9
+    |
+306 |         serde_wasm_bin
+dgen::to_value(&result).unwr
+ap_or(JsValue::NULL)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\relation_
+filter.rs:306:57
+    |
+306 |         serde_wasm_bin
+dgen::to_value(&result).unwr
+ap_or(JsValue::NULL)
+    |                       
+                            
+      ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\relation_
+filter.rs:312:55
+    |
+312 |         let 
+relations: 
+Vec<ExtractedRelation> = 
+match serde_wasm_bindgen::fr
+om_value(relations) {
+    |                       
+                            
+    ^^^^^^^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\relation_
+filter.rs:314:30
+    |
+314 |             Err(_) => 
+return JsValue::NULL,
+    |                       
+       ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\scanner\relation_
+filter.rs:325:9
+    |
+325 |         serde_wasm_bin
+dgen::to_value(&Result { 
+relations: filtered, stats 
+}).unwrap_or(JsValue::NULL)
+    |         
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> src\scanner\relation_
+filter.rs:325:88
+    |
+325 |         serde_wasm_bin
+dgen::to_value(&Result { 
+relations: filtered, stats 
+}).unwrap_or(JsValue::NULL)
+    |                       
+                            
+                            
+         ^^^^^^^ use of 
+undeclared type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:248:47
+    |
+248 |         let mut 
+input_spans: Vec<InputSpan> 
+= serde_wasm_bindgen::from_v
+alue(spans_js)?;
+    |                       
+                        
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:299:41
+    |
+299 |         let result = 
+self.process(text, serde_was
+m_bindgen::to_value(&input_s
+pans)?)?;
+    |                       
+                  
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:319:37
+    |
+319 |         let spans: 
+Vec<InputSpan> = serde_wasm_
+bindgen::from_value(spans_js
+)?;
+    |                       
+              
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:346:12
+    |
+346 |         Ok(serde_wasm_
+bindgen::to_value(&result)?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:370:20
+    |
+370 |                 Ok(ser
+de_wasm_bindgen::to_value(&r
+esult)?)
+    |                    
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\reality\api.rs:372:24
+    |
+372 |             None => 
+Ok(JsValue::NULL),
+    |                       
+ ^^^^^^^ use of undeclared 
+type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:390:12
+    |
+390 |         Ok(serde_wasm_
+bindgen::to_value(&spans)?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:401:12
+    |
+401 |         Ok(serde_wasm_
+bindgen::to_value(&entities)
+?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:420:12
+    |
+420 |         Ok(serde_wasm_
+bindgen::to_value(&nodes)?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:436:12
+    |
+436 |         Ok(serde_wasm_
+bindgen::to_value(&edges)?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:453:12
+    |
+453 |         Ok(serde_wasm_
+bindgen::to_value(&edges)?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:470:12
+    |
+470 |         Ok(serde_wasm_
+bindgen::to_value(&edges)?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:483:20
+    |
+483 |                 Ok(ser
+de_wasm_bindgen::to_value(&e
+xported)?)
+    |                    
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\reality\api.rs:485:24
+    |
+485 |             None => 
+Ok(JsValue::NULL),
+    |                       
+ ^^^^^^^ use of undeclared 
+type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:503:12
+    |
+503 |         Ok(serde_wasm_
+bindgen::to_value(&exported)
+?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:564:12
+    |
+564 |         Ok(serde_wasm_
+bindgen::to_value(&spans)?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:573:20
+    |
+573 |                 Ok(ser
+de_wasm_bindgen::to_value(&e
+xported)?)
+    |                    
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\reality\api.rs:575:24
+    |
+575 |             None => 
+Ok(JsValue::NULL),
+    |                       
+ ^^^^^^^ use of undeclared 
+type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:587:12
+    |
+587 |         Ok(serde_wasm_
+bindgen::to_value(&records)?
+)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:638:20
+    |
+638 |                 Ok(ser
+de_wasm_bindgen::to_value(&e
+xported)?)
+    |                    
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+type `JsValue`
+   --> 
+src\reality\api.rs:640:24
+    |
+640 |             None => 
+Ok(JsValue::NULL),
+    |                       
+ ^^^^^^^ use of undeclared 
+type `JsValue`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:652:12
+    |
+652 |         Ok(serde_wasm_
+bindgen::to_value(&all)?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:664:12
+    |
+664 |         Ok(serde_wasm_
+bindgen::to_value(&sorted)?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:676:12
+    |
+676 |         Ok(serde_wasm_
+bindgen::to_value(&sorted)?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:688:12
+    |
+688 |         Ok(serde_wasm_
+bindgen::to_value(&cross_doc
+)?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> 
+src\reality\api.rs:700:12
+    |
+700 |         Ok(serde_wasm_
+bindgen::to_value(&in_doc)?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\resorank\incremen
+tal.rs:307:13
+    |
+307 |             serde_wasm
+_bindgen::from_value(config_
+val)?
+    |             
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\resorank\incremen
+tal.rs:309:46
+    |
+309 |         let 
+corpus_stats: 
+CorpusStatistics = serde_was
+m_bindgen::from_value(corpus
+_stats_val)?;
+    |                       
+                       
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\resorank\incremen
+tal.rs:354:12
+    |
+354 |         Ok(serde_wasm_
+bindgen::to_value(&scores)?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\resorank\incremen
+tal.rs:366:12
+    |
+366 |         Ok(serde_wasm_
+bindgen::to_value(&results)?
+)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\resorank\scorer.r
+s:638:13
+    |
+638 |             serde_wasm
+_bindgen::from_value(config_
+val)?
+    |             
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\resorank\scorer.r
+s:641:46
+    |
+641 |         let 
+corpus_stats: 
+CorpusStatistics = serde_was
+m_bindgen::from_value(corpus
+_stats_val)?;
+    |                       
+                       
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\resorank\scorer.r
+s:660:42
+    |
+660 |         let doc_meta: 
+DocumentMetadata = serde_was
+m_bindgen::from_value(doc_me
+ta_val)?;
+    |                       
+                   
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\resorank\scorer.r
+s:661:54
+    |
+661 |         let tokens: 
+HashMap<String, 
+TokenMetadata> = serde_wasm_
+bindgen::from_value(tokens_v
+al)?;
+    |                       
+                            
+   ^^^^^^^^^^^^^^^^^^ use 
+of undeclared crate or 
+module `serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\resorank\scorer.r
+s:674:34
+    |
+674 |         let query: 
+Vec<String> = serde_wasm_bin
+dgen::from_value(query_val)?
+;
+    |                       
+           
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\resorank\scorer.r
+s:676:12
+    |
+676 |         Ok(serde_wasm_
+bindgen::to_value(&results)?
+)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\resorank\scorer.r
+s:686:34
+    |
+686 |         let query: 
+Vec<String> = serde_wasm_bin
+dgen::from_value(query_val)?
+;
+    |                       
+           
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\resorank\scorer.r
+s:688:12
+    |
+688 |         Ok(serde_wasm_
+bindgen::to_value(&explanati
+on)?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\resorank\scorer.r
+s:694:12
+    |
+694 |         Ok(serde_wasm_
+bindgen::to_value(self)?)
+    |            
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module 
+`serde_wasm_bindgen`
+   --> src\resorank\scorer.r
+s:701:38
+    |
+701 |         let scorer: 
+ResoRankScorer = serde_wasm_
+bindgen::from_value(json_val
+)?;
+    |                       
+               
+^^^^^^^^^^^^^^^^^^ use of 
+undeclared crate or module 
+`serde_wasm_bindgen`
+
+error[E0599]: no method 
+named `hydrate_entities` 
+found for struct 
+`MutexGuard<'_, 
+UnifiedScanner>` in the 
+current scope
+  --> src\commands.rs:95:13
+   |
+95 |     scanner.hydrate_ent
+ities(definitions);
+   |             
+^^^^^^^^^^^^^^^^ method not 
+found in `MutexGuard<'_, 
+UnifiedScanner>`
+
+error[E0063]: missing field 
+`entity_id` in initializer 
+of `relation::EntitySpan`
+   --> 
+src\commands.rs:110:18
+    |
+110 |         .map(|e| crate
+::scanner::relation::EntityS
+pan {
+    |                  ^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^ missing `entity_id`
+
+error[E0061]: this method 
+takes 1 argument but 2 
+arguments were supplied
+   --> 
+src\commands.rs:118:13
+    |
+118 |     
+scanner.scan(&text, 
+&entity_spans)
+    |             ^^^^      
+  ------------- unexpected 
+argument #2 of type 
+`&Vec<relation::EntitySpan>`
+    |
+note: method defined here
+   --> src\scanner\unified.r
+s:728:12
+    |
+728 |     pub fn 
+scan(&self, text: &str) -> 
+ScanResult {
+    |            ^^^^       
+ ----------
+help: remove the extra 
+argument
+    |
+118 -     
+scanner.scan(&text, 
+&entity_spans)
+118 +     
+scanner.scan(&text)
+    |
+
+error[E0599]: no method 
+named `map_err` found for 
+struct `UnifiedScanResult` 
+in the current scope
+   --> 
+src\commands.rs:119:10
+    |
+118 | /     
+scanner.scan(&text, 
+&entity_spans)
+119 | |         
+.map_err(|e| format!("Scan 
+error: {:?}", e))
+    | |         -^^^^^^^ 
+method not found in 
+`UnifiedScanResult`
+    | |_________|
+    |
+    |
+   ::: 
+src\scanner\unified.rs:81:1
+    |
+81  |   pub struct 
+UnifiedScanResult {
+    |   --------------------
+-------- method `map_err` 
+not found for this struct
+    |
+    = help: items from 
+traits can only be used if 
+the trait is implemented 
+and in scope
+    = note: the following 
+traits define an item 
+`map_err`, perhaps you need 
+to implement one of them:
+            candidate #1: `f
+allible_iterator::FallibleIt
+erator`
+            candidate #2: `f
+allible_streaming_iterator::
+FallibleStreamingIterator`
+            candidate #3: 
+`winnow::parser::Parser`
+
+error[E0063]: missing field 
+`entity_id` in initializer 
+of `relation::EntitySpan`
+   --> 
+src\commands.rs:136:18
+    |
+136 |         .map(|e| crate
+::scanner::relation::EntityS
+pan {
+    |                  ^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^ missing `entity_id`
+
+error[E0599]: no method 
+named `map_err` found for 
+struct 
+`document::ScanResult` in 
+the current scope
+   --> 
+src\commands.rs:145:10
+    |
+144 |       let result = 
+cortex.scan(&text, 
+&entity_spans)
+    |  __________________-
+145 | |         
+.map_err(|e| format!("Scan 
+error: {:?}", e))?;
+    | |         -^^^^^^^ 
+method not found in 
+`ScanResult`
+    | |_________|
+    |
+    |
+   ::: 
+src\scanner\document.rs:69:1
+    |
+69  |   pub struct 
+ScanResult {
+    |   
+--------------------- 
+method `map_err` not found 
+for this struct
+    |
+    = help: items from 
+traits can only be used if 
+the trait is implemented 
+and in scope
+    = note: the following 
+traits define an item 
+`map_err`, perhaps you need 
+to implement one of them:
+            candidate #1: `f
+allible_iterator::FallibleIt
+erator`
+            candidate #2: `f
+allible_streaming_iterator::
+FallibleStreamingIterator`
+            candidate #3: 
+`winnow::parser::Parser`
+
+error[E0599]: no method 
+named `project_timeline` 
+found for struct 
+`Projector` in the current 
+scope
+   --> 
+src\commands.rs:192:28
+    |
+192 |     let events = proje
+ctor.project_timeline(&scan_
+result);
+    |                       
+     ^^^^^^^^^^^^^^^^ 
+method not found in 
+`Projector`
+    |
+   ::: src\scanner\projectio
+ns.rs:481:1
+    |
+481 | pub struct Projector;
+    | -------------------- 
+method `project_timeline` 
+not found for this struct
+
+error[E0599]: no method 
+named 
+`project_relationships` 
+found for struct 
+`Projector` in the current 
+scope
+   --> 
+src\commands.rs:205:27
+    |
+205 |     let graph = projec
+tor.project_relationships(&s
+can_result);
+    |                       
+    ^^^^^^^^^^^^^^^^^^^^^ 
+method not found in 
+`Projector`
+    |
+   ::: src\scanner\projectio
+ns.rs:481:1
+    |
+481 | pub struct Projector;
+    | -------------------- 
+method 
+`project_relationships` not 
+found for this struct
+
+error[E0599]: no method 
+named `project_links` found 
+for struct `Projector` in 
+the current scope
+   --> 
+src\commands.rs:218:27
+    |
+218 |     let graph = projec
+tor.project_links(&scan_resu
+lt);
+    |                       
+    ^^^^^^^^^^^^^ method 
+not found in `Projector`
+    |
+   ::: src\scanner\projectio
+ns.rs:481:1
+    |
+481 | pub struct Projector;
+    | -------------------- 
+method `project_links` not 
+found for this struct
+
+error[E0061]: this method 
+takes 4 arguments but 2 
+arguments were supplied
+   --> 
+src\commands.rs:233:12
+    |
+233 |     scorer.index_docum
+ent(&doc_id, &content);
+    |            ^^^^^^^^^^^
+^^^-------------------
+    |                       
+   |         |
+    |                       
+   |         expected 
+`DocumentMetadata`, found 
+`&String`
+    |                       
+   two arguments of type `Ha
+shMap<std::string::String, 
+TokenMetadata>` and `bool` 
+are missing
+    |
+note: method defined here
+   --> 
+src\resorank\scorer.rs:97:12
+    |
+97  |     pub fn 
+index_document(
+    |            
+^^^^^^^^^^^^^^
+98  |         &mut self,
+99  |         doc_id: &str,
+    |         ------------
+100 |         doc_meta: 
+DocumentMetadata,
+    |         
+--------------------------
+101 |         tokens: 
+HashMap<String, 
+TokenMetadata>,
+    |         --------------
+------------------------
+102 |         
+use_adaptive_segments: bool,
+    |         
+---------------------------
+help: provide the arguments
+    |
+233 |     scorer.index_docum
+ent(&doc_id, /* 
+DocumentMetadata */, /* Hash
+Map<std::string::String, 
+TokenMetadata> */, /* bool 
+*/);
+    |                       
+   ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+
+error[E0308]: mismatched 
+types
+   --> 
+src\commands.rs:243:33
+    |
+243 |     let results = 
+scorer.search(&query, 
+limit);
+    |                       
+   ------ ^^^^^^ expected 
+`&[String]`, found `&String`
+    |                       
+   |
+    |                       
+   arguments to this method 
+are incorrect
+    |
+    = note: expected 
+reference 
+`&[std::string::String]`
+               found 
+reference 
+`&std::string::String`
+note: method defined here
+   --> src\resorank\scorer.r
+s:555:12
+    |
+555 |     pub fn 
+search(&mut self, query: 
+&[String], limit: usize) -> 
+Vec<SearchResult> {
+    |            ^^^^^^     
+       ----------------
+
+warning: unused variable: 
+`stats`
+   --> src\scanner\relation.
+rs:279:36
+    |
+279 |         let 
+(structured_relations, 
+stats) = extractor.extract_w
+ith_stats(text, entities);
+    |                       
+             ^^^^^ help: if 
+this is intentional, prefix 
+it with an underscore: 
+`_stats`
+    |
+    = note: 
+`#[warn(unused_variables)]` 
+on by default
+
+warning: value assigned to 
+`head_idx` is never read
+   --> src\scanner\chunker.r
+s:491:17
+    |
+491 |         let mut 
+head_idx = None;
+    |                 
+^^^^^^^^
+    |
+    = help: maybe it is 
+overwritten before being 
+read?
+    = note: `#[warn(unused_a
+ssignments)]` on by default
+
+warning: unused variable: 
+`resolver`
+  --> src\scanner\dialogue.r
+s:74:49
+   |
+74 |     fn find_speaker_in_
+chunks(chunks: &[Chunk], 
+resolver: &mut Resolver) -> 
+Option<EntityId> {
+   |                        
+                         
+^^^^^^^^ help: if this is 
+intentional, prefix it with 
+an underscore: `_resolver`
+
+warning: unused variable: 
+`quote_pos`
+  --> 
+src\scanner\dialogue.rs:97:9
+   |
+97 |         quote_pos: 
+QuotePosition,
+   |         ^^^^^^^^^ 
+help: if this is 
+intentional, prefix it with 
+an underscore: `_quote_pos`
+
+warning: unused variable: 
+`character_label`
+   --> src\scanner\projectio
+ns.rs:653:13
+    |
+653 |         let 
+character_label = character_
+ref.target.to_lowercase();
+    |             
+^^^^^^^^^^^^^^^ help: if 
+this is intentional, prefix 
+it with an underscore: 
+`_character_label`
+
+warning: unused variable: 
+`vp_verb_text`
+   --> src\scanner\structure
+d_relation.rs:307:17
+    |
+307 |             let 
+vp_verb_text = 
+vp.head.slice(text);
+    |                 
+^^^^^^^^^^^^ help: if this 
+is intentional, prefix it 
+with an underscore: 
+`_vp_verb_text`
+
+warning: unused variable: 
+`agent_pp`
+   --> src\scanner\structure
+d_relation.rs:552:13
+    |
+552 |         let agent_pp 
+= pattern.modifiers.iter().f
+ind(|pp| {
+    |             ^^^^^^^^ 
+help: if this is 
+intentional, prefix it with 
+an underscore: `_agent_pp`
+
+Some errors have detailed 
+explanations: E0061, E0063, 
+E0308, E0412, E0432, E0433, 
+E0599.
+For more information about 
+an error, try `rustc 
+--explain E0061`.
+warning: `varant` (lib) 
+generated 29 warnings
+error: could not compile 
+`varant` (lib) due to 620 
+previous errors; 29 
+warnings emitted

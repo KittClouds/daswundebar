@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { useCozoContext, useCozoEntities, useCozoReady } from '@/contexts/CozoContext';
-import type { RegisteredEntity } from '@/lib/cozo/graph/adapters';
+// Import RegisteredEntity type from tauri (same type, new location)
+import type { RegisteredEntity } from '@/lib/tauri';
 import type { EntityKind } from '@/lib/types/entityTypes';
 
 export function useCozoRegistry() {

@@ -5,7 +5,17 @@
  * Used for fast lexical search in the Folders tab.
  */
 
-import init, { ResoRankScorer } from '@/lib/wasm/kittcore/kittcore';
+// NOTE: ResoRank WASM temporarily disabled during Tauri migration
+// Phase 4 will implement via Tauri commands
+// import init, { ResoRankScorer } from '@/lib/wasm/kittcore/kittcore';
+
+// Stub class for Tauri migration
+class ResoRankScorer {
+    constructor(_config: any, _stats: any, _mode: string) { }
+    indexDocument(_id: string, _meta: any, _tokens: any, _update: boolean) { }
+    search(_terms: string[], _limit: number) { return []; }
+    clear() { }
+}
 
 // Types matching the Rust WASM interface
 export interface ResoRankSearchResult {
@@ -68,7 +78,7 @@ export class ResoRankFacade {
     private totalContentLength = 0;
 
     /**
-     * Initialize the WASM module and create the scorer
+     * Initialize the scorer (no WASM during Tauri migration)
      */
     async initialize(): Promise<void> {
         if (this.initialized) return;
@@ -76,10 +86,11 @@ export class ResoRankFacade {
 
         this.initPromise = (async () => {
             try {
-                await init();
+                // WASM init disabled during Tauri migration
+                // await init();
                 this.createScorer();
                 this.initialized = true;
-                console.log('[ResoRankFacade] Initialized');
+                console.log('[ResoRankFacade] Initialized (stub mode)');
             } catch (e) {
                 console.error('[ResoRankFacade] Init failed:', e);
                 throw e;

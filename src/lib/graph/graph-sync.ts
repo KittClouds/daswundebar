@@ -1,8 +1,13 @@
 /**
- * Graph Sync Utilities
+ * Graph Sync Utilities - PIPELINE A ONLY (WASM/Legacy)
  * 
- * Synchronizes Rust ConceptGraph state with CozoDB persistence layer.
- * Called from ExtractorFacade after document processing.
+ * Synchronizes scan results with Browser CozoDB (via cozoDb).
+ * This is ONLY used by extractor-facade.wasm.ts.
+ * 
+ * For Pipeline B (Tauri), use smartGraphRegistry.ingestScanResult() instead.
+ * 
+ * @see extractor-facade.wasm.ts - uses fullGraphSync()
+ * @see extractor-facade.tauri.ts - uses smartGraphRegistry.ingestScanResult()
  */
 
 import { cozoDb } from '../cozo/db';

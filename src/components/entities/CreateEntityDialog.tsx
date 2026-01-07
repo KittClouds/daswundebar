@@ -20,7 +20,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Plus, Loader2 } from 'lucide-react';
 import { ENTITY_KINDS, ENTITY_COLORS, type EntityKind } from '@/lib/types/entityTypes';
-import { entityRegistry } from '@/lib/cozo/graph/adapters';
+import { smartGraphRegistry } from '@/lib/tauri';
 
 interface CreateEntityDialogProps {
     onEntityCreated?: () => void;
@@ -44,7 +44,7 @@ export function CreateEntityDialog({ onEntityCreated, currentNoteId }: CreateEnt
         setError(null);
 
         try {
-            await entityRegistry.registerEntity(
+            await smartGraphRegistry.registerEntity(
                 label.trim(),
                 kind,
                 currentNoteId || 'manual',

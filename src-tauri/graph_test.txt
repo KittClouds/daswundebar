@@ -1,0 +1,407 @@
+﻿cargo :    Compiling varant 
+v0.1.0 (C:\Users\shuga\1kitt
+root\1code\daswundebar\src-t
+auri)
+At line:1 char:1
++ cargo test graph:: 2>&1 | 
+Out-File graph_test.txt 
+-Encoding utf8; Get ...
++ ~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (   Co  
+  mpiling va...ebar\src-t   
+ auri):String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+warning: unused import: 
+`std::collections::HashMap`
+  --> src\temporal.rs:18:5
+   |
+18 | use 
+std::collections::HashMap;
+   |     
+^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: 
+`#[warn(unused_imports)]` 
+(part of `#[warn(unused)]`) 
+on by default
+
+warning: unused import: 
+`TextRange`
+  --> src\attacher.rs:25:40
+   |
+25 | use 
+super::chunker::{Chunk, 
+ChunkKind, TextRange};
+   |                        
+                ^^^^^^^^^
+
+warning: unused imports: 
+`ProjectionStats`, 
+`project_all`, 
+`project_attributions`, 
+`project_quads`, and 
+`project_state_changes`
+  --> 
+src\reality\engine.rs:16:22
+   |
+16 |     project_triples, 
+project_quads, 
+project_attributions, 
+project_state_changes,
+   |                      
+^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^^
+17 |     project_all, 
+project_all_with_stats,
+   |     ^^^^^^^^^^^
+18 |     Triple, QuadPlus, 
+Attribution, StateChange, 
+Projection, ProjectionStats,
+   |                        
+                            
+         ^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+  --> 
+src\reality\engine.rs:20:60
+   |
+20 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+   |                        
+                            
+        ^^^^^^^^
+
+warning: unused import: 
+`ConceptEdge`
+  --> 
+src\reality\global.rs:11:47
+   |
+11 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge};
+   |                        
+                       
+^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge` and 
+`ConceptNode`
+ --> src\reality\algorithms.
+rs:9:34
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge};
+  |                         
+         ^^^^^^^^^^^  
+^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+ --> 
+src\reality\temporal.rs:9:60
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+  |                         
+                            
+       ^^^^^^^^
+
+warning: unused imports: 
+`RealityLanguage` and 
+`SyntaxKind`
+  --> 
+src\reality\mod.rs:21:18
+   |
+21 | pub use 
+syntax::{SyntaxKind, 
+RealityLanguage};
+   |                  
+^^^^^^^^^^  ^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge`, 
+`ConceptGraph`, 
+`ConceptNode`, and 
+`EdgeKind`
+  --> 
+src\reality\mod.rs:22:17
+   |
+22 | pub use 
+graph::{ConceptGraph, 
+ConceptNode, ConceptEdge, 
+EdgeKind};
+   |                 
+^^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^
+
+warning: unused import: 
+`synapse::SynapseBridge`
+  --> 
+src\reality\mod.rs:23:9
+   |
+23 | pub use 
+synapse::SynapseBridge;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`engine::RealityEngine`
+  --> 
+src\reality\mod.rs:24:9
+   |
+24 | pub use 
+engine::RealityEngine;
+   |         
+^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Attribution`, 
+`Projection`, `QuadPlus`, 
+`StateChange`, and `Triple`
+  --> 
+src\reality\mod.rs:25:22
+   |
+25 | pub use 
+projection::{Triple, 
+QuadPlus, Attribution, 
+StateChange, Projection};
+   |                      
+^^^^^^  ^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^
+
+warning: unused import: 
+`global::GlobalGraph`
+  --> 
+src\reality\mod.rs:26:9
+   |
+26 | pub use 
+global::GlobalGraph;
+   |         
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`unification::EntityUnifier`
+  --> 
+src\reality\mod.rs:27:9
+   |
+27 | pub use 
+unification::EntityUnifier;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`NamedRows`
+ --> 
+src\graph\registry.rs:6:35
+  |
+6 | use cozo::{DbInstance, 
+DataValue, NamedRows};
+  |                         
+          ^^^^^^^^^
+
+warning: unused import: 
+`schema::*`
+  --> src\graph\mod.rs:18:9
+   |
+18 | pub use schema::*;
+   |         ^^^^^^^^^
+
+warning: unused import: 
+`types::*`
+  --> src\graph\mod.rs:19:9
+   |
+19 | pub use types::*;
+   |         ^^^^^^^^
+
+warning: unused import: 
+`registry::*`
+  --> src\graph\mod.rs:20:9
+   |
+20 | pub use registry::*;
+   |         ^^^^^^^^^^^
+
+error[E0283]: type 
+annotations needed
+   --> 
+src\graph\schema.rs:101:33
+    |
+101 |                     
+if rel_name.as_ref() == 
+name {
+    |                       
+          ^^^^^^
+    |
+    = note: multiple 
+`impl`s satisfying `smartstr
+ing::SmartString<smartstring
+::config::LazyCompact>: 
+AsRef<_>` found in the 
+`smartstring` crate:
+            - impl<Mode> 
+AsRef<[u8]> for smartstring:
+:SmartString<Mode>
+              where Mode: sm
+artstring::config::SmartStri
+ngMode;
+            - impl<Mode> 
+AsRef<str> for smartstring::
+SmartString<Mode>
+              where Mode: sm
+artstring::config::SmartStri
+ngMode;
+help: try using a fully 
+qualified path to specify 
+the expected types
+    |
+101 -                     
+if rel_name.as_ref() == 
+name {
+101 +                     
+if <smartstring::SmartString
+<smartstring::config::LazyCo
+mpact> as 
+AsRef<T>>::as_ref(rel_name) 
+== name {
+    |
+
+error[E0283]: type 
+annotations needed
+   --> 
+src\graph\schema.rs:101:42
+    |
+101 |                     
+if rel_name.as_ref() == 
+name {
+    |                       
+                   ^^ 
+cannot infer type for 
+reference `&_`
+    |
+    = note: multiple 
+`impl`s satisfying `&_: 
+PartialEq<&str>` found in 
+the following crates: 
+`core`, `muda`:
+            - impl 
+PartialEq<&str> for &MenuId;
+            - impl<A, B> 
+PartialEq<&B> for &A
+              where A: 
+PartialEq<B>, A: ?Sized, B: 
+?Sized;
+
+error[E0624]: method 
+`get_float` is private
+   --> 
+src\graph\registry.rs:477:39
+    |
+477 |             
+DataValue::Num(n) => 
+Ok(n.get_float()),
+    |                       
+                ^^^^^^^^^ 
+private method
+    |
+   ::: C:\Users\shuga\.cargo
+\registry\src\index.crates.i
+o-1949cf8c6b5b557f\cozo-0.7.
+6\src\data\value.rs:502:5
+    |
+502 |     pub(crate) fn 
+get_float(&self) -> f64 {
+    |     ------------------
+------------------- private 
+method defined here
+
+error[E0624]: method 
+`get_int` is private
+   --> 
+src\graph\registry.rs:484:39
+    |
+484 |             
+DataValue::Num(n) => 
+Ok(n.get_int()),
+    |                       
+                ^^^^^^^ 
+private method
+    |
+   ::: C:\Users\shuga\.cargo
+\registry\src\index.crates.i
+o-1949cf8c6b5b557f\cozo-0.7.
+6\src\data\value.rs:490:5
+    |
+490 |     pub(crate) fn 
+get_int(&self) -> 
+Option<i64> {
+    |     ------------------
+------------------------- 
+private method defined here
+
+warning: value assigned to 
+`head_idx` is never read
+   --> src\chunker.rs:464:28
+    |
+464 |         let mut 
+head_idx = None;
+    |                       
+     ^^^^
+    |
+    = help: maybe it is 
+overwritten before being 
+read?
+    = note: `#[warn(unused_a
+ssignments)]` (part of 
+`#[warn(unused)]`) on by 
+default
+
+Some errors have detailed 
+explanations: E0283, E0624.
+For more information about 
+an error, try `rustc 
+--explain E0283`.
+warning: `varant` (lib) 
+generated 19 warnings
+error: could not compile 
+`varant` (lib) due to 4 
+previous errors; 19 
+warnings emitted
+warning: build failed, 
+waiting for other jobs to 
+finish...
+warning: unused variable: 
+`projections`
+   --> 
+src\reality\engine.rs:791:14
+    |
+791 |         let 
+(projections, stats) = engin
+e.process_with_projections(t
+ext, &spans);
+    |              
+^^^^^^^^^^^ help: if this 
+is intentional, prefix it 
+with an underscore: 
+`_projections`
+    |
+    = note: 
+`#[warn(unused_variables)]` 
+(part of `#[warn(unused)]`) 
+on by default
+
+warning: `varant` (lib 
+test) generated 18 warnings 
+(17 duplicates)
+error: could not compile 
+`varant` (lib test) due to 
+4 previous errors; 18 
+warnings emitted

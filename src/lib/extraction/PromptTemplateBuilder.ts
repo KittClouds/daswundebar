@@ -1,5 +1,6 @@
 import type { EntityKind } from '@/lib/types/entityTypes';
-import type { RegisteredEntity } from '@/lib/cozo/graph/adapters';
+// LEGACY: This file is not actively used but kept for future LLM extraction
+import type { RegisteredEntity } from '@/lib/tauri';
 
 /**
  * Schema for entity extraction

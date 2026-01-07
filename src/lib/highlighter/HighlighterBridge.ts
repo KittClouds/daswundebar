@@ -7,7 +7,7 @@
  * - Content-hash based caching
  */
 
-import type { RegisteredEntity } from '@/lib/cozo/graph/adapters/EntityRegistryAdapter';
+import type { RegisteredEntity } from '@/lib/tauri/smart-graph-registry';
 import { decorationCache } from './decoration-cache';
 
 // ==================== TYPES ====================
@@ -39,29 +39,29 @@ class HighlighterBridge {
     private cortex: any = null;
 
     /**
-     * Initialize the bridge by loading WASM module
+     * Initialize the bridge by loading Tauri or fallback mode
      */
     async initialize(): Promise<boolean> {
         if (this.initialized) return true;
 
         try {
-            // Dynamic import of the WASM module
-            const kittcore = await import(
-                /* webpackIgnore: true */
-                '@kittcore/wasm'
-            );
-            await kittcore.default();
+            // Use Tauri adapter instead of WASM
+            const { getScannerMode, tauriScanner } = await import('@/lib/tauri');
+            const mode = getScannerMode();
 
-            this.DocumentCortex = kittcore.DocumentCortex;
-            this.cortex = new this.DocumentCortex();
+            if (mode === 'tauri') {
+                await tauriScanner.initialize();
+                console.log('[HighlighterBridge] Tauri backend initialized');
+            } else {
+                console.log('[HighlighterBridge] Running in fallback mode');
+            }
+
             this.initialized = true;
 
-            console.log('[HighlighterBridge] WASM initialized');
-
-            // Hydrate with entities from the registry
+            // Hydrate with entities from SmartGraphRegistry
             try {
-                const { entityRegistry } = await import('@/lib/cozo/graph/adapters');
-                const entities = await entityRegistry.getAllEntities();
+                const { smartGraphRegistry } = await import('@/lib/tauri');
+                const entities = smartGraphRegistry.getAllEntities();
                 if (entities && entities.length > 0) {
                     this.hydrateEntities(entities);
                 }

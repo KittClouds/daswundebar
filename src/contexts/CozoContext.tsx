@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useMemo, useRef, ReactNode } from 'react';
-import { entityRegistry, type RegisteredEntity } from '@/lib/cozo/graph/adapters';
+// ADAPTER MIGRATION: Using smartGraphRegistry internally while keeping same external API
+// This allows A/B testing and gradual migration
+import { smartGraphRegistry, type RegisteredEntity } from '@/lib/tauri';
 import type { EntityKind } from '@/lib/types/entityTypes';
 
 interface EntityStats {
@@ -49,13 +51,15 @@ export function CozoProvider({ children }: CozoProviderProps) {
                 setIsInitializing(true);
                 setError(null);
 
-                await entityRegistry.init();
+                // Use smartGraphRegistry (Rust backend) instead of old entityRegistry
+                await smartGraphRegistry.init();
 
-                const allEntities = entityRegistry.getAllEntitiesSync();
+                // SYNC read from local cache - no IPC overhead!
+                const allEntities = smartGraphRegistry.getAllEntities();
                 setEntities(allEntities);
                 setIsReady(true);
 
-                console.log('[CozoContext] Initialized with', allEntities.length, 'entities');
+                console.log('[CozoContext] Initialized with', allEntities.length, 'entities (via SmartGraphRegistry)');
             } catch (err) {
                 console.error('[CozoContext] Initialization failed:', err);
                 setError(err instanceof Error ? err : new Error('Failed to initialize entity registry'));
@@ -72,7 +76,8 @@ export function CozoProvider({ children }: CozoProviderProps) {
         if (!isReady) return;
 
         try {
-            const allEntities = entityRegistry.getAllEntitiesSync();
+            // SYNC read from local cache
+            const allEntities = smartGraphRegistry.getAllEntities();
             setEntities(allEntities);
         } catch (err) {
             console.error('[CozoContext] Failed to refresh entities:', err);
@@ -95,23 +100,23 @@ export function CozoProvider({ children }: CozoProviderProps) {
 
     const getEntityById = useCallback((id: string): RegisteredEntity | null => {
         if (!isReady) return null;
-        return entityRegistry.getEntityById(id);
+        return smartGraphRegistry.getEntityById(id);
     }, [isReady]);
 
     const findEntityByLabel = useCallback((label: string): RegisteredEntity | null => {
         if (!isReady) return null;
-        return entityRegistry.findEntityByLabel(label);
+        return smartGraphRegistry.findEntityByLabel(label);
     }, [isReady]);
 
     const getEntitiesByKind = useCallback((kind: EntityKind): RegisteredEntity[] => {
         if (!isReady) return [];
-        return entityRegistry.getEntitiesByKind(kind);
+        return smartGraphRegistry.getEntitiesByKind(kind);
     }, [isReady]);
 
     const deleteEntity = useCallback(async (id: string): Promise<boolean> => {
         if (!isReady) return false;
         try {
-            const result = await entityRegistry.deleteEntity(id);
+            const result = await smartGraphRegistry.deleteEntity(id);
             if (result) {
                 refreshEntities();
             }
@@ -125,7 +130,8 @@ export function CozoProvider({ children }: CozoProviderProps) {
     const clearAllEntities = useCallback(async (): Promise<void> => {
         if (!isReady) return;
         try {
-            await entityRegistry.clear();
+            // TODO: Add clear() method to smartGraphRegistry
+            console.warn('[CozoContext] clearAllEntities not yet implemented in smartGraphRegistry');
             refreshEntities();
         } catch (err) {
             console.error('[CozoContext] Failed to clear entities:', err);

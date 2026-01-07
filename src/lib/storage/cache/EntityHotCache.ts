@@ -1,5 +1,14 @@
+/**
+ * EntityHotCache - LEGACY CACHE LAYER
+ * 
+ * This cache is being replaced by smartGraphRegistry's local cache.
+ * Keeping for API compatibility but should migrate consumers to smartGraphRegistry.
+ * 
+ * @deprecated Use smartGraphRegistry directly
+ */
+
 import type { QueryClient } from '@tanstack/react-query';
-import { unifiedRegistry, type CozoEntity } from '@/lib/cozo/graph/UnifiedRegistry';
+import { smartGraphRegistry, type RegisteredEntity } from '@/lib/tauri';
 import type { EntityKind } from '@/lib/types/entityTypes';
 
 export interface HotCacheEntity {
@@ -12,6 +21,9 @@ export interface HotCacheEntity {
   aliases: string[];
   canonical_note_id?: string | null;
 }
+
+// Adapter type alias
+type CozoEntity = RegisteredEntity;
 
 function cozoEntityToHotCache(entity: CozoEntity): HotCacheEntity {
   return {
@@ -26,6 +38,9 @@ function cozoEntityToHotCache(entity: CozoEntity): HotCacheEntity {
   };
 }
 
+/**
+ * @deprecated Use smartGraphRegistry directly
+ */
 export class EntityHotCache {
   private cache: Map<string, HotCacheEntity> = new Map();
   private nameIndex: Map<string, string> = new Map();
@@ -56,8 +71,9 @@ export class EntityHotCache {
       return this.cache.get(byAliasId);
     }
 
+    // Fallback to smartGraphRegistry
     if (!this.initialized) {
-      const fromRegistry = unifiedRegistry.findEntityByLabelSync(text);
+      const fromRegistry = smartGraphRegistry.findEntityByLabel(text);
       if (fromRegistry) {
         const hotEntity = cozoEntityToHotCache(fromRegistry);
         this.addToCache(hotEntity);
@@ -92,11 +108,9 @@ export class EntityHotCache {
     this.aliasIndex.clear();
 
     try {
-      await unifiedRegistry.init();
-
-      const entities = unifiedRegistry.getAllEntitiesSync(
-        groupId ? { kind: undefined } : undefined
-      );
+      // Use smartGraphRegistry instead of unifiedRegistry
+      await smartGraphRegistry.init();
+      const entities = smartGraphRegistry.getAllEntities();
 
       for (const entity of entities) {
         const hotEntity = cozoEntityToHotCache(entity);
@@ -104,7 +118,7 @@ export class EntityHotCache {
       }
 
       this.initialized = true;
-      console.log(`[EntityHotCache] Warmed cache with ${entities.length} entities`);
+      console.log(`[EntityHotCache] Warmed cache with ${entities.length} entities (via smartGraphRegistry)`);
     } catch (err) {
       console.error('[EntityHotCache] Failed to warm cache:', err);
     }
@@ -152,16 +166,16 @@ export class EntityHotCache {
     }
   }
 
+  /** @deprecated Use smartGraphRegistry.registerEntity() */
   async registerEntity(
     label: string,
     kind: EntityKind,
     noteId: string,
     options?: { subtype?: string; aliases?: string[]; attributes?: Record<string, any> }
   ): Promise<HotCacheEntity> {
-    const entity = await unifiedRegistry.registerEntity(label, kind, noteId, {
+    const entity = await smartGraphRegistry.registerEntity(label, kind, noteId, {
       subtype: options?.subtype,
-      aliases: options?.aliases,
-      metadata: options?.attributes,
+      source: 'user',
     });
 
     const hotEntity = cozoEntityToHotCache(entity);
@@ -174,57 +188,28 @@ export class EntityHotCache {
     return hotEntity;
   }
 
+  /** @deprecated Not supported by smartGraphRegistry */
   async mergeEntities(targetId: string, sourceId: string): Promise<boolean> {
-    const result = await unifiedRegistry.mergeEntities(targetId, sourceId);
-
-    if (result) {
-      this.removeFromCache(sourceId);
-
-      const updatedTarget = await unifiedRegistry.getEntityById(targetId);
-      if (updatedTarget) {
-        this.removeFromCache(targetId);
-        this.addToCache(cozoEntityToHotCache(updatedTarget));
-      }
-
-      if (this.queryClient) {
-        this.queryClient.invalidateQueries({ queryKey: ['entities'] });
-      }
-    }
-
-    return result;
+    console.warn('[EntityHotCache] mergeEntities not supported - use direct smartGraphRegistry call');
+    return false;
   }
 
+  /** @deprecated Use smartGraphRegistry.deleteEntity() */
   async deleteEntity(entityId: string): Promise<void> {
-    await unifiedRegistry.deleteEntity(entityId);
+    await smartGraphRegistry.deleteEntity(entityId);
     this.invalidate(entityId);
   }
 
+  /** @deprecated Not supported */
   async addAlias(entityId: string, alias: string): Promise<boolean> {
-    const result = await unifiedRegistry.addAlias(entityId, alias);
-
-    if (result) {
-      const entity = this.cache.get(entityId);
-      if (entity) {
-        entity.aliases = [...(entity.aliases || []), alias];
-        this.aliasIndex.set(alias.trim().toLowerCase(), entityId);
-      }
-    }
-
-    return result;
+    console.warn('[EntityHotCache] addAlias not supported by smartGraphRegistry');
+    return false;
   }
 
+  /** @deprecated Not supported */
   async removeAlias(entityId: string, alias: string): Promise<boolean> {
-    const result = await unifiedRegistry.removeAlias(entityId, alias);
-
-    if (result) {
-      const entity = this.cache.get(entityId);
-      if (entity) {
-        entity.aliases = (entity.aliases || []).filter(a => a !== alias);
-        this.aliasIndex.delete(alias.trim().toLowerCase());
-      }
-    }
-
-    return result;
+    console.warn('[EntityHotCache] removeAlias not supported by smartGraphRegistry');
+    return false;
   }
 
   async search(query: string, limit: number = 50): Promise<HotCacheEntity[]> {
@@ -244,26 +229,11 @@ export class EntityHotCache {
       }
     }
 
-    if (localResults.length >= limit) {
-      return localResults.slice(0, limit);
-    }
-
-    const dbResults = await unifiedRegistry.searchEntities(query);
-
-    const seen = new Set(localResults.map(e => e.id));
-    for (const entity of dbResults) {
-      if (!seen.has(entity.id)) {
-        const hotEntity = cozoEntityToHotCache(entity);
-        localResults.push(hotEntity);
-        this.addToCache(hotEntity);
-      }
-    }
-
     return localResults.slice(0, limit);
   }
 
   async refreshEntity(entityId: string): Promise<HotCacheEntity | null> {
-    const entity = await unifiedRegistry.getEntityById(entityId);
+    const entity = smartGraphRegistry.getEntityById(entityId);
 
     if (entity) {
       const hotEntity = cozoEntityToHotCache(entity);
@@ -281,7 +251,7 @@ export class EntityHotCache {
     const cached = this.findEntity(text);
     if (cached) return cached;
 
-    const entity = await unifiedRegistry.findEntityByLabel(text);
+    const entity = smartGraphRegistry.findEntityByLabel(text);
     if (entity) {
       const hotEntity = cozoEntityToHotCache(entity);
       this.addToCache(hotEntity);
@@ -301,5 +271,3 @@ export class EntityHotCache {
 }
 
 export const entityHotCache = new EntityHotCache();
-
-

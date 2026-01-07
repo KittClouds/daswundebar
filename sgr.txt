@@ -1,0 +1,186 @@
+node.exe : [33m[7m[33m 
+Vitest [33m[27m 
+"deps.inline" is 
+deprecated. If you rely on 
+vite-node directly, use 
+"server.deps.inline" 
+instead. Otherwise, 
+consider using "deps.optimiz
+er.ssr.include"[39m
+At C:\Program 
+Files\nodejs\npx.ps1:29 
+char:3
++   & $NODE_EXE $NPX_CLI_JS 
+$args
++   ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo          
+    : NotSpecified: ([33m  
+  [7m[33m ...r.include"   
+ [39m:String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+
+[1m[46m RUN [49m[22m [36mv3.2.4 [39m[90mC:/Users/shuga/1kittroot/1code/daswundebar[39m
+
+[90mstdout[2m | src/lib/tauri/__tests__/smart-graph-registry.test.ts[2m > [22m[2mSmartGraphRegistry[2m > [22m[2mInitialization State[2m > [22m[2mshould report ready after init
+[22m[39m[SmartGraphRegistry] Initialized with 0 entities
+
+[90mstdout[2m | src/lib/tauri/__tests__/smart-graph-registry.test.ts[2m > [22m[2mSmartGraphRegistry[2m > [22m[2mEntity Registration[2m > [22m[2mshould register entity and return result
+[22m[39m[SmartGraphRegistry] Initialized with 0 entities
+
+[90mstdout[2m | src/lib/tauri/__tests__/smart-graph-registry.test.ts[2m > [22m[2mSmartGraphRegistry[2m > [22m[2mEntity Registration[2m > [22m[2mshould return cached entity on duplicate registration
+[22m[39m[SmartGraphRegistry] Initialized with 0 entities
+
+[90mstdout[2m | src/lib/tauri/__tests__/smart-graph-registry.test.ts[2m > [22m[2mSmartGraphRegistry[2m > [22m[2mEntity Registration[2m > [22m[2mshould store aliases
+[22m[39m[SmartGraphRegistry] Initialized with 0 entities
+
+[90mstdout[2m | src/lib/tauri/__tests__/smart-graph-registry.test.ts[2m > [22m[2mSmartGraphRegistry[2m > [22m[2mEntity Lookup[2m > [22m[2mshould find by exact label
+[22m[39m[SmartGraphRegistry] Initialized with 0 entities
+
+[90mstdout[2m | src/lib/tauri/__tests__/smart-graph-registry.test.ts[2m > [22m[2mSmartGraphRegistry[2m > [22m[2mEntity Lookup[2m > [22m[2mshould find by label case-insensitive
+[22m[39m[SmartGraphRegistry] Initialized with 0 entities
+
+[90mstdout[2m | src/lib/tauri/__tests__/smart-graph-registry.test.ts[2m > [22m[2mSmartGraphRegistry[2m > [22m[2mEntity Lookup[2m > [22m[2mshould find by alias
+[22m[39m[SmartGraphRegistry] Initialized with 0 entities
+
+[90mstdout[2m | src/lib/tauri/__tests__/smart-graph-registry.test.ts[2m > [22m[2mSmartGraphRegistry[2m > [22m[2mEntity Lookup[2m > [22m[2mshould return null for unknown
+[22m[39m[SmartGraphRegistry] Initialized with 0 entities
+
+[90mstdout[2m | src/lib/tauri/__tests__/smart-graph-registry.test.ts[2m > [22m[2mSmartGraphRegistry[2m > [22m[2mGet All Entities[2m > [22m[2mshould return empty array when no entities
+[22m[39m[SmartGraphRegistry] Initialized with 0 entities
+
+[90mstdout[2m | src/lib/tauri/__tests__/smart-graph-registry.test.ts[2m > [22m[2mSmartGraphRegistry[2m > [22m[2mGet All Entities[2m > [22m[2mshould return registered entities
+[22m[39m[SmartGraphRegistry] Initialized with 0 entities
+
+[90mstdout[2m | src/lib/tauri/__tests__/smart-graph-registry.test.ts[2m > [22m[2mSmartGraphRegistry[2m > [22m[2mGet All Entities[2m > [22m[2mshould filter by kind
+[22m[39m[SmartGraphRegistry] Initialized with 0 entities
+
+[90mstdout[2m | src/lib/tauri/__tests__/smart-graph-registry.test.ts[2m > [22m[2mSmartGraphRegistry[2m > [22m[2mScan Ingestion[2m > [22m[2mshould return ingestion result
+[22m[39m[SmartGraphRegistry] Initialized with 0 entities
+
+[90mstdout[2m | src/lib/tauri/__tests__/smart-graph-registry.test.ts[2m > [22m[2mSmartGraphRegistry[2m > [22m[2mEdge Creation[2m > [22m[2mshould create edge and return it
+[22m[39m[SmartGraphRegistry] Initialized with 0 entities
+
+[90mstdout[2m | src/lib/tauri/__tests__/smart-graph-registry.test.ts[2m > [22m[2mSmartGraphRegistry[2m > [22m[2mHydration Check[2m > [22m[2mshould return null when no hydration needed
+[22m[39m[SmartGraphRegistry] Initialized with 0 entities
+
+[90mstdout[2m | src/lib/tauri/__tests__/smart-graph-registry.test.ts[2m > [22m[2mSmartGraphRegistry[2m > [22m[2mHydration Check[2m > [22m[2mshould return null when no hydration needed
+[22m[39m[SmartGraphRegistry] Hydration skipped (no changes)
+
+ [31m???[39m src/lib/tauri/__tests__/smart-graph-registry.test.ts [2m([22m[2m15 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[32m 42[2mms[22m[39m
+[31m   [31m??[31m SmartGraphRegistry[2m > [22mInitialization State[2m > [22mshould report not ready before init[39m[32m 9[2mms[22m[39m
+[31m     ??? registry.isReady is not a function[39m
+[31m   [31m??[31m SmartGraphRegistry[2m > [22mInitialization State[2m > [22mshould report ready after init[39m[32m 3[2mms[22m[39m
+[31m     ??? registry.isReady is not a function[39m
+   [32m???[39m SmartGraphRegistry[2m > [22mEntity Registration[2m > [22mshould register entity and return result[32m 3[2mms[22m[39m
+   [32m???[39m SmartGraphRegistry[2m > [22mEntity Registration[2m > [22mshould return cached entity on duplicate registration[32m 3[2mms[22m[39m
+   [32m???[39m SmartGraphRegistry[2m > [22mEntity Registration[2m > [22mshould store aliases[32m 3[2mms[22m[39m
+   [32m???[39m SmartGraphRegistry[2m > [22mEntity Lookup[2m > [22mshould find by exact label[32m 1[2mms[22m[39m
+   [32m???[39m SmartGraphRegistry[2m > [22mEntity Lookup[2m > [22mshould find by label case-insensitive[32m 1[2mms[22m[39m
+   [32m???[39m SmartGraphRegistry[2m > [22mEntity Lookup[2m > [22mshould find by alias[32m 1[2mms[22m[39m
+   [32m???[39m SmartGraphRegistry[2m > [22mEntity Lookup[2m > [22mshould return null for unknown[32m 1[2mms[22m[39m
+   [32m???[39m SmartGraphRegistry[2m > [22mGet All Entities[2m > [22mshould return empty array when no entities[32m 2[2mms[22m[39m
+   [32m???[39m SmartGraphRegistry[2m > [22mGet All Entities[2m > [22mshould return registered entities[32m 1[2mms[22m[39m
+   [32m???[39m SmartGraphRegistry[2m > [22mGet All Entities[2m > [22mshould filter by kind[32m 1[2mms[22m[39m
+   [32m???[39m SmartGraphRegistry[2m > [22mScan Ingestion[2m > [22mshould return ingestion result[32m 1[2mms[22m[39m
+   [32m???[39m SmartGraphRegistry[2m > [22mEdge Creation[2m > [22mshould create edge and return it[32m 2[2mms[22m[39m
+   [32m???[39m SmartGraphRegistry[2m > [22mHydration Check[2m > [22mshould return null when no hydration needed[32m 4[2mms[22m[39m
+
+[31m?????????????????????[
+39m[1m[41m Failed Tests 2 
+[49m[22m[31m?????????????
+????????[39m
+
+[41m[1m FAIL [22m[49m sr
+c/lib/tauri/__tests__/smart-
+graph-registry.test.ts[2m 
+> 
+[22mSmartGraphRegistry[2m 
+> [22mInitialization 
+State[2m > [22mshould 
+report not ready before init
+[31m[1mTypeError[22m: 
+registry.isReady is not a 
+function[39m
+[36m [2m???[22m src/lib/t
+auri/__tests__/smart-graph-r
+egistry.test.ts:[2m45:29[2
+2m[39m
+    [90m 43| [39m        
+[34mit[39m([32m'should 
+report not ready before 
+init'[39m[33m,[39m () 
+[33m=>[39m {
+    [90m 44| [39m         
+   [35mconst[39m registry 
+[33m=[39m [35mnew[39m [
+33mSmartGraphRegistry[39m()
+[33m;[39m
+    [90m 45| [39m         
+   [34mexpect[39m(registry
+[33m.[39m[34misReady[39m
+())[33m.[39m[34mtoBe[39m
+([35mfalse[39m)[33m;[39m
+    [90m   | [39m         
+                   
+[31m^[39m
+    [90m 46| [39m        
+})[33m;[39m
+    [90m 47| [39m
+
+[31m[2m???????????????????
+????????????????????????????
+?????????????????????????[1/
+2]???[22m[39m
+
+[41m[1m FAIL [22m[49m sr
+c/lib/tauri/__tests__/smart-
+graph-registry.test.ts[2m 
+> 
+[22mSmartGraphRegistry[2m 
+> [22mInitialization 
+State[2m > [22mshould 
+report ready after init
+[31m[1mTypeError[22m: 
+registry.isReady is not a 
+function[39m
+[36m [2m???[22m src/lib/t
+auri/__tests__/smart-graph-r
+egistry.test.ts:[2m51:29[2
+2m[39m
+    [90m 49| [39m         
+   [35mconst[39m registry 
+[33m=[39m [35mnew[39m [
+33mSmartGraphRegistry[39m()
+[33m;[39m
+    [90m 50| [39m         
+   [35mawait[39m registry
+[33m.[39m[34minit[39m()[
+33m;[39m
+    [90m 51| [39m         
+   [34mexpect[39m(registry
+[33m.[39m[34misReady[39m
+())[33m.[39m[34mtoBe[39m
+([35mtrue[39m)[33m;[39m
+    [90m   | [39m         
+                   
+[31m^[39m
+    [90m 52| [39m        
+})[33m;[39m
+    [90m 53| [39m    
+})[33m;[39m
+
+[31m[2m???????????????????
+????????????????????????????
+?????????????????????????[2/
+2]???[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m13 passed[39m[22m[90m (15)[39m
+[2m   Start at [22m 11:33:55
+[2m   Duration [22m 3.40s[2m (transform 285ms, setup 121ms, collect 222ms, tests 42ms, environment 0ms, prepare 248ms)[22m
+

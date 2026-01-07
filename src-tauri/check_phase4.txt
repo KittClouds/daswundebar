@@ -1,0 +1,46 @@
+﻿cargo :     Checking varant 
+v0.1.0 (C:\Users\shuga\1kitt
+root\1code\daswundebar\src-t
+auri)
+At line:1 char:1
++ cargo check 2>&1 | 
+Out-File -FilePath 
+check_phase4.txt -Encoding 
+utf8 ...
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (    C  
+  hecking va...ebar\src-t   
+ auri):String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+error[E0433]: failed to 
+resolve: use of undeclared 
+crate or module `once_cell`
+ --> src\lib.rs:7:5
+  |
+7 | use 
+once_cell::sync::Lazy;
+  |     ^^^^^^^^^ use of 
+undeclared crate or module 
+`once_cell`
+
+error[E0432]: unresolved 
+import `regex`
+ --> src\scanner.rs:8:5
+  |
+8 | use regex::Regex;
+  |     ^^^^^ use of 
+undeclared crate or module 
+`regex`
+
+Some errors have detailed 
+explanations: E0432, E0433.
+For more information about 
+an error, try `rustc 
+--explain E0432`.
+error: could not compile 
+`varant` (lib) due to 2 
+previous errors

@@ -25,7 +25,7 @@
  * @module scanner/highlighter-facade
  */
 
-import type { WasmUnifiedScanner } from '@/lib/wasm/kittcore';
+import type { UnifiedScanResult as TauriScanResult } from '@/lib/tauri';
 
 // =============================================================================
 // TYPES - Mirror the Rust types exactly
@@ -174,28 +174,18 @@ export class HighlighterFacade {
 
     private async _doInit(): Promise<void> {
         try {
-            // Dynamic import to avoid blocking
-            const wasmModule = await import('@/lib/wasm/kittcore');
-            await wasmModule.default();
+            // Use Tauri/fallback adapter instead of WASM
+            const { getScannerMode, tauriScanner } = await import('@/lib/tauri');
+            const mode = getScannerMode();
 
-            // Verify WASM binary has panic protection (catch_unwind)
-            // If this check fails, we're loading a stale binary
-            if (typeof wasmModule.has_panic_protection === 'function') {
-                const hasPanicProtection = wasmModule.has_panic_protection();
-                if (!hasPanicProtection) {
-                    console.error('[Highlighter] ⚠️ STALE WASM BINARY - missing panic protection! Try: npm run build:wasm && hard refresh');
-                }
+            if (mode === 'tauri') {
+                await tauriScanner.initialize();
+                console.log('[Highlighter] Ready via Tauri IPC');
             } else {
-                // Old binary without the check function
-                console.warn('[Highlighter] ⚠️ WASM binary may be stale - has_panic_protection not found. Try: npm run build:wasm && hard refresh');
+                console.log('[Highlighter] Running in fallback mode');
             }
 
-            this.scanner = new wasmModule.WasmUnifiedScanner();
             this.initialized = true;
-
-            // Log version for debugging
-            const version = typeof wasmModule.version === 'function' ? wasmModule.version() : 'unknown';
-            console.log(`[Highlighter] Ready for instant decorations (${version})`);
         } catch (error) {
             console.error('[Highlighter] Failed to initialize:', error);
             throw error;

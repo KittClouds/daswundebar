@@ -4,7 +4,8 @@ import { Decoration, DecorationSet } from '@tiptap/pm/view';
 import { Node as ProseMirrorNode } from '@tiptap/pm/model';
 import { EntityKind, ENTITY_KINDS, ENTITY_COLORS } from '@/lib/types/entityTypes';
 import type { NEREntity } from '../extraction';
-import { entityRegistry } from '@/lib/cozo/graph/adapters';
+// LEGACY: This module is deprecated. Using smartGraphRegistry for cleanliness.
+import { smartGraphRegistry } from '@/lib/tauri';
 import { patternRegistry, type PatternDefinition, type RefKind } from '../refs';
 import { mentionEventQueue } from '@/lib/scanner/mention-event-queue';
 import type { EntityMentionEvent, PositionType } from '../cozo/types';

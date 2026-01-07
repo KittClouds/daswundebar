@@ -3,7 +3,8 @@ import { useJotaiNotes } from '@/hooks/useJotaiNotes';
 import { useUnifiedEntityAttributes } from '@/hooks/useUnifiedEntityAttributes';
 import { FactSheetContainer } from '@/components/fact-sheets/FactSheetContainer';
 import { EntitySelectionProvider, useEntitySelection } from '@/contexts/EntitySelectionContext';
-import { parseNoteConnectionsFromDocument } from '@/lib/scanner/extractor-facade';
+// Use smartGraphRegistry (SYNC!) instead of async parseNoteConnectionsFromDocument
+import { smartGraphRegistry } from '@/lib/tauri';
 import type { ParsedEntity, EntityAttributes } from '@/types/factSheetTypes';
 import type { EntityKind } from '@/lib/types/entityTypes';
 import { toast } from 'sonner';
@@ -26,7 +27,7 @@ function CalendarEntitySidebarInner() {
     // Use unified entity attributes hook for bi-directional sync
     const unifiedAttrs = useUnifiedEntityAttributes(selectedEntity);
 
-    // Gather ALL entities from the store
+    // Gather ALL entities from SmartGraphRegistry (SYNC - no async needed!)
     const entityNotes = useMemo(() => {
         const allEntities: ParsedEntity[] = [];
         const seen = new Set<string>();
@@ -55,29 +56,25 @@ function CalendarEntitySidebarInner() {
                     });
                 }
             }
+        }
 
-            // 2. Parse inline entities from note content
-            if (note.content) {
-                try {
-                    const parsed = JSON.parse(note.content);
-                    const connections = parseNoteConnectionsFromDocument(parsed);
-
-                    for (const entity of connections.entities) {
-                        const key = `${entity.kind}|${entity.label}`;
-                        if (!seen.has(key)) {
-                            seen.add(key);
-                            allEntities.push({
-                                kind: entity.kind as EntityKind,
-                                subtype: entity.subtype,
-                                label: entity.label,
-                                attributes: entity.attributes || {},
-                            });
-                        }
-                    }
-                } catch {
-                    // Invalid JSON, skip
+        // 2. Get entities from SmartGraphRegistry (SYNC - from local cache!)
+        try {
+            const registryEntities = smartGraphRegistry.getAllEntities();
+            for (const entity of registryEntities) {
+                const key = `${entity.kind}|${entity.label}`;
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    allEntities.push({
+                        kind: entity.kind as EntityKind,
+                        label: entity.label,
+                        attributes: {},
+                    });
                 }
             }
+        } catch (err) {
+            // Registry not ready yet - just use note entities
+            console.log('[CalendarEntitySidebar] SmartGraphRegistry not ready, using note entities only');
         }
 
         return allEntities;

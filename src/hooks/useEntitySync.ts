@@ -1,7 +1,8 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { useJotaiNotes } from '@/hooks/useJotaiNotes';
 import { useCozoContext } from '@/contexts/CozoContext';
-import { entityRegistry } from '@/lib/cozo/graph/adapters';
+// Use smart graph registry with local caching + smart hydration
+import { smartGraphRegistry } from '@/lib/tauri';
 import type { EntityKind } from '@/lib/types/entityTypes';
 
 interface ExtractedEntity {
@@ -109,7 +110,7 @@ export function useEntitySync(options: UseEntitySyncOptions = {}) {
 
                 for (const entity of entities) {
                     try {
-                        await entityRegistry.registerEntity(
+                        await smartGraphRegistry.registerEntity(
                             entity.label,
                             entity.kind,
                             note.id,
@@ -130,39 +131,25 @@ export function useEntitySync(options: UseEntitySyncOptions = {}) {
             if (syncedCount > 0) {
                 refreshEntities();
 
-                // Re-hydrate Rust scanner with updated entities
+                // SMART HYDRATION: Only re-hydrate if entity set changed
                 try {
                     const { scannerFacade } = await import('@/lib/scanner');
                     const { highlighterBridge } = await import('@/lib/highlighter');
-                    const allEntities = await entityRegistry.getAllEntities();
-                    const entityDefs = allEntities.map(e => ({
-                        id: e.id,
-                        label: e.label,
-                        kind: e.kind,
-                        aliases: e.aliases || [],
-                    }));
 
-                    await scannerFacade.hydrateEntities(entityDefs);
-                    highlighterBridge.hydrateEntities(entityDefs);
+                    // Use smart hydration - returns null if no changes!
+                    const entityDefs = await smartGraphRegistry.getEntitiesForHydration();
 
-                    console.log(`[useEntitySync] Synced ${syncedCount} notes, hydrated scanner/highlighter with ${allEntities.length} entities`);
-
-                    // Trigger immediate scan on synced notes now that entities are hydrated
-                    for (const note of state.notes) {
-                        if (syncedNotesRef.current.has(note.id)) {
-                            let plainText = '';
-                            try {
-                                const doc = JSON.parse(note.content);
-                                plainText = extractText(doc);
-                            } catch {
-                                plainText = note.content;
-                            }
-                            if (plainText.length > 0) {
-                                console.log('[useEntitySync] Immediate scan after hydration:', note.id);
-                                scannerFacade.scanImmediate(note.id, plainText);
-                            }
-                        }
+                    if (entityDefs) {
+                        // Entity set changed, need to re-hydrate
+                        await scannerFacade.hydrateEntities(entityDefs);
+                        highlighterBridge.hydrateEntities(entityDefs);
+                        console.log(`[useEntitySync] Smart hydration: ${entityDefs.length} entities`);
+                    } else {
+                        console.log('[useEntitySync] Smart hydration: skipped (no changes)');
                     }
+
+                    // NOTE: Removed immediate rescan - that caused the circular loop!
+                    // Scans will happen naturally when notes are edited.
                 } catch (err) {
                     console.warn('[useEntitySync] Failed to hydrate scanner/highlighter:', err);
                 }

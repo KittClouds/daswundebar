@@ -1,0 +1,319 @@
+﻿cargo :     Checking varant 
+v0.1.0 (C:\Users\shuga\1kitt
+root\1code\daswundebar\src-t
+auri)
+At line:1 char:1
++ cargo check 2>&1 | 
+Out-File -FilePath 
+cargo_errors3.txt -Encoding 
+utf ...
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (    C  
+  hecking va...ebar\src-t   
+ auri):String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+error: visibility `pub` is 
+not followed by an item
+ --> src\wasm_compat.rs:8:1
+  |
+8 | pub #[cfg(target_arch = 
+"wasm32")]
+  | ^^^ the visibility
+  |
+  = help: you likely meant 
+to define an item, e.g., 
+`pub fn foo() {}`
+
+error: expected item after 
+attributes
+ --> src\wasm_compat.rs:7:1
+  |
+7 | #[cfg(target_arch = 
+"wasm32")]
+  | ^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^
+
+error: mismatched closing 
+delimiter: `]`
+   --> 
+src\scanner\core.rs:128:15
+    |
+128 |     
+#[cfg_attr(target_arch = 
+"wasm32", 
+wasm_bindgen(constructor)]
+    |      -        ^ 
+unclosed delimiter          
+                    ^ 
+mismatched closing delimiter
+    |      |
+    |      closing 
+delimiter possibly meant 
+for this
+
+error: mismatched closing 
+delimiter: `]`
+   --> 
+src\scanner\core.rs:156:15
+    |
+156 |     
+#[cfg_attr(target_arch = 
+"wasm32", 
+wasm_bindgen(js_name = 
+hydrateEntities)]
+    |      -        ^ 
+unclosed delimiter          
+                            
+      ^ mismatched closing 
+delimiter
+    |      |
+    |      closing 
+delimiter possibly meant 
+for this
+
+error: mismatched closing 
+delimiter: `]`
+   --> 
+src\scanner\core.rs:179:15
+    |
+179 |     
+#[cfg_attr(target_arch = 
+"wasm32", 
+wasm_bindgen(js_name = 
+hydrateCalendar)]
+    |      -        ^ 
+unclosed delimiter          
+                            
+      ^ mismatched closing 
+delimiter
+    |      |
+    |      closing 
+delimiter possibly meant 
+for this
+
+error: mismatched closing 
+delimiter: `]`
+   --> 
+src\scanner\core.rs:198:15
+    |
+198 |     
+#[cfg_attr(target_arch = 
+"wasm32", 
+wasm_bindgen(js_name = 
+scan)]
+    |      -        ^ 
+unclosed delimiter          
+                       ^ 
+mismatched closing delimiter
+    |      |
+    |      closing 
+delimiter possibly meant 
+for this
+
+error: mismatched closing 
+delimiter: `]`
+   --> 
+src\scanner\core.rs:291:15
+    |
+291 |     
+#[cfg_attr(target_arch = 
+"wasm32", 
+wasm_bindgen(js_name = 
+scanReflex)]
+    |      -        ^ 
+unclosed delimiter          
+                            
+ ^ mismatched closing 
+delimiter
+    |      |
+    |      closing 
+delimiter possibly meant 
+for this
+
+error: mismatched closing 
+delimiter: `]`
+   --> 
+src\scanner\core.rs:300:15
+    |
+300 |     
+#[cfg_attr(target_arch = 
+"wasm32", 
+wasm_bindgen(js_name = 
+scanSyntax)]
+    |      -        ^ 
+unclosed delimiter          
+                            
+ ^ mismatched closing 
+delimiter
+    |      |
+    |      closing 
+delimiter possibly meant 
+for this
+
+error: mismatched closing 
+delimiter: `]`
+   --> 
+src\scanner\core.rs:306:15
+    |
+306 |     
+#[cfg_attr(target_arch = 
+"wasm32", 
+wasm_bindgen(js_name = 
+scanTemporal)]
+    |      -        ^ 
+unclosed delimiter          
+                            
+   ^ mismatched closing 
+delimiter
+    |      |
+    |      closing 
+delimiter possibly meant 
+for this
+
+error: mismatched closing 
+delimiter: `]`
+   --> 
+src\scanner\core.rs:312:15
+    |
+312 |     
+#[cfg_attr(target_arch = 
+"wasm32", 
+wasm_bindgen(js_name = 
+scanRelations)]
+    |      -        ^ 
+unclosed delimiter          
+                            
+    ^ mismatched closing 
+delimiter
+    |      |
+    |      closing 
+delimiter possibly meant 
+for this
+
+error: mismatched closing 
+delimiter: `]`
+   --> 
+src\scanner\core.rs:325:15
+    |
+325 |     
+#[cfg_attr(target_arch = 
+"wasm32", 
+wasm_bindgen(js_name = 
+hydrateRelationPatterns)]
+    |      -        ^ 
+unclosed delimiter          
+                            
+              ^ mismatched 
+closing delimiter
+    |      |
+    |      closing 
+delimiter possibly meant 
+for this
+
+error: mismatched closing 
+delimiter: `]`
+   --> 
+src\scanner\core.rs:333:15
+    |
+333 |     
+#[cfg_attr(target_arch = 
+"wasm32", 
+wasm_bindgen(js_name = 
+containsEntities)]
+    |      -        ^ 
+unclosed delimiter          
+                            
+       ^ mismatched closing 
+delimiter
+    |      |
+    |      closing 
+delimiter possibly meant 
+for this
+
+error: mismatched closing 
+delimiter: `]`
+   --> 
+src\scanner\core.rs:342:15
+    |
+342 |     
+#[cfg_attr(target_arch = 
+"wasm32", 
+wasm_bindgen(js_name = 
+getStatus)]
+    |      -        ^ 
+unclosed delimiter          
+                            
+^ mismatched closing 
+delimiter
+    |      |
+    |      closing 
+delimiter possibly meant 
+for this
+
+error: mismatched closing 
+delimiter: `]`
+   --> 
+src\scanner\core.rs:364:15
+    |
+364 |     
+#[cfg_attr(target_arch = 
+"wasm32", 
+wasm_bindgen(js_name = 
+getReflexStats)]
+    |      -        ^ 
+unclosed delimiter          
+                            
+     ^ mismatched closing 
+delimiter
+    |      |
+    |      closing 
+delimiter possibly meant 
+for this
+
+error: mismatched closing 
+delimiter: `]`
+   --> 
+src\scanner\core.rs:370:15
+    |
+370 |     
+#[cfg_attr(target_arch = 
+"wasm32", 
+wasm_bindgen(js_name = 
+getTemporalStats)]
+    |      -        ^ 
+unclosed delimiter          
+                            
+       ^ mismatched closing 
+delimiter
+    |      |
+    |      closing 
+delimiter possibly meant 
+for this
+
+error: mismatched closing 
+delimiter: `]`
+   --> 
+src\scanner\core.rs:376:15
+    |
+376 |     
+#[cfg_attr(target_arch = 
+"wasm32", 
+wasm_bindgen(js_name = 
+getRelationPatternCount)]
+    |      -        ^ 
+unclosed delimiter          
+                            
+              ^ mismatched 
+closing delimiter
+    |      |
+    |      closing 
+delimiter possibly meant 
+for this
+
+error: could not compile 
+`varant` (lib) due to 16 
+previous errors
