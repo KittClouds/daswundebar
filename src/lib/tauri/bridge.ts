@@ -382,16 +382,17 @@ export async function conductorHydrate(entities: EntityDefinition[]): Promise<{ 
 /**
  * Full document scan using ScanConductor
  * Requires conductor to be hydrated first
+ * Now returns typed result directly (no JSON.parse needed)
  */
 export async function conductorScan(
     text: string,
     entitySpans: EntitySpan[] = []
 ): Promise<ConductorScanResult> {
-    const resultJson = await invoke<string>('conductor_scan', {
+    // Tauri auto-serializes/deserializes - no JSON.stringify/parse needed!
+    return invoke<ConductorScanResult>('conductor_scan', {
         text,
-        entitiesJson: JSON.stringify(entitySpans),
+        externalSpans: entitySpans,  // Renamed to match Rust parameter
     });
-    return JSON.parse(resultJson);
 }
 
 /**
@@ -653,22 +654,16 @@ export class TauriScanner {
         }
 
         try {
-            const startTime = performance.now();
+            // TIMING: Total
+            const t0_total = performance.now();
+
+            // TIMING: IPC invoke
+            const t1_ipc_start = performance.now();
             const result = await conductorScan(text, entitySpans);
-            const endTime = performance.now();
+            const t2_ipc_end = performance.now();
 
-            if (this.config.logPerformance) {
-                const totalMs = endTime - startTime;
-                const mode = result.stats.was_incremental ? 'INCREMENTAL' : result.stats.was_skipped ? 'CACHED' : 'FULL';
-                if (totalMs > this.config.slowScanThresholdMs) {
-                    console.warn(`[TauriScanner] ${mode} scan: ${totalMs.toFixed(1)}ms`);
-                } else {
-                    console.debug(`[TauriScanner] ${mode} scan: ${totalMs.toFixed(1)}ms`);
-                }
-            }
-
-            // Fire result handlers so persistence layer gets called
-            // Convert ConductorScanResult to ScanResult-like shape for handlers
+            // TIMING: Handler execution
+            const t3_handlers_start = performance.now();
             for (const handler of this.resultHandlers) {
                 try {
                     handler(noteId, result as any);
@@ -676,10 +671,34 @@ export class TauriScanner {
                     console.error('[TauriScanner] Handler error:', e);
                 }
             }
+            const t4_handlers_end = performance.now();
+
+            const t5_total_end = performance.now();
+
+            // Detailed timing breakdown
+            if (this.config.logPerformance) {
+                const ipcMs = t2_ipc_end - t1_ipc_start;
+                const handlersMs = t4_handlers_end - t3_handlers_start;
+                const totalMs = t5_total_end - t0_total;
+                const rustUs = result.stats.timings?.total_us ?? 0;
+                const overheadMs = totalMs - (rustUs / 1000);
+
+                const mode = result.stats.was_incremental ? 'INCR' : result.stats.was_skipped ? 'CACHE' : 'FULL';
+
+                // Always log timing breakdown for debugging
+                console.log(
+                    `[TauriScanner] ${mode} | ` +
+                    `total=${totalMs.toFixed(1)}ms | ` +
+                    `ipc=${ipcMs.toFixed(1)}ms | ` +
+                    `rust=${(rustUs / 1000).toFixed(2)}ms | ` +
+                    `handlers=${handlersMs.toFixed(1)}ms | ` +
+                    `overhead=${overheadMs.toFixed(1)}ms`
+                );
+            }
 
             return result;
         } catch (error) {
-            console.error('[TauriScanner] Conductor scan error:', error);
+            console.error('[TauriScanner] Conductor scan failed:', error);
             return null;
         }
     }

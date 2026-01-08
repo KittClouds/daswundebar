@@ -14,6 +14,7 @@
 
 import { smartGraphRegistry, tauriScanner, isTauri } from '@/lib/tauri';
 import { TimeRegistry } from '@/lib/time';
+import { scanEventBus, type ScanEvent } from './scan-event-bus';
 
 // Re-export types for consumers
 export type {
@@ -60,10 +61,9 @@ class ExtractorFacadeTauri {
         await tauriOrchestrator.waitForReady();
         console.log('[Extractor.Tauri] Orchestrator ready');
 
-        // Wire up persistence handlers (Tauri Pipeline ONLY)
-        tauriScanner.onResult(async (noteId, result) => {
-            // Type guard: result is ConductorScanResult from conductor_scan
-            const conductorResult = result as any;
+        // Subscribe to ScanEventBus (RustHighlighter broadcasts results)
+        scanEventBus.subscribe(async (event: ScanEvent) => {
+            const { noteId, result: conductorResult } = event;
 
             if (conductorResult.stats?.was_skipped) return;
 
@@ -136,27 +136,25 @@ class ExtractorFacadeTauri {
                 });
             }
 
-            // Single ingest call with deduplicated data
+            // Fire-and-forget persistence - don't block UI thread!
+            // Graph sync happens in background, "latest wins" semantics
             if (entityMap.size > 0 || allRelations.length > 0) {
-                try {
-                    const mentions = Array.from(entityMap.values()).map(e => ({
-                        entity_label: e.label,
-                        entity_kind: e.kind,
-                    }));
+                const mentions = Array.from(entityMap.values()).map(e => ({
+                    entity_label: e.label,
+                    entity_kind: e.kind,
+                }));
 
-                    const ingestResult = await smartGraphRegistry.ingestScanResult(
-                        noteId,
-                        mentions,
-                        allRelations
-                    );
-
-                    console.log(`[Extractor.Tauri] 📊 Graph synced:`, {
-                        entities: ingestResult.entities_created + ingestResult.entities_updated,
-                        edges: ingestResult.edges_created + ingestResult.edges_updated,
+                // Fire async, don't await - let UI update immediately
+                smartGraphRegistry.ingestScanResult(noteId, mentions, allRelations)
+                    .then(ingestResult => {
+                        console.log(`[Extractor.Tauri] 📊 Graph synced:`, {
+                            entities: ingestResult.entities_created + ingestResult.entities_updated,
+                            edges: ingestResult.edges_created + ingestResult.edges_updated,
+                        });
+                    })
+                    .catch(err => {
+                        console.warn('[Extractor.Tauri] Graph sync failed:', err);
                     });
-                } catch (err) {
-                    console.warn('[Extractor.Tauri] Graph sync failed:', err);
-                }
             }
 
             // Log extraction results (using ConductorStats fields)

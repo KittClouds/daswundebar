@@ -1,0 +1,1390 @@
+cargo :    Compiling varant v0.1.0 (C
+:\Users\shuga\1kittroot\1code\daswund
+ebar\src-tauri)
+At line:1 char:1
++ cargo test benchmark_tests --lib 
+2>&1 | Out-File -FilePath bench.txt  
+...
++ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpe 
+   cified: (   Compiling va...ebar\  
+  src-tauri):String) [], RemoteExc   
+ eption
+    + FullyQualifiedErrorId : Native 
+   CommandError
+ 
+warning: unused import: 
+`std::collections::HashMap`
+  --> src\temporal.rs:18:5
+   |
+18 | use std::collections::HashMap;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` 
+(part of `#[warn(unused)]`) on by 
+default
+
+warning: unused imports: 
+`ProjectionStats`, `project_all`, 
+`project_attributions`, 
+`project_quads`, and 
+`project_state_changes`
+  --> src\reality\engine.rs:16:22
+   |
+16 |     project_triples, 
+project_quads, project_attributions, 
+project_state_changes,
+   |                      
+^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^^
+17 |     project_all, 
+project_all_with_stats,
+   |     ^^^^^^^^^^^
+18 |     Triple, QuadPlus, 
+Attribution, StateChange, 
+Projection, ProjectionStats,
+   |                                 
+                            
+^^^^^^^^^^^^^^^
+
+warning: unused import: `EdgeKind`
+  --> src\reality\engine.rs:20:60
+   |
+20 | use 
+super::graph::{ConceptGraph, 
+ConceptNode, ConceptEdge, EdgeKind};
+   |                                 
+                           ^^^^^^^^
+
+warning: unused import: `ConceptEdge`
+  --> src\reality\global.rs:11:47
+   |
+11 | use 
+super::graph::{ConceptGraph, 
+ConceptNode, ConceptEdge};
+   |                                 
+              ^^^^^^^^^^^
+
+warning: unused import: `EdgeKind`
+ --> src\reality\temporal.rs:9:60
+  |
+9 | use super::graph::{ConceptGraph, 
+ConceptNode, ConceptEdge, EdgeKind};
+  |                                  
+                          ^^^^^^^^
+
+warning: unused imports: 
+`RealityLanguage` and `SyntaxKind`
+  --> src\reality\mod.rs:21:18
+   |
+21 | pub use syntax::{SyntaxKind, 
+RealityLanguage};
+   |                  ^^^^^^^^^^  
+^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge`, `ConceptGraph`, 
+`ConceptNode`, and `EdgeKind`
+  --> src\reality\mod.rs:22:17
+   |
+22 | pub use graph::{ConceptGraph, 
+ConceptNode, ConceptEdge, EdgeKind};
+   |                 ^^^^^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^^^^  ^^^^^^^^
+
+warning: unused import: 
+`synapse::SynapseBridge`
+  --> src\reality\mod.rs:23:9
+   |
+23 | pub use synapse::SynapseBridge;
+   |         ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`engine::RealityEngine`
+  --> src\reality\mod.rs:24:9
+   |
+24 | pub use engine::RealityEngine;
+   |         ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Attribution`, `Projection`, 
+`QuadPlus`, `StateChange`, and 
+`Triple`
+  --> src\reality\mod.rs:25:22
+   |
+25 | pub use projection::{Triple, 
+QuadPlus, Attribution, StateChange, 
+Projection};
+   |                      ^^^^^^  
+^^^^^^^^  ^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^
+
+warning: unused import: 
+`global::GlobalGraph`
+  --> src\reality\mod.rs:26:9
+   |
+26 | pub use global::GlobalGraph;
+   |         ^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`unification::EntityUnifier`
+  --> src\reality\mod.rs:27:9
+   |
+27 | pub use 
+unification::EntityUnifier;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `NamedRows`
+ --> src\graph\registry.rs:6:35
+  |
+6 | use cozo::{DbInstance, 
+DataValue, NamedRows};
+  |                                  
+ ^^^^^^^^^
+
+warning: unused import: `schema::*`
+  --> src\graph\mod.rs:23:9
+   |
+23 | pub use schema::*;
+   |         ^^^^^^^^^
+
+warning: unused import: `queries::*`
+  --> src\graph\mod.rs:26:9
+   |
+26 | pub use queries::*;
+   |         ^^^^^^^^^^
+
+warning: unused import: 
+`algorithms::*`
+  --> src\graph\mod.rs:27:9
+   |
+27 | pub use algorithms::*;
+   |         ^^^^^^^^^^^^^
+
+warning: unused import: `commands::*`
+  --> src\rag\mod.rs:15:9
+   |
+15 | pub use commands::*;
+   |         ^^^^^^^^^^^
+
+warning: unused import: 
+`embeddings::EmbeddingService`
+  --> src\rag\mod.rs:16:9
+   |
+16 | pub use 
+embeddings::EmbeddingService;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`chunker::RagChunker`
+  --> src\rag\mod.rs:17:9
+   |
+17 | pub use chunker::RagChunker;
+   |         ^^^^^^^^^^^^^^^^^^^
+
+warning: value assigned to 
+`head_idx` is never read
+   --> src\chunker.rs:464:28
+    |
+464 |         let mut head_idx = 
+None;
+    |                            ^^^^
+    |
+    = help: maybe it is overwritten 
+before being read?
+    = note: 
+`#[warn(unused_assignments)]` (part 
+of `#[warn(unused)]`) on by default
+
+warning: unused variable: 
+`projections`
+   --> src\reality\engine.rs:791:14
+    |
+791 |         let (projections, 
+stats) = engine.process_with_projecti
+ons(text, &spans);
+    |              ^^^^^^^^^^^ help: 
+if this is intentional, prefix it 
+with an underscore: `_projections`
+    |
+    = note: 
+`#[warn(unused_variables)]` (part of 
+`#[warn(unused)]`) on by default
+
+warning: unused variable: `query`
+   --> src\graph\queries.rs:392:13
+    |
+392 |         let query = r#"
+    |             ^^^^^ help: if 
+this is intentional, prefix it with 
+an underscore: `_query`
+
+warning: unused variable: `center`
+   --> src\graph\algorithms.rs:595:24
+    |
+595 |         let (registry, center, 
+leaves) = build_star_graph();
+    |                        ^^^^^^ 
+help: if this is intentional, prefix 
+it with an underscore: `_center`
+
+warning: variable does not need to 
+be mutable
+   --> src\rag\chunker.rs:110:62
+    |
+110 |     fn find_break_point(&self, 
+chars: &[char], start: usize, mut 
+end: usize) -> usize {
+    |                                
+                              ----^^^
+    |                                
+                              |
+    |                                
+                              help: 
+remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` 
+(part of `#[warn(unused)]`) on by 
+default
+
+warning: methods `add_entity` and 
+`clear` are never used
+   --> src\implicit.rs:343:12
+    |
+196 | impl ImplicitCortex {
+    | ------------------- methods in 
+this implementation
+...
+343 |     pub fn add_entity(&mut 
+self, entity: EntityDefinition) {
+    |            ^^^^^^^^^^
+...
+390 |     pub fn clear(&mut self) {
+    |            ^^^^^
+    |
+    = note: `#[warn(dead_code)]` 
+(part of `#[warn(unused)]`) on by 
+default
+
+warning: method `hydrate_calendar` 
+is never used
+   --> src\temporal.rs:363:12
+    |
+267 | impl TemporalCortex {
+    | ------------------- method in 
+this implementation
+...
+363 |     pub fn hydrate_calendar(
+    |            ^^^^^^^^^^^^^^^^
+
+warning: variant `DoubleConsonant` 
+is never constructed
+  --> src\verb_morphology.rs:25:5
+   |
+19 | pub enum VerbPattern {
+   |          ----------- variant in 
+this enum
+...
+25 |     DoubleConsonant,
+   |     ^^^^^^^^^^^^^^^
+   |
+   = note: `VerbPattern` has derived 
+impls for the traits `Clone` and 
+`Debug`, but these are intentionally 
+ignored during dead code analysis
+
+warning: variants `Ambitransitive` 
+and `Ditransitive` are never 
+constructed
+  --> src\verb_morphology.rs:61:5
+   |
+55 | pub enum Transitivity {
+   |          ------------ variants 
+in this enum
+...
+61 |     Ambitransitive,
+   |     ^^^^^^^^^^^^^^
+62 |     /// Takes two objects: "X 
+gave Y to Z"
+63 |     Ditransitive,
+   |     ^^^^^^^^^^^^
+   |
+   = note: `Transitivity` has 
+derived impls for the traits `Clone` 
+and `Debug`, but these are 
+intentionally ignored during dead 
+code analysis
+
+warning: associated function 
+`double_consonant` is never used
+  --> src\verb_morphology.rs:97:18
+   |
+76 | impl VerbEntry {
+   | -------------- associated 
+function in this implementation
+...
+97 |     pub const fn 
+double_consonant(base: &'static str, 
+relation: &'static str, domain: 
+VerbDomain) -> Self {
+   |                  
+^^^^^^^^^^^^^^^^
+
+warning: methods `get_domain` and 
+`get_transitivity` are never used
+   --> src\verb_morphology.rs:501:12
+    |
+452 | impl VerbLexicon {
+    | ---------------- methods in 
+this implementation
+...
+501 |     pub fn get_domain(&self, 
+word: &str) -> Option<VerbDomain> {
+    |            ^^^^^^^^^^
+...
+506 |     pub fn 
+get_transitivity(&self, word: &str) 
+-> Option<Transitivity> {
+    |            ^^^^^^^^^^^^^^^^
+
+warning: method `as_str` is never 
+used
+  --> src\chunker.rs:41:12
+   |
+40 | impl ChunkKind {
+   | -------------- method in this 
+implementation
+41 |     pub fn as_str(&self) -> 
+&'static str {
+   |            ^^^^^^
+
+warning: methods `contains` and 
+`overlaps` are never used
+  --> src\chunker.rs:83:12
+   |
+59 | impl TextRange {
+   | -------------- methods in this 
+implementation
+...
+83 |     pub fn contains(&self, 
+other: &TextRange) -> bool {
+   |            ^^^^^^^^
+...
+88 |     pub fn overlaps(&self, 
+other: &TextRange) -> bool {
+   |            ^^^^^^^^
+
+warning: methods `is_verbal` and 
+`is_modifier` are never used
+   --> src\chunker.rs:173:12
+    |
+168 | impl POS {
+    | -------- methods in this 
+implementation
+...
+173 |     pub fn is_verbal(&self) -> 
+bool {
+    |            ^^^^^^^^^
+...
+177 |     pub fn is_modifier(&self) 
+-> bool {
+    |            ^^^^^^^^^^^
+
+warning: method `get_stats` is never 
+used
+   --> src\chunker.rs:295:12
+    |
+263 | impl Chunker {
+    | ------------ method in this 
+implementation
+...
+295 |     pub fn get_stats(&self, 
+text: &str) -> ChunkStats {
+    |            ^^^^^^^^^
+
+warning: type alias `RelationCortex` 
+is never used
+   --> src\relation.rs:126:10
+    |
+126 | pub type RelationCortex = 
+RelationEngine;
+    |          ^^^^^^^^^^^^^^
+
+warning: methods 
+`set_cst_threshold`, 
+`set_inference_enabled`, `build`, 
+and `pattern_count` are never used
+   --> src\relation.rs:154:12
+    |
+144 | impl RelationEngine {
+    | ------------------- methods in 
+this implementation
+...
+154 |     pub fn 
+set_cst_threshold(&mut self, 
+threshold: f32) {
+    |            ^^^^^^^^^^^^^^^^^
+...
+159 |     pub fn 
+set_inference_enabled(&mut self, 
+enabled: bool) {
+    |            
+^^^^^^^^^^^^^^^^^^^^^
+...
+164 |     pub fn build(&mut self) -> 
+Result<(), String> {
+    |            ^^^^^
+...
+169 |     pub fn 
+pattern_count(&self) -> usize {
+    |            ^^^^^^^^^^^^^
+
+warning: field `max_distance` is 
+never read
+   --> 
+src\structured_relation.rs:153:5
+    |
+145 | pub struct 
+StructuredRelationExtractor {
+    |            
+--------------------------- field in 
+this struct
+...
+153 |     max_distance: usize,
+    |     ^^^^^^^^^^^^
+
+warning: method `set_max_distance` 
+is never used
+   --> 
+src\structured_relation.rs:496:12
+    |
+162 | impl 
+StructuredRelationExtractor {
+    | 
+-------------------------------- 
+method in this implementation
+...
+496 |     pub fn 
+set_max_distance(&mut self, 
+distance: usize) {
+    |            ^^^^^^^^^^^^^^^^
+
+warning: method `is_empty` is never 
+used
+  --> src\incremental.rs:68:12
+   |
+52 | impl Chunk {
+   | ---------- method in this 
+implementation
+...
+68 |     pub fn is_empty(&self) -> 
+bool {
+   |            ^^^^^^^^
+
+warning: variants `Actor`, `Target`, 
+`Where`, `Tool`, and `Result` are 
+never constructed
+   --> src\relation_schema.rs:506:5
+    |
+503 | pub enum Role {
+    |          ---- variants in this 
+enum
+...
+506 |     Actor,    // Alternative 
+to Subject for action verbs
+    |     ^^^^^
+507 |     Target,   // Alternative 
+to Object
+    |     ^^^^^^
+508 |     Where,    // Location 
+argument
+    |     ^^^^^
+509 |     Tool,     // Instrument 
+used
+    |     ^^^^
+510 |     Result,   // 
+Outcome/product
+    |     ^^^^^^
+    |
+    = note: `Role` has derived impls 
+for the traits `Clone` and `Debug`, 
+but these are intentionally ignored 
+during dead code analysis
+
+warning: fields `role`, `kinds`, and 
+`optional` are never read
+   --> src\relation_schema.rs:516:9
+    |
+515 | pub struct SlotSpec {
+    |            -------- fields in 
+this struct
+516 |     pub role: Role,
+    |         ^^^^
+517 |     pub kinds: KindSet,
+    |         ^^^^^
+518 |     pub optional: bool,
+    |         ^^^^^^^^
+    |
+    = note: `SlotSpec` has derived 
+impls for the traits `Clone` and 
+`Debug`, but these are intentionally 
+ignored during dead code analysis
+
+warning: associated function 
+`optional` is never used
+   --> src\relation_schema.rs:526:18
+    |
+521 | impl SlotSpec {
+    | ------------- associated 
+function in this implementation
+...
+526 |     pub const fn 
+optional(role: Role, kinds: KindSet) 
+-> Self {
+    |                  ^^^^^^^^
+
+warning: method `arity` is never used
+   --> src\relation_schema.rs:546:12
+    |
+545 | impl RelationSchema {
+    | ------------------- method in 
+this implementation
+546 |     pub fn arity(&self) -> 
+usize {
+    |            ^^^^^
+
+warning: field `by_string` is never 
+read
+   --> src\relation_schema.rs:567:5
+    |
+565 | pub struct SchemaRegistry {
+    |            -------------- 
+field in this struct
+566 |     by_relation: 
+HashMap<Relation, &'static 
+RelationSchema>,
+567 |     by_string: 
+HashMap<&'static str, &'static 
+RelationSchema>,
+    |     ^^^^^^^^^
+    |
+    = note: `SchemaRegistry` has a 
+derived impl for the trait `Debug`, 
+but this is intentionally ignored 
+during dead code analysis
+
+warning: methods `get_by_str` and 
+`get_inverse` are never used
+   --> src\relation_schema.rs:587:12
+    |
+570 | impl SchemaRegistry {
+    | ------------------- methods in 
+this implementation
+...
+587 |     pub fn get_by_str(&self, 
+rel_str: &str) -> Option<&'static 
+RelationSchema> {
+    |            ^^^^^^^^^^
+...
+591 |     pub fn get_inverse(&self, 
+rel: Relation) -> Option<Relation> {
+    |            ^^^^^^^^^^^
+
+warning: method `skip_rate` is never 
+used
+   --> src\document.rs:108:8
+    |
+ 81 | impl ChangeDetector {
+    | ------------------- method in 
+this implementation
+...
+108 |     fn skip_rate(&self) -> f64 
+{
+    |        ^^^^^^^^^
+
+warning: method `skip_rate` is never 
+used
+   --> src\document.rs:173:12
+    |
+150 | impl DocumentCortex {
+    | ------------------- method in 
+this implementation
+...
+173 |     pub fn skip_rate(&self) -> 
+f64 {
+    |            ^^^^^^^^^
+
+warning: multiple associated items 
+are never used
+   --> src\relation_filter.rs:99:12
+    |
+ 90 | impl RelationFilter {
+    | ------------------- associated 
+items in this implementation
+...
+ 99 |     pub fn with_config(config: 
+FilterConfig) -> Self {
+    |            ^^^^^^^^^^^
+...
+109 |     pub fn 
+set_distance_decay(&mut self, 
+enabled: bool) {
+    |            ^^^^^^^^^^^^^^^^^^
+...
+114 |     pub fn 
+set_same_sentence_bonus(&mut self, 
+bonus: f64) {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^
+...
+119 |     pub fn 
+set_cross_sentence_penalty(&mut 
+self, penalty: f64) {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+124 |     pub fn 
+set_max_distance(&mut self, 
+distance: usize) {
+    |            ^^^^^^^^^^^^^^^^
+...
+129 |     pub fn config(&self) -> 
+&FilterConfig {
+    |            ^^^^^^
+...
+231 |     pub fn filter_kept(&self, 
+text: &str, relations: 
+Vec<ExtractedRelation>) -> 
+Vec<FilteredRelation> {
+    |            ^^^^^^^^^^^
+
+warning: struct `EntityInput` is 
+never constructed
+  --> src\narrative.rs:60:12
+   |
+60 | pub struct EntityInput {
+   |            ^^^^^^^^^^^
+
+warning: method `to_gender` is never 
+used
+  --> src\narrative.rs:71:8
+   |
+70 | impl EntityInput {
+   | ---------------- method in this 
+implementation
+71 |     fn to_gender(&self) -> 
+Gender {
+   |        ^^^^^^^^^
+
+warning: method `hydrate_entities` 
+is never used
+   --> src\narrative.rs:148:12
+    |
+104 | impl NarrativeGraph {
+    | ------------------- method in 
+this implementation
+...
+148 |     pub fn 
+hydrate_entities(&mut self, 
+entities: Vec<EntityInput>) {
+    |            ^^^^^^^^^^^^^^^^
+
+warning: type alias `SyntaxNode` is 
+never used
+ --> src\reality\ast.rs:4:10
+  |
+4 | pub type SyntaxNode = 
+rowan::SyntaxNode<RealityLanguage>;
+  |          ^^^^^^^^^^
+
+warning: type alias `SyntaxToken` is 
+never used
+ --> src\reality\ast.rs:5:10
+  |
+5 | pub type SyntaxToken = 
+rowan::SyntaxToken<RealityLanguage>;
+  |          ^^^^^^^^^^^
+
+warning: type alias `SyntaxElement` 
+is never used
+ --> src\reality\ast.rs:6:10
+  |
+6 | pub type SyntaxElement = rowan::S
+yntaxElement<RealityLanguage>;
+  |          ^^^^^^^^^^^^^
+
+warning: struct `Document` is never 
+constructed
+  --> src\reality\ast.rs:33:14
+   |
+33 | reality_ast!(Document, 
+Document);
+   |              ^^^^^^^^
+   |
+   = note: this warning originates 
+in the macro `reality_ast` (in 
+Nightly builds, run with -Z 
+macro-backtrace for more info)
+
+warning: struct `Paragraph` is never 
+constructed
+  --> src\reality\ast.rs:34:14
+   |
+34 | reality_ast!(Paragraph, 
+Paragraph);
+   |              ^^^^^^^^^
+   |
+   = note: this warning originates 
+in the macro `reality_ast` (in 
+Nightly builds, run with -Z 
+macro-backtrace for more info)
+
+warning: struct `EntitySpan` is 
+never constructed
+  --> src\reality\ast.rs:35:14
+   |
+35 | reality_ast!(EntitySpan, 
+EntitySpan);
+   |              ^^^^^^^^^^
+   |
+   = note: this warning originates 
+in the macro `reality_ast` (in 
+Nightly builds, run with -Z 
+macro-backtrace for more info)
+
+warning: function `project_all` is 
+never used
+   --> 
+src\reality\projection.rs:565:8
+    |
+565 | pub fn project_all(root: 
+&SyntaxNode<RealityLanguage>) -> 
+Vec<Projection> {
+    |        ^^^^^^^^^^^
+
+warning: method `raw_graph` is never 
+used
+   --> src\reality\graph.rs:347:12
+    |
+204 | impl ConceptGraph {
+    | ----------------- method in 
+this implementation
+...
+347 |     pub fn raw_graph(&self) -> 
+&DiGraph<ConceptNode, ConceptEdge> {
+    |            ^^^^^^^^^
+
+warning: method `contains_entity` is 
+never used
+   --> src\reality\synapse.rs:114:12
+    |
+ 34 | impl SynapseBridge {
+    | ------------------ method in 
+this implementation
+...
+114 |     pub fn 
+contains_entity(&self, entity_id: 
+&str) -> bool {
+    |            ^^^^^^^^^^^^^^^
+
+warning: fields `quads_extracted`, 
+`attributions_extracted`, and 
+`state_changes_extracted` are never 
+read
+  --> src\reality\engine.rs:55:9
+   |
+53 | pub struct ProcessStats {
+   |            ------------ fields 
+in this struct
+54 |     pub triples_extracted: 
+usize,
+55 |     pub quads_extracted: usize,
+   |         ^^^^^^^^^^^^^^^
+56 |     pub attributions_extracted: 
+usize,
+   |         ^^^^^^^^^^^^^^^^^^^^^^
+57 |     pub 
+state_changes_extracted: usize,
+   |         ^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `ProcessStats` has 
+derived impls for the traits `Clone` 
+and `Debug`, but these are 
+intentionally ignored during dead 
+code analysis
+
+warning: methods `graph_mut` and 
+`last_stats` are never used
+   --> src\reality\engine.rs:124:12
+    |
+ 63 | impl RealityEngine {
+    | ------------------ methods in 
+this implementation
+...
+124 |     pub fn graph_mut(&mut 
+self) -> &mut ConceptGraph {
+    |            ^^^^^^^^^
+...
+134 |     pub fn last_stats(&self) 
+-> Option<&ProcessStats> {
+    |            ^^^^^^^^^^
+
+warning: field `synapse_links` is 
+never read
+   --> src\reality\engine.rs:389:9
+    |
+385 | pub struct EngineStats {
+    |            ----------- field 
+in this struct
+...
+389 |     pub synapse_links: usize,
+    |         ^^^^^^^^^^^^^
+    |
+    = note: `EngineStats` has 
+derived impls for the traits `Clone` 
+and `Debug`, but these are 
+intentionally ignored during dead 
+code analysis
+
+warning: field `label` is never read
+   --> src\reality\engine.rs:402:44
+    |
+402 |         Entity { start: usize, 
+end: usize, label: String },
+    |         ------ field in this 
+variant       ^^^^^
+    |
+    = note: `TestSpan` has derived 
+impls for the traits `Clone` and 
+`Debug`, but these are intentionally 
+ignored during dead code analysis
+
+warning: methods `frequency` and 
+`first_mention` are never used
+  --> 
+src\reality\entity_layer.rs:60:12
+   |
+48 | impl EntityRecord {
+   | ----------------- methods in 
+this implementation
+...
+60 |     pub fn frequency(&self) -> 
+usize {
+   |            ^^^^^^^^^
+...
+65 |     pub fn first_mention(&self) 
+-> Option<&SpanRecord> {
+   |            ^^^^^^^^^^^^^
+
+warning: methods `entity_ids` and 
+`clear` are never used
+   --> 
+src\reality\entity_layer.rs:151:12
+    |
+ 86 | impl EntityLayer {
+    | ---------------- methods in 
+this implementation
+...
+151 |     pub fn entity_ids(&self) 
+-> impl Iterator<Item = &String> {
+    |            ^^^^^^^^^^
+...
+156 |     pub fn clear(&mut self) {
+    |            ^^^^^
+
+warning: methods `get_mut`, `iter`, 
+`by_importance`, `is_empty`, 
+`clear`, and `is_stale` are never 
+used
+   --> 
+src\reality\metadata_layer.rs:148:12
+    |
+ 90 | impl MetadataLayer {
+    | ------------------ methods in 
+this implementation
+...
+148 |     pub fn get_mut(&mut self, 
+entity_id: &str) -> Option<&mut 
+EntityMetadata> {
+    |            ^^^^^^^
+...
+153 |     pub fn iter(&self) -> impl 
+Iterator<Item = (&String, 
+&EntityMetadata)> {
+    |            ^^^^
+...
+165 |     pub fn 
+by_importance(&self) -> 
+Vec<&EntityMetadata> {
+    |            ^^^^^^^^^^^^^
+...
+193 |     pub fn is_empty(&self) -> 
+bool {
+    |            ^^^^^^^^
+...
+198 |     pub fn clear(&mut self) {
+    |            ^^^^^
+...
+211 |     pub fn is_stale(&self, 
+max_age_secs: u64) -> bool {
+    |            ^^^^^^^^
+
+warning: fields `projections_count`, 
+`edges_merged`, and `new_entities` 
+are never read
+  --> src\reality\global.rs:55:9
+   |
+53 | pub struct ProcessDocResult {
+   |            ---------------- 
+fields in this struct
+54 |     pub doc_id: String,
+55 |     pub projections_count: 
+usize,
+   |         ^^^^^^^^^^^^^^^^^
+56 |     pub nodes_merged: usize,
+57 |     pub edges_merged: usize,
+   |         ^^^^^^^^^^^^
+58 |     pub new_entities: usize,
+   |         ^^^^^^^^^^^^
+   |
+   = note: `ProcessDocResult` has 
+derived impls for the traits `Clone` 
+and `Debug`, but these are 
+intentionally ignored during dead 
+code analysis
+
+warning: methods `graph_mut`, 
+`unifier`, and `linked_documents` 
+are never used
+   --> src\reality\global.rs:122:12
+    |
+ 98 | impl GlobalGraph {
+    | ---------------- methods in 
+this implementation
+...
+122 |     pub fn graph_mut(&mut 
+self) -> &mut ConceptGraph {
+    |            ^^^^^^^^^
+...
+127 |     pub fn unifier(&self) -> 
+&EntityUnifier {
+    |            ^^^^^^^
+...
+236 |     pub fn 
+linked_documents(&self, doc_id: 
+&str) -> Vec<String> {
+    |            ^^^^^^^^^^^^^^^^
+
+warning: fields `label` and 
+`cohesion` are never read
+  --> src\reality\algorithms.rs:23:9
+   |
+20 | pub struct Community {
+   |            --------- fields in 
+this struct
+...
+23 |     pub label: String,
+   |         ^^^^^
+24 |     pub cohesion: f64,
+   |         ^^^^^^^^
+   |
+   = note: `Community` has derived 
+impls for the traits `Clone` and 
+`Debug`, but these are intentionally 
+ignored during dead code analysis
+
+warning: fields `entity_id`, 
+`entity_name`, and `communities` are 
+never read
+  --> src\reality\algorithms.rs:30:9
+   |
+29 | pub struct BridgeEntity {
+   |            ------------ fields 
+in this struct
+30 |     pub entity_id: String,
+   |         ^^^^^^^^^
+31 |     pub entity_name: String,
+   |         ^^^^^^^^^^^
+32 |     pub communities: Vec<usize>,
+   |         ^^^^^^^^^^^
+   |
+   = note: `BridgeEntity` has 
+derived impls for the traits `Clone` 
+and `Debug`, but these are 
+intentionally ignored during dead 
+code analysis
+
+warning: fields `edges` and `cost` 
+are never read
+  --> src\reality\algorithms.rs:40:9
+   |
+38 | pub struct Path {
+   |            ---- fields in this 
+struct
+39 |     pub entities: Vec<String>,
+40 |     pub edges: Vec<String>,
+   |         ^^^^^
+41 |     pub cost: f64,
+   |         ^^^^
+   |
+   = note: `Path` has derived impls 
+for the traits `Clone` and `Debug`, 
+but these are intentionally ignored 
+during dead code analysis
+
+warning: field `kind` is never read
+  --> src\reality\algorithms.rs:50:9
+   |
+47 | pub struct RankedEntity {
+   |            ------------ field 
+in this struct
+...
+50 |     pub kind: String,
+   |         ^^^^
+   |
+   = note: `RankedEntity` has 
+derived impls for the traits `Clone` 
+and `Debug`, but these are 
+intentionally ignored during dead 
+code analysis
+
+warning: field `outliers` is never 
+read
+  --> src\reality\algorithms.rs:60:9
+   |
+57 | pub struct ImportanceReport {
+   |            ---------------- 
+field in this struct
+...
+60 |     pub outliers: 
+Vec<OutlierEntity>,
+   |         ^^^^^^^^
+   |
+   = note: `ImportanceReport` has 
+derived impls for the traits `Clone` 
+and `Debug`, but these are 
+intentionally ignored during dead 
+code analysis
+
+warning: fields `id`, `name`, 
+`pagerank_rank`, `degree_rank`, and 
+`rank_delta` are never read
+  --> src\reality\algorithms.rs:66:9
+   |
+65 | pub struct OutlierEntity {
+   |            ------------- fields 
+in this struct
+66 |     pub id: String,
+   |         ^^
+67 |     pub name: String,
+   |         ^^^^
+68 |     pub pagerank_rank: usize,
+   |         ^^^^^^^^^^^^^
+69 |     pub degree_rank: usize,
+   |         ^^^^^^^^^^^
+70 |     pub rank_delta: i32,
+   |         ^^^^^^^^^^
+   |
+   = note: `OutlierEntity` has 
+derived impls for the traits `Clone` 
+and `Debug`, but these are 
+intentionally ignored during dead 
+code analysis
+
+warning: fields `event_name` and 
+`causal_type` are never read
+  --> src\reality\temporal.rs:40:9
+   |
+38 | pub struct CausalChainItem {
+   |            --------------- 
+fields in this struct
+39 |     pub event_id: String,
+40 |     pub event_name: String,
+   |         ^^^^^^^^^^
+...
+43 |     pub causal_type: CausalType,
+   |         ^^^^^^^^^^^
+   |
+   = note: `CausalChainItem` has 
+derived impls for the traits `Clone` 
+and `Debug`, but these are 
+intentionally ignored during dead 
+code analysis
+
+warning: fields `cause_name`, 
+`cause_time`, `effect_name`, 
+`effect_time`, and `delta_seconds` 
+are never read
+  --> src\reality\temporal.rs:50:9
+   |
+48 | pub struct TemporalViolation {
+   |            ----------------- 
+fields in this struct
+49 |     pub cause_id: String,
+50 |     pub cause_name: String,
+   |         ^^^^^^^^^^
+51 |     pub cause_time: i64,
+   |         ^^^^^^^^^^
+52 |     pub effect_id: String,
+53 |     pub effect_name: String,
+   |         ^^^^^^^^^^^
+54 |     pub effect_time: i64,
+   |         ^^^^^^^^^^^
+55 |     pub delta_seconds: i64,
+   |         ^^^^^^^^^^^^^
+   |
+   = note: `TemporalViolation` has 
+derived impls for the traits `Clone` 
+and `Debug`, but these are 
+intentionally ignored during dead 
+code analysis
+
+warning: associated items 
+`from_graph` and `graph_mut` are 
+never used
+   --> src\reality\temporal.rs:100:12
+    |
+ 90 | impl CausalityGraph {
+    | ------------------- associated 
+items in this implementation
+...
+100 |     pub fn from_graph(graph: 
+ConceptGraph, timestamps: 
+HashMap<String, i64>) -> Self {
+    |            ^^^^^^^^^^
+...
+138 |     pub fn graph_mut(&mut 
+self) -> &mut ConceptGraph {
+    |            ^^^^^^^^^
+
+warning: field `label_contains` is 
+never read
+   --> src\graph\types.rs:114:9
+    |
+110 | pub struct NodeFilter {
+    |            ---------- field in 
+this struct
+...
+114 |     pub label_contains: 
+Option<String>,
+    |         ^^^^^^^^^^^^^^
+    |
+    = note: `NodeFilter` has derived 
+impls for the traits `Clone` and 
+`Debug`, but these are intentionally 
+ignored during dead code analysis
+
+warning: struct `NodeUpdate` is 
+never constructed
+   --> src\graph\types.rs:119:12
+    |
+119 | pub struct NodeUpdate {
+    |            ^^^^^^^^^^
+
+warning: struct `EdgeUpdate` is 
+never constructed
+   --> src\graph\types.rs:164:12
+    |
+164 | pub struct EdgeUpdate {
+    |            ^^^^^^^^^^
+
+warning: struct `EdgeTypeDef` is 
+never constructed
+   --> src\graph\types.rs:184:12
+    |
+184 | pub struct EdgeTypeDef {
+    |            ^^^^^^^^^^^
+
+warning: field `was_merged` is never 
+read
+   --> src\graph\types.rs:203:9
+    |
+200 | pub struct 
+NodeRegistrationResult {
+    |            
+---------------------- field in this 
+struct
+...
+203 |     pub was_merged: bool,
+    |         ^^^^^^^^^^
+    |
+    = note: `NodeRegistrationResult` 
+has derived impls for the traits 
+`Clone` and `Debug`, but these are 
+intentionally ignored during dead 
+code analysis
+
+warning: struct `BatchResult` is 
+never constructed
+   --> src\graph\types.rs:208:12
+    |
+208 | pub struct BatchResult {
+    |            ^^^^^^^^^^^
+
+warning: variants `NotInitialized`, 
+`DuplicateNode`, and `InvalidEdge` 
+are never constructed
+   --> src\graph\types.rs:218:5
+    |
+217 | pub enum GraphError {
+    |          ---------- variants 
+in this enum
+218 |     NotInitialized,
+    |     ^^^^^^^^^^^^^^
+...
+221 |     DuplicateNode(String),
+    |     ^^^^^^^^^^^^^
+222 |     InvalidEdge(String),
+    |     ^^^^^^^^^^^
+    |
+    = note: `GraphError` has derived 
+impls for the traits `Clone` and 
+`Debug`, but these are intentionally 
+ignored during dead code analysis
+
+warning: field `edges` is never read
+  --> src\graph\queries.rs:26:9
+   |
+22 | pub struct GraphPath {
+   |            --------- field in 
+this struct
+...
+26 |     pub edges: Vec<String>,
+   |         ^^^^^
+   |
+   = note: `GraphPath` has derived 
+impls for the traits `Clone` and 
+`Debug`, but these are intentionally 
+ignored during dead code analysis
+
+warning: fields `id` and 
+`internal_edges` are never read
+  --> src\graph\algorithms.rs:23:9
+   |
+21 | pub struct Community {
+   |            --------- fields in 
+this struct
+22 |     /// Community ID
+23 |     pub id: usize,
+   |         ^^
+...
+27 |     pub internal_edges: usize,
+   |         ^^^^^^^^^^^^^^
+   |
+   = note: `Community` has derived 
+impls for the traits `Clone` and 
+`Debug`, but these are intentionally 
+ignored during dead code analysis
+
+warning: variants `InDegree` and 
+`OutDegree` are never constructed
+  --> src\graph\algorithms.rs:34:5
+   |
+32 | pub enum CentralityMetric {
+   |          ---------------- 
+variants in this enum
+33 |     Degree,
+34 |     InDegree,
+   |     ^^^^^^^^
+35 |     OutDegree,
+   |     ^^^^^^^^^
+   |
+   = note: `CentralityMetric` has 
+derived impls for the traits `Clone` 
+and `Debug`, but these are 
+intentionally ignored during dead 
+code analysis
+
+warning: method `is_hydrated` is 
+never used
+   --> src\graph\bridge.rs:263:12
+    |
+ 86 | impl ScannerBridge {
+    | ------------------ method in 
+this implementation
+...
+263 |     pub fn is_hydrated(&self) 
+-> bool {
+    |            ^^^^^^^^^^^
+
+warning: field `note_title` is never 
+read
+   --> src\rag\schema.rs:364:9
+    |
+359 | pub struct ChunkData {
+    |            --------- field in 
+this struct
+...
+364 |     pub note_title: String,
+    |         ^^^^^^^^^^
+    |
+    = note: `ChunkData` has derived 
+impls for the traits `Clone` and 
+`Debug`, but these are intentionally 
+ignored during dead code analysis
+
+warning: method `embed` is never used
+   --> src\rag\embeddings.rs:120:12
+    |
+ 63 | impl EmbeddingService {
+    | --------------------- method 
+in this implementation
+...
+120 |     pub fn embed(&self, text: 
+&str) -> Result<Vec<f32>, String> {
+    |            ^^^^^
+
+warning: constant `EXPECTED_TRIPLES` 
+is never used
+  --> src\benchmark_tests.rs:20:7
+   |
+20 | const EXPECTED_TRIPLES: usize = 
+14;
+   |       ^^^^^^^^^^^^^^^^
+
+warning: constant 
+`CACHED_SCAN_MAX_US` is never used
+  --> src\benchmark_tests.rs:25:7
+   |
+25 | const CACHED_SCAN_MAX_US: u64 = 
+100;       // 100??s for cache hit
+   |       ^^^^^^^^^^^^^^^^^^
+
+warning: comparison is useless due 
+to type limits
+   --> src\conductor.rs:224:17
+    |
+224 |         assert!(result.stats.ti
+mings.total_us >= 0);
+    |                 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: 
+`#[warn(unused_comparisons)]` on by 
+default
+
+warning: `varant` (lib test) 
+generated 94 warnings (run `cargo 
+fix --lib -p varant --tests` to 
+apply 23 suggestions)
+    Finished `test` profile 
+[optimized + debuginfo] target(s) in 
+13.74s
+     Running unittests src\lib.rs (ta
+rget\debug\deps\app_lib-cbd29e970ac3f
+9ed.exe)
+
+running 7 tests
+test benchmark_tests::tests::test_cold_scan_under_20ms ... ok
+test benchmark_tests::tests::test_no_incremental_flag ... ok
+test benchmark_tests::tests::test_cached_scan_under_15ms ... ok
+test benchmark_tests::tests::test_benchmark_extracts_entities ... ok
+test benchmark_tests::tests::test_benchmark_extracts_correct_triple_count ... ok
+test benchmark_tests::tests::test_repeated_scans_consistent ... ok
+test benchmark_tests::tests::test_changed_content_rescans ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 338 filtered out; finished in 0.02s
+

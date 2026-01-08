@@ -399,22 +399,19 @@ pub fn compute_delta(old_chunks: &[Chunk], new_text: &str) -> Delta {
     }
 
     // Build hash→positions index for old chunks
-    let old_positions: HashMap<(u64, usize), Vec<usize>> = old_chunks
-        .iter()
-        .enumerate()
-        .fold(HashMap::new(), |mut m, (i, c)| {
-            m.entry((c.hash, c.len())).or_default().push(i);
-            m
-        });
+    // Use VecDeque so we can pop_front for INJECTIVE matching
+    use std::collections::VecDeque;
+    let mut old_positions: HashMap<(u64, usize), VecDeque<usize>> = HashMap::new();
+    for (i, c) in old_chunks.iter().enumerate() {
+        old_positions.entry((c.hash, c.len())).or_default().push_back(i);
+    }
 
-    // For each new chunk, find matching old chunk index (if any)
+    // For each new chunk, take a UNIQUE old index if available (injective)
     let matches: Vec<Option<usize>> = new_chunks.iter()
         .map(|nc| {
-            old_positions.get(&(nc.hash, nc.len()))
-                .and_then(|positions| {
-                    // Pick first unused position (greedy)
-                    positions.first().copied()
-                })
+            old_positions
+                .get_mut(&(nc.hash, nc.len()))
+                .and_then(|q| q.pop_front())  // Consume the match!
         })
         .collect();
 

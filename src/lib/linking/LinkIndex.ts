@@ -1,6 +1,6 @@
 import type { Note } from '@/types/noteTypes';
 import type { EntityKind } from '@/lib/types/entityTypes';
-import { scannerFacade } from '@/lib/scanner';
+// NOTE: Scan calls removed - RustHighlighter broadcasts via ScanEventBus
 
 export interface WikiLink {
   sourceNoteId: string;
@@ -183,24 +183,18 @@ export class LinkIndex {
 
   /**
    * Rebuild entire index from notes array
+   * NOTE: Entity scanning is handled by RustHighlighter via ScanEventBus
    */
   rebuildIndex(notes: Note[]): void {
     this.outgoingLinks.clear();
     this.backlinkMap.clear();
 
-    // First pass: parse all outgoing links and scan for entities
+    // Parse all outgoing links from notes (wikilinks, entity mentions, etc.)
     for (const note of notes) {
       const links = this.parseNoteLinks(note.id, note.title, note.content);
       this.outgoingLinks.set(note.id, links);
-
-      // Phase 1: Scan for implicit/explicit entities using Rust scanner
-      try {
-        const content = JSON.parse(note.content);
-        const text = this.extractTextFromDoc(content);
-        scannerFacade.scan(note.id, text);
-      } catch (error) {
-        // Ignore parse errors (handled partially by parseNoteLinks already)
-      }
+      // NOTE: Entity scanning removed - RustHighlighter handles this
+      // and broadcasts via ScanEventBus to avoid double scanning
     }
 
     // Second pass: build backlink map

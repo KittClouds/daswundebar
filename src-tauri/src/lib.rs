@@ -24,6 +24,10 @@ mod change;
 mod reality;  // Reality Engine - Graph + CST (ported from kittcore)
 mod graph;    // Graph Registry - Unified nodes + edges (CozoDB)
 mod rag;      // RAG Pipeline - Embeddings + HNSW (CozoDB native)
+mod resorank; // ResoRank - BM25F + Proximity scoring (ported from kittcore)
+
+#[cfg(test)]
+mod benchmark_tests;
 
 use once_cell::sync::Lazy;
 use parking_lot::Mutex;  // FAST mutex (already in deps)
@@ -52,9 +56,12 @@ static TRIPLE_CORTEX: Lazy<triple::TripleCortex> = Lazy::new(|| {
     triple::TripleCortex::new()
 });
 
-// ResoRank index (in-memory for now)
-static RESORANK_INDEX: Lazy<Mutex<std::collections::HashMap<String, String>>> = 
-    Lazy::new(|| Mutex::new(std::collections::HashMap::new()));
+// ResoRank scorer (BM25F + proximity scoring)
+static RESORANK: Lazy<Mutex<resorank::ResoRankScorer>> = Lazy::new(|| {
+    log::info!("Initializing ResoRank scorer...");
+    let corpus_stats = resorank::CorpusStatistics::default();
+    Mutex::new(resorank::ResoRankScorer::with_defaults(corpus_stats))
+});
 
 // Global RelationEngine for CST + Graph relation extraction
 static RELATION_ENGINE: Lazy<relation::RelationEngine> = Lazy::new(|| {
@@ -213,44 +220,107 @@ fn scan_syntax(_text: String) -> Result<String, String> {
     Ok("[]".to_string())
 }
 
-/// ResoRank search (in-memory for now)
+/// ResoRank search - BM25F with proximity scoring
 #[tauri::command]
-fn resorank_search(query: String, limit: usize) -> Result<String, String> {
-    let index = RESORANK_INDEX.lock();
+fn resorank_search(query: String, limit: usize) -> Result<Vec<resorank::SearchResult>, String> {
+    let mut scorer = RESORANK.lock();
     
-    // Simple substring search
-    let query_lower = query.to_lowercase();
-    let mut results: Vec<(&String, &String)> = index.iter()
-        .filter(|(_, content)| content.to_lowercase().contains(&query_lower))
-        .take(limit)
+    // Tokenize query (simple whitespace split, lowercase)
+    let query_tokens: Vec<String> = query
+        .to_lowercase()
+        .split_whitespace()
+        .filter(|s| s.len() > 1)
+        .map(|s| s.to_string())
         .collect();
     
-    // Sort by match position (earlier = better)
-    results.sort_by(|(_, a), (_, b)| {
-        let pos_a = a.to_lowercase().find(&query_lower).unwrap_or(usize::MAX);
-        let pos_b = b.to_lowercase().find(&query_lower).unwrap_or(usize::MAX);
-        pos_a.cmp(&pos_b)
-    });
+    if query_tokens.is_empty() {
+        return Ok(vec![]);
+    }
     
-    let result: Vec<_> = results.iter()
-        .map(|(id, content)| serde_json::json!({
-            "id": id,
-            "score": 1.0,
-            "snippet": content.chars().take(200).collect::<String>()
-        }))
-        .collect();
-    
-    serde_json::to_string(&result)
-        .map_err(|e| format!("Serialization error: {}", e))
+    let results = scorer.search(&query_tokens, limit);
+    Ok(results)
 }
 
-/// ResoRank index document
+/// ResoRank index document - add to BM25F index
 #[tauri::command]
-fn resorank_index(doc_id: String, content: String) -> Result<String, String> {
-    let mut index = RESORANK_INDEX.lock();
-    index.insert(doc_id.clone(), content);
-    log::debug!("Indexed document: {}", doc_id);
-    Ok("Indexed".to_string())
+fn resorank_index(doc_id: String, title: String, content: String) -> Result<bool, String> {
+    let mut scorer = RESORANK.lock();
+    
+    // Simple tokenizer (whitespace + lowercase)
+    let tokenize = |text: &str| -> Vec<String> {
+        text.to_lowercase()
+            .split(|c: char| !c.is_alphanumeric())
+            .filter(|s| s.len() > 1)
+            .map(|s| s.to_string())
+            .collect()
+    };
+    
+    let title_tokens = tokenize(&title);
+    let content_tokens = tokenize(&content);
+    let all_tokens: Vec<&str> = title_tokens.iter()
+        .chain(content_tokens.iter())
+        .map(|s| s.as_str())
+        .collect();
+    
+    if all_tokens.is_empty() {
+        return Ok(false);
+    }
+    
+    // Build document metadata
+    let mut doc_meta = resorank::DocumentMetadata::new();
+    doc_meta.set_field_length(0, title_tokens.len() as u32);  // Field 0 = title
+    doc_meta.set_field_length(1, content_tokens.len() as u32); // Field 1 = content
+    
+    // Build token metadata with field info and segment masks
+    let mut token_map = std::collections::HashMap::new();
+    let total_len = all_tokens.len();
+    let max_segments = 16u32;
+    
+    for (position, token) in all_tokens.iter().enumerate() {
+        let field_id = if position < title_tokens.len() { 0 } else { 1 };
+        let field_length = if field_id == 0 { title_tokens.len() } else { content_tokens.len() };
+        
+        let entry = token_map.entry(token.to_string()).or_insert_with(|| {
+            resorank::TokenMetadata::new(1) // Corpus doc freq = 1 for now (simplified)
+        });
+        
+        // Add field occurrence
+        entry.add_field_occurrence(field_id, 1, field_length as u32);
+        
+        // Calculate segment mask (which 1/16th of doc is this token in?)
+        let segment = ((position as f32 / total_len as f32) * max_segments as f32) as u32;
+        if segment < 32 {
+            entry.segment_mask |= 1 << segment;
+        }
+    }
+    
+    scorer.index_document(&doc_id, doc_meta, token_map, false);
+    log::debug!("ResoRank: indexed doc {} ({} title, {} content tokens)", 
+        doc_id, title_tokens.len(), content_tokens.len());
+    
+    Ok(true)
+}
+
+/// ResoRank clear index
+#[tauri::command]
+fn resorank_clear() -> Result<(), String> {
+    let mut scorer = RESORANK.lock();
+    scorer.clear();
+    log::info!("ResoRank: cleared index");
+    Ok(())
+}
+
+/// ResoRank get stats
+#[tauri::command]
+fn resorank_stats() -> Result<serde_json::Value, String> {
+    let scorer = RESORANK.lock();
+    let stats = scorer.stats();
+    Ok(serde_json::json!({
+        "documentCount": stats.document_count,
+        "termCount": stats.term_count,
+        "idfCacheSize": stats.idf_cache_size,
+        "entropyCacheSize": stats.entropy_cache_size,
+    }))
 }
 
 // ============================================================================
@@ -276,18 +346,13 @@ fn conductor_hydrate(entities_json: String) -> Result<String, String> {
 }
 
 /// Full document scan using ScanConductor
+/// Returns typed result - Tauri handles serialization automatically
 #[tauri::command]
-fn conductor_scan(text: String, entities_json: String) -> Result<String, String> {
+fn conductor_scan(
+    text: String,
+    external_spans: Vec<relation::EntitySpan>,
+) -> Result<document::ScanResult, String> {
     let total_start = std::time::Instant::now();
-    
-    // Parse optional entity spans
-    let parse_start = std::time::Instant::now();
-    let external_spans: Vec<relation::EntitySpan> = if entities_json.is_empty() || entities_json == "[]" {
-        vec![]
-    } else {
-        serde_json::from_str(&entities_json).unwrap_or_default()
-    };
-    let parse_time = parse_start.elapsed();
     
     // Acquire lock
     let lock_start = std::time::Instant::now();
@@ -296,38 +361,34 @@ fn conductor_scan(text: String, entities_json: String) -> Result<String, String>
     
     // Perform scan
     let scan_start = std::time::Instant::now();
-    match conductor.scan(&text, &external_spans) {
-        Some(result) => {
-            let scan_time = scan_start.elapsed();
-            
-            // Serialize result
-            let serialize_start = std::time::Instant::now();
-            let json = serde_json::to_string(&result)
-                .map_err(|e| format!("Serialization error: {}", e))?;
-            let serialize_time = serialize_start.elapsed();
-            
-            let total_time = total_start.elapsed();
-            
-            // Log detailed timing breakdown
-            log::debug!(
-                "[conductor_scan] text={}chars parse={}µs lock={}µs scan={}µs serialize={}µs total={}µs | implicit={} unified={} triples={}",
-                text.len(),
-                parse_time.as_micros(),
-                lock_time.as_micros(),
-                scan_time.as_micros(),
-                serialize_time.as_micros(),
-                total_time.as_micros(),
-                result.stats.implicit_found,
-                result.stats.unified_found,
-                result.stats.triples_found,
-            );
-            
-            Ok(json)
-        }
-        None => {
-            Err("Conductor not ready - call conductor_hydrate first".to_string())
-        }
+    let result = conductor
+        .scan(&text, &external_spans)
+        .ok_or_else(|| "Conductor not ready - call conductor_hydrate first".to_string())?;
+    let scan_time = scan_start.elapsed();
+    
+    let total_time = total_start.elapsed();
+    
+    // Log detailed timing breakdown
+    log::info!(
+        "[conductor_scan] text={} lock={}µs scan={}µs total={}µs | implicit={} unified={} triples={}",
+        text.len(),
+        lock_time.as_micros(),
+        scan_time.as_micros(),
+        total_time.as_micros(),
+        result.stats.implicit_found,
+        result.stats.unified_found,
+        result.stats.triples_found,
+    );
+    
+    // Warn if lock contention is significant (>1ms)
+    if lock_time.as_micros() > 1000 {
+        log::warn!(
+            "[conductor_scan] LOCK CONTENTION: {}µs waiting for mutex",
+            lock_time.as_micros()
+        );
     }
+    
+    Ok(result)
 }
 
 /// Force scan even if conductor is not ready (for debugging)
@@ -414,6 +475,8 @@ pub fn run() {
             extract_relations,
             resorank_search,
             resorank_index,
+            resorank_clear,
+            resorank_stats,
             conductor_hydrate,
             conductor_scan,
             conductor_scan_force,

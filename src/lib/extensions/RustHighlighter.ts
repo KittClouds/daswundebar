@@ -647,6 +647,16 @@ async function triggerTauriScan(doc: ProseMirrorNode, noteId: string): Promise<v
     if (result) {
         lastScanResult = result;
         scanResultCache.set(noteId, { hash, result });
+
+        // Broadcast to all consumers (LinkIndex, ExtractorFacade, etc.)
+        // Import at top is deferred to avoid circular deps
+        import('@/lib/Scanner/scan-event-bus').then(({ scanEventBus }) => {
+            scanEventBus.emit({
+                noteId,
+                result,
+                timestamp: Date.now(),
+            });
+        });
     }
 }
 

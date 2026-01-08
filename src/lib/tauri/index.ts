@@ -47,5 +47,14 @@ export type { EntityDefinition } from './bridge';
 // Re-export singletons
 export { tauriScanner, conductorBridge } from './bridge';
 
-
+// ResoRank - native BM25F search
+export {
+    tauriResorank,
+    resorankSearch,
+    resorankIndex,
+    resorankClear,
+    resorankStats,
+    type ResoRankSearchResult,
+    type ResoRankStats,
+} from './resorank';
 

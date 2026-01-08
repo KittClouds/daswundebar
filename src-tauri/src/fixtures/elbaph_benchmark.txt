@@ -1,0 +1,63 @@
+# Elbaph Benchmark Document
+# Used for scanner performance testing
+# 
+# Stats:
+# - 19 explicit triples (relations)
+# - 12 unique entities
+# - ~2KB text
+
+# ----------------------------
+# Elbaph weaknesses + disaster risk modeling
+# ----------------------------
+
+[EVENT|Elbaph Weakness: Fire|{"type":"Vulnerability"}]
+
+[EVENT|Elbaph Weakness: Lightning|{"type":"Vulnerability"}]
+
+[CHARACTER|Ripley] (WARNs_ABOUT) [EVENT|Elbaph Weakness: Fire]
+
+[CHARACTER|Ripley] (WARNs_ABOUT) [EVENT|Elbaph Weakness: Lightning]
+
+[EVENT|Lightning and Fire Outbreak] (CORRELATES_WITH) [EVENT|Elbaph Weakness: Fire]
+
+[EVENT|Lightning and Fire Outbreak] (CORRELATES_WITH) [EVENT|Elbaph Weakness: Lightning]
+
+# ----------------------------
+# Ancient facility / Lilith base
+# ----------------------------
+
+[LOCATION|Ancient Facility (Elbaph)|{"type":"Ruins","estimated_age_years":3000}]
+
+[EVENT|Lilith Claims Facility|{"type":"Base setup"}]
+
+[LOCATION|Ancient Facility (Elbaph)] (LOCATED_IN) [LOCATION|Elbaph]
+
+[CHARACTER|Lilith] (DISCOVERS) [LOCATION|Ancient Facility (Elbaph)]
+
+[CHARACTER|Lilith] (ESTABLISHES_BASE_AT) [LOCATION|Ancient Facility (Elbaph)]
+
+[CHARACTER|Lilith] (INITIATES) [EVENT|Lilith Claims Facility]
+
+# ----------------------------
+# Shanks / Harald / Knights backstory mesh (nodes only)
+# ----------------------------
+
+[EVENT|Harald Attempts Reform|{"type":"Policy"}]
+
+[EVENT|Harald Dies at Aurust|{"type":"Tragedy"}]
+
+[EVENT|Shanks Defeats Loki (Past)|{"type":"Backstory"}]
+
+[EVENT|Knights Aim to Annex Elbaph|{"type":"Geopolitics"}]
+
+[CHARACTER|Harald] (INITIATES) [EVENT|Harald Attempts Reform]
+
+[EVENT|Harald Dies at Aurust] (OCCURS_IN) [LOCATION|Aurust Castle]
+
+[CHARACTER|Shanks] (DEFEATS) [CHARACTER|Loki]
+
+[CHARACTER|Shanks] (CONNECTED_TO) [EVENT|Shanks Defeats Loki (Past)]
+
+[FACTION|Knights of God] (PURSUES) [EVENT|Knights Aim to Annex Elbaph]
+
+[EVENT|Knights Aim to Annex Elbaph] (TARGETS) [LOCATION|Elbaph]

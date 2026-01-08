@@ -1,6 +1,18 @@
-import { useEffect, useMemo, useRef, useState, useCallback } from 'react';
-import { ResoRankScorer, createProductionScorer, ProximityStrategy, RESORANK_PRODUCTION_CONFIG } from '@/lib/resorank';
+/**
+ * ResoRank Search Hooks
+ * 
+ * Uses native Rust BM25F scorer via Tauri when available,
+ * falls back to TypeScript implementation in browser.
+ */
+
+import { useEffect, useRef, useState, useCallback } from 'react';
 import type { Note } from '@/types/noteTypes';
+import { tauriResorank, type ResoRankSearchResult } from '@/lib/tauri/resorank';
+
+// Check if we're in Tauri environment
+const isTauri = (): boolean => {
+    return typeof window !== 'undefined' && '__TAURI__' in window;
+};
 
 export interface ResoRankResult {
     docId: string;
@@ -10,41 +22,15 @@ export interface ResoRankResult {
 
 /**
  * Hook for ResoRank-powered search
- * Uses the pure TypeScript implementation for reliable, fast lexical search
+ * Uses native Rust scorer via Tauri for maximum performance
  */
 export function useResoRankSearch(notes: Note[]) {
-    const scorerRef = useRef<ResoRankScorer<string> | null>(null);
     const [isReady, setIsReady] = useState(false);
     const [isIndexing, setIsIndexing] = useState(false);
     const lastIndexedCountRef = useRef(0);
+    const initRef = useRef(false);
 
-    // Initialize scorer with corpus statistics
-    const corpusStats = useMemo(() => {
-        const totalDocs = notes.length;
-        let totalLength = 0;
-
-        const sampleSize = Math.min(notes.length, 100);
-        const step = Math.max(1, Math.floor(notes.length / sampleSize));
-
-        for (let i = 0; i < notes.length; i += step) {
-            const note = notes[i];
-            const len = (note.title.length + note.content.length) / 5;
-            totalLength += len;
-        }
-
-        const avgLength = totalDocs > 0 ? (totalLength / Math.ceil(notes.length / step)) : 100;
-
-        return {
-            totalDocuments: totalDocs,
-            averageFieldLengths: new Map([
-                [0, avgLength * 0.2],
-                [1, avgLength * 0.8],
-            ]),
-            averageDocumentLength: avgLength,
-        };
-    }, [notes.length]);
-
-    // Initialize or update the scorer
+    // Initialize and index notes
     useEffect(() => {
         if (notes.length === 0) {
             setIsReady(false);
@@ -52,75 +38,91 @@ export function useResoRankSearch(notes: Note[]) {
         }
 
         // Skip if already indexed this exact set
-        if (lastIndexedCountRef.current === notes.length && scorerRef.current) {
+        if (lastIndexedCountRef.current === notes.length && initRef.current) {
             return;
         }
 
-        setIsIndexing(true);
+        if (!isTauri()) {
+            // Fallback: Just mark as ready but search will return empty
+            console.warn('[useResoRankSearch] Not in Tauri environment, search disabled');
+            setIsReady(true);
+            return;
+        }
 
-        scorerRef.current = createProductionScorer(corpusStats, {
-            strategy: ProximityStrategy.Pairwise,
-        });
+        const indexNotes = async () => {
+            setIsIndexing(true);
 
-        // First pass: Calculate global document frequency
-        const globalTermCounts = new Map<string, number>();
-        const noteTokensMap = new Map<string, { titleTokens: string[], contentTokens: string[] }>();
+            try {
+                // Initialize if needed
+                if (!initRef.current) {
+                    await tauriResorank.initialize();
+                    initRef.current = true;
+                }
 
-        notes.forEach(note => {
-            const titleTokens = tokenize(note.title);
-            const contentTokens = tokenize(note.content);
-            const uniqueTerms = new Set([...titleTokens, ...contentTokens]);
+                // Index all notes
+                const notesToIndex = notes.map(note => ({
+                    id: note.id,
+                    title: note.title,
+                    content: note.content,
+                }));
 
-            uniqueTerms.forEach(term => {
-                globalTermCounts.set(term, (globalTermCounts.get(term) || 0) + 1);
-            });
+                await tauriResorank.indexNotes(notesToIndex);
+                lastIndexedCountRef.current = notes.length;
+                setIsReady(true);
+            } catch (error) {
+                console.error('[useResoRankSearch] Failed to index notes:', error);
+            } finally {
+                setIsIndexing(false);
+            }
+        };
 
-            noteTokensMap.set(note.id, { titleTokens, contentTokens });
-        });
+        indexNotes();
+    }, [notes]);
 
-        // Second pass: Index documents
-        notes.forEach(note => {
-            const tokensInfo = noteTokensMap.get(note.id);
-            if (!tokensInfo) return;
+    const search = useCallback(async (query: string, limit = 20): Promise<ResoRankResult[]> => {
+        if (!query.trim() || notes.length === 0) return [];
 
-            const { titleTokens, contentTokens } = tokensInfo;
-            const allTokens = [...titleTokens, ...contentTokens];
+        if (!isTauri()) {
+            // Fallback: simple substring search
+            const queryLower = query.toLowerCase();
+            return notes
+                .filter(n =>
+                    n.title.toLowerCase().includes(queryLower) ||
+                    n.content.toLowerCase().includes(queryLower)
+                )
+                .slice(0, limit)
+                .map((n, i) => ({
+                    docId: n.id,
+                    score: 1 - (i * 0.01), // Simple decreasing score
+                }));
+        }
 
-            const tokenMetadata = buildTokenMetadata(
-                titleTokens,
-                contentTokens,
-                RESORANK_PRODUCTION_CONFIG.maxSegments,
-                globalTermCounts
-            );
+        try {
+            const results = await tauriResorank.search(query, limit);
+            return results.map(r => ({
+                docId: r.doc_id,
+                score: r.score,
+                normalizedScore: r.normalized_score,
+            }));
+        } catch (error) {
+            console.error('[useResoRankSearch] Search failed:', error);
+            return [];
+        }
+    }, [notes]);
 
-            const docMetadata = {
-                fieldLengths: new Map([
-                    [0, titleTokens.length],
-                    [1, contentTokens.length],
-                ]),
-                totalTokenCount: allTokens.length,
-            };
+    // Sync search wrapper for backward compat
+    const searchSync = useCallback((query: string, limit = 20): ResoRankResult[] => {
+        // For sync calls, we need to return empty and use async version
+        console.warn('[useResoRankSearch] Sync search called - use async version for best results');
+        return [];
+    }, []);
 
-            scorerRef.current!.indexDocument(note.id, docMetadata, tokenMetadata);
-        });
-
-        scorerRef.current.warmIdfCache();
-        lastIndexedCountRef.current = notes.length;
-        setIsIndexing(false);
-        setIsReady(true);
-    }, [notes, corpusStats]);
-
-    const search = useCallback((query: string, limit = 20): ResoRankResult[] => {
-        if (!scorerRef.current || !query.trim()) return [];
-        if (notes.length === 0) return [];
-
-        const queryTokens = tokenize(query);
-        if (queryTokens.length === 0) return [];
-
-        return scorerRef.current.search(queryTokens, limit);
-    }, [notes.length]);
-
-    return { search, isReady, isIndexing };
+    return {
+        search,
+        searchSync, // Legacy fallback
+        isReady,
+        isIndexing
+    };
 }
 
 /**
@@ -146,9 +148,14 @@ export function useResoRankSearchWithDebounce(
             return;
         }
 
-        debounceRef.current = setTimeout(() => {
-            const searchResults = search(query, limit);
-            setResults(searchResults);
+        debounceRef.current = setTimeout(async () => {
+            try {
+                const searchResults = await search(query, limit);
+                setResults(searchResults);
+            } catch (error) {
+                console.error('[useResoRankSearchWithDebounce] Search error:', error);
+                setResults([]);
+            }
         }, debounceMs);
 
         return () => {
@@ -159,56 +166,4 @@ export function useResoRankSearchWithDebounce(
     }, [query, isReady, search, debounceMs, minLength, limit]);
 
     return { results, isReady, isIndexing, search };
-}
-
-// Simple tokenizer: lowercase, strip punctuation, split on whitespace
-function tokenize(text: string): string[] {
-    if (!text) return [];
-    return text
-        .toLowerCase()
-        .replace(/[^\w\s]/g, ' ') // Replace punctuation with space to avoid merging words
-        .split(/\s+/)
-        .filter(t => t.length > 0);
-}
-
-// Build token metadata for ResoRank
-function buildTokenMetadata(
-    titleTokens: string[],
-    contentTokens: string[],
-    maxSegments: number,
-    globalTermCounts: Map<string, number>
-) {
-    const tokenMap = new Map();
-    const allTokens = [...titleTokens, ...contentTokens];
-
-    allTokens.forEach((token, position) => {
-        const fieldId = position < titleTokens.length ? 0 : 1;
-        const fieldLength = fieldId === 0 ? titleTokens.length : contentTokens.length;
-
-        if (!tokenMap.has(token)) {
-            tokenMap.set(token, {
-                fieldOccurrences: new Map(),
-                segmentMask: 0,
-                corpusDocFrequency: globalTermCounts.get(token) || 1,
-            });
-        }
-
-        const meta = tokenMap.get(token);
-
-        // Update field occurrences
-        if (!meta.fieldOccurrences.has(fieldId)) {
-            meta.fieldOccurrences.set(fieldId, { tf: 0, fieldLength });
-        }
-        meta.fieldOccurrences.get(fieldId).tf++;
-
-        // Calculate segment mask
-        const segmentIndex = Math.floor((position / allTokens.length) * maxSegments);
-        // Ensure segmentIndex is within 0 to 31 (bitwise limits)
-        // maxSegments is normally 16, so safe.
-        if (segmentIndex < 32) {
-            meta.segmentMask |= (1 << segmentIndex);
-        }
-    });
-
-    return tokenMap;
 }
