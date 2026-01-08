@@ -14,6 +14,7 @@ use std::collections::hash_map::DefaultHasher;
 use std::hash::{Hash, Hasher};
 use std::time::Instant;
 
+use super::chunker::Chunker;
 use super::implicit::{EntityDefinition, ImplicitCortex, ImplicitMention};
 use super::incremental::{self, Delta, ExtractedItems, IncrementalState, IncrementalStats};
 use super::relation::{EntitySpan, RelationEngine, UnifiedRelation};
@@ -123,6 +124,9 @@ impl ChangeDetector {
 
 /// Unified document scanner
 pub struct DocumentCortex {
+    // Shared chunker (expensive to create, reuse across scans)
+    chunker: Chunker,
+    
     // Core extractors
     relation_engine: RelationEngine,
     implicit_cortex: ImplicitCortex,
@@ -147,6 +151,7 @@ impl DocumentCortex {
     /// Create a new DocumentCortex
     pub fn new() -> Self {
         Self {
+            chunker: Chunker::new(),  // Single chunker instance (400+ word lexicon)
             relation_engine: RelationEngine::new(),
             implicit_cortex: ImplicitCortex::new(),
             triple_cortex: TripleCortex::new(),
@@ -189,6 +194,11 @@ impl DocumentCortex {
 
     /// Unified scan - one call extracts everything
     pub fn scan(&mut self, text: &str, external_spans: &[EntitySpan]) -> ScanResult {
+        // FAST PATH: Empty or whitespace-only text
+        if text.trim().is_empty() {
+            return ScanResult::default();
+        }
+        
         let overall_start = Instant::now();
 
         // Check for changes
@@ -404,6 +414,9 @@ impl DocumentCortex {
         let mut result = ScanResult::default();
         result.stats.content_hash = format!("{:x}", content_hash);
 
+        // CRITICAL: Chunk text ONCE and reuse (was chunking 2x before, 100-200ms wasted)
+        let chunk_result = self.chunker.chunk(text);
+
         // Phase 1: Triple extraction
         let triple_start = Instant::now();
         result.triples = self.triple_cortex.extract(text);
@@ -448,9 +461,9 @@ impl DocumentCortex {
         result.stats.timings.temporal_us = temporal_start.elapsed().as_micros() as u64;
         result.stats.temporal_found = result.temporal.len();
 
-        // Phase 5: Structured relation extraction
+        // Phase 5: Structured relation extraction (uses pre-computed chunks!)
         let structured_start = Instant::now();
-        result.structured = self.structured_extractor.extract_structured(text, &all_spans);
+        result.structured = self.structured_extractor.extract_from_chunks(text, &all_spans, &chunk_result);
         result.stats.timings.structured_us = structured_start.elapsed().as_micros() as u64;
         result.stats.structured_found = result.structured.len();
 
@@ -475,7 +488,7 @@ impl DocumentCortex {
         }
         result.stats.triples_found = result.triples.len();
 
-        // Phase 6: Unified relation extraction (CST + Graph inference)
+        // Phase 6: Unified relation extraction (CST + Graph inference) - uses pre-computed chunks!
         let unified_start = Instant::now();
         let existing_edges: Vec<(String, String, String)> = result
             .triples
@@ -484,7 +497,7 @@ impl DocumentCortex {
             .collect();
 
         let (unified_relations, _) =
-            self.relation_engine.extract(text, &all_spans, &existing_edges);
+            self.relation_engine.extract_with_chunks(text, &all_spans, &existing_edges, &chunk_result);
         result.unified_relations = unified_relations;
         result.stats.timings.unified_us = unified_start.elapsed().as_micros() as u64;
         result.stats.unified_found = result.unified_relations.len();

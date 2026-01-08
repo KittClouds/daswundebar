@@ -39,23 +39,26 @@ export interface EntitySpan {
 /** Timing statistics from scan */
 export interface ScanTimings {
     total_us: number;
-    syntax_us: number;
     relation_us: number;
     temporal_us: number;
     implicit_us: number;
+    structured_us: number;
     triple_us: number;
+    unified_us: number;
 }
 
 /** Aggregate scan statistics */
 export interface ScanStats {
     timings: ScanTimings;
-    content_hash: number;
+    content_hash: string;
     was_skipped: boolean;
+    was_incremental: boolean;
     entities_found: number;
-    relations_found: number;
     temporal_found: number;
     implicit_found: number;
     triples_found: number;
+    structured_found: number;
+    unified_found: number;
 }
 
 /** Extracted relation */
@@ -188,9 +191,20 @@ export interface UnifiedScanStats {
 
 /**
  * Check if running inside Tauri
+ * 
+ * In Tauri v2, the __TAURI__ global may not be exposed immediately.
+ * We also check __TAURI_INTERNALS__ which is the internal IPC mechanism.
  */
 export function isTauri(): boolean {
-    return typeof window !== 'undefined' && '__TAURI__' in window;
+    if (typeof window === 'undefined') return false;
+
+    // Tauri v1 style
+    if ('__TAURI__' in window) return true;
+
+    // Tauri v2 internals (IPC mechanism)
+    if ('__TAURI_INTERNALS__' in window) return true;
+
+    return false;
 }
 
 /** Scanner mode type */
@@ -546,9 +560,9 @@ export class TauriScanner {
     }
 
     /**
-     * Scan (debounced)
+     * Scan (debounced) - Uses conductor pipeline
      */
-    scan(noteId: string, text: string, entitySpans: EntitySpan[] = []): void {
+    scan(noteId: string, text: string, _entitySpans: EntitySpan[] = []): void {
         if (!this.ready) {
             console.log('[TauriScanner] Scan skipped - not ready');
             return;
@@ -558,7 +572,8 @@ export class TauriScanner {
         if (existing) clearTimeout(existing);
 
         const timer = setTimeout(() => {
-            this.executeScan(noteId, text, entitySpans);
+            // Use unified conductor pipeline (fires onResult handlers)
+            this.conductorScanImmediate(noteId, text, []);
             this.debounceTimers.delete(noteId);
         }, this.config.debounceMs);
 
@@ -629,6 +644,7 @@ export class TauriScanner {
      * This is the recommended scan method for new code
      */
     async conductorScanImmediate(
+        noteId: string,
         text: string,
         entitySpans: EntitySpan[] = []
     ): Promise<ConductorScanResult | null> {
@@ -648,6 +664,16 @@ export class TauriScanner {
                     console.warn(`[TauriScanner] ${mode} scan: ${totalMs.toFixed(1)}ms`);
                 } else {
                     console.debug(`[TauriScanner] ${mode} scan: ${totalMs.toFixed(1)}ms`);
+                }
+            }
+
+            // Fire result handlers so persistence layer gets called
+            // Convert ConductorScanResult to ScanResult-like shape for handlers
+            for (const handler of this.resultHandlers) {
+                try {
+                    handler(noteId, result as any);
+                } catch (e) {
+                    console.error('[TauriScanner] Handler error:', e);
                 }
             }
 

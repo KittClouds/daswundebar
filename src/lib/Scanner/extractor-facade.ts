@@ -9,11 +9,10 @@
  * - **Pipeline A (WASM)**: Browser CozoDB → lib/db SQLite (via sync)
  *   File: ./extractor-facade.wasm.ts
  * 
- * The router uses isTauri() to detect the environment.
- * This enables A/B testing between the two pipelines.
+ * Pipeline selection is controlled by ACTIVE_PIPELINE in pipeline-config.ts
  */
 
-import { isTauri } from '@/lib/tauri';
+import { getResolvedPipeline, logPipelineStatus, PIPELINE_VERBOSE_LOGGING } from './pipeline-config';
 
 // Re-export types (same for both pipelines)
 export type {
@@ -26,17 +25,23 @@ export type {
     EntitySpan,
 } from './bridge';
 
-// Dynamic import based on environment
+// Dynamic import based on pipeline config
 let _extractorFacade: any = null;
 let _parseNoteConnectionsFromDocument: any = null;
 
 /**
- * Get the appropriate ExtractorFacade based on environment
+ * Get the appropriate ExtractorFacade based on pipeline config
  */
 async function getExtractor() {
     if (_extractorFacade) return _extractorFacade;
 
-    if (isTauri()) {
+    const pipeline = getResolvedPipeline();
+
+    if (PIPELINE_VERBOSE_LOGGING) {
+        logPipelineStatus();
+    }
+
+    if (pipeline === 'tauri') {
         console.log('[ExtractorFacade] Using Tauri pipeline (Pipeline B)');
         const module = await import('./extractor-facade.tauri');
         _extractorFacade = module.extractorFacade;

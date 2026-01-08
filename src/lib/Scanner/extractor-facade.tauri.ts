@@ -55,105 +55,121 @@ class ExtractorFacadeTauri {
             throw new Error('[ExtractorFacade.Tauri] Cannot initialize: not running in Tauri');
         }
 
-        // Initialize Tauri scanner
-        await tauriScanner.initialize();
-
-        // Initialize SmartGraphRegistry (loads from Rust GraphRegistry)
-        await smartGraphRegistry.init();
-
-        // SMART HYDRATION: Only hydrate if needed
-        const entities = await smartGraphRegistry.getEntitiesForHydration();
-        if (entities) {
-            await tauriScanner.hydrateEntities(entities);
-            console.log(`[Extractor.Tauri] Initial hydration: ${entities.length} entities`);
-        } else {
-            console.log('[Extractor.Tauri] Initial hydration: skipped (already hydrated)');
-        }
+        // Wait for orchestrator (handles: backend connection, entity loading, scanner hydration)
+        const { tauriOrchestrator } = await import('@/lib/tauri');
+        await tauriOrchestrator.waitForReady();
+        console.log('[Extractor.Tauri] Orchestrator ready');
 
         // Wire up persistence handlers (Tauri Pipeline ONLY)
         tauriScanner.onResult(async (noteId, result) => {
-            if (result.stats.was_skipped) return;
+            // Type guard: result is ConductorScanResult from conductor_scan
+            const conductorResult = result as any;
+
+            if (conductorResult.stats?.was_skipped) return;
 
             // Persist temporal mentions to SQLite
-            if (result.temporal && result.temporal.length > 0) {
+            if (conductorResult.temporal && conductorResult.temporal.length > 0) {
                 const fullText = lastScannedText.get(noteId) || '';
                 await clearTemporalMentions(noteId);
-                await persistTemporalMentions(noteId, result.temporal, fullText);
+                await persistTemporalMentions(noteId, conductorResult.temporal, fullText);
             }
 
-            // PIPELINE B: Persist unified relations as EDGES in Rust GraphRegistry
-            const unifiedRelations = (result as any).unified_relations;
-            if (unifiedRelations && unifiedRelations.length > 0) {
-                // Batch ingest to Rust GraphRegistry
-                const mentions = unifiedRelations.flatMap((rel: any) => [
-                    { entity_label: rel.head, entity_kind: 'CONCEPT' },
-                    { entity_label: rel.tail, entity_kind: 'CONCEPT' },
-                ]);
+            // UNIFIED PERSISTENCE: Collect all entities and relations, then deduplicate
+            // This matches WASM's fullGraphSync() approach
+            const entityMap = new Map<string, { label: string; kind: string }>();
+            const allRelations: Array<{
+                head_label: string;
+                tail_label: string;
+                relation_type: string;
+                confidence: number;
+                source: 'explicit' | 'cst' | 'graph';
+            }> = [];
 
-                const relations = unifiedRelations.map((rel: any) => ({
-                    head_label: rel.head,
-                    tail_label: rel.tail,
-                    relation_type: rel.relation_type,
-                    confidence: rel.confidence,
-                    source: rel.source === 'CST' ? 'cst' : 'graph',
-                }));
+            // From triples (explicit syntax - highest priority)
+            for (const triple of conductorResult.triples || []) {
+                const t = triple as any;
+                const sourceKey = triple.source.toLowerCase();
+                const targetKey = triple.target.toLowerCase();
 
-                try {
-                    const ingestResult = await smartGraphRegistry.ingestScanResult(
-                        noteId,
-                        mentions,
-                        relations
-                    );
-                    console.log(`[Extractor.Tauri] Ingested relations:`, {
-                        entities: ingestResult.entities_created + ingestResult.entities_updated,
-                        edges: ingestResult.edges_created + ingestResult.edges_updated,
+                // Deduplicate by lowercase key
+                if (!entityMap.has(sourceKey)) {
+                    entityMap.set(sourceKey, {
+                        label: triple.source,
+                        kind: t.source_kind || 'CONCEPT'
                     });
-                } catch (err) {
-                    console.warn('[Extractor.Tauri] Relation ingest failed:', err);
                 }
-            }
+                if (!entityMap.has(targetKey)) {
+                    entityMap.set(targetKey, {
+                        label: triple.target,
+                        kind: t.target_kind || 'CONCEPT'
+                    });
+                }
 
-            // PIPELINE B: Persist triples as EDGES in Rust GraphRegistry
-            if (result.triples && result.triples.length > 0) {
-                const mentions = result.triples.flatMap(triple => {
-                    const t = triple as any;
-                    return [
-                        { entity_label: triple.source, entity_kind: t.source_kind || 'CONCEPT' },
-                        { entity_label: triple.target, entity_kind: t.target_kind || 'CONCEPT' },
-                    ];
-                });
-
-                const relations = result.triples.map(triple => ({
+                allRelations.push({
                     head_label: triple.source,
                     tail_label: triple.target,
                     relation_type: triple.predicate,
-                    confidence: 1.0, // Explicit syntax = highest confidence
-                    source: 'explicit' as const,
-                }));
+                    confidence: 1.0,
+                    source: 'explicit',
+                });
+            }
 
+            // From unified relations (CST + Graph inference)
+            const unifiedRelations = conductorResult.unified_relations || [];
+            for (const rel of unifiedRelations) {
+                const headKey = rel.head.toLowerCase();
+                const tailKey = rel.tail.toLowerCase();
+
+                if (!entityMap.has(headKey)) {
+                    entityMap.set(headKey, { label: rel.head, kind: 'CONCEPT' });
+                }
+                if (!entityMap.has(tailKey)) {
+                    entityMap.set(tailKey, { label: rel.tail, kind: 'CONCEPT' });
+                }
+
+                allRelations.push({
+                    head_label: rel.head,
+                    tail_label: rel.tail,
+                    relation_type: rel.relation_type,
+                    confidence: rel.confidence || 0.8,
+                    source: rel.source === 'CST' ? 'cst' : 'graph',
+                });
+            }
+
+            // Single ingest call with deduplicated data
+            if (entityMap.size > 0 || allRelations.length > 0) {
                 try {
+                    const mentions = Array.from(entityMap.values()).map(e => ({
+                        entity_label: e.label,
+                        entity_kind: e.kind,
+                    }));
+
                     const ingestResult = await smartGraphRegistry.ingestScanResult(
                         noteId,
                         mentions,
-                        relations
+                        allRelations
                     );
-                    console.log(`[Extractor.Tauri] Ingested triples:`, {
+
+                    console.log(`[Extractor.Tauri] 📊 Graph synced:`, {
                         entities: ingestResult.entities_created + ingestResult.entities_updated,
                         edges: ingestResult.edges_created + ingestResult.edges_updated,
                     });
                 } catch (err) {
-                    console.warn('[Extractor.Tauri] Triple ingest failed:', err);
+                    console.warn('[Extractor.Tauri] Graph sync failed:', err);
                 }
             }
 
-            // Log all extraction results
-            const stats = result.stats as any;
-            console.log(`[Extractor.Tauri] Extraction complete:`, {
-                implicit: stats.implicit_found,
-                unified: stats.unified_found || 0,
-                triples: stats.triples_found,
-                temporal: stats.temporal_found,
-                time_us: stats.timings?.total_us,
+            // Log extraction results (using ConductorStats fields)
+            const stats = conductorResult.stats;
+            console.log(`[Extractor.Tauri] ✅ Extraction complete:`, {
+                implicit: stats?.implicit_found ?? 0,
+                unified: stats?.unified_found ?? 0,
+                triples: stats?.triples_found ?? 0,
+                temporal: stats?.temporal_found ?? 0,
+                structured: stats?.structured_found ?? 0,
+                time_us: stats?.timings?.total_us ?? 0,
+                wasIncremental: stats?.was_incremental ?? false,
+                wasSkipped: stats?.was_skipped ?? false,
             });
         });
 

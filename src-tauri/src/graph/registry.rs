@@ -49,6 +49,11 @@ impl GraphRegistry {
         Ok(())
     }
 
+    /// Get a reference to the CozoDB instance
+    pub fn db(&self) -> &DbInstance {
+        &self.db
+    }
+
     /// Get current timestamp
     fn now() -> f64 {
         SystemTime::now()
@@ -300,6 +305,51 @@ impl GraphRegistry {
             .map_err(|e| GraphError::QueryError(e.to_string()))?;
         
         Ok(true)
+    }
+
+    /// Clear all nodes and edges from the graph
+    /// Returns the number of nodes deleted
+    pub fn clear_all(&self) -> Result<usize, GraphError> {
+        // Count nodes first
+        let count_query = "?[count(id)] := *nodes{id}";
+        let count_result = self.db.run_script(count_query, Default::default(), cozo::ScriptMutability::Immutable)
+            .map_err(|e| GraphError::QueryError(e.to_string()))?;
+        
+        let count = count_result.rows.first()
+            .and_then(|r| r.first())
+            .map(|v| match v {
+                DataValue::Num(n) => match n {
+                    cozo::Num::Int(i) => *i as usize,
+                    cozo::Num::Float(f) => *f as usize,
+                },
+                _ => 0,
+            })
+            .unwrap_or(0);
+        
+        // Delete all aliases
+        let alias_query = r#"
+            ?[node_id, alias] := *node_aliases{node_id, alias}
+            :rm node_aliases {node_id, alias}
+        "#;
+        let _ = self.db.run_script(alias_query, Default::default(), cozo::ScriptMutability::Mutable);
+        
+        // Delete all edges
+        let edge_query = r#"
+            ?[id] := *edges{id}
+            :rm edges {id}
+        "#;
+        let _ = self.db.run_script(edge_query, Default::default(), cozo::ScriptMutability::Mutable);
+        
+        // Delete all nodes
+        let node_query = r#"
+            ?[id] := *nodes{id}
+            :rm nodes {id}
+        "#;
+        self.db.run_script(node_query, Default::default(), cozo::ScriptMutability::Mutable)
+            .map_err(|e| GraphError::QueryError(e.to_string()))?;
+        
+        log::info!("[GraphRegistry] Cleared {} nodes from graph", count);
+        Ok(count)
     }
 
     // =========================================================================

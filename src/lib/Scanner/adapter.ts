@@ -228,11 +228,14 @@ export class ScannerBridge {
     }
 
     /**
-     * Immediate scan
+     * Immediate scan - Uses conductor pipeline for full document scanning
      */
-    async scanImmediate(noteId: string, text: string, entitySpans: EntitySpan[] = []): Promise<ScanResult | null> {
+    async scanImmediate(noteId: string, text: string, _entitySpans: EntitySpan[] = []): Promise<ScanResult | null> {
         if (this.mode === 'tauri') {
-            return tauriScanner.scanImmediate(noteId, text, entitySpans);
+            // Use the unified conductor pipeline
+            const result = await tauriScanner.conductorScanImmediate(noteId, text, []);
+            // Type coercion: ConductorScanResult is a superset of ScanResult
+            return result as unknown as ScanResult;
         }
 
         return this.executeFallbackScan(noteId, text);

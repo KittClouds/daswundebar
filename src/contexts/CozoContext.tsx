@@ -130,14 +130,14 @@ export function CozoProvider({ children }: CozoProviderProps) {
     const clearAllEntities = useCallback(async (): Promise<void> => {
         if (!isReady) return;
         try {
-            // TODO: Add clear() method to smartGraphRegistry
-            console.warn('[CozoContext] clearAllEntities not yet implemented in smartGraphRegistry');
-            refreshEntities();
+            const deleted = await smartGraphRegistry.clearAll();
+            setEntities([]); // Immediate UI update!
+            console.log(`[CozoContext] Cleared ${deleted} entities`);
         } catch (err) {
             console.error('[CozoContext] Failed to clear entities:', err);
             throw err;
         }
-    }, [isReady, refreshEntities]);
+    }, [isReady]);
 
     const value = useMemo<CozoContextValue>(() => ({
         isReady,

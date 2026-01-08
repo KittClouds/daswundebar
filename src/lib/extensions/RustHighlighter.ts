@@ -643,7 +643,7 @@ async function triggerTauriScan(doc: ProseMirrorNode, noteId: string): Promise<v
     }
 
     // Perform scan
-    const result = await tauriScanner.conductorScanImmediate(text, []);
+    const result = await tauriScanner.conductorScanImmediate(noteId, text, []);
     if (result) {
         lastScanResult = result;
         scanResultCache.set(noteId, { hash, result });

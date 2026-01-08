@@ -154,6 +154,7 @@ export interface ModeStyles {
  */
 export class HighlighterFacade {
     private scanner: WasmUnifiedScanner | null = null;
+    private tauriMode = false; // True when using Tauri backend
     private initialized = false;
     private initPromise: Promise<void> | null = null;
 
@@ -174,15 +175,20 @@ export class HighlighterFacade {
 
     private async _doInit(): Promise<void> {
         try {
-            // Use Tauri/fallback adapter instead of WASM
-            const { getScannerMode, tauriScanner } = await import('@/lib/tauri');
-            const mode = getScannerMode();
+            const { getResolvedPipeline, PIPELINE_VERBOSE_LOGGING } = await import('./pipeline-config');
+            const pipeline = getResolvedPipeline();
 
-            if (mode === 'tauri') {
-                await tauriScanner.initialize();
-                console.log('[Highlighter] Ready via Tauri IPC');
+            if (pipeline === 'tauri') {
+                // Tauri mode - wait for orchestrator (handles connection + entity hydration)
+                const { tauriOrchestrator } = await import('@/lib/tauri');
+                await tauriOrchestrator.waitForReady();
+                this.tauriMode = true;
+                console.log('[Highlighter] Ready via Tauri IPC (orchestrator)');
             } else {
-                console.log('[Highlighter] Running in fallback mode');
+                // WASM mode - load kittcore directly
+                // WASM is DISABLED for now - fallback to no-op
+                this.tauriMode = false;
+                console.log('[Highlighter] WASM pipeline disabled (Tauri not available)');
             }
 
             this.initialized = true;
@@ -194,9 +200,17 @@ export class HighlighterFacade {
 
     /**
      * Check if the facade is ready
+     * In Tauri mode, returns true once tauriScanner is initialized
+     * In WASM mode (deprecated), checks scanner reference
      */
     isReady(): boolean {
-        return this.initialized && this.scanner !== null;
+        if (!this.initialized) return false;
+        if (this.tauriMode) {
+            // Tauri mode - always ready after init (tauriScanner handles its own readiness)
+            return true;
+        }
+        // Legacy WASM mode - check scanner reference
+        return this.scanner !== null;
     }
 
     /**

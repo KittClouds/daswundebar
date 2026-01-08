@@ -50,6 +50,12 @@ export class EmbeddingEngine {
                     provider = new RustEmbeddingProvider(targetModelId);
                     break;
                 }
+                case 'tauri': {
+                    // Lazy import Tauri provider
+                    const { TauriEmbeddingProvider } = await import('./providers/TauriEmbeddingProvider');
+                    provider = new TauriEmbeddingProvider(targetModelId);
+                    break;
+                }
                 default:
                     throw new Error(`Unsupported provider: ${model.provider}`);
             }
@@ -110,10 +116,11 @@ export class EmbeddingEngine {
      * 
      * Returns:
      * - 'rust': Embeddings are done in Rust/WASM (send raw text to worker)
+     * - 'tauri': Embeddings are done via Tauri native (send raw text to Rust)
      * - 'local': Embeddings are done in TypeScript (send vectors to worker)
      * - 'cloud': Embeddings are done via cloud API (send vectors to worker)
      */
-    static getActiveProviderType(): 'rust' | 'local' | 'cloud' | 'none' {
+    static getActiveProviderType(): 'rust' | 'tauri' | 'local' | 'cloud' | 'none' {
         if (!this.currentProvider) {
             return 'none';
         }
@@ -123,6 +130,8 @@ export class EmbeddingEngine {
         // Check provider type from model definition
         if (modelInfo.provider === 'rust') {
             return 'rust';
+        } else if (modelInfo.provider === 'tauri') {
+            return 'tauri';
         } else if (modelInfo.provider === 'local') {
             return 'local';
         } else if (modelInfo.provider === 'gemini' || modelInfo.provider === 'huggingface') {

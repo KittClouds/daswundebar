@@ -23,9 +23,10 @@ mod narrative;
 mod change;
 mod reality;  // Reality Engine - Graph + CST (ported from kittcore)
 mod graph;    // Graph Registry - Unified nodes + edges (CozoDB)
+mod rag;      // RAG Pipeline - Embeddings + HNSW (CozoDB native)
 
 use once_cell::sync::Lazy;
-use std::sync::Mutex;
+use parking_lot::Mutex;  // FAST mutex (already in deps)
 
 // Global scanner instance (compiled regex patterns are expensive, reuse)
 static SCANNER: Lazy<scanner::UnifiedScanner> = Lazy::new(|| {
@@ -122,7 +123,7 @@ fn unified_scan(text: String, _entities_json: String) -> Result<String, String> 
     
     // Phase 2: Implicit entity matching (Aho-Corasick)
     let implicit_mentions = {
-        let cortex = IMPLICIT_CORTEX.lock().map_err(|e| e.to_string())?;
+        let cortex = IMPLICIT_CORTEX.lock();
         cortex.find_mentions(&text)
     };
     
@@ -162,7 +163,7 @@ fn hydrate_entities(entities_json: String) -> Result<String, String> {
     
     // Hydrate the ImplicitCortex
     {
-        let mut cortex = IMPLICIT_CORTEX.lock().map_err(|e| e.to_string())?;
+        let mut cortex = IMPLICIT_CORTEX.lock();
         cortex.hydrate(entities);
         cortex.build().map_err(|e| format!("Failed to build automaton: {}", e))?;
         log::info!("Hydrated ImplicitCortex with {} entities ({} patterns)", 
@@ -215,7 +216,7 @@ fn scan_syntax(_text: String) -> Result<String, String> {
 /// ResoRank search (in-memory for now)
 #[tauri::command]
 fn resorank_search(query: String, limit: usize) -> Result<String, String> {
-    let index = RESORANK_INDEX.lock().map_err(|e| e.to_string())?;
+    let index = RESORANK_INDEX.lock();
     
     // Simple substring search
     let query_lower = query.to_lowercase();
@@ -246,7 +247,7 @@ fn resorank_search(query: String, limit: usize) -> Result<String, String> {
 /// ResoRank index document
 #[tauri::command]
 fn resorank_index(doc_id: String, content: String) -> Result<String, String> {
-    let mut index = RESORANK_INDEX.lock().map_err(|e| e.to_string())?;
+    let mut index = RESORANK_INDEX.lock();
     index.insert(doc_id.clone(), content);
     log::debug!("Indexed document: {}", doc_id);
     Ok("Indexed".to_string())
@@ -265,7 +266,7 @@ fn conductor_hydrate(entities_json: String) -> Result<String, String> {
     let count = entities.len();
     
     {
-        let mut conductor = CONDUCTOR.lock().map_err(|e| e.to_string())?;
+        let mut conductor = CONDUCTOR.lock();
         conductor.hydrate_entities(entities)
             .map_err(|e| format!("Failed to hydrate: {}", e))?;
         log::info!("Conductor hydrated with {} entities", count);
@@ -277,19 +278,51 @@ fn conductor_hydrate(entities_json: String) -> Result<String, String> {
 /// Full document scan using ScanConductor
 #[tauri::command]
 fn conductor_scan(text: String, entities_json: String) -> Result<String, String> {
+    let total_start = std::time::Instant::now();
+    
     // Parse optional entity spans
+    let parse_start = std::time::Instant::now();
     let external_spans: Vec<relation::EntitySpan> = if entities_json.is_empty() || entities_json == "[]" {
         vec![]
     } else {
         serde_json::from_str(&entities_json).unwrap_or_default()
     };
+    let parse_time = parse_start.elapsed();
     
-    let mut conductor = CONDUCTOR.lock().map_err(|e| e.to_string())?;
+    // Acquire lock
+    let lock_start = std::time::Instant::now();
+    let mut conductor = CONDUCTOR.lock();
+    let lock_time = lock_start.elapsed();
     
+    // Perform scan
+    let scan_start = std::time::Instant::now();
     match conductor.scan(&text, &external_spans) {
         Some(result) => {
-            serde_json::to_string(&result)
-                .map_err(|e| format!("Serialization error: {}", e))
+            let scan_time = scan_start.elapsed();
+            
+            // Serialize result
+            let serialize_start = std::time::Instant::now();
+            let json = serde_json::to_string(&result)
+                .map_err(|e| format!("Serialization error: {}", e))?;
+            let serialize_time = serialize_start.elapsed();
+            
+            let total_time = total_start.elapsed();
+            
+            // Log detailed timing breakdown
+            log::debug!(
+                "[conductor_scan] text={}chars parse={}µs lock={}µs scan={}µs serialize={}µs total={}µs | implicit={} unified={} triples={}",
+                text.len(),
+                parse_time.as_micros(),
+                lock_time.as_micros(),
+                scan_time.as_micros(),
+                serialize_time.as_micros(),
+                total_time.as_micros(),
+                result.stats.implicit_found,
+                result.stats.unified_found,
+                result.stats.triples_found,
+            );
+            
+            Ok(json)
         }
         None => {
             Err("Conductor not ready - call conductor_hydrate first".to_string())
@@ -306,7 +339,7 @@ fn conductor_scan_force(text: String, entities_json: String) -> Result<String, S
         serde_json::from_str(&entities_json).unwrap_or_default()
     };
     
-    let mut conductor = CONDUCTOR.lock().map_err(|e| e.to_string())?;
+    let mut conductor = CONDUCTOR.lock();
     let result = conductor.scan_force(&text, &external_spans);
     
     serde_json::to_string(&result)
@@ -316,7 +349,7 @@ fn conductor_scan_force(text: String, entities_json: String) -> Result<String, S
 /// Get conductor status
 #[tauri::command]
 fn conductor_status() -> Result<String, String> {
-    let conductor = CONDUCTOR.lock().map_err(|e| e.to_string())?;
+    let conductor = CONDUCTOR.lock();
     let stats = conductor.incremental_stats();
     
     Ok(format!(
@@ -332,7 +365,7 @@ fn conductor_status() -> Result<String, String> {
 /// Reset conductor state
 #[tauri::command]
 fn conductor_reset() -> Result<String, String> {
-    let mut conductor = CONDUCTOR.lock().map_err(|e| e.to_string())?;
+    let mut conductor = CONDUCTOR.lock();
     conductor.reset();
     log::info!("Conductor reset");
     Ok(r#"{"reset": true}"#.to_string())
@@ -392,6 +425,7 @@ pub fn run() {
             graph::commands::graph_find_node,
             graph::commands::graph_get_nodes,
             graph::commands::graph_delete_node,
+            graph::commands::graph_clear_all,
             graph::commands::graph_create_edge,
             graph::commands::graph_get_edges,
             graph::commands::graph_delete_edge,
@@ -400,6 +434,15 @@ pub fn run() {
             graph::commands::graph_ingest_scan_result,
             graph::commands::graph_invalidate_hydration,
             graph::commands::graph_stats,
+            // RAG Pipeline commands (Phase 3 - Embeddings + HNSW)
+            rag::commands::rag_init_embedder,
+            rag::commands::rag_embed,
+            rag::commands::rag_embedder_ready,
+            rag::commands::rag_chunk_text,
+            rag::commands::rag_index_note,
+            rag::commands::rag_search,
+            rag::commands::rag_get_chunks,
+            rag::commands::rag_delete_note_chunks,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

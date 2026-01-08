@@ -61,7 +61,8 @@ import { EntityMark } from '@/lib/extensions/EntityMark';
 import { TagMark } from '@/lib/extensions/TagMark';
 import { MentionMarkExt } from '@/lib/extensions/MentionMarkExt';
 import { WikiLinkMark } from '@/lib/extensions/WikiLinkMark';
-import { KittHighlighter } from '@/lib/extensions/KittHighlighter';
+// Using RustHighlighter for Tauri pipeline (A/B test)
+import { RustHighlighter } from '@/lib/extensions/RustHighlighter';
 import { highlighterBridge } from '@/lib/highlighter';
 import { useNER } from '@/contexts/NERContext';
 import type { HighlightMode } from '@/atoms/highlightingAtoms';
@@ -283,8 +284,8 @@ function createExtensions(
     MentionMarkExt,
     WikiLinkMark,
 
-    // Unified KittHighlighter - combines Rust WASM entities, patterns, and NER
-    KittHighlighter.configure({
+    // RustHighlighter - Tauri-native pipeline (replaces KittHighlighter for A/B test)
+    RustHighlighter.configure({
       onWikilinkClick,
       checkWikilinkExists,
       onTemporalClick,
@@ -292,13 +293,12 @@ function createExtensions(
       nerEntities: getNEREntities,
       useWidgetMode: true,
       enableLinkTracking: true,
-      useUnifiedScanner: true, // Re-enabling to test catch_unwind fix
       currentNoteId: getNoteId,
       logPerformance: true,
       getHighlightMode,
       getFocusEntityKinds,
       onImplicitClick: (entityId, entityLabel) => {
-        console.log('[KittHighlighter] Implicit clicked:', entityId, entityLabel);
+        console.log('[RustHighlighter] Implicit clicked:', entityId, entityLabel);
       },
     }),
   ];

@@ -258,6 +258,20 @@ pub fn graph_delete_node(id: String) -> Result<bool, String> {
     registry.delete_node(&id).map_err(|e| e.to_string())
 }
 
+/// Clear all nodes and edges from the graph
+/// Returns the number of nodes deleted
+#[tauri::command]
+pub fn graph_clear_all() -> Result<usize, String> {
+    let registry = GRAPH_REGISTRY.lock().map_err(|e| e.to_string())?;
+    let mut bridge = SCANNER_BRIDGE.lock().map_err(|e| e.to_string())?;
+    
+    let deleted = registry.clear_all().map_err(|e| e.to_string())?;
+    bridge.invalidate(); // Force re-hydration next time
+    
+    log::info!("[GraphRegistry] Cleared {} nodes via IPC", deleted);
+    Ok(deleted)
+}
+
 // =============================================================================
 // Edge Commands
 // =============================================================================

@@ -13,6 +13,22 @@
  */
 
 // ===========================================================================
+// PIPELINE CONFIG - Controls WASM vs Tauri mode
+// ===========================================================================
+
+export {
+    ACTIVE_PIPELINE,
+    PIPELINE_VERBOSE_LOGGING,
+    RAG_ENABLED,
+    CST_EXTRACTION_ENABLED,
+    isWasmEnabled,
+    isTauriPipelineEnabled,
+    getResolvedPipeline,
+    logPipelineStatus,
+    type PipelineMode,
+} from './pipeline-config';
+
+// ===========================================================================
 // EXTRACTION PIPELINE - Entity/relation extraction → CozoDB
 // ===========================================================================
 

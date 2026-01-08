@@ -16,6 +16,7 @@
 use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, HashSet, VecDeque};
 
+use super::chunker::ChunkResult;
 use super::structured_relation::StructuredRelationExtractor;
 
 // =============================================================================
@@ -388,6 +389,67 @@ impl RelationEngine {
 
         // Layer 2: CST Projection
         let cst_relations = self.project_from_cst(text, entities);
+        stats.cst_count = cst_relations.len();
+        all_relations.extend(cst_relations);
+
+        // Layer 3: Graph Inference
+        let inferred_relations = self.infer_from_graph(existing_edges, entities);
+        stats.inferred_count = inferred_relations.len();
+        all_relations.extend(inferred_relations);
+
+        stats.total_count = all_relations.len();
+        stats.time_us = start.elapsed().as_micros() as u64;
+
+        (all_relations, stats)
+    }
+
+    /// Extract relations using pre-computed chunks (FAST - avoids re-chunking)
+    pub fn project_from_chunks(
+        &self,
+        text: &str,
+        entities: &[EntitySpan],
+        chunks: &ChunkResult,
+    ) -> Vec<UnifiedRelation> {
+        if entities.is_empty() || text.is_empty() {
+            return Vec::new();
+        }
+
+        let extractor = StructuredRelationExtractor::new();
+        let structured_relations = extractor.extract_from_chunks(text, entities, chunks);
+
+        structured_relations
+            .into_iter()
+            .filter(|sr| sr.confidence >= self.cst_confidence_threshold as f64)
+            .map(|sr| {
+                UnifiedRelation {
+                    head: sr.subject.clone(),
+                    head_id: sr.subject_id.clone(),
+                    tail: sr.object.clone().unwrap_or_default(),
+                    tail_id: sr.object_id.clone(),
+                    relation_type: sr.relation_type.clone(),
+                    source: RelationSource::CST,
+                    confidence: sr.confidence as f32,
+                    span: Some((sr.predicate_span.start, sr.predicate_span.end)),
+                    verb_text: Some(sr.predicate.clone()),
+                }
+            })
+            .collect()
+    }
+
+    /// Full extraction pipeline with pre-computed chunks (FAST - avoids re-chunking)
+    pub fn extract_with_chunks(
+        &self,
+        text: &str,
+        entities: &[EntitySpan],
+        existing_edges: &[(String, String, String)],
+        chunks: &ChunkResult,
+    ) -> (Vec<UnifiedRelation>, RelationStats) {
+        let start = std::time::Instant::now();
+        let mut all_relations = Vec::new();
+        let mut stats = RelationStats::default();
+
+        // Layer 2: CST Projection (using pre-computed chunks)
+        let cst_relations = self.project_from_chunks(text, entities, chunks);
         stats.cst_count = cst_relations.len();
         all_relations.extend(cst_relations);
 

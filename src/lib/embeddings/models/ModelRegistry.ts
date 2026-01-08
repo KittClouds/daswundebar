@@ -1,4 +1,4 @@
-export type EmbeddingProvider = 'local' | 'gemini' | 'huggingface' | 'rust';
+export type EmbeddingProvider = 'local' | 'gemini' | 'huggingface' | 'rust' | 'tauri';
 
 export interface EmbeddingModelDefinition {
     id: string;
@@ -132,6 +132,44 @@ export class EmbeddingModelRegistry {
                     memoryMB: 350,
                 },
                 description: 'ModernBERT via Rust/WASM ONNX (A/B test alternative to TS)',
+            },
+        ],
+
+        // ===== TAURI NATIVE MODELS (embed-anything) =====
+        [
+            'bge-small-tauri',
+            {
+                id: 'bge-small-tauri',
+                name: 'BGE Small EN v1.5 (Tauri Native)',
+                provider: 'tauri' as EmbeddingProvider,
+                dimensions: 384,
+                maxTokens: 512,
+                speed: 'fast',
+                quality: 'high',
+                costPer1kTokens: 0,
+                localModel: {
+                    modelId: 'BAAI/bge-small-en-v1.5',
+                    memoryMB: 130,
+                },
+                description: 'BGE Small via Tauri native embed-anything (recommended)',
+            },
+        ],
+        [
+            'modernbert-tauri',
+            {
+                id: 'modernbert-tauri',
+                name: 'ModernBERT Base (Tauri Native)',
+                provider: 'tauri' as EmbeddingProvider,
+                dimensions: 768,
+                maxTokens: 8192,
+                speed: 'medium',
+                quality: 'high',
+                costPer1kTokens: 0,
+                localModel: {
+                    modelId: 'nomic-ai/modernbert-embed-base',
+                    memoryMB: 350,
+                },
+                description: 'ModernBERT via Tauri native embed-anything',
             },
         ],
     ]);

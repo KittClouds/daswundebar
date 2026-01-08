@@ -131,27 +131,31 @@ export function useEntitySync(options: UseEntitySyncOptions = {}) {
             if (syncedCount > 0) {
                 refreshEntities();
 
-                // SMART HYDRATION: Only re-hydrate if entity set changed
+                // SMART HYDRATION: Use orchestrator for unified re-hydration
                 try {
-                    const { scannerFacade } = await import('@/lib/scanner');
-                    const { highlighterBridge } = await import('@/lib/highlighter');
+                    const { getResolvedPipeline } = await import('@/lib/Scanner/pipeline-config');
+                    const pipeline = getResolvedPipeline();
 
-                    // Use smart hydration - returns null if no changes!
-                    const entityDefs = await smartGraphRegistry.getEntitiesForHydration();
-
-                    if (entityDefs) {
-                        // Entity set changed, need to re-hydrate
-                        await scannerFacade.hydrateEntities(entityDefs);
-                        highlighterBridge.hydrateEntities(entityDefs);
-                        console.log(`[useEntitySync] Smart hydration: ${entityDefs.length} entities`);
+                    if (pipeline === 'tauri') {
+                        // Tauri mode: Use orchestrator's unified rehydration
+                        const { tauriOrchestrator } = await import('@/lib/tauri');
+                        await tauriOrchestrator.rehydrate();
                     } else {
-                        console.log('[useEntitySync] Smart hydration: skipped (no changes)');
-                    }
+                        // WASM mode: Manual hydration (legacy path)
+                        const { scannerFacade } = await import('@/lib/scanner');
+                        const { highlighterBridge } = await import('@/lib/highlighter');
 
-                    // NOTE: Removed immediate rescan - that caused the circular loop!
-                    // Scans will happen naturally when notes are edited.
+                        const entityDefs = await smartGraphRegistry.getEntitiesForHydration();
+                        if (entityDefs) {
+                            await scannerFacade.hydrateEntities(entityDefs);
+                            highlighterBridge.hydrateEntities(entityDefs);
+                            console.log(`[useEntitySync] Smart hydration: ${entityDefs.length} entities (WASM)`);
+                        } else {
+                            console.log('[useEntitySync] Smart hydration: skipped (no changes)');
+                        }
+                    }
                 } catch (err) {
-                    console.warn('[useEntitySync] Failed to hydrate scanner/highlighter:', err);
+                    console.warn('[useEntitySync] Failed to rehydrate:', err);
                 }
             }
         } catch (err) {

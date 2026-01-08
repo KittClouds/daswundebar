@@ -7,6 +7,14 @@
  * @module lib/tauri
  */
 
+// Orchestrator - single entry point for Tauri initialization
+export {
+    TauriOrchestrator,
+    tauriOrchestrator,
+    TauriState,
+    type TauriOrchestratorStatus,
+} from './orchestrator';
+
 // Bridge exports (scanner commands)
 export * from './bridge';
 

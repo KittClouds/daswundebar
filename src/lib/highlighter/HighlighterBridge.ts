@@ -29,12 +29,13 @@ export interface HighlightResult {
 
 class HighlighterBridge {
     private initialized = false;
+    private tauriMode = false; // True when using Tauri backend instead of WASM
     private lastResultByNote = new Map<string, HighlightResult & { textLength: number }>();
     private lastHashByNote = new Map<string, string>();
     private lastLengthByNote = new Map<string, number>(); // M2: Fast length check
     private hydrationCallbacks: Array<() => void> = [];
 
-    // Rust cortexes (imported dynamically)
+    // Rust cortexes (imported dynamically) - LEGACY, unused in Tauri mode
     private DocumentCortex: any = null;
     private cortex: any = null;
 
@@ -45,30 +46,21 @@ class HighlighterBridge {
         if (this.initialized) return true;
 
         try {
-            // Use Tauri adapter instead of WASM
-            const { getScannerMode, tauriScanner } = await import('@/lib/tauri');
+            // Check scanner mode
+            const { getScannerMode, tauriOrchestrator } = await import('@/lib/tauri');
             const mode = getScannerMode();
 
             if (mode === 'tauri') {
-                await tauriScanner.initialize();
-                console.log('[HighlighterBridge] Tauri backend initialized');
+                // Wait for orchestrator (handles connection + entity loading + hydration)
+                await tauriOrchestrator.waitForReady();
+                this.tauriMode = true;
+                console.log('[HighlighterBridge] Tauri backend ready (via orchestrator)');
             } else {
-                console.log('[HighlighterBridge] Running in fallback mode');
+                this.tauriMode = false;
+                console.log('[HighlighterBridge] Running in fallback mode (no Tauri)');
             }
 
             this.initialized = true;
-
-            // Hydrate with entities from SmartGraphRegistry
-            try {
-                const { smartGraphRegistry } = await import('@/lib/tauri');
-                const entities = smartGraphRegistry.getAllEntities();
-                if (entities && entities.length > 0) {
-                    this.hydrateEntities(entities);
-                }
-            } catch (hydrateError) {
-                console.warn('[HighlighterBridge] Entity hydration deferred:', hydrateError);
-            }
-
             return true;
         } catch (error) {
             console.error('[HighlighterBridge] Failed to initialize:', error);
@@ -78,9 +70,23 @@ class HighlighterBridge {
 
     /**
      * Check if bridge is ready
+     * In Tauri mode, delegates to tauriScanner.isReady()
+     * In fallback mode, returns false (WASM disabled)
      */
     isReady(): boolean {
-        return this.initialized && this.cortex !== null;
+        if (!this.initialized) return false;
+        if (this.tauriMode) {
+            // Dynamically check Tauri scanner readiness
+            try {
+                // Access the global tauriScanner - already imported during init
+                const mod = require('@/lib/tauri');
+                return mod.tauriScanner?.isReady() ?? false;
+            } catch {
+                return false;
+            }
+        }
+        // Legacy WASM mode - check cortex
+        return this.cortex !== null;
     }
 
     /**

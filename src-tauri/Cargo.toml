@@ -37,6 +37,10 @@ rustworkx-core = "0.15"
 cozo = { version = "0.7.6", features = ["storage-sqlite"] }
 rayon = "=1.10"  # Pin to fix cozo compatibility
 dirs = "5"  # Cross-platform user data directory
+parking_lot = "0.12"  # Fast synchronization primitives for RAG
+
+# RAG Embeddings (Phase 2)
+fastembed = "4"  # Fast ONNX-based text embeddings (BGE, etc.)
 
 # Phase 2: Will add kittcore as workspace member
 # kittcore = { path = "../rust/kittcore", default-features = false }
@@ -50,5 +54,5 @@ lto = true
 codegen-units = 1
 
 [profile.dev]
-opt-level = 0
+opt-level = 2
 debug = true

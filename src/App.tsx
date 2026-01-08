@@ -32,12 +32,23 @@ const App = () => {
     useEffect(() => {
         const initStorage = async () => {
             try {
-                // 🚀 EARLY: Initialize highlighter for instant decorations
-                // This loads WASM only - no DB or entities needed
-                setInitStatus("Loading highlighter...");
-                const { initializeHighlighter } = await import("@/lib/scanner");
-                await initializeHighlighter();
-                console.log("Highlighter ready for instant decorations");
+                // 🚀 UNIFIED TAURI INITIALIZATION
+                // TauriOrchestrator handles: backend connection, entity loading, scanner hydration
+                setInitStatus("Initializing Tauri pipeline...");
+                const { isTauri, tauriOrchestrator } = await import("@/lib/tauri");
+                const { logPipelineStatus, getResolvedPipeline } = await import("@/lib/Scanner/pipeline-config");
+                logPipelineStatus();
+
+                const pipeline = getResolvedPipeline();
+                if (pipeline === 'tauri' && isTauri()) {
+                    await tauriOrchestrator.init();
+                    console.log("Tauri orchestrator ready");
+                } else {
+                    // WASM fallback: Initialize just the highlighter
+                    const { initializeHighlighter } = await import("@/lib/scanner");
+                    await initializeHighlighter();
+                    console.log("WASM highlighter ready");
+                }
 
                 // Initialize Unified Registry (CozoDB)
                 setInitStatus("Initializing knowledge graph...");
@@ -69,28 +80,29 @@ const App = () => {
                 console.log("Jotai store initialized");
                 setJotaiReady(true);
 
-                // 🚀 PRE-LOAD ENTITIES FOR INSTANT HIGHLIGHTING
-                // This hydrates the highlighter before the first render so it can highlight immediately
-                setInitStatus("Pre-loading entities for highlighting...");
-                try {
-                    const { scannerFacade } = await import("@/lib/scanner");
-                    const { highlighterBridge } = await import("@/lib/highlighter");
-                    const allEntities = await entityRegistry.getAllEntities();
+                // 🚀 PRE-LOAD ENTITIES (WASM mode only - Tauri orchestrator already handles this)
+                if (pipeline === 'wasm') {
+                    setInitStatus("Pre-loading entities for highlighting...");
+                    try {
+                        const { scannerFacade } = await import("@/lib/scanner");
+                        const { highlighterBridge } = await import("@/lib/highlighter");
+                        const allEntities = await entityRegistry.getAllEntities();
 
-                    if (allEntities.length > 0) {
-                        const entityDefs = allEntities.map(e => ({
-                            id: e.id,
-                            label: e.label,
-                            kind: e.kind,
-                            aliases: e.aliases || [],
-                        }));
+                        if (allEntities.length > 0) {
+                            const entityDefs = allEntities.map(e => ({
+                                id: e.id,
+                                label: e.label,
+                                kind: e.kind,
+                                aliases: e.aliases || [],
+                            }));
 
-                        await scannerFacade.hydrateEntities(entityDefs);
-                        highlighterBridge.hydrateEntities(entityDefs);
-                        console.log(`Pre-loaded ${allEntities.length} entities for instant highlighting`);
+                            await scannerFacade.hydrateEntities(entityDefs);
+                            highlighterBridge.hydrateEntities(entityDefs);
+                            console.log(`Pre-loaded ${allEntities.length} entities for instant highlighting (WASM)`);
+                        }
+                    } catch (err) {
+                        console.warn("Failed to pre-load entities:", err);
                     }
-                } catch (err) {
-                    console.warn("Failed to pre-load entities:", err);
                 }
 
                 // Initialize Binding Engine

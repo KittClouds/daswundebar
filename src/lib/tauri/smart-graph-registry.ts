@@ -333,6 +333,25 @@ export class SmartGraphRegistry {
         return result;
     }
 
+    /**
+     * Clear all entities from the registry
+     * Returns the number of entities deleted
+     */
+    async clearAll(): Promise<number> {
+        await this.ensureInit();
+
+        const deleted = await invoke<number>('graph_clear_all');
+
+        // Clear local cache
+        this.entityCache.clear();
+        this.labelIndex.clear();
+        this.aliasIndex.clear();
+        this.updateCacheHash();
+
+        console.log(`[SmartGraphRegistry] Cleared ${deleted} entities`);
+        return deleted;
+    }
+
     // =========================================================================
     // SMART HYDRATION (breaks circular loop)
     // =========================================================================
