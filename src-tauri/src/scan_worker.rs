@@ -239,6 +239,40 @@ impl DecorationCache {
         
         Ok(())
     }
+
+    /// Clear ALL cached decoration spans (used on entity hydration)
+    pub fn clear_all(db: &DbInstance) -> Result<usize, String> {
+        use std::collections::BTreeMap;
+        use cozo::ScriptMutability;
+
+        // First count how many we're deleting
+        let count_query = r#"
+            ?[count(note_id)] := *decoration_spans[note_id, _, _, _]
+        "#;
+        
+        let count_result = db.run_script(count_query, BTreeMap::new(), ScriptMutability::Immutable)
+            .map_err(|e| format!("Failed to count decoration cache: {}", e))?;
+        
+        let count = count_result.rows.first()
+            .and_then(|row| row.first())
+            .and_then(|v| match v {
+                cozo::DataValue::Num(cozo::Num::Int(i)) => Some(*i as usize),
+                _ => None,
+            })
+            .unwrap_or(0);
+
+        // Delete all entries
+        let delete_query = r#"
+            ?[note_id] := *decoration_spans[note_id, _, _, _]
+            :rm decoration_spans { note_id }
+        "#;
+        
+        db.run_script(delete_query, BTreeMap::new(), ScriptMutability::Mutable)
+            .map_err(|e| format!("Failed to clear decoration cache: {}", e))?;
+        
+        log::info!("[DecorationCache] Cleared {} cached decoration spans", count);
+        Ok(count)
+    }
 }
 
 // =============================================================================

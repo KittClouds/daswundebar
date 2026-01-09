@@ -41,6 +41,9 @@ import { patternRegistry, type PatternDefinition, type RefKind } from '@/lib/ref
 // Event queue for link tracking
 import { mentionEventQueue } from '@/lib/scanner/mention-event-queue';
 
+// Phase 3: Cached decoration spans from CozoDB
+import { fetchDecorationSpans, type DecorationSpanRecord } from '@/lib/Scanner/decoration-cache';
+
 // ==================== OPTIONS ====================
 
 export interface RustHighlighterOptions {
@@ -90,8 +93,8 @@ function computeContentHash(text: string): string {
     return hash.toString(16);
 }
 
-// Cache for last scan result per note
-const scanResultCache = new Map<string, { hash: string; result: ConductorScanResult }>();
+// Phase 3: Last cached spans per note (from CozoDB background scan)
+const cachedSpansCache = new Map<string, { hash: string; spans: DecorationSpanRecord[] }>();
 
 // ==================== RANGE OVERLAP DETECTION ====================
 
@@ -627,37 +630,85 @@ function extractEntityMentionsFromDoc(
     return mentions;
 }
 
-// ==================== ASYNC SCAN TRIGGER ====================
+// ==================== CACHED SPANS FETCH (Phase 3) ====================
 
-async function triggerTauriScan(doc: ProseMirrorNode, noteId: string): Promise<void> {
-    if (!tauriScanner.isReady() || !isTauri()) return;
+/**
+ * Fetch cached decoration spans from CozoDB.
+ * 
+ * Phase 3: Instead of sending text to Rust via IPC, we fetch pre-computed
+ * spans from the decoration_spans cache (populated by ScanWorker on save).
+ */
+async function fetchCachedSpans(doc: ProseMirrorNode, noteId: string): Promise<void> {
+    if (!isTauri()) return;
 
     const text = extractText(doc);
     const hash = computeContentHash(text);
 
-    // Check cache
-    const cached = scanResultCache.get(noteId);
-    if (cached && cached.hash === hash) {
-        lastScanResult = cached.result;
+    // Check in-memory cache first
+    const memoryCached = cachedSpansCache.get(noteId);
+    if (memoryCached && memoryCached.hash === hash) {
+        // Already have valid cached spans - convert to lastScanResult format
+        lastScanResult = spansToScanResult(memoryCached.spans);
         return;
     }
 
-    // Perform scan
-    const result = await tauriScanner.conductorScanImmediate(noteId, text, []);
-    if (result) {
-        lastScanResult = result;
-        scanResultCache.set(noteId, { hash, result });
-
-        // Broadcast to all consumers (LinkIndex, ExtractorFacade, etc.)
-        // Import at top is deferred to avoid circular deps
-        import('@/lib/Scanner/scan-event-bus').then(({ scanEventBus }) => {
-            scanEventBus.emit({
-                noteId,
-                result,
-                timestamp: Date.now(),
-            });
-        });
+    // Fetch from CozoDB cache
+    const spans = await fetchDecorationSpans(noteId, hash);
+    if (spans) {
+        cachedSpansCache.set(noteId, { hash, spans });
+        lastScanResult = spansToScanResult(spans);
+    } else {
+        // Cache miss - decorations will appear after background scan completes
+        // Clear stale result so we don't show outdated highlights
+        lastScanResult = null;
     }
+}
+
+/**
+ * Convert DecorationSpanRecord[] to ConductorScanResult format
+ * (for compatibility with buildTauriDecorations)
+ */
+function spansToScanResult(spans: DecorationSpanRecord[]): ConductorScanResult {
+    const implicit: ImplicitMention[] = [];
+    const temporal: TemporalMention[] = [];
+
+    for (const span of spans) {
+        if (span.span_type === 'implicit') {
+            implicit.push({
+                start: span.start,
+                end: span.end,
+                entity_id: span.entity_id || '',
+                entity_label: span.entity_label || '',
+                entity_kind: span.entity_kind || 'ENTITY',
+                is_alias_match: span.is_alias,
+                matched_text: span.entity_label || '',
+            });
+        } else if (span.span_type === 'temporal') {
+            temporal.push({
+                start: span.start,
+                end: span.end,
+                text: span.entity_label || '',
+                kind: span.metadata || 'RELATIVE',
+            });
+        }
+    }
+
+    return {
+        implicit,
+        temporal,
+        explicit: [],
+        triples: [],
+        unified_relations: [],
+        stats: {
+            was_skipped: false,
+            skip_reason: null,
+            implicit_found: implicit.length,
+            temporal_found: temporal.length,
+            triples_found: 0,
+            unified_found: 0,
+            timings: { total_us: 0, implicit_us: 0, temporal_us: 0, triple_us: 0 },
+        },
+    };
 }
 
 // ==================== EXTENSION ====================
@@ -698,9 +749,9 @@ export const RustHighlighter = Extension.create<RustHighlighterOptions>({
                         const text = extractText(doc);
                         lastDocText = text;
 
-                        // Trigger initial scan async
+                        // Phase 3: Fetch cached spans from CozoDB (no IPC scan)
                         const noteId = resolveNoteId(options.currentNoteId);
-                        triggerTauriScan(doc, noteId);
+                        fetchCachedSpans(doc, noteId);
 
                         return buildAllDecorations(doc, options);
                     },
@@ -726,10 +777,11 @@ export const RustHighlighter = Extension.create<RustHighlighterOptions>({
 
                             lastDocText = text;
 
-                            // Trigger async scan on doc change
+                            // Phase 3: Fetch cached spans on doc change
+                            // Note: Actual scan happens in background via ScanWorker
                             if (tr.docChanged) {
                                 const noteId = resolveNoteId(options.currentNoteId);
-                                triggerTauriScan(newState.doc, noteId);
+                                fetchCachedSpans(newState.doc, noteId);
                             }
 
                             const selection = { from: newState.selection.from, to: newState.selection.to };

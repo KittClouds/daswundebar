@@ -484,6 +484,14 @@ fn scan_queue_status() -> Result<String, String> {
     ))
 }
 
+/// Invalidate all cached decoration spans (called on entity hydration)
+#[tauri::command]
+fn invalidate_all_decoration_spans() -> Result<usize, String> {
+    let registry = graph::commands::GRAPH_REGISTRY.lock().map_err(|e| e.to_string())?;
+    let db = registry.db();
+    scan_worker::DecorationCache::clear_all(db)
+}
+
 // ============================================================================
 // Tauri App Entry Point
 // ============================================================================
@@ -538,6 +546,7 @@ pub fn run() {
             get_decoration_spans,
             queue_note_scan,
             scan_queue_status,
+            invalidate_all_decoration_spans,
             // Graph Registry commands (Phase 2.1)
             graph::commands::graph_register_node,
             graph::commands::graph_get_node,
