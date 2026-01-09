@@ -356,67 +356,8 @@ fn conductor_hydrate(entities_json: String) -> Result<String, String> {
     Ok(format!("{{\"hydrated\": {}}}", count))
 }
 
-/// Full document scan using ScanConductor
-/// Returns typed result - Tauri handles serialization automatically
-#[tauri::command]
-fn conductor_scan(
-    text: String,
-    external_spans: Vec<relation::EntitySpan>,
-) -> Result<document::ScanResult, String> {
-    let total_start = std::time::Instant::now();
-    
-    // Acquire lock
-    let lock_start = std::time::Instant::now();
-    let mut conductor = CONDUCTOR.lock();
-    let lock_time = lock_start.elapsed();
-    
-    // Perform scan
-    let scan_start = std::time::Instant::now();
-    let result = conductor
-        .scan(&text, &external_spans)
-        .ok_or_else(|| "Conductor not ready - call conductor_hydrate first".to_string())?;
-    let scan_time = scan_start.elapsed();
-    
-    let total_time = total_start.elapsed();
-    
-    // Log detailed timing breakdown
-    log::info!(
-        "[conductor_scan] text={} lock={}µs scan={}µs total={}µs | implicit={} unified={} triples={}",
-        text.len(),
-        lock_time.as_micros(),
-        scan_time.as_micros(),
-        total_time.as_micros(),
-        result.stats.implicit_found,
-        result.stats.unified_found,
-        result.stats.triples_found,
-    );
-    
-    // Warn if lock contention is significant (>1ms)
-    if lock_time.as_micros() > 1000 {
-        log::warn!(
-            "[conductor_scan] LOCK CONTENTION: {}µs waiting for mutex",
-            lock_time.as_micros()
-        );
-    }
-    
-    Ok(result)
-}
-
-/// Force scan even if conductor is not ready (for debugging)
-#[tauri::command]
-fn conductor_scan_force(text: String, entities_json: String) -> Result<String, String> {
-    let external_spans: Vec<relation::EntitySpan> = if entities_json.is_empty() || entities_json == "[]" {
-        vec![]
-    } else {
-        serde_json::from_str(&entities_json).unwrap_or_default()
-    };
-    
-    let mut conductor = CONDUCTOR.lock();
-    let result = conductor.scan_force(&text, &external_spans);
-    
-    serde_json::to_string(&result)
-        .map_err(|e| format!("Serialization error: {}", e))
-}
+// NOTE: conductor_scan and conductor_scan_force removed in Phase 4
+// Replaced by ScanWorker background scanning + get_decoration_spans
 
 /// Get conductor status
 #[tauri::command]
@@ -538,8 +479,7 @@ pub fn run() {
             resorank_clear,
             resorank_stats,
             conductor_hydrate,
-            conductor_scan,
-            conductor_scan_force,
+            // conductor_scan removed (Phase 4) - use get_decoration_spans
             conductor_status,
             conductor_reset,
             // Scan Worker commands (Phase 1: Background Scanning)

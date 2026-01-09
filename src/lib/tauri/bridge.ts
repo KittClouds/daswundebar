@@ -381,32 +381,27 @@ export async function conductorHydrate(entities: EntityDefinition[]): Promise<{ 
 
 /**
  * Full document scan using ScanConductor
- * Requires conductor to be hydrated first
- * Now returns typed result directly (no JSON.parse needed)
+ * @deprecated Phase 4: Rust command removed. Use get_decoration_spans instead.
+ * This function will throw an error. Kept for API compatibility.
  */
 export async function conductorScan(
     text: string,
     entitySpans: EntitySpan[] = []
 ): Promise<ConductorScanResult> {
-    // Tauri auto-serializes/deserializes - no JSON.stringify/parse needed!
-    return invoke<ConductorScanResult>('conductor_scan', {
-        text,
-        externalSpans: entitySpans,  // Renamed to match Rust parameter
-    });
+    console.warn('[bridge] conductorScan is deprecated - use get_decoration_spans');
+    throw new Error('conductor_scan command removed in Phase 4. Use get_decoration_spans.');
 }
 
 /**
  * Force scan even if conductor not ready (for debugging)
+ * @deprecated Phase 4: Rust command removed. Use get_decoration_spans instead.
  */
 export async function conductorScanForce(
-    text: string,
-    entitySpans: EntitySpan[] = []
+    _text: string,
+    _entitySpans: EntitySpan[] = []
 ): Promise<ConductorScanResult> {
-    const resultJson = await invoke<string>('conductor_scan_force', {
-        text,
-        entitiesJson: JSON.stringify(entitySpans),
-    });
-    return JSON.parse(resultJson);
+    console.warn('[bridge] conductorScanForce is deprecated');
+    throw new Error('conductor_scan_force command removed in Phase 4.');
 }
 
 /**
@@ -642,65 +637,19 @@ export class TauriScanner {
 
     /**
      * Full scan using ScanConductor (with incremental support)
-     * This is the recommended scan method for new code
+     * @deprecated Phase 4: conductor_scan removed. Background ScanWorker handles scanning now.
+     * Use get_decoration_spans to fetch cached results instead.
      */
     async conductorScanImmediate(
         noteId: string,
-        text: string,
-        entitySpans: EntitySpan[] = []
+        _text: string,
+        _entitySpans: EntitySpan[] = []
     ): Promise<ConductorScanResult | null> {
-        if (!isTauri()) {
-            return null;
-        }
-
-        try {
-            // TIMING: Total
-            const t0_total = performance.now();
-
-            // TIMING: IPC invoke
-            const t1_ipc_start = performance.now();
-            const result = await conductorScan(text, entitySpans);
-            const t2_ipc_end = performance.now();
-
-            // TIMING: Handler execution
-            const t3_handlers_start = performance.now();
-            for (const handler of this.resultHandlers) {
-                try {
-                    handler(noteId, result as any);
-                } catch (e) {
-                    console.error('[TauriScanner] Handler error:', e);
-                }
-            }
-            const t4_handlers_end = performance.now();
-
-            const t5_total_end = performance.now();
-
-            // Detailed timing breakdown
-            if (this.config.logPerformance) {
-                const ipcMs = t2_ipc_end - t1_ipc_start;
-                const handlersMs = t4_handlers_end - t3_handlers_start;
-                const totalMs = t5_total_end - t0_total;
-                const rustUs = result.stats.timings?.total_us ?? 0;
-                const overheadMs = totalMs - (rustUs / 1000);
-
-                const mode = result.stats.was_incremental ? 'INCR' : result.stats.was_skipped ? 'CACHE' : 'FULL';
-
-                // Always log timing breakdown for debugging
-                console.log(
-                    `[TauriScanner] ${mode} | ` +
-                    `total=${totalMs.toFixed(1)}ms | ` +
-                    `ipc=${ipcMs.toFixed(1)}ms | ` +
-                    `rust=${(rustUs / 1000).toFixed(2)}ms | ` +
-                    `handlers=${handlersMs.toFixed(1)}ms | ` +
-                    `overhead=${overheadMs.toFixed(1)}ms`
-                );
-            }
-
-            return result;
-        } catch (error) {
-            console.error('[TauriScanner] Conductor scan failed:', error);
-            return null;
-        }
+        // Phase 4: conductor_scan removed from Rust backend
+        // Scanning now happens via ScanWorker when note is saved
+        // Use get_decoration_spans to fetch cached results
+        console.warn(`[TauriScanner] conductorScanImmediate deprecated - use get_decoration_spans for note ${noteId}`);
+        return null;
     }
 
     /**
