@@ -13,7 +13,7 @@ import {
     extractImplicitMentions,
     type DecorationSpanRecord
 } from '@/lib/Scanner/decoration-cache';
-import { isTauri } from '@/lib/utils';
+import { isTauri } from '@/lib/tauri/bridge';
 
 // Entity version - bumps when entities are hydrated, invalidating all caches
 let currentEntityVersion = 0;

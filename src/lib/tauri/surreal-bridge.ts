@@ -124,7 +124,7 @@ function cozoTreeToSurrealTree(nodes: CozoFolderTreeNode[]): FolderTreeNode[] {
 // ============================================
 
 export async function initSurrealDb(): Promise<string> {
-    console.warn('[SurrealBridge] initSurrealDb called but SurrealDB is deprecated. Using CozoDB.');
+    // Phase 4: SurrealDB removed, this is a no-op shim for backwards compat
     return 'cozo:memory';
 }
 

@@ -6,7 +6,7 @@
  */
 
 import { invoke } from '@tauri-apps/api/core';
-import { isTauri } from '@/lib/utils';
+import { isTauri } from '@/lib/tauri/bridge';
 
 // Re-use types from existing scanner
 import type { ImplicitMention } from '@/lib/Scanner/types';

@@ -557,23 +557,13 @@ export class TauriScanner {
 
     /**
      * Scan (debounced) - Uses conductor pipeline
+     * @deprecated Phase 4: Scanning now happens automatically via ScanWorker on note save.
+     * This method exists for backward compatibility but does nothing.
      */
-    scan(noteId: string, text: string, _entitySpans: EntitySpan[] = []): void {
-        if (!this.ready) {
-            console.log('[TauriScanner] Scan skipped - not ready');
-            return;
-        }
-
-        const existing = this.debounceTimers.get(noteId);
-        if (existing) clearTimeout(existing);
-
-        const timer = setTimeout(() => {
-            // Use unified conductor pipeline (fires onResult handlers)
-            this.conductorScanImmediate(noteId, text, []);
-            this.debounceTimers.delete(noteId);
-        }, this.config.debounceMs);
-
-        this.debounceTimers.set(noteId, timer);
+    scan(_noteId: string, _text: string, _entitySpans: EntitySpan[] = []): void {
+        // Phase 4: No-op - ScanWorker handles scanning in background
+        // Scanning is triggered automatically via cozo_update_note when content changes
+        // Use get_decoration_spans to fetch cached results
     }
 
     /**
