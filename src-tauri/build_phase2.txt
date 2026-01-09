@@ -1,0 +1,2108 @@
+﻿cargo :    Compiling varant 
+v0.1.0 (C:\Users\shuga\1kitt
+root\1code\daswundebar\src-t
+auri)
+At line:1 char:1
++ cargo build 2>&1 | 
+Out-File -FilePath 
+"build_phase2.txt" 
+-Encoding ut ...
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (   Co  
+  mpiling va...ebar\src-t   
+ auri):String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+error: expected `|`, found 
+`:`
+   --> src\repos\relationshi
+p_repo.rs:102:37
+    |
+102 |                 if 
+let Some(inverse): 
+Option<RelatesTo> = 
+inverse_result.take(0)? {
+    |                       
+              ^ 
+----------------- 
+specifying the type of a 
+pattern isn't supported
+    |                       
+              |
+    |                       
+              expected `|`
+
+error: expected `|`, found 
+`:`
+   --> src\repos\relationshi
+p_repo.rs:159:25
+    |
+159 |         if let 
+Some(rel): 
+Option<InverseRef> = 
+get_result.take(0)? {
+    |                       
+  ^ ------------------ 
+specifying the type of a 
+pattern isn't supported
+    |                       
+  |
+    |                       
+  expected `|`
+
+error[E0432]: unresolved 
+import `crate::surreal::conn
+ection::get_db`
+ --> src\repos\network_repo.
+rs:5:5
+  |
+5 | use crate::surreal::conn
+ection::get_db;
+  |     ^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^ no `get_db` 
+in `surreal::connection`
+
+error[E0432]: unresolved 
+import `crate::surreal::conn
+ection::get_db`
+ --> 
+src\repos\entity_repo.rs:5:5
+  |
+5 | use crate::surreal::conn
+ection::get_db;
+  |     ^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^ no `get_db` 
+in `surreal::connection`
+
+error[E0432]: unresolved 
+import `crate::surreal::conn
+ection::get_db`
+ --> src\repos\relationship_
+repo.rs:6:5
+  |
+6 | use crate::surreal::conn
+ection::get_db;
+  |     ^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^ no `get_db` 
+in `surreal::connection`
+
+error[E0425]: cannot find 
+value `inverse` in this 
+scope
+   --> src\repos\relationshi
+p_repo.rs:103:82
+    |
+103 |                     
+if let (Some(primary_id), 
+Some(inverse_id)) = 
+(&primary.id, &inverse.id) {
+    |                       
+                            
+                            
+   ^^^^^^^ not found in 
+this scope
+
+error[E0425]: cannot find 
+value `rel` in this scope
+   --> src\repos\relationshi
+p_repo.rs:161:39
+    |
+161 |             if let 
+Some(inverse_id) = 
+rel.inverse_id {
+    |                       
+                ^^^ not 
+found in this scope
+
+warning: unused import: 
+`std::collections::HashMap`
+  --> src\temporal.rs:18:5
+   |
+18 | use 
+std::collections::HashMap;
+   |     
+^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: 
+`#[warn(unused_imports)]` 
+(part of `#[warn(unused)]`) 
+on by default
+
+warning: unused import: 
+`TextRange`
+  --> src\attacher.rs:25:40
+   |
+25 | use 
+super::chunker::{Chunk, 
+ChunkKind, TextRange};
+   |                        
+                ^^^^^^^^^
+
+warning: unused imports: 
+`ProjectionStats`, 
+`project_all`, 
+`project_attributions`, 
+`project_quads`, and 
+`project_state_changes`
+  --> 
+src\reality\engine.rs:16:22
+   |
+16 |     project_triples, 
+project_quads, 
+project_attributions, 
+project_state_changes,
+   |                      
+^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^^
+17 |     project_all, 
+project_all_with_stats,
+   |     ^^^^^^^^^^^
+18 |     Triple, QuadPlus, 
+Attribution, StateChange, 
+Projection, ProjectionStats,
+   |                        
+                            
+         ^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+  --> 
+src\reality\engine.rs:20:60
+   |
+20 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+   |                        
+                            
+        ^^^^^^^^
+
+warning: unused import: 
+`ConceptEdge`
+  --> 
+src\reality\global.rs:11:47
+   |
+11 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge};
+   |                        
+                       
+^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge` and 
+`ConceptNode`
+ --> src\reality\algorithms.
+rs:9:34
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge};
+  |                         
+         ^^^^^^^^^^^  
+^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+ --> 
+src\reality\temporal.rs:9:60
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+  |                         
+                            
+       ^^^^^^^^
+
+warning: unused imports: 
+`RealityLanguage` and 
+`SyntaxKind`
+  --> 
+src\reality\mod.rs:21:18
+   |
+21 | pub use 
+syntax::{SyntaxKind, 
+RealityLanguage};
+   |                  
+^^^^^^^^^^  ^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge`, 
+`ConceptGraph`, 
+`ConceptNode`, and 
+`EdgeKind`
+  --> 
+src\reality\mod.rs:22:17
+   |
+22 | pub use 
+graph::{ConceptGraph, 
+ConceptNode, ConceptEdge, 
+EdgeKind};
+   |                 
+^^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^
+
+warning: unused import: 
+`synapse::SynapseBridge`
+  --> 
+src\reality\mod.rs:23:9
+   |
+23 | pub use 
+synapse::SynapseBridge;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`engine::RealityEngine`
+  --> 
+src\reality\mod.rs:24:9
+   |
+24 | pub use 
+engine::RealityEngine;
+   |         
+^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Attribution`, 
+`Projection`, `QuadPlus`, 
+`StateChange`, and `Triple`
+  --> 
+src\reality\mod.rs:25:22
+   |
+25 | pub use 
+projection::{Triple, 
+QuadPlus, Attribution, 
+StateChange, Projection};
+   |                      
+^^^^^^  ^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^
+
+warning: unused import: 
+`global::GlobalGraph`
+  --> 
+src\reality\mod.rs:26:9
+   |
+26 | pub use 
+global::GlobalGraph;
+   |         
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`unification::EntityUnifier`
+  --> 
+src\reality\mod.rs:27:9
+   |
+27 | pub use 
+unification::EntityUnifier;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`NamedRows`
+ --> 
+src\graph\registry.rs:6:35
+  |
+6 | use cozo::{DbInstance, 
+DataValue, NamedRows};
+  |                         
+          ^^^^^^^^^
+
+warning: unused import: 
+`schema::*`
+  --> src\graph\mod.rs:23:9
+   |
+23 | pub use schema::*;
+   |         ^^^^^^^^^
+
+warning: unused import: 
+`queries::*`
+  --> src\graph\mod.rs:26:9
+   |
+26 | pub use queries::*;
+   |         ^^^^^^^^^^
+
+warning: unused import: 
+`algorithms::*`
+  --> src\graph\mod.rs:27:9
+   |
+27 | pub use algorithms::*;
+   |         ^^^^^^^^^^^^^
+
+warning: unused import: 
+`commands::*`
+  --> src\rag\mod.rs:15:9
+   |
+15 | pub use commands::*;
+   |         ^^^^^^^^^^^
+
+warning: unused import: `emb
+eddings::EmbeddingService`
+  --> src\rag\mod.rs:16:9
+   |
+16 | pub use embeddings::Emb
+eddingService;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`chunker::RagChunker`
+  --> src\rag\mod.rs:17:9
+   |
+17 | pub use 
+chunker::RagChunker;
+   |         
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`CorpusSize`, 
+`FieldParams`, and 
+`ResoRankConfig`
+  --> 
+src\resorank\mod.rs:21:18
+   |
+21 | pub use 
+config::{ResoRankConfig, 
+CorpusStatistics, 
+FieldParams, CorpusSize};
+   |                  
+^^^^^^^^^^^^^^              
+      ^^^^^^^^^^^  
+^^^^^^^^^^
+
+warning: unused import: `pro
+ximity::ProximityStrategy`
+  --> 
+src\resorank\mod.rs:22:9
+   |
+22 | pub use proximity::Prox
+imityStrategy;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`ScorerStats`
+  --> 
+src\resorank\mod.rs:23:34
+   |
+23 | pub use 
+scorer::{ResoRankScorer, 
+ScorerStats};
+   |                        
+          ^^^^^^^^^^^
+
+warning: unused imports: 
+`FieldContribution`, 
+`FieldOccurrence`, 
+`ScoreExplanation`, and 
+`TermBreakdown`
+  --> 
+src\resorank\mod.rs:25:38
+   |
+25 |     DocumentMetadata, 
+TokenMetadata, 
+FieldOccurrence,
+   |                        
+              
+^^^^^^^^^^^^^^^
+26 |     SearchResult, 
+ScoreExplanation, 
+TermBreakdown, 
+FieldContribution,
+   |                   
+^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`error::SurrealError`
+  --> 
+src\surreal\mod.rs:16:9
+   |
+16 | pub use 
+error::SurrealError;
+   |         
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`types::*`
+  --> 
+src\surreal\mod.rs:17:9
+   |
+17 | pub use types::*;
+   |         ^^^^^^^^
+
+warning: unused import: 
+`Entity`
+ --> src\repos\network_repo.
+rs:9:5
+  |
+9 |     Entity, 
+AddMemberInput, InNetwork,
+  |     ^^^^^^
+
+error[E0282]: type 
+annotations needed
+  --> src\repos\network_repo
+.rs:17:13
+   |
+17 |         let db = 
+get_db().await?;
+   |             ^^
+...
+45 |         let mut result 
+= db
+   |                        
+  -- type must be known at 
+this point
+   |
+help: consider giving `db` 
+an explicit type
+   |
+17 |         let db: /* 
+Type */ = get_db().await?;
+   |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+  --> src\repos\network_repo
+.rs:45:13
+   |
+45 |         let mut result 
+= db
+   |             ^^^^^^^^^^
+...
+57 |         let network: 
+Option<Network> = 
+result.take(0)?;
+   |                        
+                ------ type 
+must be known at this point
+   |
+help: consider giving 
+`result` an explicit type
+   |
+45 |         let mut 
+result: /* Type */ = db
+   |                       
+++++++++++++
+
+error[E0533]: expected 
+value, found struct variant 
+`SurrealError::NotFound`
+  --> src\repos\network_repo
+.rs:58:23
+   |
+58 |         network.ok_or(S
+urrealError::NotFound("Creat
+ed network not 
+found".to_string()))
+   |                       
+^^^^^^^^^^^^^^^^^^^^^^ not 
+a value
+   |
+help: you might have meant 
+to create a new value of 
+the struct
+   |
+58 -         network.ok_or(S
+urrealError::NotFound("Creat
+ed network not 
+found".to_string()))
+58 +         network.ok_or(S
+urrealError::NotFound { 
+table: /* value */, id: /* 
+value */ })
+   |
+
+error[E0282]: type 
+annotations needed
+  --> src\repos\network_repo
+.rs:63:13
+   |
+63 |         let db = 
+get_db().await?;
+   |             ^^
+...
+70 |         let mut result 
+= db
+   |                        
+  -- type must be known at 
+this point
+   |
+help: consider giving `db` 
+an explicit type
+   |
+63 |         let db: /* 
+Type */ = get_db().await?;
+   |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+  --> src\repos\network_repo
+.rs:70:13
+   |
+70 |         let mut result 
+= db
+   |             ^^^^^^^^^^
+...
+76 |         let network: 
+Option<Network> = 
+result.take(0)?;
+   |                        
+                ------ type 
+must be known at this point
+   |
+help: consider giving 
+`result` an explicit type
+   |
+70 |         let mut 
+result: /* Type */ = db
+   |                       
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+  --> src\repos\network_repo
+.rs:82:13
+   |
+82 |         let db = 
+get_db().await?;
+   |             ^^
+...
+89 |         let mut result 
+= db
+   |                        
+  -- type must be known at 
+this point
+   |
+help: consider giving `db` 
+an explicit type
+   |
+82 |         let db: /* 
+Type */ = get_db().await?;
+   |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+  --> src\repos\network_repo
+.rs:89:13
+   |
+89 |         let mut result 
+= db
+   |             ^^^^^^^^^^
+...
+95 |         let network: 
+Option<Network> = 
+result.take(0)?;
+   |                        
+                ------ type 
+must be known at this point
+   |
+help: consider giving 
+`result` an explicit type
+   |
+89 |         let mut 
+result: /* Type */ = db
+   |                       
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\network_rep
+o.rs:101:13
+    |
+101 |         let db = 
+get_db().await?;
+    |             ^^
+...
+120 |         let mut 
+query_builder = 
+db.query(query)
+    |                       
+          -- type must be 
+known at this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+101 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\network_rep
+o.rs:143:13
+    |
+143 |         let mut 
+result = 
+query_builder.await?;
+    |             ^^^^^^^^^^
+144 |         let network: 
+Option<Network> = 
+result.take(0)?;
+    |                       
+                 ------ 
+type must be known at this 
+point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+143 |         let mut 
+result: /* Type */ = 
+query_builder.await?;
+    |                       
+++++++++++++
+
+error[E0533]: expected 
+value, found struct variant 
+`SurrealError::NotFound`
+   --> src\repos\network_rep
+o.rs:145:23
+    |
+145 |         network.ok_or(
+SurrealError::NotFound("Netw
+ork not found".to_string()))
+    |                       
+^^^^^^^^^^^^^^^^^^^^^^ not 
+a value
+    |
+help: you might have meant 
+to create a new value of 
+the struct
+    |
+145 -         network.ok_or(
+SurrealError::NotFound("Netw
+ork not found".to_string()))
+145 +         network.ok_or(
+SurrealError::NotFound { 
+table: /* value */, id: /* 
+value */ })
+    |
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\network_rep
+o.rs:150:13
+    |
+150 |         let db = 
+get_db().await?;
+    |             ^^
+...
+162 |         
+db.query(query)
+    |         -- type must 
+be known at this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+150 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\network_rep
+o.rs:172:13
+    |
+172 |         let db = 
+get_db().await?;
+    |             ^^
+...
+178 |         let mut 
+result = db
+    |                       
+   -- type must be known at 
+this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+172 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\network_rep
+o.rs:178:13
+    |
+178 |         let mut 
+result = db
+    |             ^^^^^^^^^^
+...
+183 |         let networks: 
+Vec<Network> = 
+result.take(0)?;
+    |                       
+               ------ type 
+must be known at this point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+178 |         let mut 
+result: /* Type */ = db
+    |                       
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\network_rep
+o.rs:189:13
+    |
+189 |         let db = 
+get_db().await?;
+    |             ^^
+...
+207 |         let mut 
+result = db
+    |                       
+   -- type must be known at 
+this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+189 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\network_rep
+o.rs:207:13
+    |
+207 |         let mut 
+result = db
+    |             ^^^^^^^^^^
+...
+220 |         let 
+membership: 
+Option<InNetwork> = 
+result.take(0)?;
+    |                       
+                      
+------ type must be known 
+at this point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+207 |         let mut 
+result: /* Type */ = db
+    |                       
+++++++++++++
+
+error[E0533]: expected 
+value, found struct variant 
+`SurrealError::NotFound`
+   --> src\repos\network_rep
+o.rs:221:26
+    |
+221 |         membership.ok_
+or(SurrealError::NotFound("M
+embership not 
+created".to_string()))
+    |                       
+   ^^^^^^^^^^^^^^^^^^^^^^ 
+not a value
+    |
+help: you might have meant 
+to create a new value of 
+the struct
+    |
+221 -         membership.ok_
+or(SurrealError::NotFound("M
+embership not 
+created".to_string()))
+221 +         membership.ok_
+or(SurrealError::NotFound { 
+table: /* value */, id: /* 
+value */ })
+    |
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\network_rep
+o.rs:226:13
+    |
+226 |         let db = 
+get_db().await?;
+    |             ^^
+...
+237 |         
+db.query(query)
+    |         -- type must 
+be known at this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+226 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\network_rep
+o.rs:251:13
+    |
+251 |         let db = 
+get_db().await?;
+    |             ^^
+...
+268 |         let mut 
+result = db
+    |                       
+   -- type must be known at 
+this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+251 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\network_rep
+o.rs:268:13
+    |
+268 |         let mut 
+result = db
+    |             ^^^^^^^^^^
+...
+274 |         let members: 
+Vec<NetworkMemberSummary> = 
+result.take(0)?;
+    |                       
+                           
+------ type must be known 
+at this point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+268 |         let mut 
+result: /* Type */ = db
+    |                       
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\network_rep
+o.rs:280:13
+    |
+280 |         let db = 
+get_db().await?;
+    |             ^^
+...
+295 |         
+db.query(query)
+    |         -- type must 
+be known at this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+280 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+  --> src\repos\entity_repo.
+rs:14:13
+   |
+14 |         let db = 
+get_db().await?;
+   |             ^^
+...
+40 |         let mut result 
+= db
+   |                        
+  -- type must be known at 
+this point
+   |
+help: consider giving `db` 
+an explicit type
+   |
+14 |         let db: /* 
+Type */ = get_db().await?;
+   |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+  --> src\repos\entity_repo.
+rs:40:13
+   |
+40 |         let mut result 
+= db
+   |             ^^^^^^^^^^
+...
+52 |         let entity: 
+Option<Entity> = 
+result.take(0)?;
+   |                        
+              ------ type 
+must be known at this point
+   |
+help: consider giving 
+`result` an explicit type
+   |
+40 |         let mut 
+result: /* Type */ = db
+   |                       
+++++++++++++
+
+error[E0533]: expected 
+value, found struct variant 
+`SurrealError::NotFound`
+  --> src\repos\entity_repo.
+rs:53:22
+   |
+53 |         entity.ok_or(Su
+rrealError::NotFound("Create
+d entity not 
+found".to_string()))
+   |                      
+^^^^^^^^^^^^^^^^^^^^^^ not 
+a value
+   |
+help: you might have meant 
+to create a new value of 
+the struct
+   |
+53 -         entity.ok_or(Su
+rrealError::NotFound("Create
+d entity not 
+found".to_string()))
+53 +         entity.ok_or(Su
+rrealError::NotFound { 
+table: /* value */, id: /* 
+value */ })
+   |
+
+error[E0282]: type 
+annotations needed
+  --> src\repos\entity_repo.
+rs:58:13
+   |
+58 |         let db = 
+get_db().await?;
+   |             ^^
+...
+65 |         let mut result 
+= db
+   |                        
+  -- type must be known at 
+this point
+   |
+help: consider giving `db` 
+an explicit type
+   |
+58 |         let db: /* 
+Type */ = get_db().await?;
+   |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+  --> src\repos\entity_repo.
+rs:65:13
+   |
+65 |         let mut result 
+= db
+   |             ^^^^^^^^^^
+...
+71 |         let entity: 
+Option<Entity> = 
+result.take(0)?;
+   |                        
+              ------ type 
+must be known at this point
+   |
+help: consider giving 
+`result` an explicit type
+   |
+65 |         let mut 
+result: /* Type */ = db
+   |                       
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+  --> src\repos\entity_repo.
+rs:77:13
+   |
+77 |         let db = 
+get_db().await?;
+   |             ^^
+...
+84 |         let mut result 
+= db
+   |                        
+  -- type must be known at 
+this point
+   |
+help: consider giving `db` 
+an explicit type
+   |
+77 |         let db: /* 
+Type */ = get_db().await?;
+   |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+  --> src\repos\entity_repo.
+rs:84:13
+   |
+84 |         let mut result 
+= db
+   |             ^^^^^^^^^^
+...
+90 |         let entity: 
+Option<Entity> = 
+result.take(0)?;
+   |                        
+              ------ type 
+must be known at this point
+   |
+help: consider giving 
+`result` an explicit type
+   |
+84 |         let mut 
+result: /* Type */ = db
+   |                       
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\entity_repo
+.rs:96:13
+    |
+ 96 |         let db = 
+get_db().await?;
+    |             ^^
+...
+103 |         let mut 
+result = db
+    |                       
+   -- type must be known at 
+this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+ 96 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\entity_repo
+.rs:103:13
+    |
+103 |         let mut 
+result = db
+    |             ^^^^^^^^^^
+...
+109 |         let entity: 
+Option<Entity> = 
+result.take(0)?;
+    |                       
+               ------ type 
+must be known at this point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+103 |         let mut 
+result: /* Type */ = db
+    |                       
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\entity_repo
+.rs:115:13
+    |
+115 |         let db = 
+get_db().await?;
+    |             ^^
+...
+134 |         let mut 
+query_builder = 
+db.query(query)
+    |                       
+          -- type must be 
+known at this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+115 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\entity_repo
+.rs:157:13
+    |
+157 |         let mut 
+result = 
+query_builder.await?;
+    |             ^^^^^^^^^^
+158 |         let entity: 
+Option<Entity> = 
+result.take(0)?;
+    |                       
+               ------ type 
+must be known at this point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+157 |         let mut 
+result: /* Type */ = 
+query_builder.await?;
+    |                       
+++++++++++++
+
+error[E0533]: expected 
+value, found struct variant 
+`SurrealError::NotFound`
+   --> src\repos\entity_repo
+.rs:159:22
+    |
+159 |         entity.ok_or(S
+urrealError::NotFound("Entit
+y not found".to_string()))
+    |                      
+^^^^^^^^^^^^^^^^^^^^^^ not 
+a value
+    |
+help: you might have meant 
+to create a new value of 
+the struct
+    |
+159 -         entity.ok_or(S
+urrealError::NotFound("Entit
+y not found".to_string()))
+159 +         entity.ok_or(S
+urrealError::NotFound { 
+table: /* value */, id: /* 
+value */ })
+    |
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\entity_repo
+.rs:164:13
+    |
+164 |         let db = 
+get_db().await?;
+    |             ^^
+...
+176 |         
+db.query(query)
+    |         -- type must 
+be known at this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+164 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\entity_repo
+.rs:186:13
+    |
+186 |         let db = 
+get_db().await?;
+    |             ^^
+...
+193 |         let mut 
+result = db
+    |                       
+   -- type must be known at 
+this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+186 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\entity_repo
+.rs:193:13
+    |
+193 |         let mut 
+result = db
+    |             ^^^^^^^^^^
+...
+199 |         let entities: 
+Vec<Entity> = 
+result.take(0)?;
+    |                       
+              ------ type 
+must be known at this point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+193 |         let mut 
+result: /* Type */ = db
+    |                       
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\entity_repo
+.rs:205:13
+    |
+205 |         let db = 
+get_db().await?;
+    |             ^^
+...
+211 |         let mut 
+result = db
+    |                       
+   -- type must be known at 
+this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+205 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\entity_repo
+.rs:211:13
+    |
+211 |         let mut 
+result = db
+    |             ^^^^^^^^^^
+...
+216 |         let entities: 
+Vec<Entity> = 
+result.take(0)?;
+    |                       
+              ------ type 
+must be known at this point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+211 |         let mut 
+result: /* Type */ = db
+    |                       
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\entity_repo
+.rs:222:13
+    |
+222 |         let db = 
+get_db().await?;
+    |             ^^
+...
+238 |         let mut 
+result = db
+    |                       
+   -- type must be known at 
+this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+222 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\entity_repo
+.rs:238:13
+    |
+238 |         let mut 
+result = db
+    |             ^^^^^^^^^^
+...
+244 |         let entities: 
+Vec<Entity> = 
+result.take(0)?;
+    |                       
+              ------ type 
+must be known at this point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+238 |         let mut 
+result: /* Type */ = db
+    |                       
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\entity_repo
+.rs:250:13
+    |
+250 |         let db = 
+get_db().await?;
+    |             ^^
+...
+264 |         let mut 
+result = db
+    |                       
+   -- type must be known at 
+this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+250 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\entity_repo
+.rs:264:13
+    |
+264 |         let mut 
+result = db
+    |             ^^^^^^^^^^
+...
+271 |         let entity: 
+Option<Entity> = 
+result.take(0)?;
+    |                       
+               ------ type 
+must be known at this point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+264 |         let mut 
+result: /* Type */ = db
+    |                       
+++++++++++++
+
+error[E0533]: expected 
+value, found struct variant 
+`SurrealError::NotFound`
+   --> src\repos\entity_repo
+.rs:272:22
+    |
+272 |         entity.ok_or(S
+urrealError::NotFound("Entit
+y not found".to_string()))
+    |                      
+^^^^^^^^^^^^^^^^^^^^^^ not 
+a value
+    |
+help: you might have meant 
+to create a new value of 
+the struct
+    |
+272 -         entity.ok_or(S
+urrealError::NotFound("Entit
+y not found".to_string()))
+272 +         entity.ok_or(S
+urrealError::NotFound { 
+table: /* value */, id: /* 
+value */ })
+    |
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\entity_repo
+.rs:277:13
+    |
+277 |         let db = 
+get_db().await?;
+    |             ^^
+...
+291 |         let mut 
+result = db
+    |                       
+   -- type must be known at 
+this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+277 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\entity_repo
+.rs:291:13
+    |
+291 |         let mut 
+result = db
+    |             ^^^^^^^^^^
+...
+298 |         let entity: 
+Option<Entity> = 
+result.take(0)?;
+    |                       
+               ------ type 
+must be known at this point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+291 |         let mut 
+result: /* Type */ = db
+    |                       
+++++++++++++
+
+error[E0533]: expected 
+value, found struct variant 
+`SurrealError::NotFound`
+   --> src\repos\entity_repo
+.rs:299:22
+    |
+299 |         entity.ok_or(S
+urrealError::NotFound("Entit
+y not found".to_string()))
+    |                      
+^^^^^^^^^^^^^^^^^^^^^^ not 
+a value
+    |
+help: you might have meant 
+to create a new value of 
+the struct
+    |
+299 -         entity.ok_or(S
+urrealError::NotFound("Entit
+y not found".to_string()))
+299 +         entity.ok_or(S
+urrealError::NotFound { 
+table: /* value */, id: /* 
+value */ })
+    |
+
+error[E0282]: type 
+annotations needed
+  --> src\repos\relationship
+_repo.rs:18:13
+   |
+18 |         let db = 
+get_db().await?;
+   |             ^^
+...
+46 |         let mut result 
+= db
+   |                        
+  -- type must be known at 
+this point
+   |
+help: consider giving `db` 
+an explicit type
+   |
+18 |         let db: /* 
+Type */ = get_db().await?;
+   |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+  --> src\repos\relationship
+_repo.rs:46:13
+   |
+46 |         let mut result 
+= db
+   |             ^^^^^^^^^^
+...
+60 |         let 
+relationship: 
+Option<RelatesTo> = 
+result.take(0)?;
+   |                        
+                       
+------ type must be known 
+at this point
+   |
+help: consider giving 
+`result` an explicit type
+   |
+46 |         let mut 
+result: /* Type */ = db
+   |                       
+++++++++++++
+
+error[E0533]: expected 
+value, found struct variant 
+`SurrealError::NotFound`
+  --> src\repos\relationship
+_repo.rs:61:42
+   |
+61 |         let primary = r
+elationship.ok_or(SurrealErr
+or::NotFound("Relationship 
+not created".to_string()))?;
+   |                        
+                  
+^^^^^^^^^^^^^^^^^^^^^^ not 
+a value
+   |
+help: you might have meant 
+to create a new value of 
+the struct
+   |
+61 -         let primary = r
+elationship.ok_or(SurrealErr
+or::NotFound("Relationship 
+not created".to_string()))?;
+61 +         let primary = r
+elationship.ok_or(SurrealErr
+or::NotFound { table: /* 
+value */, id: /* value */ 
+})?;
+   |
+
+error[E0282]: type 
+annotations needed
+  --> src\repos\relationship
+_repo.rs:83:27
+   |
+83 |                     
+.map(|r| r.to_string())
+   |                        
+   ^  - type must be known 
+at this point
+   |
+help: consider giving this 
+closure parameter an 
+explicit type
+   |
+83 |                     
+.map(|r: /* Type */| 
+r.to_string())
+   |                        
+    ++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:86:21
+    |
+ 86 |                 let 
+mut inverse_result = db
+    |                     
+^^^^^^^^^^^^^^^^^^
+...
+102 |                 if 
+let Some(inverse): 
+Option<RelatesTo> = 
+inverse_result.take(0)? {
+    |                       
+                            
+        -------------- type 
+must be known at this point
+    |
+help: consider giving 
+`inverse_result` an 
+explicit type
+    |
+ 86 |                 let 
+mut inverse_result: /* Type 
+*/ = db
+    |                       
+                ++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:106:50
+    |
+106 | ...                   
+.bind(("primary_id", 
+primary_id.to_string()))
+    |                       
+                     
+^^^^^^^^^^ cannot infer type
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:107:50
+    |
+107 | ...                   
+.bind(("inverse_id", 
+inverse_id.to_string()))
+    |                       
+                     
+^^^^^^^^^^ cannot infer type
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:122:13
+    |
+122 |         let db = 
+get_db().await?;
+    |             ^^
+...
+129 |         let mut 
+result = db
+    |                       
+   -- type must be known at 
+this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+122 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:129:13
+    |
+129 |         let mut 
+result = db
+    |             ^^^^^^^^^^
+...
+135 |         let rel: 
+Option<RelatesTo> = 
+result.take(0)?;
+    |                       
+               ------ type 
+must be known at this point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+129 |         let mut 
+result: /* Type */ = db
+    |                       
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:141:13
+    |
+141 |         let db = 
+get_db().await?;
+    |             ^^
+...
+148 |         let mut 
+get_result = db
+    |                       
+       -- type must be 
+known at this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+141 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:148:13
+    |
+148 |         let mut 
+get_result = db
+    |             
+^^^^^^^^^^^^^^
+...
+159 |         if let 
+Some(rel): 
+Option<InverseRef> = 
+get_result.take(0)? {
+    |                       
+                         
+---------- type must be 
+known at this point
+    |
+help: consider giving 
+`get_result` an explicit 
+type
+    |
+148 |         let mut 
+get_result: /* Type */ = db
+    |                       
+    ++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:164:42
+    |
+164 |                     
+.bind(("inverse_id", 
+inverse_id.to_string()))
+    |                       
+                   
+^^^^^^^^^^ cannot infer type
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:182:13
+    |
+182 |         let db = 
+get_db().await?;
+    |             ^^
+...
+194 |         let mut 
+result = db
+    |                       
+   -- type must be known at 
+this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+182 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:194:13
+    |
+194 |         let mut 
+result = db
+    |             ^^^^^^^^^^
+...
+200 |         let 
+relationships: 
+Vec<RelatesTo> = 
+result.take(0)?;
+    |                       
+                      
+------ type must be known 
+at this point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+194 |         let mut 
+result: /* Type */ = db
+    |                       
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:206:13
+    |
+206 |         let db = 
+get_db().await?;
+    |             ^^
+...
+217 |         let mut 
+result = db
+    |                       
+   -- type must be known at 
+this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+206 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:217:13
+    |
+217 |         let mut 
+result = db
+    |             ^^^^^^^^^^
+...
+223 |         let 
+relationships: 
+Vec<RelatesTo> = 
+result.take(0)?;
+    |                       
+                      
+------ type must be known 
+at this point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+217 |         let mut 
+result: /* Type */ = db
+    |                       
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:229:13
+    |
+229 |         let db = 
+get_db().await?;
+    |             ^^
+...
+240 |         let mut 
+result = db
+    |                       
+   -- type must be known at 
+this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+229 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:240:13
+    |
+240 |         let mut 
+result = db
+    |             ^^^^^^^^^^
+...
+246 |         let 
+relationships: 
+Vec<RelatesTo> = 
+result.take(0)?;
+    |                       
+                      
+------ type must be known 
+at this point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+240 |         let mut 
+result: /* Type */ = db
+    |                       
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:252:13
+    |
+252 |         let db = 
+get_db().await?;
+    |             ^^
+...
+272 |         let mut 
+result = db
+    |                       
+   -- type must be known at 
+this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+252 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:272:13
+    |
+272 |         let mut 
+result = db
+    |             ^^^^^^^^^^
+...
+278 |         let 
+summaries: 
+Vec<RelationshipSummary> = 
+result.take(0)?;
+    |                       
+                            
+------ type must be known 
+at this point
+    |
+help: consider giving 
+`result` an explicit type
+    |
+272 |         let mut 
+result: /* Type */ = db
+    |                       
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:289:13
+    |
+289 |         let db = 
+get_db().await?;
+    |             ^^
+...
+304 |             
+db.query(q)
+    |             -- type 
+must be known at this point
+    |
+help: consider giving `db` 
+an explicit type
+    |
+289 |         let db: /* 
+Type */ = get_db().await?;
+    |               
+++++++++++++
+
+error[E0282]: type 
+annotations needed
+   --> src\repos\relationshi
+p_repo.rs:295:13
+    |
+295 |         let query = 
+if let Some(code) = 
+relationship_code {
+    |             ^^^^^
+...
+325 |         let deleted: 
+Vec<RelatesTo> = 
+query.take(0)?;
+    |                       
+                ----- type 
+must be known at this point
+    |
+help: consider giving 
+`query` an explicit type
+    |
+295 |         let query: /* 
+Type */ = if let Some(code) 
+= relationship_code {
+    |                  
+++++++++++++
+
+warning: value assigned to 
+`head_idx` is never read
+   --> src\chunker.rs:464:28
+    |
+464 |         let mut 
+head_idx = None;
+    |                       
+     ^^^^
+    |
+    = help: maybe it is 
+overwritten before being 
+read?
+    = note: `#[warn(unused_a
+ssignments)]` (part of 
+`#[warn(unused)]`) on by 
+default
+
+warning: unused variable: 
+`query`
+   --> 
+src\graph\queries.rs:392:13
+    |
+392 |         let query = 
+r#"
+    |             ^^^^^ 
+help: if this is 
+intentional, prefix it with 
+an underscore: `_query`
+    |
+    = note: 
+`#[warn(unused_variables)]` 
+(part of `#[warn(unused)]`) 
+on by default
+
+warning: variable does not 
+need to be mutable
+   --> 
+src\rag\chunker.rs:110:62
+    |
+110 |     fn 
+find_break_point(&self, 
+chars: &[char], start: 
+usize, mut end: usize) -> 
+usize {
+    |                       
+                            
+           ----^^^
+    |                       
+                            
+           |
+    |                       
+                            
+           help: remove 
+this `mut`
+    |
+    = note: 
+`#[warn(unused_mut)]` (part 
+of `#[warn(unused)]`) on by 
+default
+
+Some errors have detailed 
+explanations: E0282, E0425, 
+E0432, E0533.
+For more information about 
+an error, try `rustc 
+--explain E0282`.
+warning: `varant` (lib) 
+generated 31 warnings
+error: could not compile 
+`varant` (lib) due to 74 
+previous errors; 31 
+warnings emitted

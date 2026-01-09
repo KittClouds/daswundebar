@@ -10,8 +10,25 @@
  */
 
 import { v4 as uuidv4 } from 'uuid';
-import { cozoDb } from '@/lib/cozo/db';
-import { TIME_UNIT_QUERIES, TimeUnitRow, TimeUnitType } from '@/lib/cozo/schema/layer2-time-registry';
+import { cozoDb } from '@/lib/cozo-stubs/db';
+import { TIME_UNIT_QUERIES } from '@/lib/cozo-stubs/schema';
+import type { TimeUnitType } from '@/lib/cozo-stubs/schema';
+
+// TimeUnitRow stub type for ChronologyEngine
+interface TimeUnitRow {
+    id: string;
+    calendarId: string;
+    unitType: string;
+    name: string;
+    normalizedName: string;
+    shortName?: string;
+    index: number;
+    daysInUnit?: number;
+    direction?: string;
+    startYear?: number;
+    endYear?: number;
+    createdAt: number;
+}
 import type { CalendarConfig } from '@/contexts/CalendarContext';
 import type { MonthDefinition, EraDefinition } from '@/lib/fantasy-calendar/types';
 

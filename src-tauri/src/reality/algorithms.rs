@@ -2,14 +2,13 @@
 //!
 //! Evolution 3.0: Graph Algorithm Layer
 //!
-//! Provides in-memory, real-time graph analysis using petgraph algorithms.
+//! Provides in-memory, real-time graph analysis without external dependencies.
 //! Complements CozoDB's persistent graph layer with fast, iterative analysis.
+//!
+//! **V2: Removed petgraph dependency. Uses custom HashMap-based graph structure.**
 
 use std::collections::{HashMap, HashSet, VecDeque};
-use super::graph::{ConceptGraph, ConceptNode, ConceptEdge};
-use rustworkx_core::petgraph::graph::NodeIndex;
-use rustworkx_core::petgraph::Direction;
-use rustworkx_core::petgraph::visit::EdgeRef;
+use super::graph::{ConceptGraph, ConceptNode, ConceptEdge, NodeIndex};
 
 // =============================================================================
 // Types
@@ -199,38 +198,45 @@ impl ConceptGraph {
                 entity_community.insert(member.clone(), community.id);
             }
         }
-
         
         let mut bridges: Vec<BridgeEntity> = Vec::new();
         
         for node in self.nodes() {
-            let my_community = entity_community.get(node.id.as_str());
-            let mut connected_communities: HashSet<usize> = HashSet::new();
+            let my_community = entity_community.get(&node.id);
             
-            // Check outgoing edges
+            // Get communities of all neighbors
+            let mut neighbor_communities: HashSet<usize> = HashSet::new();
+            
             for (neighbor, _) in self.outgoing_edges(&node.id) {
-                if let Some(&comm) = entity_community.get(neighbor.id.as_str()) {
-                    if my_community != Some(&comm) {
-                        connected_communities.insert(comm);
-                    }
+                if let Some(&c) = entity_community.get(&neighbor.id) {
+                    neighbor_communities.insert(c);
                 }
             }
             
-            // Check incoming edges
             for (neighbor, _) in self.incoming_edges(&node.id) {
-                if let Some(&comm) = entity_community.get(neighbor.id.as_str()) {
-                    if my_community != Some(&comm) {
-                        connected_communities.insert(comm);
-                    }
+                if let Some(&c) = entity_community.get(&neighbor.id) {
+                    neighbor_communities.insert(c);
                 }
             }
             
-            if !connected_communities.is_empty() {
-                let bridge_score = connected_communities.len() as f64;
+            // Remove own community
+            if let Some(&own) = my_community {
+                neighbor_communities.remove(&own);
+            }
+            
+            // If connected to multiple communities, it's a bridge
+            if !neighbor_communities.is_empty() {
+                let mut all_communities: Vec<usize> = neighbor_communities.into_iter().collect();
+                if let Some(&own) = my_community {
+                    all_communities.insert(0, own);
+                }
+                
+                let bridge_score = all_communities.len() as f64 - 1.0;
+                
                 bridges.push(BridgeEntity {
                     entity_id: node.id.clone(),
                     entity_name: node.label.clone(),
-                    communities: connected_communities.into_iter().collect(),
+                    communities: all_communities,
                     bridge_score,
                 });
             }
@@ -242,15 +248,13 @@ impl ConceptGraph {
     }
     
     /// Count edges between members of a group
-    fn count_internal_edges(&self, members: &[String]) -> usize {
+    pub fn count_internal_edges(&self, members: &[String]) -> usize {
         let member_set: HashSet<&String> = members.iter().collect();
         let mut count = 0;
         
-        for member_id in members {
-            for (neighbor, _) in self.outgoing_edges(member_id) {
-                if member_set.contains(&neighbor.id) {
-                    count += 1;
-                }
+        for (source, target, _edge) in self.edges() {
+            if member_set.contains(&source.id) && member_set.contains(&target.id) {
+                count += 1;
             }
         }
         
@@ -276,7 +280,7 @@ impl ConceptGraph {
             });
         }
         
-        // BFS
+        // BFS using our custom NodeIndex
         let mut visited: HashSet<NodeIndex> = HashSet::new();
         let mut parent: HashMap<NodeIndex, (NodeIndex, String)> = HashMap::new();
         let mut queue: VecDeque<NodeIndex> = VecDeque::new();
@@ -285,32 +289,35 @@ impl ConceptGraph {
         visited.insert(source_idx);
         
         while let Some(current) = queue.pop_front() {
-            // Check all neighbors (undirected)
-            for edge_ref in self.graph().edges_directed(current, Direction::Outgoing) {
-                let neighbor = edge_ref.target();
-                if !visited.contains(&neighbor) {
-                    visited.insert(neighbor);
-                    parent.insert(neighbor, (current, edge_ref.weight().relation.clone()));
+            let current_node = self.node_weight(current)?;
+            
+            // Check all outgoing neighbors
+            for (neighbor, edge) in self.outgoing_edges(&current_node.id) {
+                let neighbor_idx = self.get_index(&neighbor.id)?;
+                if !visited.contains(&neighbor_idx) {
+                    visited.insert(neighbor_idx);
+                    parent.insert(neighbor_idx, (current, edge.relation.clone()));
                     
-                    if neighbor == target_idx {
+                    if neighbor_idx == target_idx {
                         return Some(self.reconstruct_path(source_idx, target_idx, &parent));
                     }
                     
-                    queue.push_back(neighbor);
+                    queue.push_back(neighbor_idx);
                 }
             }
             
-            for edge_ref in self.graph().edges_directed(current, Direction::Incoming) {
-                let neighbor = edge_ref.source();
-                if !visited.contains(&neighbor) {
-                    visited.insert(neighbor);
-                    parent.insert(neighbor, (current, edge_ref.weight().relation.clone()));
+            // Check all incoming neighbors (for undirected traversal)
+            for (neighbor, edge) in self.incoming_edges(&current_node.id) {
+                let neighbor_idx = self.get_index(&neighbor.id)?;
+                if !visited.contains(&neighbor_idx) {
+                    visited.insert(neighbor_idx);
+                    parent.insert(neighbor_idx, (current, edge.relation.clone()));
                     
-                    if neighbor == target_idx {
+                    if neighbor_idx == target_idx {
                         return Some(self.reconstruct_path(source_idx, target_idx, &parent));
                     }
                     
-                    queue.push_back(neighbor);
+                    queue.push_back(neighbor_idx);
                 }
             }
         }
@@ -335,20 +342,30 @@ impl ConceptGraph {
                 continue;
             }
             
-            // Explore neighbors (undirected)
-            for edge_ref in self.graph().edges_directed(current, Direction::Outgoing) {
-                let neighbor = edge_ref.target();
-                if !visited.contains_key(&neighbor) {
-                    visited.insert(neighbor, distance + 1);
-                    queue.push_back((neighbor, distance + 1));
+            // Get node ID for current index
+            let Some(current_node) = self.node_weight(current) else {
+                continue;
+            };
+            
+            // Explore outgoing neighbors
+            for (neighbor, _) in self.outgoing_edges(&current_node.id) {
+                let Some(neighbor_idx) = self.get_index(&neighbor.id) else {
+                    continue;
+                };
+                if !visited.contains_key(&neighbor_idx) {
+                    visited.insert(neighbor_idx, distance + 1);
+                    queue.push_back((neighbor_idx, distance + 1));
                 }
             }
             
-            for edge_ref in self.graph().edges_directed(current, Direction::Incoming) {
-                let neighbor = edge_ref.source();
-                if !visited.contains_key(&neighbor) {
-                    visited.insert(neighbor, distance + 1);
-                    queue.push_back((neighbor, distance + 1));
+            // Explore incoming neighbors (for undirected traversal)
+            for (neighbor, _) in self.incoming_edges(&current_node.id) {
+                let Some(neighbor_idx) = self.get_index(&neighbor.id) else {
+                    continue;
+                };
+                if !visited.contains_key(&neighbor_idx) {
+                    visited.insert(neighbor_idx, distance + 1);
+                    queue.push_back((neighbor_idx, distance + 1));
                 }
             }
         }
@@ -357,7 +374,7 @@ impl ConceptGraph {
         let mut result: Vec<(String, usize)> = visited.iter()
             .filter(|(&idx, _)| idx != start_idx)
             .filter_map(|(&idx, &dist)| {
-                self.graph().node_weight(idx).map(|n| (n.id.clone(), dist))
+                self.node_weight(idx).map(|n| (n.id.clone(), dist))
             })
             .collect();
         
@@ -376,7 +393,7 @@ impl ConceptGraph {
         let mut current = target;
         
         while let Some((prev, edge_label)) = parent.get(&current) {
-            if let Some(node) = self.graph().node_weight(current) {
+            if let Some(node) = self.node_weight(current) {
                 entities.push(node.id.clone());
             }
             edges.push(edge_label.clone());
@@ -384,7 +401,7 @@ impl ConceptGraph {
         }
         
         // Add source
-        if let Some(node) = self.graph().node_weight(source) {
+        if let Some(node) = self.node_weight(source) {
             entities.push(node.id.clone());
         }
         

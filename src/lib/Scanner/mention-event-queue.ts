@@ -1,5 +1,5 @@
 import { eventBus } from '@/lib/utils/event-bus';
-import type { EntityMentionEvent } from '@/lib/cozo/types';
+import type { EntityMentionEvent } from '@/lib/cozo-stubs/types';
 
 class MentionEventQueue {
   private queue: EntityMentionEvent[] = [];

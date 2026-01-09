@@ -188,8 +188,8 @@ impl GlobalGraph {
         
         // Copy synapse links from engine
         // Since SynapseBridge doesn't impl Clone, we rebuild from iterator
-        for (range, entity_id, node_idx) in engine.synapse().iter() {
-            doc_ctx.synapse.link(range, entity_id.to_string(), node_idx);
+        for (range, entity_id) in engine.synapse().iter() {
+            doc_ctx.synapse.link(range, entity_id.to_string());
         }
         
         let projections_count = projections.len();

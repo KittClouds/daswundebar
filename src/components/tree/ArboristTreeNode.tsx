@@ -210,17 +210,53 @@ export function ArboristTreeNode({
                 </span>
             )}
 
-            {/* V2: Display name - entity-colored for main folders */}
-            <span
-                className="truncate text-xs flex-1 z-10"
-                style={{
-                    color: (isFolder && data.entityKind && (data.isTypedRoot || level === 0))
-                        ? iconColor
-                        : undefined
-                }}
-            >
-                {getDisplayName(data.name) || (isFolder ? "New Folder" : "Untitled Note")}
-            </span>
+            {/* V2: Display name or Edit Input - entity-colored for main folders */}
+            {node.isEditing ? (
+                <input
+                    type="text"
+                    autoFocus
+                    defaultValue={data.name}
+                    className="flex-1 text-xs bg-transparent border border-border rounded px-1 py-0.5 z-10 outline-none focus:ring-1 focus:ring-ring"
+                    style={{
+                        color: (isFolder && data.entityKind && (data.isTypedRoot || level === 0))
+                            ? iconColor
+                            : undefined
+                    }}
+                    onFocus={(e) => e.target.select()}
+                    onBlur={(e) => {
+                        const newName = e.target.value.trim();
+                        if (newName && newName !== data.name) {
+                            node.submit(newName);
+                        } else {
+                            node.reset();
+                        }
+                    }}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            const newName = e.currentTarget.value.trim();
+                            if (newName && newName !== data.name) {
+                                node.submit(newName);
+                            } else {
+                                node.reset();
+                            }
+                        } else if (e.key === 'Escape') {
+                            node.reset();
+                        }
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                />
+            ) : (
+                <span
+                    className="truncate text-xs flex-1 z-10"
+                    style={{
+                        color: (isFolder && data.entityKind && (data.isTypedRoot || level === 0))
+                            ? iconColor
+                            : undefined
+                    }}
+                >
+                    {getDisplayName(data.name) || (isFolder ? "New Folder" : "Untitled Note")}
+                </span>
+            )}
 
             {/* Entity badge - PRESERVED 1:1 */}
             {data.entityKind && ENTITY_COLORS[data.entityKind] && (

@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { unifiedRegistry, type CozoEntity } from '@/lib/cozo/graph/UnifiedRegistry';
+import { unifiedRegistry, type CozoEntity } from '@/lib/cozo-stubs/unified-registry';
 import { entityHotCache, type HotCacheEntity } from '@/lib/storage/cache/EntityHotCache';
 import { useEffect } from 'react';
 import type { EntityKind } from '@/lib/types/entityTypes';

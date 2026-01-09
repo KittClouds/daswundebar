@@ -53,9 +53,9 @@ class RelationshipBridgeStoreImpl {
      */
     async refreshRelationshipTypeCache(): Promise<void> {
         try {
-            // Dynamic import to avoid circular dependencies
-            const { getBlueprintStoreImpl } = await import('@/lib/storage/impl/BlueprintStoreImpl');
-            const blueprintStore = getBlueprintStoreImpl();
+            // Use abstracted store (routes to Tauri or WASM automatically)
+            const { getBlueprintStore } = await import('@/lib/storage/index');
+            const blueprintStore = getBlueprintStore();
 
             // Get all relationship types from all versions
             const metas = await blueprintStore.getAllBlueprintMetas();
@@ -212,7 +212,7 @@ class RelationshipBridgeStoreImpl {
      */
     async getByEntity(entityId: string): Promise<ResolvedRelationshipInstance[]> {
         try {
-            const { relationshipRegistry } = await import('@/lib/cozo/graph/adapters/RelationshipRegistryAdapter');
+            const { relationshipRegistry } = await import('@/lib/cozo-stubs/graph-adapters');
             const relationships = relationshipRegistry.getByEntity(entityId);
             return Promise.all(relationships.map(rel => this.unifiedToResolved(rel)));
         } catch (err) {
@@ -326,7 +326,7 @@ class RelationshipBridgeStoreImpl {
 
         try {
             // Get entities of the target kind using EntityRegistryAdapter
-            const { entityRegistry } = await import('@/lib/cozo/graph/adapters/EntityRegistryAdapter');
+            const { entityRegistry } = await import('@/lib/cozo-stubs/graph-adapters');
             const entities = entityRegistry.getEntitiesByKind(typeDef.target_entity_kind as EntityKind);
 
             // Get existing relationships to mark duplicates
@@ -357,7 +357,7 @@ class RelationshipBridgeStoreImpl {
      */
     async delete(relationshipId: string): Promise<boolean> {
         try {
-            const { relationshipRegistry } = await import('@/lib/cozo/graph/adapters/RelationshipRegistryAdapter');
+            const { relationshipRegistry } = await import('@/lib/cozo-stubs/graph-adapters');
             const deleted = relationshipRegistry.delete(relationshipId);
 
             if (deleted) {
@@ -377,7 +377,7 @@ class RelationshipBridgeStoreImpl {
      */
     async update(relationshipId: string, updates: RelationshipInstanceUpdate): Promise<ResolvedRelationshipInstance | null> {
         try {
-            const { relationshipRegistry } = await import('@/lib/cozo/graph/adapters/RelationshipRegistryAdapter');
+            const { relationshipRegistry } = await import('@/lib/cozo-stubs/graph-adapters');
             const existing = relationshipRegistry.get(relationshipId);
 
             if (!existing) {
@@ -442,7 +442,7 @@ class RelationshipBridgeStoreImpl {
      */
     async query(q: RelationshipInstanceQuery): Promise<ResolvedRelationshipInstance[]> {
         try {
-            const { relationshipRegistry } = await import('@/lib/cozo/graph/adapters/RelationshipRegistryAdapter');
+            const { relationshipRegistry } = await import('@/lib/cozo-stubs/graph-adapters');
 
             const queryParams: any = {
                 limit: q.limit,
@@ -473,7 +473,7 @@ class RelationshipBridgeStoreImpl {
         if (!typeDef) return 0;
 
         try {
-            const { relationshipRegistry } = await import('@/lib/cozo/graph/adapters/RelationshipRegistryAdapter');
+            const { relationshipRegistry } = await import('@/lib/cozo-stubs/graph-adapters');
             const relationships = relationshipRegistry.getByType(typeDef.relationship_name);
             return relationships.length;
         } catch {
@@ -488,7 +488,7 @@ class RelationshipBridgeStoreImpl {
         const counts = new Map<string, number>();
 
         try {
-            const { relationshipRegistry } = await import('@/lib/cozo/graph/adapters/RelationshipRegistryAdapter');
+            const { relationshipRegistry } = await import('@/lib/cozo-stubs/graph-adapters');
             const allRelationships = relationshipRegistry.getAll();
 
             // Count by type name
@@ -518,7 +518,7 @@ class RelationshipBridgeStoreImpl {
         if (!typeDef) return [];
 
         try {
-            const { relationshipRegistry } = await import('@/lib/cozo/graph/adapters/RelationshipRegistryAdapter');
+            const { relationshipRegistry } = await import('@/lib/cozo-stubs/graph-adapters');
             const relationships = relationshipRegistry.getByType(typeDef.relationship_name);
             return Promise.all(relationships.map(rel => this.unifiedToResolved(rel)));
         } catch (err) {
@@ -556,7 +556,7 @@ class RelationshipBridgeStoreImpl {
 
         try {
             // Use EntityRegistryAdapter which works synchronously with CozoDB
-            const { entityRegistry } = await import('@/lib/cozo/graph/adapters/EntityRegistryAdapter');
+            const { entityRegistry } = await import('@/lib/cozo-stubs/graph-adapters');
             const entity = entityRegistry.getEntityById(entityId);
 
             if (entity) {
@@ -660,7 +660,7 @@ class RelationshipBridgeStoreImpl {
 
     private async saveToSQLite(rel: UnifiedRelationship): Promise<void> {
         try {
-            const { relationshipRegistry } = await import('@/lib/cozo/graph/adapters/RelationshipRegistryAdapter');
+            const { relationshipRegistry } = await import('@/lib/cozo-stubs/graph-adapters');
             relationshipRegistry.addWithoutPersist(rel);
         } catch (err) {
             console.error('[RelationshipBridgeStore] Failed to save to SQLite:', err);
@@ -671,10 +671,10 @@ class RelationshipBridgeStoreImpl {
         if (!networkId) return;
 
         try {
-            const { cozoDb } = await import('@/lib/cozo/db');
+            const { cozoDb } = await import('@/lib/cozo-stubs/db');
             if (!cozoDb.isReady()) return;
 
-            const { NETWORK_RELATIONSHIP_QUERIES } = await import('@/lib/cozo/schema/layer2-network-relationship');
+            const { NETWORK_RELATIONSHIP_QUERIES } = await import('@/lib/cozo-stubs/schema');
 
             await cozoDb.run(NETWORK_RELATIONSHIP_QUERIES.upsert, {
                 id: rel.id,
@@ -702,10 +702,10 @@ class RelationshipBridgeStoreImpl {
 
     private async deleteFromCozoDB(relationshipId: string): Promise<void> {
         try {
-            const { cozoDb } = await import('@/lib/cozo/db');
+            const { cozoDb } = await import('@/lib/cozo-stubs/db');
             if (!cozoDb.isReady()) return;
 
-            const { NETWORK_RELATIONSHIP_QUERIES } = await import('@/lib/cozo/schema/layer2-network-relationship');
+            const { NETWORK_RELATIONSHIP_QUERIES } = await import('@/lib/cozo-stubs/schema');
             await cozoDb.run(NETWORK_RELATIONSHIP_QUERIES.delete, { id: relationshipId });
         } catch (err) {
             console.error('[RelationshipBridgeStore] Failed to delete from CozoDB:', err);

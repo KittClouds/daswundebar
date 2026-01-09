@@ -11,7 +11,7 @@
  * - Batches operations for efficiency
  */
 
-import { cozoDb } from '@/lib/cozo';
+import { cozoDb } from '@/lib/cozo-stubs/db';
 import type { Delta } from './types';
 import type { SQLiteNodeInput, SQLiteEdgeInput } from '../client/types';
 

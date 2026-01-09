@@ -5,8 +5,8 @@
  * Extracted from legacy scanner-v3 for standalone use.
  */
 
-import { cozoDb } from '@/lib/cozo/db';
-import { TEMPORAL_MENTION_QUERIES } from '@/lib/cozo/schema/layer2-temporal-mentions';
+import { cozoDb } from '@/lib/cozo-stubs/db';
+import { TEMPORAL_MENTION_QUERIES } from '@/lib/cozo-stubs/schema';
 import { generateId } from '@/lib/utils/ids';
 import type { TemporalMention } from './bridge';
 

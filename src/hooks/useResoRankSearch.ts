@@ -8,11 +8,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import type { Note } from '@/types/noteTypes';
 import { tauriResorank, type ResoRankSearchResult } from '@/lib/tauri/resorank';
-
-// Check if we're in Tauri environment
-const isTauri = (): boolean => {
-    return typeof window !== 'undefined' && '__TAURI__' in window;
-};
+import { isTauri } from '@/lib/tauri/bridge';
 
 export interface ResoRankResult {
     docId: string;

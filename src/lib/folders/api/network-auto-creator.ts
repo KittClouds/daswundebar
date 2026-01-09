@@ -9,12 +9,14 @@
  * Uses CozoDB as the primary storage for networks.
  */
 
-import { cozoDb } from '@/lib/cozo/db';
+import { cozoDb } from '@/lib/cozo-stubs/db';
 import { folderSchemaRegistry } from '../schema-registry';
-import { NETWORK_INSTANCE_QUERIES } from '@/lib/cozo/schema/layer2-network-instance';
-import { NETWORK_MEMBERSHIP_QUERIES } from '@/lib/cozo/schema/layer2-network-membership';
-import { NETWORK_RELATIONSHIP_QUERIES } from '@/lib/cozo/schema/layer2-network-relationship';
-import { FOLDER_HIERARCHY_QUERIES } from '@/lib/cozo/schema/layer2-folder-hierarchy';
+import {
+    NETWORK_INSTANCE_QUERIES,
+    NETWORK_MEMBERSHIP_QUERIES,
+    NETWORK_RELATIONSHIP_QUERIES,
+    FOLDER_HIERARCHY_QUERIES
+} from '@/lib/cozo-stubs/schema';
 import type { EntityKind } from '@/lib/types/entityTypes';
 
 // Generate UUID v7 for new entities

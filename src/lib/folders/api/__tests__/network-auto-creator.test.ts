@@ -9,7 +9,7 @@ import { folderSchemaRegistry } from '../../schema-registry';
 import type { NetworkAutoCreateConfig } from '../network-auto-creator';
 
 // Mock CozoDB
-vi.mock('@/lib/cozo/db', () => ({
+vi.mock('@/lib/cozo-stubs/db', () => ({
     cozoDb: {
         runQuery: vi.fn().mockReturnValue({ ok: true, rows: [] }),
         isReady: vi.fn().mockReturnValue(true),
@@ -139,7 +139,7 @@ describe('NetworkAutoCreator', () => {
         });
 
         it('should NOT duplicate network on additional children', async () => {
-            const { cozoDb } = await import('@/lib/cozo/db');
+            const { cozoDb } = await import('@/lib/cozo-stubs/db');
 
             // Mock existing network
             vi.mocked(cozoDb.runQuery).mockReturnValueOnce({

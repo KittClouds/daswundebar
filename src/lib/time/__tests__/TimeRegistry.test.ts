@@ -7,7 +7,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 // Mock CozoDB before importing TimeRegistry
-vi.mock('@/lib/cozo/db', () => ({
+vi.mock('@/lib/cozo-stubs/db', () => ({
     cozoDb: {
         isReady: vi.fn(() => true),
         runQuery: vi.fn(() => ({ ok: true, rows: [] }))
@@ -15,7 +15,7 @@ vi.mock('@/lib/cozo/db', () => ({
 }));
 
 import { TimeRegistry } from '../TimeRegistry';
-import { cozoDb } from '@/lib/cozo/db';
+import { cozoDb } from '@/lib/cozo-stubs/db';
 
 describe('TimeRegistry', () => {
     const mockRunQuery = cozoDb.runQuery as ReturnType<typeof vi.fn>;

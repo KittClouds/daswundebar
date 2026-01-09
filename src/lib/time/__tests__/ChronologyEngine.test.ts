@@ -9,8 +9,8 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import type { CalendarConfig } from '@/contexts/CalendarContext';
 import type { MonthDefinition } from '@/lib/fantasy-calendar/types';
 
-// Mock CozoDB before importing ChronologyEngine
-vi.mock('@/lib/cozo/db', () => ({
+// Mock CozoDB before importing
+vi.mock('@/lib/cozo-stubs/db', () => ({
     cozoDb: {
         isReady: vi.fn(() => true),
         runQuery: vi.fn(() => ({ ok: true, rows: [] }))
@@ -19,7 +19,7 @@ vi.mock('@/lib/cozo/db', () => ({
 
 // Import after mocking
 import { executeGenesis, clearCalendarTimeUnits, getCalendarTimeUnits } from '../ChronologyEngine';
-import { cozoDb } from '@/lib/cozo/db';
+import { cozoDb } from '@/lib/cozo-stubs/db';
 
 describe('ChronologyEngine', () => {
     const mockRunQuery = cozoDb.runQuery as ReturnType<typeof vi.fn>;

@@ -139,16 +139,20 @@ function RenameInput({
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-      if (cursorAfterPipe && initialValue.includes('|')) {
-        // Position cursor after the pipe character
-        const pipeIndex = initialValue.indexOf('|') + 1;
-        inputRef.current.setSelectionRange(pipeIndex, pipeIndex);
-      } else {
-        inputRef.current.select();
+    // Small delay to let any aria-hidden from dropdown menus clear first
+    const timer = setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+        if (cursorAfterPipe && initialValue.includes('|')) {
+          // Position cursor after the pipe character
+          const pipeIndex = initialValue.indexOf('|') + 1;
+          inputRef.current.setSelectionRange(pipeIndex, pipeIndex);
+        } else {
+          inputRef.current.select();
+        }
       }
-    }
+    }, 50);
+    return () => clearTimeout(timer);
   }, [cursorAfterPipe, initialValue]);
 
   const handleSubmit = () => {

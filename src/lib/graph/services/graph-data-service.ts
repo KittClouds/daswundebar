@@ -5,7 +5,7 @@
  * Uses SmartGraphRegistry for proper data access (entities/relationships from Rust).
  */
 
-import { cozoDb } from '@/lib/cozo/db';
+import { cozoDb } from '@/lib/cozo-stubs/db';
 // MIGRATED: Use smartGraphRegistry instead of unifiedRegistry
 import { smartGraphRegistry, type RegisteredEntity } from '@/lib/tauri';
 import type { GraphData, GraphNode, GraphEdge, GraphStats } from '../types/graph-types';

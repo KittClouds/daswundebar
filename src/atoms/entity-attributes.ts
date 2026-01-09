@@ -3,10 +3,13 @@
  * 
  * First-class fact sheet system - entity-owned attribute storage.
  * Provides reactive state for entity attributes, meta cards, and field schemas.
+ * 
+ * MEMORY-ONLY: Attributes are not persisted to database.
+ * They exist only in the current session for display purposes.
+ * Future: Can be persisted to SurrealDB entity.attributes field.
  */
 
 import { atom } from 'jotai';
-import { dbClient } from '@/lib/db/client/db-client';
 import { generateId } from '@/lib/utils/ids';
 import { atomFamily } from '@/atoms/utils/atomFamily';
 
@@ -74,7 +77,7 @@ export interface ValidationRule {
 }
 
 // ============================================
-// BASE ATOMS
+// BASE ATOMS (In-Memory Only)
 // ============================================
 
 // Cache for entity attributes (keyed by entityId)
@@ -95,40 +98,12 @@ export const isLoadingAttributesAtom = atom<boolean>(false);
 
 /**
  * Get all attributes for a specific entity
+ * Returns from in-memory cache only
  */
 export const entityAttributesFamily = atomFamily((entityId: string) =>
-    atom(async (get) => {
+    atom((get) => {
         const cache = get(entityAttributesCache);
-
-        // Return cached if available
-        if (cache.has(entityId)) {
-            return cache.get(entityId)!;
-        }
-
-        // Fetch from database
-        try {
-            const result = await dbClient.query<any>(
-                `SELECT * FROM entity_attributes WHERE entity_id = ? ORDER BY field_name`,
-                [entityId]
-            );
-
-            const attributes: EntityAttribute[] = (result || []).map((row: any) => ({
-                id: row.id,
-                entityId: row.entity_id,
-                fieldName: row.field_name,
-                fieldType: row.field_type as FieldType,
-                value: row.value ? JSON.parse(row.value) : null,
-                schemaId: row.schema_id,
-                cardId: row.card_id,
-                createdAt: row.created_at,
-                updatedAt: row.updated_at,
-            }));
-
-            return attributes;
-        } catch (error) {
-            console.error(`[EntityAttributes] Failed to load attributes for ${entityId}:`, error);
-            return [];
-        }
+        return cache.get(entityId) || [];
     })
 );
 
@@ -137,23 +112,24 @@ export const entityAttributesFamily = atomFamily((entityId: string) =>
  */
 export const getAttributeAtom = atomFamily(
     (params: { entityId: string; fieldName: string }) =>
-        atom(async (get) => {
-            const attrs = await get(entityAttributesFamily(params.entityId));
+        atom((get) => {
+            const attrs = get(entityAttributesFamily(params.entityId));
             const attr = attrs.find(a => a.fieldName === params.fieldName);
             return attr?.value ?? null;
         })
 );
 
 // ============================================
-// ENTITY ATTRIBUTES - WRITE
+// ENTITY ATTRIBUTES - WRITE (Memory Only)
 // ============================================
 
 /**
  * Set a single attribute value
+ * Stores in memory only - not persisted
  */
 export const setAttributeAtom = atom(
     null,
-    async (get, set, params: {
+    (get, set, params: {
         entityId: string;
         fieldName: string;
         value: any;
@@ -164,7 +140,7 @@ export const setAttributeAtom = atom(
         const { entityId, fieldName, value, fieldType = 'text', schemaId, cardId } = params;
         const timestamp = Date.now();
 
-        // Optimistic update: update cache
+        // Update cache
         const cache = new Map(get(entityAttributesCache));
         const existing = cache.get(entityId) || [];
         const existingIndex = existing.findIndex(a => a.fieldName === fieldName);
@@ -181,49 +157,16 @@ export const setAttributeAtom = atom(
             updatedAt: timestamp,
         };
 
+        const updatedAttrs = [...existing];
         if (existingIndex >= 0) {
-            existing[existingIndex] = newAttribute;
+            updatedAttrs[existingIndex] = newAttribute;
         } else {
-            existing.push(newAttribute);
+            updatedAttrs.push(newAttribute);
         }
-        cache.set(entityId, existing);
+        cache.set(entityId, updatedAttrs);
         set(entityAttributesCache, cache);
 
-        // Persist to database
-        try {
-            await dbClient.query(
-                `INSERT INTO entity_attributes (id, entity_id, field_name, field_type, value, schema_id, card_id, created_at, updated_at)
-                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-                 ON CONFLICT(entity_id, field_name) DO UPDATE SET
-                    value = excluded.value,
-                    field_type = excluded.field_type,
-                    schema_id = excluded.schema_id,
-                    card_id = excluded.card_id,
-                    updated_at = excluded.updated_at`,
-                [
-                    newAttribute.id,
-                    entityId,
-                    fieldName,
-                    fieldType,
-                    JSON.stringify(value),
-                    schemaId || null,
-                    cardId || null,
-                    newAttribute.createdAt,
-                    timestamp,
-                ]
-            );
-        } catch (error) {
-            console.error(`[EntityAttributes] Failed to save attribute ${fieldName}:`, error);
-            // Rollback cache on error
-            if (existingIndex >= 0) {
-                // Revert to original
-            } else {
-                existing.pop();
-            }
-            cache.set(entityId, existing);
-            set(entityAttributesCache, cache);
-            throw error;
-        }
+        console.log(`[EntityAttributes] Set ${fieldName} = ${JSON.stringify(value).slice(0, 50)} (memory only)`);
     }
 );
 
@@ -232,7 +175,7 @@ export const setAttributeAtom = atom(
  */
 export const setMultipleAttributesAtom = atom(
     null,
-    async (get, set, params: {
+    (get, set, params: {
         entityId: string;
         attributes: Record<string, any>;
         fieldTypes?: Record<string, FieldType>;
@@ -240,7 +183,7 @@ export const setMultipleAttributesAtom = atom(
         const { entityId, attributes, fieldTypes = {} } = params;
 
         for (const [fieldName, value] of Object.entries(attributes)) {
-            await set(setAttributeAtom, {
+            set(setAttributeAtom, {
                 entityId,
                 fieldName,
                 value,
@@ -255,28 +198,16 @@ export const setMultipleAttributesAtom = atom(
  */
 export const deleteAttributeAtom = atom(
     null,
-    async (get, set, params: { entityId: string; fieldName: string }) => {
+    (get, set, params: { entityId: string; fieldName: string }) => {
         const { entityId, fieldName } = params;
 
-        // Optimistic update
         const cache = new Map(get(entityAttributesCache));
         const existing = cache.get(entityId) || [];
         const filtered = existing.filter(a => a.fieldName !== fieldName);
         cache.set(entityId, filtered);
         set(entityAttributesCache, cache);
 
-        // Persist
-        try {
-            await dbClient.query(
-                `DELETE FROM entity_attributes WHERE entity_id = ? AND field_name = ?`,
-                [entityId, fieldName]
-            );
-        } catch (error) {
-            console.error(`[EntityAttributes] Failed to delete attribute ${fieldName}:`, error);
-            cache.set(entityId, existing);
-            set(entityAttributesCache, cache);
-            throw error;
-        }
+        console.log(`[EntityAttributes] Deleted ${fieldName} (memory only)`);
     }
 );
 
@@ -286,43 +217,17 @@ export const deleteAttributeAtom = atom(
 
 /**
  * Get all meta cards for an entity
+ * Returns from in-memory cache only
  */
 export const metaCardsFamily = atomFamily((entityId: string) =>
-    atom(async (get) => {
+    atom((get) => {
         const cache = get(metaCardsCache);
-
-        if (cache.has(entityId)) {
-            return cache.get(entityId)!;
-        }
-
-        try {
-            const result = await dbClient.query<any>(
-                `SELECT * FROM meta_cards WHERE owner_id = ? ORDER BY display_order`,
-                [entityId]
-            );
-
-            const cards: MetaCard[] = (result || []).map((row: any) => ({
-                id: row.id,
-                ownerId: row.owner_id,
-                name: row.name,
-                color: row.color,
-                icon: row.icon,
-                displayOrder: row.display_order,
-                isCollapsed: row.is_collapsed === 1,
-                createdAt: row.created_at,
-                updatedAt: row.updated_at,
-            }));
-
-            return cards;
-        } catch (error) {
-            console.error(`[EntityAttributes] Failed to load meta cards for ${entityId}:`, error);
-            return [];
-        }
+        return cache.get(entityId) || [];
     })
 );
 
 // ============================================
-// META CARDS - WRITE
+// META CARDS - WRITE (Memory Only)
 // ============================================
 
 /**
@@ -330,7 +235,7 @@ export const metaCardsFamily = atomFamily((entityId: string) =>
  */
 export const createMetaCardAtom = atom(
     null,
-    async (get, set, params: {
+    (get, set, params: {
         ownerId: string;
         name: string;
         color?: string;
@@ -340,8 +245,8 @@ export const createMetaCardAtom = atom(
         const timestamp = Date.now();
         const id = generateId();
 
-        // Get current cards to determine order
-        const existingCards = await get(metaCardsFamily(ownerId));
+        const cache = new Map(get(metaCardsCache));
+        const existingCards = cache.get(ownerId) || [];
         const displayOrder = existingCards.length;
 
         const newCard: MetaCard = {
@@ -356,26 +261,11 @@ export const createMetaCardAtom = atom(
             updatedAt: timestamp,
         };
 
-        // Optimistic update
-        const cache = new Map(get(metaCardsCache));
         cache.set(ownerId, [...existingCards, newCard]);
         set(metaCardsCache, cache);
 
-        // Persist
-        try {
-            await dbClient.query(
-                `INSERT INTO meta_cards (id, owner_id, name, color, icon, display_order, is_collapsed, created_at, updated_at)
-                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-                [id, ownerId, name, color || null, icon || null, displayOrder, 0, timestamp, timestamp]
-            );
-
-            return newCard;
-        } catch (error) {
-            console.error(`[EntityAttributes] Failed to create meta card:`, error);
-            cache.set(ownerId, existingCards);
-            set(metaCardsCache, cache);
-            throw error;
-        }
+        console.log(`[EntityAttributes] Created meta card ${name} (memory only)`);
+        return newCard;
     }
 );
 
@@ -384,76 +274,28 @@ export const createMetaCardAtom = atom(
  */
 export const updateMetaCardAtom = atom(
     null,
-    async (get, set, params: {
+    (get, set, params: {
         cardId: string;
         updates: Partial<Pick<MetaCard, 'name' | 'color' | 'icon' | 'displayOrder' | 'isCollapsed'>>;
     }) => {
         const { cardId, updates } = params;
         const timestamp = Date.now();
 
-        // Find the card in cache
         const cache = new Map(get(metaCardsCache));
-        let foundOwnerId: string | null = null;
-        let cardIndex = -1;
-        let existingCards: MetaCard[] = [];
 
         for (const [ownerId, cards] of cache.entries()) {
             const idx = cards.findIndex(c => c.id === cardId);
             if (idx >= 0) {
-                foundOwnerId = ownerId;
-                cardIndex = idx;
-                existingCards = [...cards];
-                break;
+                const updatedCards = [...cards];
+                updatedCards[idx] = { ...updatedCards[idx], ...updates, updatedAt: timestamp };
+                cache.set(ownerId, updatedCards);
+                set(metaCardsCache, cache);
+                console.log(`[EntityAttributes] Updated meta card ${cardId} (memory only)`);
+                return;
             }
         }
 
-        if (!foundOwnerId || cardIndex < 0) {
-            console.warn(`[EntityAttributes] Card ${cardId} not found in cache`);
-            return;
-        }
-
-        // Optimistic update
-        const updatedCard = { ...existingCards[cardIndex], ...updates, updatedAt: timestamp };
-        existingCards[cardIndex] = updatedCard;
-        cache.set(foundOwnerId, existingCards);
-        set(metaCardsCache, cache);
-
-        // Persist
-        try {
-            const setClauses: string[] = ['updated_at = ?'];
-            const values: any[] = [timestamp];
-
-            if (updates.name !== undefined) {
-                setClauses.push('name = ?');
-                values.push(updates.name);
-            }
-            if (updates.color !== undefined) {
-                setClauses.push('color = ?');
-                values.push(updates.color);
-            }
-            if (updates.icon !== undefined) {
-                setClauses.push('icon = ?');
-                values.push(updates.icon);
-            }
-            if (updates.displayOrder !== undefined) {
-                setClauses.push('display_order = ?');
-                values.push(updates.displayOrder);
-            }
-            if (updates.isCollapsed !== undefined) {
-                setClauses.push('is_collapsed = ?');
-                values.push(updates.isCollapsed ? 1 : 0);
-            }
-
-            values.push(cardId);
-
-            await dbClient.query(
-                `UPDATE meta_cards SET ${setClauses.join(', ')} WHERE id = ?`,
-                values
-            );
-        } catch (error) {
-            console.error(`[EntityAttributes] Failed to update meta card:`, error);
-            throw error;
-        }
+        console.warn(`[EntityAttributes] Card ${cardId} not found`);
     }
 );
 
@@ -462,37 +304,19 @@ export const updateMetaCardAtom = atom(
  */
 export const deleteMetaCardAtom = atom(
     null,
-    async (get, set, cardId: string) => {
+    (get, set, cardId: string) => {
         const cache = new Map(get(metaCardsCache));
-        let foundOwnerId: string | null = null;
-        let existingCards: MetaCard[] = [];
 
         for (const [ownerId, cards] of cache.entries()) {
             if (cards.some(c => c.id === cardId)) {
-                foundOwnerId = ownerId;
-                existingCards = cards;
-                break;
+                cache.set(ownerId, cards.filter(c => c.id !== cardId));
+                set(metaCardsCache, cache);
+                console.log(`[EntityAttributes] Deleted meta card ${cardId} (memory only)`);
+                return;
             }
         }
 
-        if (!foundOwnerId) {
-            console.warn(`[EntityAttributes] Card ${cardId} not found`);
-            return;
-        }
-
-        // Optimistic update
-        cache.set(foundOwnerId, existingCards.filter(c => c.id !== cardId));
-        set(metaCardsCache, cache);
-
-        // Persist
-        try {
-            await dbClient.query(`DELETE FROM meta_cards WHERE id = ?`, [cardId]);
-        } catch (error) {
-            console.error(`[EntityAttributes] Failed to delete meta card:`, error);
-            cache.set(foundOwnerId, existingCards);
-            set(metaCardsCache, cache);
-            throw error;
-        }
+        console.warn(`[EntityAttributes] Card ${cardId} not found`);
     }
 );
 
@@ -501,7 +325,7 @@ export const deleteMetaCardAtom = atom(
 // ============================================
 
 /**
- * Invalidate cache for an entity (force re-fetch)
+ * Invalidate cache for an entity
  */
 export const invalidateEntityCacheAtom = atom(
     null,
@@ -521,7 +345,7 @@ export const invalidateEntityCacheAtom = atom(
  */
 export const clearAllCachesAtom = atom(
     null,
-    (get, set) => {
+    (_get, set) => {
         set(entityAttributesCache, new Map());
         set(metaCardsCache, new Map());
         set(fieldSchemasAtom, []);
@@ -536,8 +360,8 @@ export const clearAllCachesAtom = atom(
  * Get all attributes as a key-value record (for compatibility)
  */
 export const entityAttributesRecordFamily = atomFamily((entityId: string) =>
-    atom(async (get) => {
-        const attrs = await get(entityAttributesFamily(entityId));
+    atom((get) => {
+        const attrs = get(entityAttributesFamily(entityId));
         const record: Record<string, any> = {};
 
         for (const attr of attrs) {

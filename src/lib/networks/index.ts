@@ -41,8 +41,12 @@ export * from './types';
 // Built-in schemas
 export * from './schemas';
 
-// Storage layer
-export * from './storage';
+// Storage layer (new - uses SurrealDB via Tauri)
+export * from './storage-adapter';
+
+// Storage layer (legacy - IndexedDB, deprecated)
+/** @deprecated Use storage-adapter.ts instead */
+export * as legacyStorage from './storage';
 
 // Validation
 export { NetworkValidator, networkValidator } from './validator';

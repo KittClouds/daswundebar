@@ -12,8 +12,9 @@
  * Kept for A/B testing comparison with Pipeline B (Tauri).
  */
 
-// PIPELINE A IMPORTS: All from Browser CozoDB adapters
-import { entityRegistry, relationshipRegistry, RelationshipSource } from '@/lib/cozo/graph/adapters';
+// PIPELINE A IMPORTS: All from Browser CozoDB adapters (now stubbed)
+import { entityRegistry, relationshipRegistry } from '@/lib/cozo-stubs/graph-adapters';
+import { RelationshipSource } from '@/lib/relationships/types';
 import { TimeRegistry } from '@/lib/time';
 
 // Re-export types for consumers

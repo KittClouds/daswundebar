@@ -1,13 +1,14 @@
 //! Synapse Bridge: Bidirectional mapping between text spans and graph nodes
 //!
 //! This module provides the critical bridge between the CST (Rowan) and
-//! the semantic graph (petgraph). It allows:
+//! the semantic graph. It allows:
 //! - Clicking a graph node → highlight all text occurrences
 //! - Clicking text → navigate to graph node
 //! - Incremental updates when text changes
+//!
+//! **V2: Uses string entity IDs instead of petgraph NodeIndex for backend agnosticism.**
 
 use rowan::TextRange;
-use rustworkx_core::petgraph::graph::NodeIndex;
 use std::collections::HashMap;
 
 // =============================================================================
@@ -20,11 +21,13 @@ use std::collections::HashMap;
 /// Each text span (a range of characters) can be linked to a graph node.
 /// Each graph node can have multiple text occurrences (same entity mentioned
 /// multiple times in the document).
+///
+/// **V2: Uses string entity IDs instead of NodeIndex for graph-backend agnosticism.**
 #[derive(Debug, Default)]
 pub struct SynapseBridge {
-    /// TextRange → (entity_id, node_index)
+    /// TextRange → entity_id
     /// Allows: "What entity is at this text position?"
-    span_to_node: HashMap<TextRange, (String, NodeIndex)>,
+    span_to_node: HashMap<TextRange, String>,
     
     /// entity_id → all text occurrences
     /// Allows: "Where does this entity appear in the text?"
@@ -37,15 +40,14 @@ impl SynapseBridge {
         Self::default()
     }
     
-    /// Register a link between a text span and a graph node
+    /// Register a link between a text span and a graph node (by entity ID)
     /// 
     /// # Arguments
     /// * `range` - The text range (start..end in bytes)
     /// * `entity_id` - The entity ID (matches graph node ID)
-    /// * `index` - The petgraph NodeIndex
-    pub fn link(&mut self, range: TextRange, entity_id: String, index: NodeIndex) {
+    pub fn link(&mut self, range: TextRange, entity_id: String) {
         // Forward map: span → node
-        self.span_to_node.insert(range, (entity_id.clone(), index));
+        self.span_to_node.insert(range, entity_id.clone());
         
         // Reverse map: node → spans
         self.node_to_spans
@@ -55,9 +57,9 @@ impl SynapseBridge {
     }
     
     /// Link using u32 offsets (convenience for WASM interop)
-    pub fn link_offsets(&mut self, start: u32, end: u32, entity_id: String, index: NodeIndex) {
+    pub fn link_offsets(&mut self, start: u32, end: u32, entity_id: String) {
         let range = TextRange::new(start.into(), end.into());
-        self.link(range, entity_id, index);
+        self.link(range, entity_id);
     }
     
     /// Clear all links (for re-scan)
@@ -66,25 +68,38 @@ impl SynapseBridge {
         self.node_to_spans.clear();
     }
     
-    /// Get node info from an exact text range
-    pub fn node_for_range(&self, range: TextRange) -> Option<(&str, NodeIndex)> {
-        self.span_to_node
-            .get(&range)
-            .map(|(id, idx)| (id.as_str(), *idx))
+    /// Get entity ID from an exact text range
+    pub fn entity_for_range(&self, range: TextRange) -> Option<&str> {
+        self.span_to_node.get(&range).map(|s| s.as_str())
     }
     
-    /// Get node info from any text position (offset in bytes)
+    /// Legacy method: Get node info from an exact text range
+    /// Returns (entity_id, entity_id) for backward compatibility
+    #[deprecated(note = "Use entity_for_range instead")]
+    pub fn node_for_range(&self, range: TextRange) -> Option<(&str, &str)> {
+        self.span_to_node
+            .get(&range)
+            .map(|id| (id.as_str(), id.as_str()))
+    }
+    
+    /// Get entity ID from any text position (offset in bytes)
     /// 
     /// Finds the first span that contains this offset.
-    pub fn node_at(&self, offset: u32) -> Option<(&str, NodeIndex)> {
+    pub fn entity_at(&self, offset: u32) -> Option<&str> {
         let offset_pos = rowan::TextSize::from(offset);
         
-        for (range, (entity_id, node_index)) in &self.span_to_node {
+        for (range, entity_id) in &self.span_to_node {
             if range.contains(offset_pos) {
-                return Some((entity_id.as_str(), *node_index));
+                return Some(entity_id.as_str());
             }
         }
         None
+    }
+    
+    /// Legacy method: Get node info from any text position
+    #[deprecated(note = "Use entity_at instead")]
+    pub fn node_at(&self, offset: u32) -> Option<(&str, &str)> {
+        self.entity_at(offset).map(|id| (id, id))
     }
     
     /// Get all text occurrences of an entity
@@ -130,11 +145,11 @@ impl SynapseBridge {
         self.span_to_node.is_empty()
     }
     
-    /// Iterate over all (range, entity_id, node_index) tuples
-    pub fn iter(&self) -> impl Iterator<Item = (TextRange, &str, NodeIndex)> {
+    /// Iterate over all (range, entity_id) tuples
+    pub fn iter(&self) -> impl Iterator<Item = (TextRange, &str)> {
         self.span_to_node
             .iter()
-            .map(|(range, (id, idx))| (*range, id.as_str(), *idx))
+            .map(|(range, id)| (*range, id.as_str()))
     }
     
     /// Get all entity IDs that have linked spans
@@ -153,7 +168,7 @@ impl SynapseBridge {
     
     /// Remove a specific span link
     pub fn unlink_range(&mut self, range: TextRange) {
-        if let Some((entity_id, _)) = self.span_to_node.remove(&range) {
+        if let Some(entity_id) = self.span_to_node.remove(&range) {
             if let Some(spans) = self.node_to_spans.get_mut(&entity_id) {
                 spans.retain(|r| *r != range);
                 if spans.is_empty() {
@@ -171,14 +186,9 @@ impl SynapseBridge {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rustworkx_core::petgraph::graph::NodeIndex;
     
     fn make_range(start: u32, end: u32) -> TextRange {
         TextRange::new(start.into(), end.into())
-    }
-    
-    fn node_idx(i: u32) -> NodeIndex {
-        NodeIndex::new(i as usize)
     }
     
     // -------------------------------------------------------------------------
@@ -189,16 +199,14 @@ mod tests {
     fn test_synapse_link_and_query() {
         let mut synapse = SynapseBridge::new();
         
-        // Link "Frodo" at positions 0..5 to node index 0
+        // Link "Frodo" at positions 0..5 to entity "frodo"
         let range = make_range(0, 5);
-        synapse.link(range, "frodo".to_string(), node_idx(0));
+        synapse.link(range, "frodo".to_string());
         
-        // Query forward: range → node
-        let result = synapse.node_for_range(range);
+        // Query forward: range → entity
+        let result = synapse.entity_for_range(range);
         assert!(result.is_some());
-        let (id, idx) = result.unwrap();
-        assert_eq!(id, "frodo");
-        assert_eq!(idx, node_idx(0));
+        assert_eq!(result.unwrap(), "frodo");
         
         // Query reverse: entity → spans
         let spans = synapse.spans_of("frodo");
@@ -215,8 +223,8 @@ mod tests {
         //  ^^^^^                  ^^^^^
         //  0..5                   22..27
         
-        synapse.link(make_range(0, 5), "frodo".to_string(), node_idx(0));
-        synapse.link(make_range(22, 27), "frodo".to_string(), node_idx(0));
+        synapse.link(make_range(0, 5), "frodo".to_string());
+        synapse.link(make_range(22, 27), "frodo".to_string());
         
         // Should have 2 links total
         assert_eq!(synapse.link_count(), 2);
@@ -235,9 +243,9 @@ mod tests {
     fn test_synapse_clear() {
         let mut synapse = SynapseBridge::new();
         
-        synapse.link(make_range(0, 5), "a".to_string(), node_idx(0));
-        synapse.link(make_range(10, 15), "b".to_string(), node_idx(1));
-        synapse.link(make_range(20, 25), "c".to_string(), node_idx(2));
+        synapse.link(make_range(0, 5), "a".to_string());
+        synapse.link(make_range(10, 15), "b".to_string());
+        synapse.link(make_range(20, 25), "c".to_string());
         
         assert_eq!(synapse.link_count(), 3);
         assert!(!synapse.is_empty());
@@ -257,25 +265,25 @@ mod tests {
         //        ^^^^^     ^^^
         //        6..11     16..19
         
-        synapse.link(make_range(6, 11), "frodo".to_string(), node_idx(0));
-        synapse.link(make_range(16, 19), "sam".to_string(), node_idx(1));
+        synapse.link(make_range(6, 11), "frodo".to_string());
+        synapse.link(make_range(16, 19), "sam".to_string());
         
         // Click at position 8 (inside "Frodo")
-        let result = synapse.node_at(8);
+        let result = synapse.entity_at(8);
         assert!(result.is_some());
-        assert_eq!(result.unwrap().0, "frodo");
+        assert_eq!(result.unwrap(), "frodo");
         
         // Click at position 17 (inside "Sam")
-        let result = synapse.node_at(17);
+        let result = synapse.entity_at(17);
         assert!(result.is_some());
-        assert_eq!(result.unwrap().0, "sam");
+        assert_eq!(result.unwrap(), "sam");
         
         // Click at position 3 (inside "Hello" - no entity)
-        let result = synapse.node_at(3);
+        let result = synapse.entity_at(3);
         assert!(result.is_none());
         
         // Click at position 13 (inside "and" - no entity)
-        let result = synapse.node_at(13);
+        let result = synapse.entity_at(13);
         assert!(result.is_none());
     }
     
@@ -288,19 +296,19 @@ mod tests {
         let mut synapse = SynapseBridge::new();
         
         // Entity at 10..15
-        synapse.link(make_range(10, 15), "entity".to_string(), node_idx(0));
+        synapse.link(make_range(10, 15), "entity".to_string());
         
         // Position 9 (before) should not match
-        assert!(synapse.node_at(9).is_none());
+        assert!(synapse.entity_at(9).is_none());
         
         // Position 10 (start, inclusive) should match
-        assert!(synapse.node_at(10).is_some());
+        assert!(synapse.entity_at(10).is_some());
         
         // Position 14 (inside) should match
-        assert!(synapse.node_at(14).is_some());
+        assert!(synapse.entity_at(14).is_some());
         
         // Position 15 (end, exclusive) should NOT match
-        assert!(synapse.node_at(15).is_none());
+        assert!(synapse.entity_at(15).is_none());
     }
     
     #[test]
@@ -312,15 +320,15 @@ mod tests {
         //  ^^^^^^^^^^^^^^^^^^^^^^^  (0..24) - outer
         //               ^^^^^^^^^^  (14..24) - inner (California)
         
-        synapse.link(make_range(0, 24), "uc".to_string(), node_idx(0));
-        synapse.link(make_range(14, 24), "california".to_string(), node_idx(1));
+        synapse.link(make_range(0, 24), "uc".to_string());
+        synapse.link(make_range(14, 24), "california".to_string());
         
         // Position 5 (inside outer only) - could match outer
-        let result = synapse.node_at(5);
+        let result = synapse.entity_at(5);
         assert!(result.is_some());
         
         // Position 18 (inside both) - matches whichever is found first
-        let result = synapse.node_at(18);
+        let result = synapse.entity_at(18);
         assert!(result.is_some());
     }
     
@@ -332,9 +340,9 @@ mod tests {
     fn test_synapse_unlink_entity() {
         let mut synapse = SynapseBridge::new();
         
-        synapse.link(make_range(0, 5), "frodo".to_string(), node_idx(0));
-        synapse.link(make_range(10, 15), "frodo".to_string(), node_idx(0));
-        synapse.link(make_range(20, 25), "sam".to_string(), node_idx(1));
+        synapse.link(make_range(0, 5), "frodo".to_string());
+        synapse.link(make_range(10, 15), "frodo".to_string());
+        synapse.link(make_range(20, 25), "sam".to_string());
         
         assert_eq!(synapse.link_count(), 3);
         
@@ -350,8 +358,8 @@ mod tests {
     fn test_synapse_unlink_range() {
         let mut synapse = SynapseBridge::new();
         
-        synapse.link(make_range(0, 5), "frodo".to_string(), node_idx(0));
-        synapse.link(make_range(10, 15), "frodo".to_string(), node_idx(0));
+        synapse.link(make_range(0, 5), "frodo".to_string());
+        synapse.link(make_range(10, 15), "frodo".to_string());
         
         assert_eq!(synapse.spans_of("frodo").len(), 2);
         
@@ -371,8 +379,8 @@ mod tests {
     fn test_synapse_iteration() {
         let mut synapse = SynapseBridge::new();
         
-        synapse.link(make_range(0, 5), "a".to_string(), node_idx(0));
-        synapse.link(make_range(10, 15), "b".to_string(), node_idx(1));
+        synapse.link(make_range(0, 5), "a".to_string());
+        synapse.link(make_range(10, 15), "b".to_string());
         
         let collected: Vec<_> = synapse.iter().collect();
         
@@ -383,9 +391,9 @@ mod tests {
     fn test_synapse_entity_ids() {
         let mut synapse = SynapseBridge::new();
         
-        synapse.link(make_range(0, 5), "frodo".to_string(), node_idx(0));
-        synapse.link(make_range(10, 15), "sam".to_string(), node_idx(1));
-        synapse.link(make_range(20, 25), "frodo".to_string(), node_idx(0));
+        synapse.link(make_range(0, 5), "frodo".to_string());
+        synapse.link(make_range(10, 15), "sam".to_string());
+        synapse.link(make_range(20, 25), "frodo".to_string());
         
         let ids: Vec<_> = synapse.entity_ids().collect();
         
@@ -402,7 +410,7 @@ mod tests {
     fn test_synapse_offset_convenience() {
         let mut synapse = SynapseBridge::new();
         
-        synapse.link_offsets(10, 20, "entity".to_string(), node_idx(0));
+        synapse.link_offsets(10, 20, "entity".to_string());
         
         assert_eq!(synapse.link_count(), 1);
         

@@ -12,7 +12,7 @@
  */
 
 import { openDB, type IDBPDatabase, type DBSchema } from 'idb';
-import { folderNetworkGraphSync } from '@/lib/cozo/sync';
+import { folderNetworkGraphSync } from '@/lib/cozo-stubs/sync';
 import type {
     NetworkInstance,
     NetworkSchema,
@@ -196,7 +196,7 @@ export async function saveNetworkInstance(network: NetworkInstance): Promise<voi
     const db = await getNetworkDB();
     const row = networkInstanceToRow(network);
     await db.put('networks', row);
-    
+
     folderNetworkGraphSync.onNetworksChanged([network]);
 }
 
@@ -271,7 +271,7 @@ export async function deleteNetworkInstance(id: string): Promise<void> {
 
     await tx.objectStore('networks').delete(id);
     await tx.done;
-    
+
     folderNetworkGraphSync.deleteNetwork(id).catch(err => {
         console.warn('[storage] Failed to delete network from graph:', err);
     });
@@ -399,7 +399,7 @@ export async function saveNetworkRelationship(rel: NetworkRelationshipInstance):
     const db = await getNetworkDB();
     const row = relationshipInstanceToRow(rel);
     await db.put('relationships', row);
-    
+
     folderNetworkGraphSync.onNetworkRelationshipsChanged(rel.networkId, [rel]);
 }
 

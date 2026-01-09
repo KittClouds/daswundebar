@@ -1,13 +1,10 @@
-// Removed: UnifiedGraph imports
-import { dbClient } from '@/lib/db/client/db-client';
-// import { graphSQLiteSync } from '@/lib/db/sync/GraphSQLiteSync';
-import { Hydration } from '@/lib/db/sync/Hydration';
-// import { syncState } from '@/lib/db/sync/SyncState';
-// import type { SQLiteNode, SQLiteEdge, SQLiteNodeInput } from '@/lib/db/client/types';
-// import { parseJson } from '@/lib/db/client/types';
-import { RelationshipStoreImpl } from '@/lib/storage/impl/RelationshipStoreImpl';
-import { relationshipDBAdapter } from '@/lib/storage/impl/RelationshipDBAdapter';
-import { setRelationshipStore, initializeRelationshipSystem } from '@/lib/relationships/startup';
+/**
+ * SQLite Init - DEPRECATED
+ * 
+ * This file is kept for backward compatibility but is a no-op.
+ * Entities now come from Rust CozoDB via SmartGraphRegistry.
+ * Bindings will be migrated to SurrealDB.
+ */
 
 export interface SQLiteInitResult {
   nodesLoaded: number;
@@ -16,22 +13,15 @@ export interface SQLiteInitResult {
   relationshipsLoaded: number;
 }
 
+/**
+ * @deprecated SQLite hydration removed - entities come from Rust CozoDB
+ */
 export async function initializeSQLiteAndHydrate(): Promise<SQLiteInitResult> {
-  await dbClient.init();
-
-  const hydration = new Hydration({ progressive: true });
-  const result = await hydration.hydrate();
-
-  const embeddings = await dbClient.getAllEmbeddings();
-
-  const relationshipStore = new RelationshipStoreImpl(relationshipDBAdapter);
-  setRelationshipStore(relationshipStore);
-  const relResult = await initializeRelationshipSystem();
-
+  console.log('[sqliteInit] DEPRECATED - SQLite hydration removed, entities come from Rust CozoDB');
   return {
-    nodesLoaded: result.nodesLoaded,
-    edgesLoaded: result.edgesLoaded,
-    embeddingsLoaded: embeddings.length,
-    relationshipsLoaded: relResult.loaded,
+    nodesLoaded: 0,
+    edgesLoaded: 0,
+    embeddingsLoaded: 0,
+    relationshipsLoaded: 0,
   };
 }

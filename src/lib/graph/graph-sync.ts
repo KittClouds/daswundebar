@@ -10,7 +10,7 @@
  * @see extractor-facade.tauri.ts - uses smartGraphRegistry.ingestScanResult()
  */
 
-import { cozoDb } from '../cozo/db';
+import { cozoDb } from '@/lib/cozo-stubs/db';
 import type { ScanResult } from '../scanner/bridge';
 
 export interface GraphSyncOptions {

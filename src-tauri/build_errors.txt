@@ -1,0 +1,1050 @@
+﻿cargo :    Compiling 
+surrealdb-librocksdb-sys 
+v0.17.3+10.6.2
+At line:1 char:1
++ cargo build 2>&1 | Out-File 
+-FilePath build_errors.txt -Encoding 
+utf8 ...
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpe 
+   cified: (   Compiling su... v0.1  
+  7.3+10.6.2:String) [], RemoteExc   
+ eption
+    + FullyQualifiedErrorId : Native 
+   CommandError
+ 
+   Compiling surrealdb-rocksdb 
+v0.24.0-surreal.1
+   Compiling surrealdb-core v2.4.0
+   Compiling surrealdb v2.4.0
+   Compiling varant v0.1.0 (C:\Users\
+shuga\1kittroot\1code\daswundebar\src
+-tauri)
+warning: unused import: 
+`std::collections::HashMap`
+  --> src\temporal.rs:18:5
+   |
+18 | use std::collections::HashMap;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` 
+(part of `#[warn(unused)]`) on by 
+default
+
+warning: unused import: `TextRange`
+  --> src\attacher.rs:25:40
+   |
+25 | use super::chunker::{Chunk, 
+ChunkKind, TextRange};
+   |                                 
+       ^^^^^^^^^
+
+warning: unused imports: 
+`ProjectionStats`, `project_all`, 
+`project_attributions`, 
+`project_quads`, and 
+`project_state_changes`
+  --> src\reality\engine.rs:16:22
+   |
+16 |     project_triples, 
+project_quads, project_attributions, 
+project_state_changes,
+   |                      
+^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^^
+17 |     project_all, 
+project_all_with_stats,
+   |     ^^^^^^^^^^^
+18 |     Triple, QuadPlus, 
+Attribution, StateChange, 
+Projection, ProjectionStats,
+   |                                 
+                            
+^^^^^^^^^^^^^^^
+
+warning: unused import: `EdgeKind`
+  --> src\reality\engine.rs:20:60
+   |
+20 | use 
+super::graph::{ConceptGraph, 
+ConceptNode, ConceptEdge, EdgeKind};
+   |                                 
+                           ^^^^^^^^
+
+warning: unused import: `ConceptEdge`
+  --> src\reality\global.rs:11:47
+   |
+11 | use 
+super::graph::{ConceptGraph, 
+ConceptNode, ConceptEdge};
+   |                                 
+              ^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge` and `ConceptNode`
+ --> src\reality\algorithms.rs:9:34
+  |
+9 | use super::graph::{ConceptGraph, 
+ConceptNode, ConceptEdge};
+  |                                  
+^^^^^^^^^^^  ^^^^^^^^^^^
+
+warning: unused import: `EdgeKind`
+ --> src\reality\temporal.rs:9:60
+  |
+9 | use super::graph::{ConceptGraph, 
+ConceptNode, ConceptEdge, EdgeKind};
+  |                                  
+                          ^^^^^^^^
+
+warning: unused imports: 
+`RealityLanguage` and `SyntaxKind`
+  --> src\reality\mod.rs:21:18
+   |
+21 | pub use syntax::{SyntaxKind, 
+RealityLanguage};
+   |                  ^^^^^^^^^^  
+^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge`, `ConceptGraph`, 
+`ConceptNode`, and `EdgeKind`
+  --> src\reality\mod.rs:22:17
+   |
+22 | pub use graph::{ConceptGraph, 
+ConceptNode, ConceptEdge, EdgeKind};
+   |                 ^^^^^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^^^^  ^^^^^^^^
+
+warning: unused import: 
+`synapse::SynapseBridge`
+  --> src\reality\mod.rs:23:9
+   |
+23 | pub use synapse::SynapseBridge;
+   |         ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`engine::RealityEngine`
+  --> src\reality\mod.rs:24:9
+   |
+24 | pub use engine::RealityEngine;
+   |         ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Attribution`, `Projection`, 
+`QuadPlus`, `StateChange`, and 
+`Triple`
+  --> src\reality\mod.rs:25:22
+   |
+25 | pub use projection::{Triple, 
+QuadPlus, Attribution, StateChange, 
+Projection};
+   |                      ^^^^^^  
+^^^^^^^^  ^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^
+
+warning: unused import: 
+`global::GlobalGraph`
+  --> src\reality\mod.rs:26:9
+   |
+26 | pub use global::GlobalGraph;
+   |         ^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`unification::EntityUnifier`
+  --> src\reality\mod.rs:27:9
+   |
+27 | pub use 
+unification::EntityUnifier;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `NamedRows`
+ --> src\graph\registry.rs:6:35
+  |
+6 | use cozo::{DbInstance, 
+DataValue, NamedRows};
+  |                                  
+ ^^^^^^^^^
+
+warning: unused import: `schema::*`
+  --> src\graph\mod.rs:23:9
+   |
+23 | pub use schema::*;
+   |         ^^^^^^^^^
+
+warning: unused import: `queries::*`
+  --> src\graph\mod.rs:26:9
+   |
+26 | pub use queries::*;
+   |         ^^^^^^^^^^
+
+warning: unused import: 
+`algorithms::*`
+  --> src\graph\mod.rs:27:9
+   |
+27 | pub use algorithms::*;
+   |         ^^^^^^^^^^^^^
+
+warning: unused import: `commands::*`
+  --> src\rag\mod.rs:15:9
+   |
+15 | pub use commands::*;
+   |         ^^^^^^^^^^^
+
+warning: unused import: 
+`embeddings::EmbeddingService`
+  --> src\rag\mod.rs:16:9
+   |
+16 | pub use 
+embeddings::EmbeddingService;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`chunker::RagChunker`
+  --> src\rag\mod.rs:17:9
+   |
+17 | pub use chunker::RagChunker;
+   |         ^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`CorpusSize`, `FieldParams`, and 
+`ResoRankConfig`
+  --> src\resorank\mod.rs:21:18
+   |
+21 | pub use 
+config::{ResoRankConfig, 
+CorpusStatistics, FieldParams, 
+CorpusSize};
+   |                  ^^^^^^^^^^^^^^ 
+                   ^^^^^^^^^^^  
+^^^^^^^^^^
+
+warning: unused import: 
+`proximity::ProximityStrategy`
+  --> src\resorank\mod.rs:22:9
+   |
+22 | pub use 
+proximity::ProximityStrategy;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `ScorerStats`
+  --> src\resorank\mod.rs:23:34
+   |
+23 | pub use 
+scorer::{ResoRankScorer, 
+ScorerStats};
+   |                                 
+ ^^^^^^^^^^^
+
+warning: unused imports: 
+`FieldContribution`, 
+`FieldOccurrence`, 
+`ScoreExplanation`, and 
+`TermBreakdown`
+  --> src\resorank\mod.rs:25:38
+   |
+25 |     DocumentMetadata, 
+TokenMetadata, FieldOccurrence,
+   |                                 
+     ^^^^^^^^^^^^^^^
+26 |     SearchResult, 
+ScoreExplanation, TermBreakdown, 
+FieldContribution,
+   |                   
+^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`error::SurrealError`
+  --> src\surreal\mod.rs:16:9
+   |
+16 | pub use error::SurrealError;
+   |         ^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `types::*`
+  --> src\surreal\mod.rs:17:9
+   |
+17 | pub use types::*;
+   |         ^^^^^^^^
+
+error[E0277]: the trait bound 
+`&&str: IntoQuery` is not satisfied
+   --> src\surreal\schema.rs:65:18
+    |
+ 65 |         
+db.query(schema).await?;
+    |            ----- ^^^^^^ the 
+trait `IntoQuery` is not implemented 
+for `&&str`
+    |            |
+    |            required by a bound 
+introduced by this call
+    |
+note: required by a bound in 
+`surrealdb::method::<impl 
+Surreal<C>>::query`
+   --> C:\Users\shuga\.cargo\registry
+\src\index.crates.io-1949cf8c6b5b557f
+\surrealdb-2.4.0\src\api\method\mod.r
+s:644:34
+    |
+644 |     pub fn query(&self, query: 
+impl opt::IntoQuery) -> Query<'_, C> 
+{
+    |                                
+     ^^^^^^^^^^^^^^ required by this 
+bound in `surrealdb::method::<impl 
+Surreal<C>>::query`
+help: consider dereferencing here
+    |
+ 65 |         
+db.query(*schema).await?;
+    |                  +
+
+error[E0597]: `input.world_id` does 
+not live long enough
+   --> src\repos\folder_repo.rs:45:32
+    |
+ 16 |       pub async fn create(db: 
+&Surreal<Db>, input: FolderInput) -> 
+SurrealResult<Folder> {
+    |                                
+             ----- binding `input` 
+declared here
+...
+ 43 |           let mut result = db
+    |  __________________________-
+ 44 | |             .query(&query)
+ 45 | |             
+.bind(("world_id", &input.world_id))
+    | |______________________________
+__^^^^^^^^^^^^^^^_- argument 
+requires that `input.world_id` is 
+borrowed for `'static`
+    |                                
+  |
+    |                                
+  borrowed value does not live long 
+enough
+...
+ 55 |       }
+    |       - `input.world_id` 
+dropped here while still borrowed
+    |
+note: requirement that the value 
+outlives `'static` introduced here
+   --> C:\Users\shuga\.cargo\registry
+\src\index.crates.io-1949cf8c6b5b557f
+\surrealdb-2.4.0\src\api\method\query
+.rs:292:47
+    |
+292 |     pub fn bind(self, 
+bindings: impl Serialize + 'static) 
+-> Self {
+    |                                
+                  ^^^^^^^
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+  --> src\repos\folder_repo.rs:63:26
+   |
+58 |       pub async fn get(db: 
+&Surreal<Db>, world_id: &str, id: 
+&str) -> SurrealResult<Folder> {
+   |                                 
+         --------  - let's call the 
+lifetime of this reference `'1`
+   |                                 
+         |
+   |                                 
+         `world_id` is a reference 
+that is only valid in the associated 
+function body
+...
+63 |           let mut result = db
+   |  __________________________^
+64 | |             .query(query)
+65 | |             .bind(("id", 
+format!("folder:{}", id)))
+66 | |             
+.bind(("world_id", world_id))
+   | |                               
+          ^
+   | |                               
+          |
+   | |_______________________________
+__________`world_id` escapes the 
+associated function body here
+   |                                 
+          argument requires that 
+`'1` must outlive `'static`
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+  --> src\repos\folder_repo.rs:86:26
+   |
+77 |       pub async fn rename(db: 
+&Surreal<Db>, world_id: &str, id: 
+&str, new_name: String) -> 
+SurrealResult<Folder> {
+   |                                 
+            --------  - let's call 
+the lifetime of this reference `'1`
+   |                                 
+            |
+   |                                 
+            `world_id` is a 
+reference that is only valid in the 
+associated function body
+...
+86 |           let mut result = db
+   |  __________________________^
+87 | |             .query(query)
+88 | |             .bind(("id", 
+format!("folder:{}", id)))
+89 | |             
+.bind(("world_id", world_id))
+   | |                               
+          ^
+   | |                               
+          |
+   | |_______________________________
+__________`world_id` escapes the 
+associated function body here
+   |                                 
+          argument requires that 
+`'1` must outlive `'static`
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+   --> 
+src\repos\folder_repo.rs:124:26
+    |
+103 |           world_id: &str,
+    |           --------  - let's 
+call the lifetime of this reference 
+`'1`
+    |           |
+    |           `world_id` is a 
+reference that is only valid in the 
+associated function body
+...
+124 |           let mut result = db
+    |  __________________________^
+125 | |             .query(&query)
+126 | |             .bind(("id", 
+format!("folder:{}", id)))
+127 | |             
+.bind(("world_id", world_id))
+    | |                              
+           ^
+    | |                              
+           |
+    | |______________________________
+___________`world_id` escapes the 
+associated function body here
+    |                                
+           argument requires that 
+`'1` must outlive `'static`
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+   --> 
+src\repos\folder_repo.rs:152:13
+    |
+138 |       pub async fn delete(db: 
+&Surreal<Db>, world_id: &str, id: 
+&str, recursive: bool) -> 
+SurrealResult<u32> {
+    |                                
+             --------  - let's call 
+the lifetime of this reference `'1`
+    |                                
+             |
+    |                                
+             `world_id` is a 
+reference that is only valid in the 
+associated function body
+...
+152 | /             db.query(query)
+153 | |                 .bind(("id", 
+format!("folder:{}", id)))
+154 | |                 
+.bind(("world_id", world_id))
+    | |                              
+               ^
+    | |                              
+               |
+    | |______________________________
+_______________`world_id` escapes 
+the associated function body here
+    |                                
+               argument requires 
+that `'1` must outlive `'static`
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+   --> 
+src\repos\folder_repo.rs:180:26
+    |
+174 |       pub async fn 
+get_tree(db: &Surreal<Db>, world_id: 
+&str, root_id: Option<String>) -> 
+SurrealResult<Vec<FolderTreeNode>> {
+    |                                
+               --------  - let's 
+call the lifetime of this reference 
+`'1`
+    |                                
+               |
+    |                                
+               `world_id` is a 
+reference that is only valid in the 
+associated function body
+...
+180 |           let mut result = db
+    |  __________________________^
+181 | |             
+.query(folders_query)
+182 | |             
+.bind(("world_id", world_id))
+    | |                              
+           ^
+    | |                              
+           |
+    | |______________________________
+___________`world_id` escapes the 
+associated function body here
+    |                                
+           argument requires that 
+`'1` must outlive `'static`
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+   --> 
+src\repos\folder_repo.rs:211:26
+    |
+206 |       pub async fn 
+get_roots(db: &Surreal<Db>, 
+world_id: &str) -> 
+SurrealResult<Vec<Folder>> {
+    |                                
+                --------  - let's 
+call the lifetime of this reference 
+`'1`
+    |                                
+                |
+    |                                
+                `world_id` is a 
+reference that is only valid in the 
+associated function body
+...
+211 |           let mut result = db
+    |  __________________________^
+212 | |             .query(query)
+213 | |             
+.bind(("world_id", world_id))
+    | |                              
+           ^
+    | |                              
+           |
+    | |______________________________
+___________`world_id` escapes the 
+associated function body here
+    |                                
+           argument requires that 
+`'1` must outlive `'static`
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+   --> 
+src\repos\folder_repo.rs:226:26
+    |
+221 |       pub async fn 
+get_children(db: &Surreal<Db>, 
+world_id: &str, parent_id: &str) -> 
+SurrealResult<Vec<Folder>> {
+    |                                
+                   --------  - let's 
+call the lifetime of this reference 
+`'1`
+    |                                
+                   |
+    |                                
+                   `world_id` is a 
+reference that is only valid in the 
+associated function body
+...
+226 |           let mut result = db
+    |  __________________________^
+227 | |             .query(query)
+228 | |             
+.bind(("world_id", world_id))
+    | |                              
+           ^
+    | |                              
+           |
+    | |______________________________
+___________`world_id` escapes the 
+associated function body here
+    |                                
+           argument requires that 
+`'1` must outlive `'static`
+
+error[E0597]: `input.world_id` does 
+not live long enough
+   --> src\repos\note_repo.rs:40:32
+    |
+ 16 |       pub async fn create(db: 
+&Surreal<Db>, input: NoteInput) -> 
+SurrealResult<Note> {
+    |                                
+             ----- binding `input` 
+declared here
+...
+ 38 |           let mut result = db
+    |  __________________________-
+ 39 | |             .query(&query)
+ 40 | |             
+.bind(("world_id", &input.world_id))
+    | |______________________________
+__^^^^^^^^^^^^^^^_- argument 
+requires that `input.world_id` is 
+borrowed for `'static`
+    |                                
+  |
+    |                                
+  borrowed value does not live long 
+enough
+...
+ 50 |       }
+    |       - `input.world_id` 
+dropped here while still borrowed
+    |
+note: requirement that the value 
+outlives `'static` introduced here
+   --> C:\Users\shuga\.cargo\registry
+\src\index.crates.io-1949cf8c6b5b557f
+\surrealdb-2.4.0\src\api\method\query
+.rs:292:47
+    |
+292 |     pub fn bind(self, 
+bindings: impl Serialize + 'static) 
+-> Self {
+    |                                
+                  ^^^^^^^
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+  --> src\repos\note_repo.rs:58:26
+   |
+53 |       pub async fn get(db: 
+&Surreal<Db>, world_id: &str, id: 
+&str) -> SurrealResult<Note> {
+   |                                 
+         --------  - let's call the 
+lifetime of this reference `'1`
+   |                                 
+         |
+   |                                 
+         `world_id` is a reference 
+that is only valid in the associated 
+function body
+...
+58 |           let mut result = db
+   |  __________________________^
+59 | |             .query(query)
+60 | |             .bind(("id", 
+format!("note:{}", id)))
+61 | |             
+.bind(("world_id", world_id))
+   | |                               
+          ^
+   | |                               
+          |
+   | |_______________________________
+__________`world_id` escapes the 
+associated function body here
+   |                                 
+          argument requires that 
+`'1` must outlive `'static`
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+  --> src\repos\note_repo.rs:81:26
+   |
+72 |       pub async fn rename(db: 
+&Surreal<Db>, world_id: &str, id: 
+&str, new_title: String) -> 
+SurrealResult<Note> {
+   |                                 
+            --------  - let's call 
+the lifetime of this reference `'1`
+   |                                 
+            |
+   |                                 
+            `world_id` is a 
+reference that is only valid in the 
+associated function body
+...
+81 |           let mut result = db
+   |  __________________________^
+82 | |             .query(query)
+83 | |             .bind(("id", 
+format!("note:{}", id)))
+84 | |             
+.bind(("world_id", world_id))
+   | |                               
+          ^
+   | |                               
+          |
+   | |_______________________________
+__________`world_id` escapes the 
+associated function body here
+   |                                 
+          argument requires that 
+`'1` must outlive `'static`
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+   --> src\repos\note_repo.rs:105:26
+    |
+ 96 |       pub async fn 
+update_content(db: &Surreal<Db>, 
+world_id: &str, id: &str, content: 
+String) -> SurrealResult<Note> {
+    |                                
+                     --------  - 
+let's call the lifetime of this 
+reference `'1`
+    |                                
+                     |
+    |                                
+                     `world_id` is a 
+reference that is only valid in the 
+associated function body
+...
+105 |           let mut result = db
+    |  __________________________^
+106 | |             .query(query)
+107 | |             .bind(("id", 
+format!("note:{}", id)))
+108 | |             
+.bind(("world_id", world_id))
+    | |                              
+           ^
+    | |                              
+           |
+    | |______________________________
+___________`world_id` escapes the 
+associated function body here
+    |                                
+           argument requires that 
+`'1` must outlive `'static`
+
+error[E0597]: `update.entity_kind.0` 
+does not live long enough
+   --> src\repos\note_repo.rs:168:21
+    |
+168 |         if let Some(ref 
+entity_kind) = update.entity_kind {
+    |                     
+^^^^^^^^^^^^^^^ borrowed value does 
+not live long enough
+169 |             query_builder = 
+query_builder.bind(("entity_kind", 
+entity_kind));
+    |                             ---
+-------------------------------------
+-------- argument requires that 
+`update.entity_kind.0` is borrowed 
+for `'static`
+...
+181 |     }
+    |     - `update.entity_kind.0` 
+dropped here while still borrowed
+    |
+note: requirement that the value 
+outlives `'static` introduced here
+   --> C:\Users\shuga\.cargo\registry
+\src\index.crates.io-1949cf8c6b5b557f
+\surrealdb-2.4.0\src\api\method\query
+.rs:292:47
+    |
+292 |     pub fn bind(self, 
+bindings: impl Serialize + 'static) 
+-> Self {
+    |                                
+                  ^^^^^^^
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+   --> src\repos\note_repo.rs:152:33
+    |
+120 |       pub async fn update(db: 
+&Surreal<Db>, world_id: &str, id: 
+&str, update: NoteUpdate) -> 
+SurrealResult<Note> {
+    |                                
+             --------  - let's call 
+the lifetime of this reference `'1`
+    |                                
+             |
+    |                                
+             `world_id` is a 
+reference that is only valid in the 
+associated function body
+...
+152 |           let mut 
+query_builder = db.query(&query)
+    |  
+_________________________________^
+153 | |             .bind(("id", 
+format!("note:{}", id)))
+154 | |             
+.bind(("world_id", world_id));
+    | |                              
+           ^
+    | |                              
+           |
+    | |______________________________
+___________`world_id` escapes the 
+associated function body here
+    |                                
+           argument requires that 
+`'1` must outlive `'static`
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+   --> src\repos\note_repo.rs:196:26
+    |
+184 |       pub async fn 
+move_note(db: &Surreal<Db>, 
+world_id: &str, id: &str, folder_id: 
+String) -> SurrealResult<Note> {
+    |                                
+                --------  - let's 
+call the lifetime of this reference 
+`'1`
+    |                                
+                |
+    |                                
+                `world_id` is a 
+reference that is only valid in the 
+associated function body
+...
+196 |           let mut result = db
+    |  __________________________^
+197 | |             .query(&query)
+198 | |             .bind(("id", 
+format!("note:{}", id)))
+199 | |             
+.bind(("world_id", world_id))
+    | |                              
+           ^
+    | |                              
+           |
+    | |______________________________
+___________`world_id` escapes the 
+associated function body here
+    |                                
+           argument requires that 
+`'1` must outlive `'static`
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+   --> src\repos\note_repo.rs:215:9
+    |
+210 |       pub async fn delete(db: 
+&Surreal<Db>, world_id: &str, id: 
+&str) -> SurrealResult<bool> {
+    |                                
+             --------  - let's call 
+the lifetime of this reference `'1`
+    |                                
+             |
+    |                                
+             `world_id` is a 
+reference that is only valid in the 
+associated function body
+...
+215 | /         db.query(query)
+216 | |             .bind(("id", 
+format!("note:{}", id)))
+217 | |             
+.bind(("world_id", world_id))
+    | |                              
+           ^
+    | |                              
+           |
+    | |______________________________
+___________`world_id` escapes the 
+associated function body here
+    |                                
+           argument requires that 
+`'1` must outlive `'static`
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+   --> src\repos\note_repo.rs:231:26
+    |
+224 |       pub async fn 
+get_by_folder(db: &Surreal<Db>, 
+world_id: &str, folder_id: &str) -> 
+SurrealResult<Vec<Note>> {
+    |                                
+                    --------  - 
+let's call the lifetime of this 
+reference `'1`
+    |                                
+                    |
+    |                                
+                    `world_id` is a 
+reference that is only valid in the 
+associated function body
+...
+231 |           let mut result = db
+    |  __________________________^
+232 | |             .query(query)
+233 | |             
+.bind(("world_id", world_id))
+    | |                              
+           ^
+    | |                              
+           |
+    | |______________________________
+___________`world_id` escapes the 
+associated function body here
+    |                                
+           argument requires that 
+`'1` must outlive `'static`
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+   --> src\repos\note_repo.rs:250:26
+    |
+242 |       pub async fn search(db: 
+&Surreal<Db>, world_id: &str, 
+query_text: &str) -> 
+SurrealResult<Vec<Note>> {
+    |                                
+             --------  - let's call 
+the lifetime of this reference `'1`
+    |                                
+             |
+    |                                
+             `world_id` is a 
+reference that is only valid in the 
+associated function body
+...
+250 |           let mut result = db
+    |  __________________________^
+251 | |             .query(query)
+252 | |             
+.bind(("world_id", world_id))
+    | |                              
+           ^
+    | |                              
+           |
+    | |______________________________
+___________`world_id` escapes the 
+associated function body here
+    |                                
+           argument requires that 
+`'1` must outlive `'static`
+
+error[E0521]: borrowed data escapes 
+outside of associated function
+   --> src\repos\note_repo.rs:250:26
+    |
+242 |       pub async fn search(db: 
+&Surreal<Db>, world_id: &str, 
+query_text: &str) -> 
+SurrealResult<Vec<Note>> {
+    |                                
+                             
+----------  - let's call the 
+lifetime of this reference `'2`
+    |                                
+                             |
+    |                                
+                             
+`query_text` is a reference that is 
+only valid in the associated 
+function body
+...
+250 |           let mut result = db
+    |  __________________________^
+251 | |             .query(query)
+252 | |             
+.bind(("world_id", world_id))
+253 | |             .bind(("query", 
+query_text))
+    | |                              
+          ^
+    | |                              
+          |
+    | |______________________________
+__________`query_text` escapes the 
+associated function body here
+    |                                
+          argument requires that 
+`'2` must outlive `'static`
+
+warning: value assigned to 
+`head_idx` is never read
+   --> src\chunker.rs:464:28
+    |
+464 |         let mut head_idx = 
+None;
+    |                            ^^^^
+    |
+    = help: maybe it is overwritten 
+before being read?
+    = note: 
+`#[warn(unused_assignments)]` (part 
+of `#[warn(unused)]`) on by default
+
+warning: unused variable: `query`
+   --> src\graph\queries.rs:392:13
+    |
+392 |         let query = r#"
+    |             ^^^^^ help: if 
+this is intentional, prefix it with 
+an underscore: `_query`
+    |
+    = note: 
+`#[warn(unused_variables)]` (part of 
+`#[warn(unused)]`) on by default
+
+warning: variable does not need to 
+be mutable
+   --> src\rag\chunker.rs:110:62
+    |
+110 |     fn find_break_point(&self, 
+chars: &[char], start: usize, mut 
+end: usize) -> usize {
+    |                                
+                              ----^^^
+    |                                
+                              |
+    |                                
+                              help: 
+remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` 
+(part of `#[warn(unused)]`) on by 
+default
+
+Some errors have detailed 
+explanations: E0277, E0521, E0597.
+For more information about an error, 
+try `rustc --explain E0277`.
+warning: `varant` (lib) generated 30 
+warnings
+error: could not compile `varant` 
+(lib) due to 20 previous errors; 30 
+warnings emitted

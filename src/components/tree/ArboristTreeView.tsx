@@ -90,14 +90,57 @@ export function ArboristTreeView({
         }
     }, [selectNote]);
 
-    // Handle node rename - PRESERVED 1:1
+    // Handle node rename - TYPE-AWARE with silent conversion
     const handleRename = useCallback(({ node, name }: { node: any; name: string }) => {
         const nodeId = node.id;
         const nodeData = node.data;
+
+        // Import type-aware utilities
+        const { parseTypedName, applyTypeAwareRename } = require('@/lib/arborist/type-aware-rename');
+
+        // Build rename context
+        const context = {
+            currentName: nodeData.name,
+            entityKind: nodeData.entityKind,
+            inheritedKind: nodeData.inheritedKind,
+            isTypedRoot: nodeData.isTypedRoot,
+            hasChildren: nodeData.children?.length > 0,
+        };
+
+        // Apply type-aware rename
+        const result = applyTypeAwareRename(name, context);
+
         if (nodeData.type === 'folder') {
-            updateFolder(nodeId, { name });
+            const updates: Record<string, any> = { name: result.newName };
+
+            // Silent type conversion
+            if (result.shouldUpdateType) {
+                updates.entityKind = result.newEntityKind || null;
+                updates.entity_kind = result.newEntityKind || null;
+                updates.entitySubtype = result.newEntitySubtype || null;
+                updates.entity_subtype = result.newEntitySubtype || null;
+                // Auto-set as typed root if converting to typed
+                if (result.newEntityKind && !nodeData.entityKind) {
+                    updates.isTypedRoot = true;
+                    updates.is_typed_root = true;
+                }
+            }
+
+            updateFolder(nodeId, updates);
         } else {
-            updateNote(nodeId, { title: name });
+            const updates: Record<string, any> = { title: result.newName };
+
+            // Silent type conversion for notes
+            if (result.shouldUpdateType) {
+                updates.entityKind = result.newEntityKind || null;
+                updates.entity_kind = result.newEntityKind || null;
+                updates.entitySubtype = result.newEntitySubtype || null;
+                updates.entity_subtype = result.newEntitySubtype || null;
+                updates.isEntity = !!result.newEntityKind;
+                updates.is_entity = !!result.newEntityKind;
+            }
+
+            updateNote(nodeId, updates);
         }
     }, [updateFolder, updateNote]);
 
@@ -294,7 +337,11 @@ export function ArboristTreeView({
                                 </>
                             )}
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem onClick={() => treeRef.current?.edit(contextNode.id)}>
+                            <DropdownMenuItem onClick={() => {
+                                const nodeId = contextNode.id;
+                                setContextNode(null); // Close menu first
+                                setTimeout(() => treeRef.current?.edit(nodeId), 0);
+                            }}>
                                 <Pencil className="mr-2 h-4 w-4" />
                                 Rename
                             </DropdownMenuItem>
@@ -309,7 +356,11 @@ export function ArboristTreeView({
                         </>
                     ) : (
                         <>
-                            <DropdownMenuItem onClick={() => treeRef.current?.edit(contextNode?.id || '')}>
+                            <DropdownMenuItem onClick={() => {
+                                const nodeId = contextNode?.id || '';
+                                setContextNode(null); // Close menu first
+                                setTimeout(() => treeRef.current?.edit(nodeId), 0);
+                            }}>
                                 <Pencil className="mr-2 h-4 w-4" />
                                 Rename note
                             </DropdownMenuItem>

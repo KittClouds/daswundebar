@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
-import { cozoDb } from '@/lib/cozo/db';
+import { cozoDb } from '@/lib/cozo-stubs/db';
 import { eventBus } from '@/lib/utils/event-bus';
-import { BIDIRECTIONAL_LINK_QUERIES } from '@/lib/cozo/schema/layer2-bidirectional-links';
-import type { EntityMentionEvent, PositionType } from '@/lib/cozo/types';
+import { BIDIRECTIONAL_LINK_QUERIES } from '@/lib/cozo-stubs/schema';
+import type { EntityMentionEvent, PositionType } from '@/lib/cozo-stubs/types';
 
 interface EntityInNoteResult {
   entityId: string;

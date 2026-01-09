@@ -1,0 +1,2512 @@
+cargo : warning: unused 
+import: 
+`std::collections::HashMap`
+At line:1 char:1
++ cargo test --lib 2>&1 | 
+Out-File all_test2.txt 
+-Encoding ascii; Selec ...
++ ~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (warni  
+  ng: unused...tions::Has   
+ hMap`:String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+  --> src\temporal.rs:18:5
+   |
+18 | use 
+std::collections::HashMap;
+   |     
+^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: 
+`#[warn(unused_imports)]` 
+(part of `#[warn(unused)]`) 
+on by default
+
+warning: unused imports: 
+`ProjectionStats`, 
+`project_all`, 
+`project_attributions`, 
+`project_quads`, and 
+`project_state_changes`
+  --> 
+src\reality\engine.rs:16:22
+   |
+16 |     project_triples, 
+project_quads, 
+project_attributions, 
+project_state_changes,
+   |                      
+^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^^
+17 |     project_all, 
+project_all_with_stats,
+   |     ^^^^^^^^^^^
+18 |     Triple, QuadPlus, 
+Attribution, StateChange, 
+Projection, ProjectionStats,
+   |                        
+                            
+         ^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+  --> 
+src\reality\engine.rs:20:60
+   |
+20 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+   |                        
+                            
+        ^^^^^^^^
+
+warning: unused import: 
+`ConceptEdge`
+  --> 
+src\reality\global.rs:11:47
+   |
+11 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge};
+   |                        
+                       
+^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+ --> 
+src\reality\temporal.rs:9:60
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+  |                         
+                            
+       ^^^^^^^^
+
+warning: unused imports: 
+`RealityLanguage` and 
+`SyntaxKind`
+  --> 
+src\reality\mod.rs:21:18
+   |
+21 | pub use 
+syntax::{SyntaxKind, 
+RealityLanguage};
+   |                  
+^^^^^^^^^^  ^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge`, 
+`ConceptGraph`, 
+`ConceptNode`, and 
+`EdgeKind`
+  --> 
+src\reality\mod.rs:22:17
+   |
+22 | pub use 
+graph::{ConceptGraph, 
+ConceptNode, ConceptEdge, 
+EdgeKind};
+   |                 
+^^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^
+
+warning: unused import: 
+`synapse::SynapseBridge`
+  --> 
+src\reality\mod.rs:23:9
+   |
+23 | pub use 
+synapse::SynapseBridge;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`engine::RealityEngine`
+  --> 
+src\reality\mod.rs:24:9
+   |
+24 | pub use 
+engine::RealityEngine;
+   |         
+^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Attribution`, 
+`Projection`, `QuadPlus`, 
+`StateChange`, and `Triple`
+  --> 
+src\reality\mod.rs:25:22
+   |
+25 | pub use 
+projection::{Triple, 
+QuadPlus, Attribution, 
+StateChange, Projection};
+   |                      
+^^^^^^  ^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^
+
+warning: unused import: 
+`global::GlobalGraph`
+  --> 
+src\reality\mod.rs:26:9
+   |
+26 | pub use 
+global::GlobalGraph;
+   |         
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`unification::EntityUnifier`
+  --> 
+src\reality\mod.rs:27:9
+   |
+27 | pub use 
+unification::EntityUnifier;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`NamedRows`
+ --> 
+src\graph\registry.rs:6:35
+  |
+6 | use cozo::{DbInstance, 
+DataValue, NamedRows};
+  |                         
+          ^^^^^^^^^
+
+warning: unused import: 
+`schema::*`
+  --> src\graph\mod.rs:31:9
+   |
+31 | pub use schema::*;
+   |         ^^^^^^^^^
+
+warning: unused import: 
+`queries::*`
+  --> src\graph\mod.rs:34:9
+   |
+34 | pub use queries::*;
+   |         ^^^^^^^^^^
+
+warning: unused import: 
+`algorithms::*`
+  --> src\graph\mod.rs:35:9
+   |
+35 | pub use algorithms::*;
+   |         ^^^^^^^^^^^^^
+
+warning: unused import: 
+`cozo_graph::*`
+  --> src\graph\mod.rs:37:9
+   |
+37 | pub use cozo_graph::*;
+   |         ^^^^^^^^^^^^^
+
+warning: unused import: 
+`content_types::*`
+  --> src\graph\mod.rs:38:9
+   |
+38 | pub use 
+content_types::*;
+   |         
+^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`content_repos::*`
+  --> src\graph\mod.rs:39:9
+   |
+39 | pub use 
+content_repos::*;
+   |         
+^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`content_commands::*`
+  --> src\graph\mod.rs:40:9
+   |
+40 | pub use 
+content_commands::*;
+   |         
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`graph_backend::*`
+  --> src\graph\mod.rs:41:9
+   |
+41 | pub use 
+graph_backend::*;
+   |         
+^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`commands::*`
+  --> src\rag\mod.rs:15:9
+   |
+15 | pub use commands::*;
+   |         ^^^^^^^^^^^
+
+warning: unused import: `emb
+eddings::EmbeddingService`
+  --> src\rag\mod.rs:16:9
+   |
+16 | pub use embeddings::Emb
+eddingService;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`chunker::RagChunker`
+  --> src\rag\mod.rs:17:9
+   |
+17 | pub use 
+chunker::RagChunker;
+   |         
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`CorpusSize`, 
+`FieldParams`, and 
+`ResoRankConfig`
+  --> 
+src\resorank\mod.rs:21:18
+   |
+21 | pub use 
+config::{ResoRankConfig, 
+CorpusStatistics, 
+FieldParams, CorpusSize};
+   |                  
+^^^^^^^^^^^^^^              
+      ^^^^^^^^^^^  
+^^^^^^^^^^
+
+warning: unused import: `pro
+ximity::ProximityStrategy`
+  --> 
+src\resorank\mod.rs:22:9
+   |
+22 | pub use proximity::Prox
+imityStrategy;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`ScorerStats`
+  --> 
+src\resorank\mod.rs:23:34
+   |
+23 | pub use 
+scorer::{ResoRankScorer, 
+ScorerStats};
+   |                        
+          ^^^^^^^^^^^
+
+warning: unused imports: 
+`FieldContribution`, 
+`FieldOccurrence`, 
+`ScoreExplanation`, and 
+`TermBreakdown`
+  --> 
+src\resorank\mod.rs:25:38
+   |
+25 |     DocumentMetadata, 
+TokenMetadata, 
+FieldOccurrence,
+   |                        
+              
+^^^^^^^^^^^^^^^
+26 |     SearchResult, 
+ScoreExplanation, 
+TermBreakdown, 
+FieldContribution,
+   |                   
+^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^
+
+warning: value assigned to 
+`head_idx` is never read
+   --> src\chunker.rs:464:28
+    |
+464 |         let mut 
+head_idx = None;
+    |                       
+     ^^^^
+    |
+    = help: maybe it is 
+overwritten before being 
+read?
+    = note: `#[warn(unused_a
+ssignments)]` (part of 
+`#[warn(unused)]`) on by 
+default
+
+warning: unused variable: 
+`projections`
+   --> 
+src\reality\engine.rs:791:14
+    |
+791 |         let 
+(projections, stats) = engin
+e.process_with_projections(t
+ext, &spans);
+    |              
+^^^^^^^^^^^ help: if this 
+is intentional, prefix it 
+with an underscore: 
+`_projections`
+    |
+    = note: 
+`#[warn(unused_variables)]` 
+(part of `#[warn(unused)]`) 
+on by default
+
+warning: unused variable: 
+`query`
+   --> 
+src\graph\queries.rs:392:13
+    |
+392 |         let query = 
+r#"
+    |             ^^^^^ 
+help: if this is 
+intentional, prefix it with 
+an underscore: `_query`
+
+warning: unused variable: 
+`center`
+   --> src\graph\algorithms.
+rs:595:24
+    |
+595 |         let 
+(registry, center, leaves) 
+= build_star_graph();
+    |                       
+ ^^^^^^ help: if this is 
+intentional, prefix it with 
+an underscore: `_center`
+
+warning: variable does not 
+need to be mutable
+   --> 
+src\rag\chunker.rs:110:62
+    |
+110 |     fn 
+find_break_point(&self, 
+chars: &[char], start: 
+usize, mut end: usize) -> 
+usize {
+    |                       
+                            
+           ----^^^
+    |                       
+                            
+           |
+    |                       
+                            
+           help: remove 
+this `mut`
+    |
+    = note: 
+`#[warn(unused_mut)]` (part 
+of `#[warn(unused)]`) on by 
+default
+
+warning: methods 
+`add_entity` and `clear` 
+are never used
+   --> 
+src\implicit.rs:343:12
+    |
+196 | impl ImplicitCortex {
+    | ------------------- 
+methods in this 
+implementation
+...
+343 |     pub fn 
+add_entity(&mut self, 
+entity: EntityDefinition) {
+    |            ^^^^^^^^^^
+...
+390 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+    |
+    = note: 
+`#[warn(dead_code)]` (part 
+of `#[warn(unused)]`) on by 
+default
+
+warning: method 
+`hydrate_calendar` is never 
+used
+   --> 
+src\temporal.rs:363:12
+    |
+267 | impl TemporalCortex {
+    | ------------------- 
+method in this 
+implementation
+...
+363 |     pub fn 
+hydrate_calendar(
+    |            
+^^^^^^^^^^^^^^^^
+
+warning: variant 
+`DoubleConsonant` is never 
+constructed
+  --> 
+src\verb_morphology.rs:25:5
+   |
+19 | pub enum VerbPattern {
+   |          ----------- 
+variant in this enum
+...
+25 |     DoubleConsonant,
+   |     ^^^^^^^^^^^^^^^
+   |
+   = note: `VerbPattern` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: variants 
+`Ambitransitive` and 
+`Ditransitive` are never 
+constructed
+  --> 
+src\verb_morphology.rs:61:5
+   |
+55 | pub enum Transitivity {
+   |          ------------ 
+variants in this enum
+...
+61 |     Ambitransitive,
+   |     ^^^^^^^^^^^^^^
+62 |     /// Takes two 
+objects: "X gave Y to Z"
+63 |     Ditransitive,
+   |     ^^^^^^^^^^^^
+   |
+   = note: `Transitivity` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: associated 
+function `double_consonant` 
+is never used
+  --> 
+src\verb_morphology.rs:97:18
+   |
+76 | impl VerbEntry {
+   | -------------- 
+associated function in this 
+implementation
+...
+97 |     pub const fn 
+double_consonant(base: 
+&'static str, relation: 
+&'static str, domain: 
+VerbDomain) -> Self {
+   |                  
+^^^^^^^^^^^^^^^^
+
+warning: methods 
+`get_domain` and 
+`get_transitivity` are 
+never used
+   --> src\verb_morphology.r
+s:501:12
+    |
+452 | impl VerbLexicon {
+    | ---------------- 
+methods in this 
+implementation
+...
+501 |     pub fn 
+get_domain(&self, word: 
+&str) -> Option<VerbDomain> 
+{
+    |            ^^^^^^^^^^
+...
+506 |     pub fn 
+get_transitivity(&self, 
+word: &str) -> 
+Option<Transitivity> {
+    |            
+^^^^^^^^^^^^^^^^
+
+warning: method `as_str` is 
+never used
+  --> src\chunker.rs:41:12
+   |
+40 | impl ChunkKind {
+   | -------------- method 
+in this implementation
+41 |     pub fn 
+as_str(&self) -> &'static 
+str {
+   |            ^^^^^^
+
+warning: methods `contains` 
+and `overlaps` are never 
+used
+  --> src\chunker.rs:83:12
+   |
+59 | impl TextRange {
+   | -------------- methods 
+in this implementation
+...
+83 |     pub fn 
+contains(&self, other: 
+&TextRange) -> bool {
+   |            ^^^^^^^^
+...
+88 |     pub fn 
+overlaps(&self, other: 
+&TextRange) -> bool {
+   |            ^^^^^^^^
+
+warning: methods 
+`is_verbal` and 
+`is_modifier` are never used
+   --> src\chunker.rs:173:12
+    |
+168 | impl POS {
+    | -------- methods in 
+this implementation
+...
+173 |     pub fn 
+is_verbal(&self) -> bool {
+    |            ^^^^^^^^^
+...
+177 |     pub fn 
+is_modifier(&self) -> bool {
+    |            ^^^^^^^^^^^
+
+warning: method `get_stats` 
+is never used
+   --> src\chunker.rs:295:12
+    |
+263 | impl Chunker {
+    | ------------ method 
+in this implementation
+...
+295 |     pub fn 
+get_stats(&self, text: 
+&str) -> ChunkStats {
+    |            ^^^^^^^^^
+
+warning: type alias 
+`RelationCortex` is never 
+used
+   --> 
+src\relation.rs:126:10
+    |
+126 | pub type 
+RelationCortex = 
+RelationEngine;
+    |          
+^^^^^^^^^^^^^^
+
+warning: methods 
+`set_cst_threshold`, 
+`set_inference_enabled`, 
+`build`, and 
+`pattern_count` are never 
+used
+   --> 
+src\relation.rs:154:12
+    |
+144 | impl RelationEngine {
+    | ------------------- 
+methods in this 
+implementation
+...
+154 |     pub fn 
+set_cst_threshold(&mut 
+self, threshold: f32) {
+    |            
+^^^^^^^^^^^^^^^^^
+...
+159 |     pub fn 
+set_inference_enabled(&mut 
+self, enabled: bool) {
+    |            
+^^^^^^^^^^^^^^^^^^^^^
+...
+164 |     pub fn build(&mut 
+self) -> Result<(), String> 
+{
+    |            ^^^^^
+...
+169 |     pub fn 
+pattern_count(&self) -> 
+usize {
+    |            
+^^^^^^^^^^^^^
+
+warning: field 
+`max_distance` is never read
+   --> src\structured_relati
+on.rs:153:5
+    |
+145 | pub struct 
+StructuredRelationExtractor 
+{
+    |            
+--------------------------- 
+field in this struct
+...
+153 |     max_distance: 
+usize,
+    |     ^^^^^^^^^^^^
+
+warning: method 
+`set_max_distance` is never 
+used
+   --> src\structured_relati
+on.rs:496:12
+    |
+162 | impl 
+StructuredRelationExtractor 
+{
+    | ----------------------
+---------- method in this 
+implementation
+...
+496 |     pub fn 
+set_max_distance(&mut self, 
+distance: usize) {
+    |            
+^^^^^^^^^^^^^^^^
+
+warning: method `is_empty` 
+is never used
+  --> 
+src\incremental.rs:68:12
+   |
+52 | impl Chunk {
+   | ---------- method in 
+this implementation
+...
+68 |     pub fn 
+is_empty(&self) -> bool {
+   |            ^^^^^^^^
+
+warning: variants `Actor`, 
+`Target`, `Where`, `Tool`, 
+and `Result` are never 
+constructed
+   --> 
+src\relation_schema.rs:506:5
+    |
+503 | pub enum Role {
+    |          ---- 
+variants in this enum
+...
+506 |     Actor,    // 
+Alternative to Subject for 
+action verbs
+    |     ^^^^^
+507 |     Target,   // 
+Alternative to Object
+    |     ^^^^^^
+508 |     Where,    // 
+Location argument
+    |     ^^^^^
+509 |     Tool,     // 
+Instrument used
+    |     ^^^^
+510 |     Result,   // 
+Outcome/product
+    |     ^^^^^^
+    |
+    = note: `Role` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: fields `role`, 
+`kinds`, and `optional` are 
+never read
+   --> 
+src\relation_schema.rs:516:9
+    |
+515 | pub struct SlotSpec {
+    |            -------- 
+fields in this struct
+516 |     pub role: Role,
+    |         ^^^^
+517 |     pub kinds: 
+KindSet,
+    |         ^^^^^
+518 |     pub optional: 
+bool,
+    |         ^^^^^^^^
+    |
+    = note: `SlotSpec` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: associated 
+function `optional` is 
+never used
+   --> src\relation_schema.r
+s:526:18
+    |
+521 | impl SlotSpec {
+    | ------------- 
+associated function in this 
+implementation
+...
+526 |     pub const fn 
+optional(role: Role, kinds: 
+KindSet) -> Self {
+    |                  
+^^^^^^^^
+
+warning: method `arity` is 
+never used
+   --> src\relation_schema.r
+s:546:12
+    |
+545 | impl RelationSchema {
+    | ------------------- 
+method in this 
+implementation
+546 |     pub fn 
+arity(&self) -> usize {
+    |            ^^^^^
+
+warning: field `by_string` 
+is never read
+   --> 
+src\relation_schema.rs:567:5
+    |
+565 | pub struct 
+SchemaRegistry {
+    |            
+-------------- field in 
+this struct
+566 |     by_relation: 
+HashMap<Relation, &'static 
+RelationSchema>,
+567 |     by_string: 
+HashMap<&'static str, 
+&'static RelationSchema>,
+    |     ^^^^^^^^^
+    |
+    = note: 
+`SchemaRegistry` has a 
+derived impl for the trait 
+`Debug`, but this is 
+intentionally ignored 
+during dead code analysis
+
+warning: methods 
+`get_by_str` and 
+`get_inverse` are never used
+   --> src\relation_schema.r
+s:587:12
+    |
+570 | impl SchemaRegistry {
+    | ------------------- 
+methods in this 
+implementation
+...
+587 |     pub fn 
+get_by_str(&self, rel_str: 
+&str) -> Option<&'static 
+RelationSchema> {
+    |            ^^^^^^^^^^
+...
+591 |     pub fn 
+get_inverse(&self, rel: 
+Relation) -> 
+Option<Relation> {
+    |            ^^^^^^^^^^^
+
+warning: method `skip_rate` 
+is never used
+   --> src\document.rs:108:8
+    |
+ 81 | impl ChangeDetector {
+    | ------------------- 
+method in this 
+implementation
+...
+108 |     fn 
+skip_rate(&self) -> f64 {
+    |        ^^^^^^^^^
+
+warning: method `skip_rate` 
+is never used
+   --> 
+src\document.rs:173:12
+    |
+150 | impl DocumentCortex {
+    | ------------------- 
+method in this 
+implementation
+...
+173 |     pub fn 
+skip_rate(&self) -> f64 {
+    |            ^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> 
+src\relation_filter.rs:99:12
+    |
+ 90 | impl RelationFilter {
+    | ------------------- 
+associated items in this 
+implementation
+...
+ 99 |     pub fn 
+with_config(config: 
+FilterConfig) -> Self {
+    |            ^^^^^^^^^^^
+...
+109 |     pub fn 
+set_distance_decay(&mut 
+self, enabled: bool) {
+    |            
+^^^^^^^^^^^^^^^^^^
+...
+114 |     pub fn set_same_se
+ntence_bonus(&mut self, 
+bonus: f64) {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^
+...
+119 |     pub fn set_cross_s
+entence_penalty(&mut self, 
+penalty: f64) {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+124 |     pub fn 
+set_max_distance(&mut self, 
+distance: usize) {
+    |            
+^^^^^^^^^^^^^^^^
+...
+129 |     pub fn 
+config(&self) -> 
+&FilterConfig {
+    |            ^^^^^^
+...
+231 |     pub fn 
+filter_kept(&self, text: 
+&str, relations: 
+Vec<ExtractedRelation>) -> 
+Vec<FilteredRelation> {
+    |            ^^^^^^^^^^^
+
+warning: struct 
+`EntityInput` is never 
+constructed
+  --> src\narrative.rs:60:12
+   |
+60 | pub struct EntityInput 
+{
+   |            ^^^^^^^^^^^
+
+warning: method `to_gender` 
+is never used
+  --> src\narrative.rs:71:8
+   |
+70 | impl EntityInput {
+   | ---------------- 
+method in this 
+implementation
+71 |     fn 
+to_gender(&self) -> Gender {
+   |        ^^^^^^^^^
+
+warning: method 
+`hydrate_entities` is never 
+used
+   --> 
+src\narrative.rs:148:12
+    |
+104 | impl NarrativeGraph {
+    | ------------------- 
+method in this 
+implementation
+...
+148 |     pub fn 
+hydrate_entities(&mut self, 
+entities: Vec<EntityInput>) 
+{
+    |            
+^^^^^^^^^^^^^^^^
+
+warning: type alias 
+`SyntaxNode` is never used
+ --> src\reality\ast.rs:4:10
+  |
+4 | pub type SyntaxNode = ro
+wan::SyntaxNode<RealityLangu
+age>;
+  |          ^^^^^^^^^^
+
+warning: type alias 
+`SyntaxToken` is never used
+ --> src\reality\ast.rs:5:10
+  |
+5 | pub type SyntaxToken = r
+owan::SyntaxToken<RealityLan
+guage>;
+  |          ^^^^^^^^^^^
+
+warning: type alias 
+`SyntaxElement` is never 
+used
+ --> src\reality\ast.rs:6:10
+  |
+6 | pub type SyntaxElement 
+= rowan::SyntaxElement<Reali
+tyLanguage>;
+  |          ^^^^^^^^^^^^^
+
+warning: struct `Document` 
+is never constructed
+  --> 
+src\reality\ast.rs:33:14
+   |
+33 | reality_ast!(Document, 
+Document);
+   |              ^^^^^^^^
+   |
+   = note: this warning 
+originates in the macro 
+`reality_ast` (in Nightly 
+builds, run with -Z 
+macro-backtrace for more 
+info)
+
+warning: struct `Paragraph` 
+is never constructed
+  --> 
+src\reality\ast.rs:34:14
+   |
+34 | 
+reality_ast!(Paragraph, 
+Paragraph);
+   |              ^^^^^^^^^
+   |
+   = note: this warning 
+originates in the macro 
+`reality_ast` (in Nightly 
+builds, run with -Z 
+macro-backtrace for more 
+info)
+
+warning: struct 
+`EntitySpan` is never 
+constructed
+  --> 
+src\reality\ast.rs:35:14
+   |
+35 | 
+reality_ast!(EntitySpan, 
+EntitySpan);
+   |              ^^^^^^^^^^
+   |
+   = note: this warning 
+originates in the macro 
+`reality_ast` (in Nightly 
+builds, run with -Z 
+macro-backtrace for more 
+info)
+
+warning: function 
+`project_all` is never used
+   --> src\reality\projectio
+n.rs:565:8
+    |
+565 | pub fn 
+project_all(root: &SyntaxNod
+e<RealityLanguage>) -> 
+Vec<Projection> {
+    |        ^^^^^^^^^^^
+
+warning: method `raw_graph` 
+is never used
+   --> 
+src\reality\graph.rs:347:12
+    |
+204 | impl ConceptGraph {
+    | ----------------- 
+method in this 
+implementation
+...
+347 |     pub fn 
+raw_graph(&self) -> 
+&DiGraph<ConceptNode, 
+ConceptEdge> {
+    |            ^^^^^^^^^
+
+warning: method 
+`contains_entity` is never 
+used
+   --> src\reality\synapse.r
+s:114:12
+    |
+ 34 | impl SynapseBridge {
+    | ------------------ 
+method in this 
+implementation
+...
+114 |     pub fn 
+contains_entity(&self, 
+entity_id: &str) -> bool {
+    |            
+^^^^^^^^^^^^^^^
+
+warning: fields 
+`quads_extracted`, 
+`attributions_extracted`, 
+and 
+`state_changes_extracted` 
+are never read
+  --> 
+src\reality\engine.rs:55:9
+   |
+53 | pub struct 
+ProcessStats {
+   |            
+------------ fields in this 
+struct
+54 |     pub 
+triples_extracted: usize,
+55 |     pub 
+quads_extracted: usize,
+   |         ^^^^^^^^^^^^^^^
+56 |     pub 
+attributions_extracted: 
+usize,
+   |         
+^^^^^^^^^^^^^^^^^^^^^^
+57 |     pub 
+state_changes_extracted: 
+usize,
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `ProcessStats` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: methods 
+`graph_mut` and 
+`last_stats` are never used
+   --> 
+src\reality\engine.rs:124:12
+    |
+ 63 | impl RealityEngine {
+    | ------------------ 
+methods in this 
+implementation
+...
+124 |     pub fn 
+graph_mut(&mut self) -> 
+&mut ConceptGraph {
+    |            ^^^^^^^^^
+...
+134 |     pub fn 
+last_stats(&self) -> 
+Option<&ProcessStats> {
+    |            ^^^^^^^^^^
+
+warning: field 
+`synapse_links` is never 
+read
+   --> 
+src\reality\engine.rs:389:9
+    |
+385 | pub struct 
+EngineStats {
+    |            
+----------- field in this 
+struct
+...
+389 |     pub 
+synapse_links: usize,
+    |         ^^^^^^^^^^^^^
+    |
+    = note: `EngineStats` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: field `label` is 
+never read
+   --> 
+src\reality\engine.rs:402:44
+    |
+402 |         Entity { 
+start: usize, end: usize, 
+label: String },
+    |         ------ field 
+in this variant       ^^^^^
+    |
+    = note: `TestSpan` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: methods 
+`frequency` and 
+`first_mention` are never 
+used
+  --> src\reality\entity_lay
+er.rs:60:12
+   |
+48 | impl EntityRecord {
+   | ----------------- 
+methods in this 
+implementation
+...
+60 |     pub fn 
+frequency(&self) -> usize {
+   |            ^^^^^^^^^
+...
+65 |     pub fn 
+first_mention(&self) -> 
+Option<&SpanRecord> {
+   |            
+^^^^^^^^^^^^^
+
+warning: methods 
+`entity_ids` and `clear` 
+are never used
+   --> src\reality\entity_la
+yer.rs:151:12
+    |
+ 86 | impl EntityLayer {
+    | ---------------- 
+methods in this 
+implementation
+...
+151 |     pub fn 
+entity_ids(&self) -> impl 
+Iterator<Item = &String> {
+    |            ^^^^^^^^^^
+...
+156 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+
+warning: methods `get_mut`, 
+`iter`, `by_importance`, 
+`is_empty`, `clear`, and 
+`is_stale` are never used
+   --> src\reality\metadata_
+layer.rs:148:12
+    |
+ 90 | impl MetadataLayer {
+    | ------------------ 
+methods in this 
+implementation
+...
+148 |     pub fn 
+get_mut(&mut self, 
+entity_id: &str) -> 
+Option<&mut EntityMetadata> 
+{
+    |            ^^^^^^^
+...
+153 |     pub fn 
+iter(&self) -> impl 
+Iterator<Item = (&String, 
+&EntityMetadata)> {
+    |            ^^^^
+...
+165 |     pub fn 
+by_importance(&self) -> 
+Vec<&EntityMetadata> {
+    |            
+^^^^^^^^^^^^^
+...
+193 |     pub fn 
+is_empty(&self) -> bool {
+    |            ^^^^^^^^
+...
+198 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+...
+211 |     pub fn 
+is_stale(&self, 
+max_age_secs: u64) -> bool {
+    |            ^^^^^^^^
+
+warning: fields 
+`projections_count`, 
+`edges_merged`, and 
+`new_entities` are never 
+read
+  --> 
+src\reality\global.rs:55:9
+   |
+53 | pub struct 
+ProcessDocResult {
+   |            
+---------------- fields in 
+this struct
+54 |     pub doc_id: String,
+55 |     pub 
+projections_count: usize,
+   |         
+^^^^^^^^^^^^^^^^^
+56 |     pub nodes_merged: 
+usize,
+57 |     pub edges_merged: 
+usize,
+   |         ^^^^^^^^^^^^
+58 |     pub new_entities: 
+usize,
+   |         ^^^^^^^^^^^^
+   |
+   = note: 
+`ProcessDocResult` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: methods 
+`graph_mut`, `unifier`, and 
+`linked_documents` are 
+never used
+   --> 
+src\reality\global.rs:122:12
+    |
+ 98 | impl GlobalGraph {
+    | ---------------- 
+methods in this 
+implementation
+...
+122 |     pub fn 
+graph_mut(&mut self) -> 
+&mut ConceptGraph {
+    |            ^^^^^^^^^
+...
+127 |     pub fn 
+unifier(&self) -> 
+&EntityUnifier {
+    |            ^^^^^^^
+...
+236 |     pub fn 
+linked_documents(&self, 
+doc_id: &str) -> 
+Vec<String> {
+    |            
+^^^^^^^^^^^^^^^^
+
+warning: fields `label` and 
+`cohesion` are never read
+  --> src\reality\algorithms
+.rs:23:9
+   |
+20 | pub struct Community {
+   |            --------- 
+fields in this struct
+...
+23 |     pub label: String,
+   |         ^^^^^
+24 |     pub cohesion: f64,
+   |         ^^^^^^^^
+   |
+   = note: `Community` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: fields 
+`entity_id`, `entity_name`, 
+and `communities` are never 
+read
+  --> src\reality\algorithms
+.rs:30:9
+   |
+29 | pub struct 
+BridgeEntity {
+   |            
+------------ fields in this 
+struct
+30 |     pub entity_id: 
+String,
+   |         ^^^^^^^^^
+31 |     pub entity_name: 
+String,
+   |         ^^^^^^^^^^^
+32 |     pub communities: 
+Vec<usize>,
+   |         ^^^^^^^^^^^
+   |
+   = note: `BridgeEntity` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: fields `edges` and 
+`cost` are never read
+  --> src\reality\algorithms
+.rs:40:9
+   |
+38 | pub struct Path {
+   |            ---- fields 
+in this struct
+39 |     pub entities: 
+Vec<String>,
+40 |     pub edges: 
+Vec<String>,
+   |         ^^^^^
+41 |     pub cost: f64,
+   |         ^^^^
+   |
+   = note: `Path` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: field `kind` is 
+never read
+  --> src\reality\algorithms
+.rs:50:9
+   |
+47 | pub struct 
+RankedEntity {
+   |            
+------------ field in this 
+struct
+...
+50 |     pub kind: String,
+   |         ^^^^
+   |
+   = note: `RankedEntity` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: field `outliers` 
+is never read
+  --> src\reality\algorithms
+.rs:60:9
+   |
+57 | pub struct 
+ImportanceReport {
+   |            
+---------------- field in 
+this struct
+...
+60 |     pub outliers: 
+Vec<OutlierEntity>,
+   |         ^^^^^^^^
+   |
+   = note: 
+`ImportanceReport` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: fields `id`, 
+`name`, `pagerank_rank`, 
+`degree_rank`, and 
+`rank_delta` are never read
+  --> src\reality\algorithms
+.rs:66:9
+   |
+65 | pub struct 
+OutlierEntity {
+   |            
+------------- fields in 
+this struct
+66 |     pub id: String,
+   |         ^^
+67 |     pub name: String,
+   |         ^^^^
+68 |     pub pagerank_rank: 
+usize,
+   |         ^^^^^^^^^^^^^
+69 |     pub degree_rank: 
+usize,
+   |         ^^^^^^^^^^^
+70 |     pub rank_delta: 
+i32,
+   |         ^^^^^^^^^^
+   |
+   = note: `OutlierEntity` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: fields 
+`event_name` and 
+`causal_type` are never read
+  --> 
+src\reality\temporal.rs:40:9
+   |
+38 | pub struct 
+CausalChainItem {
+   |            
+--------------- fields in 
+this struct
+39 |     pub event_id: 
+String,
+40 |     pub event_name: 
+String,
+   |         ^^^^^^^^^^
+...
+43 |     pub causal_type: 
+CausalType,
+   |         ^^^^^^^^^^^
+   |
+   = note: 
+`CausalChainItem` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: fields 
+`cause_name`, `cause_time`, 
+`effect_name`, 
+`effect_time`, and 
+`delta_seconds` are never 
+read
+  --> 
+src\reality\temporal.rs:50:9
+   |
+48 | pub struct 
+TemporalViolation {
+   |            
+----------------- fields in 
+this struct
+49 |     pub cause_id: 
+String,
+50 |     pub cause_name: 
+String,
+   |         ^^^^^^^^^^
+51 |     pub cause_time: 
+i64,
+   |         ^^^^^^^^^^
+52 |     pub effect_id: 
+String,
+53 |     pub effect_name: 
+String,
+   |         ^^^^^^^^^^^
+54 |     pub effect_time: 
+i64,
+   |         ^^^^^^^^^^^
+55 |     pub delta_seconds: 
+i64,
+   |         ^^^^^^^^^^^^^
+   |
+   = note: 
+`TemporalViolation` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: associated items 
+`from_graph` and 
+`graph_mut` are never used
+   --> src\reality\temporal.
+rs:100:12
+    |
+ 90 | impl CausalityGraph {
+    | ------------------- 
+associated items in this 
+implementation
+...
+100 |     pub fn 
+from_graph(graph: 
+ConceptGraph, timestamps: 
+HashMap<String, i64>) -> 
+Self {
+    |            ^^^^^^^^^^
+...
+138 |     pub fn 
+graph_mut(&mut self) -> 
+&mut ConceptGraph {
+    |            ^^^^^^^^^
+
+warning: field 
+`label_contains` is never 
+read
+   --> 
+src\graph\types.rs:114:9
+    |
+110 | pub struct NodeFilter 
+{
+    |            ---------- 
+field in this struct
+...
+114 |     pub 
+label_contains: 
+Option<String>,
+    |         ^^^^^^^^^^^^^^
+    |
+    = note: `NodeFilter` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: struct 
+`NodeUpdate` is never 
+constructed
+   --> 
+src\graph\types.rs:119:12
+    |
+119 | pub struct NodeUpdate 
+{
+    |            ^^^^^^^^^^
+
+warning: struct 
+`EdgeUpdate` is never 
+constructed
+   --> 
+src\graph\types.rs:164:12
+    |
+164 | pub struct EdgeUpdate 
+{
+    |            ^^^^^^^^^^
+
+warning: struct 
+`EdgeTypeDef` is never 
+constructed
+   --> 
+src\graph\types.rs:184:12
+    |
+184 | pub struct 
+EdgeTypeDef {
+    |            ^^^^^^^^^^^
+
+warning: field `was_merged` 
+is never read
+   --> 
+src\graph\types.rs:203:9
+    |
+200 | pub struct 
+NodeRegistrationResult {
+    |            
+---------------------- 
+field in this struct
+...
+203 |     pub was_merged: 
+bool,
+    |         ^^^^^^^^^^
+    |
+    = note: 
+`NodeRegistrationResult` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: struct 
+`BatchResult` is never 
+constructed
+   --> 
+src\graph\types.rs:208:12
+    |
+208 | pub struct 
+BatchResult {
+    |            ^^^^^^^^^^^
+
+warning: variants 
+`NotInitialized`, 
+`DuplicateNode`, and 
+`InvalidEdge` are never 
+constructed
+   --> 
+src\graph\types.rs:218:5
+    |
+217 | pub enum GraphError {
+    |          ---------- 
+variants in this enum
+218 |     NotInitialized,
+    |     ^^^^^^^^^^^^^^
+...
+221 |     
+DuplicateNode(String),
+    |     ^^^^^^^^^^^^^
+222 |     
+InvalidEdge(String),
+    |     ^^^^^^^^^^^
+    |
+    = note: `GraphError` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: field `edges` is 
+never read
+  --> 
+src\graph\queries.rs:26:9
+   |
+22 | pub struct GraphPath {
+   |            --------- 
+field in this struct
+...
+26 |     pub edges: 
+Vec<String>,
+   |         ^^^^^
+   |
+   = note: `GraphPath` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: fields `id` and 
+`internal_edges` are never 
+read
+  --> 
+src\graph\algorithms.rs:23:9
+   |
+21 | pub struct Community {
+   |            --------- 
+fields in this struct
+22 |     /// Community ID
+23 |     pub id: usize,
+   |         ^^
+...
+27 |     pub 
+internal_edges: usize,
+   |         ^^^^^^^^^^^^^^
+   |
+   = note: `Community` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: variants 
+`InDegree` and `OutDegree` 
+are never constructed
+  --> 
+src\graph\algorithms.rs:34:5
+   |
+32 | pub enum 
+CentralityMetric {
+   |          
+---------------- variants 
+in this enum
+33 |     Degree,
+34 |     InDegree,
+   |     ^^^^^^^^
+35 |     OutDegree,
+   |     ^^^^^^^^^
+   |
+   = note: 
+`CentralityMetric` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: method 
+`is_hydrated` is never used
+   --> 
+src\graph\bridge.rs:263:12
+    |
+ 86 | impl ScannerBridge {
+    | ------------------ 
+method in this 
+implementation
+...
+263 |     pub fn 
+is_hydrated(&self) -> bool {
+    |            ^^^^^^^^^^^
+
+warning: struct 
+`GraphStats` is never 
+constructed
+   --> src\graph\cozo_graph.
+rs:138:12
+    |
+138 | pub struct GraphStats 
+{
+    |            ^^^^^^^^^^
+
+warning: field `world_id` 
+is never read
+   --> src\graph\cozo_graph.
+rs:156:5
+    |
+153 | pub struct 
+CozoGraph<'a> {
+    |            --------- 
+field in this struct
+...
+156 |     world_id: 
+Option<String>,
+    |     ^^^^^^^^
+
+warning: associated items 
+`with_world`, `stats`, and 
+`top_entities` are never 
+used
+   --> src\graph\cozo_graph.
+rs:166:12
+    |
+159 | impl<'a> 
+CozoGraph<'a> {
+    | 
+---------------------- 
+associated items in this 
+implementation
+...
+166 |     pub fn 
+with_world(db: &'a 
+DbInstance, world_id: impl 
+Into<String>) -> Self {
+    |            ^^^^^^^^^^
+...
+490 |     pub fn 
+stats(&self) -> 
+Result<GraphStats, String> {
+    |            ^^^^^
+...
+556 |     pub fn 
+top_entities(&self, n: 
+usize) -> 
+Result<Vec<RankedNode>, 
+String> {
+    |            
+^^^^^^^^^^^^
+
+warning: struct 
+`RankedEntity` is never 
+constructed
+  --> src\graph\graph_backen
+d.rs:34:12
+   |
+34 | pub struct 
+RankedEntity {
+   |            ^^^^^^^^^^^^
+
+warning: struct `GraphPath` 
+is never constructed
+  --> src\graph\graph_backen
+d.rs:43:12
+   |
+43 | pub struct GraphPath {
+   |            ^^^^^^^^^
+
+warning: struct 
+`GraphCommunity` is never 
+constructed
+  --> src\graph\graph_backen
+d.rs:51:12
+   |
+51 | pub struct 
+GraphCommunity {
+   |            
+^^^^^^^^^^^^^^
+
+warning: multiple methods 
+are never used
+   --> src\graph\graph_backe
+nd.rs:85:8
+    |
+ 73 | pub trait 
+GraphBackend {
+    |           
+------------ methods in 
+this trait
+...
+ 85 |     fn 
+get_node(&self, id: &str) 
+-> 
+Result<Option<GraphNode>, 
+Self::Error>;
+    |        ^^^^^^^^
+...
+ 98 |     fn 
+outgoing_edges(&self, 
+node_id: &str) -> 
+Result<Vec<GraphEdge>, 
+Self::Error>;
+    |        ^^^^^^^^^^^^^^
+...
+101 |     fn 
+incoming_edges(&self, 
+node_id: &str) -> 
+Result<Vec<GraphEdge>, 
+Self::Error>;
+    |        ^^^^^^^^^^^^^^
+...
+111 |     fn 
+pagerank(&self) -> 
+Result<Vec<RankedEntity>, 
+Self::Error>;
+    |        ^^^^^^^^
+...
+114 |     fn 
+shortest_path(&self, 
+source: &str, target: &str) 
+-> 
+Result<Option<GraphPath>, 
+Self::Error>;
+    |        ^^^^^^^^^^^^^
+...
+117 |     fn 
+detect_communities(&self) 
+-> 
+Result<Vec<GraphCommunity>, 
+Self::Error>;
+    |        
+^^^^^^^^^^^^^^^^^^
+...
+120 |     fn 
+neighborhood(&self, 
+node_id: &str, max_hops: 
+usize) -> 
+Result<Vec<(String, 
+usize)>, Self::Error>;
+    |        ^^^^^^^^^^^^
+...
+123 |     fn 
+top_entities(&self, n: 
+usize) -> 
+Result<Vec<RankedEntity>, 
+Self::Error> {
+    |        ^^^^^^^^^^^^
+
+warning: field `note_title` 
+is never read
+   --> 
+src\rag\schema.rs:364:9
+    |
+359 | pub struct ChunkData {
+    |            --------- 
+field in this struct
+...
+364 |     pub note_title: 
+String,
+    |         ^^^^^^^^^^
+    |
+    = note: `ChunkData` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: method `embed` is 
+never used
+   --> 
+src\rag\embeddings.rs:120:12
+    |
+ 63 | impl EmbeddingService 
+{
+    | --------------------- 
+method in this 
+implementation
+...
+120 |     pub fn 
+embed(&self, text: &str) -> 
+Result<Vec<f32>, String> {
+    |            ^^^^^
+
+warning: method `is_empty` 
+is never used
+   --> 
+src\scan_worker.rs:105:12
+    |
+ 57 | impl ScanQueue {
+    | -------------- method 
+in this implementation
+...
+105 |     pub fn 
+is_empty(&self) -> bool {
+    |            ^^^^^^^^
+
+warning: associated 
+functions `persist` and 
+`invalidate` are never used
+   --> 
+src\scan_worker.rs:140:12
+    |
+138 | impl DecorationCache {
+    | -------------------- 
+associated functions in 
+this implementation
+139 |     /// Persist 
+decoration spans for a note
+140 |     pub fn persist(
+    |            ^^^^^^^
+...
+225 |     pub fn 
+invalidate(db: &DbInstance, 
+note_id: &str) -> 
+Result<(), String> {
+    |            ^^^^^^^^^^
+
+warning: function 
+`process_note_scan` is 
+never used
+   --> 
+src\scan_worker.rs:331:8
+    |
+331 | pub fn 
+process_note_scan(db: 
+&DbInstance, note_id: &str) 
+{
+    |        
+^^^^^^^^^^^^^^^^^
+
+warning: function 
+`persist_graph_data` is 
+never used
+   --> 
+src\scan_worker.rs:414:4
+    |
+414 | fn 
+persist_graph_data(db: 
+&DbInstance, note_id: &str, 
+result: &crate::document::Sc
+anResult) {
+    |    ^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`generate_node_id` is never 
+used
+   --> 
+src\scan_worker.rs:539:4
+    |
+539 | fn 
+generate_node_id(label: 
+&str) -> String {
+    |    ^^^^^^^^^^^^^^^^
+
+warning: function 
+`create_test_db` is never 
+used
+   --> 
+src\scan_worker.rs:554:8
+    |
+554 | pub fn 
+create_test_db() -> 
+DbInstance {
+    |        ^^^^^^^^^^^^^^
+
+warning: constant 
+`EXPECTED_TRIPLES` is never 
+used
+  --> 
+src\benchmark_tests.rs:20:7
+   |
+20 | const 
+EXPECTED_TRIPLES: usize = 
+14;
+   |       ^^^^^^^^^^^^^^^^
+
+warning: constant 
+`CACHED_SCAN_MAX_US` is 
+never used
+  --> 
+src\benchmark_tests.rs:25:7
+   |
+25 | const 
+CACHED_SCAN_MAX_US: u64 = 
+100;       // 100??s for 
+cache hit
+   |       
+^^^^^^^^^^^^^^^^^^
+
+warning: comparison is 
+useless due to type limits
+   --> 
+src\conductor.rs:224:17
+    |
+224 |         assert!(result
+.stats.timings.total_us >= 
+0);
+    |                 ^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(unused_c
+omparisons)]` on by default
+
+warning: `varant` (lib 
+test) generated 116 
+warnings (run `cargo fix 
+--lib -p varant --tests` to 
+apply 32 suggestions)
+    Finished `test` profile 
+[optimized + debuginfo] 
+target(s) in 3.48s
+     Running unittests 
+src\lib.rs (target\debug\dep
+s\app_lib-a354a1e100cd56a5.e
+xe)
+
+running 405 tests
+test attacher::tests::test_ambiguity_preference ... ok
+test attacher::tests::test_pp_attachment_noun ... ok
+test attacher::tests::test_simple_svo ... ok
+test attacher::tests::test_pp_attachment_verb ... ok
+test change::tests::test_check_result ... ok
+test change::tests::test_different_content_changed ... ok
+test change::tests::test_empty_text ... ok
+test change::tests::test_first_check_returns_changed ... ok
+test change::tests::test_hash_deterministic ... ok
+test change::tests::test_reset ... ok
+test change::tests::test_same_content_unchanged ... ok
+test change::tests::test_whitespace_matters ... ok
+test change::tests::test_skip_rate ... ok
+test change::tests::test_skip_count ... ok
+test chunker::tests::test_np_det_adj_noun ... ok
+test chunker::tests::test_full_sentence ... ok
+test chunker::tests::test_pp_prep_np ... ok
+test chunker::tests::test_np_det_noun ... ok
+test chunker::tests::test_text_range_slice ... ok
+test chunker::tests::test_text_range_basic ... ok
+test chunker::tests::test_np_simple_noun ... ok
+test chunker::tests::test_vp_aux_verb ... ok
+test blueprint::tests::test_init_schema ... ok
+test chunker::tests::test_vp_simple_verb ... ok
+test blueprint::tests::test_blueprint_crud ... ok
+test benchmark_tests::tests::test_benchmark_extracts_correct_triple_count ... ok
+test benchmark_tests::tests::test_cached_scan_under_15ms ... ok
+test benchmark_tests::tests::test_no_incremental_flag ... ok
+test benchmark_tests::tests::test_repeated_scans_consistent ... ok
+test benchmark_tests::tests::test_benchmark_extracts_entities ... ok
+test benchmark_tests::tests::test_cold_scan_under_20ms ... ok
+test constraints::tests::test_enforce_uniqueness_deduplicates ... ok
+test constraints::tests::test_enforce_uniqueness_different_kinds ... ok
+test constraints::tests::test_filter_by_scope_folder ... ok
+test constraints::tests::test_filter_by_scope_note ... ok
+test constraints::tests::test_get_allowed_predicates ... ok
+test constraints::tests::test_validate_entity_short_label_warning ... ok
+test constraints::tests::test_validate_entity_suspicious_chars_warning ... ok
+test constraints::tests::test_validate_missing_id ... ok
+test constraints::tests::test_validate_missing_kind ... ok
+test benchmark_tests::tests::test_changed_content_rescans ... ok
+test constraints::tests::test_validate_missing_target ... ok
+test constraints::tests::test_validate_predicate_allowed ... ok
+test constraints::tests::test_validate_predicate_not_in_list ... ok
+test constraints::tests::test_validate_predicate_unknown_kind ... ok
+test constraints::tests::test_validate_valid_ref ... ok
+test dialogue::tests::test_quote_before_subject ... ok
+test dialogue::tests::test_quote_after_subject ... ok
+test dialogue::tests::test_pronoun_attribution ... ok
+test conductor::tests::test_conductor_rejects_scan_before_init ... ok
+test conductor::tests::test_conductor_allows_scan_after_hydration ... ok
+test conductor::tests::test_conductor_force_scan_works_before_ready ... ok
+test conductor::tests::test_conductor_finds_entities_after_hydration ... ok
+test conductor::tests::test_conductor_auto_inits_on_hydrate ... ok
+test conductor::tests::test_conductor_rejects_scan_after_init_but_before_hydrate ... ok
+test document::tests::test_basic_scan_returns_result ... ok
+test document::tests::test_incremental_scan_triggers_on_small_edit ... ok
+test document::tests::test_incremental_stats_accumulate ... ok
+test document::tests::test_incremental_falls_back_on_large_edit ... ok
+test conductor::tests::test_conductor_state_progression ... ok
+test document::tests::test_scan_detects_changes ... ok
+test document::tests::test_reset_clears_cache ... ok
+test conductor::tests::test_conductor_reset_clears_ready_state ... ok
+test document::tests::test_scan_extracts_triples ... ok
+test document::tests::test_scan_skips_unchanged ... ok
+test document::tests::test_scan_extracts_implicit_mentions ... ok
+test graph::bridge::tests::test_ingest_skips_unknown_entities ... ok
+test graph::bridge::tests::test_full_ingest ... ok
+test graph::bridge::tests::test_get_entities_detects_changes ... ok
+test graph::bridge::tests::test_ingest_mentions ... ok
+test graph::bridge::tests::test_ingest_relations ... ok
+test graph::content_repos::tests::test_create_folder ... ok
+test graph::algorithms::tests::test_connected_components ... ok
+test graph::content_repos::tests::test_delete_note ... ok
+test graph::algorithms::tests::test_pagerank_basic ... ok
+test graph::content_repos::tests::test_create_note ... ok
+test graph::content_repos::tests::test_folder_schema_exists ... ok
+test graph::content_repos::tests::test_get_note ... ok
+test graph::algorithms::tests::test_degree_centrality ... ok
+test graph::content_repos::tests::test_folder_tree ... ok
+test graph::content_repos::tests::test_note_schema_exists ... ok
+test graph::algorithms::tests::test_graph_stats ... ok
+test graph::content_repos::tests::test_update_note ... ok
+test graph::content_repos::tests::test_list_notes ... ok
+test graph::cozo_graph::tests::test_add_edge ... ok
+test graph::cozo_graph::tests::test_ensure_node ... ok
+test graph::cozo_graph::tests::test_neighborhood ... ok
+test graph::cozo_graph::tests::test_node_count ... ok
+test graph::cozo_graph::tests::test_community_detection ... ok
+test graph::graph_backend::tests::test_backend_stats ... ok
+test graph::graph_backend::tests::test_cozo_backend_basic ... ok
+test graph::cozo_graph::tests::test_shortest_path ... ok
+test graph::algorithms::tests::test_community_detection ... ok
+test graph::cozo_graph::tests::test_pagerank ... ok
+test graph::queries::tests::test_neighbors_depth_1 ... ok
+test graph::queries::tests::test_shortest_path_not_found ... ok
+test graph::queries::tests::test_common_neighbors ... ok
+test graph::queries::tests::test_all_paths ... ok
+test graph::queries::tests::test_shortest_path_diamond ... ok
+test graph::registry::tests::test_delete_edge ... ok
+test graph::queries::tests::test_shortest_path_multi_hop ... ok
+test graph::queries::tests::test_shortest_path_direct ... ok
+test graph::registry::tests::test_create_edge ... ok
+test graph::registry::tests::test_find_node_by_label ... ok
+test graph::registry::tests::test_get_node_by_id ... ok
+test graph::queries::tests::test_neighbors_depth_2 ... ok
+test graph::registry::tests::test_delete_node_cascades_edges ... ok
+test graph::queries::tests::test_subgraph ... ok
+test graph::registry::tests::test_get_edges_from_node ... ok
+test graph::registry::tests::test_register_node_returns_existing ... ok
+test graph::registry::tests::test_register_node_creates_new ... ok
+test graph::schema::tests::test_schema_creates_edge_types_relation ... ok
+test graph::schema::tests::test_drop_schema ... ok
+test graph::registry::tests::test_register_node_with_aliases ... ok
+test implicit::tests::test_alias_matching ... ok
+test implicit::tests::test_case_insensitive_matching ... ok
+test implicit::tests::test_hydrate_and_find_single_entity ... ok
+test graph::registry::tests::test_get_nodes_by_kind ... ok
+test implicit::tests::test_confidence_scores ... ok
+test implicit::tests::test_faction_acronym ... ok
+test graph::schema::tests::test_schema_creates_aliases_relation ... ok
+test implicit::tests::test_overlapping_keeps_longer ... ok
+test implicit::tests::test_smart_alias_luffy ... ok
+test incremental::tests::test_chunk_text_single_paragraph ... ok
+test incremental::tests::test_chunk_text_multiple_paragraphs ... ok
+test incremental::tests::test_compute_delta_append ... ok
+test incremental::tests::test_compute_delta_insert_at_top ... ok
+test incremental::tests::test_lis_all_none ... ok
+test incremental::tests::test_compute_delta_no_change ... ok
+test incremental::tests::test_lis_empty ... ok
+test incremental::tests::test_lis_simple ... ok
+test incremental::tests::test_lis_with_gaps ... ok
+test incremental::tests::test_overlaps_dirty_binary_search ... ok
+test incremental::tests::test_shift_index_binary_search ... ok
+test graph::schema::tests::test_schema_creates_nodes_relation ... ok
+test narrative::tests::test_analyze_simple ... ok
+test narrative::tests::test_analyze_with_dependencies ... ok
+test narrative::tests::test_full_narrative_flow ... ok
+test narrative::tests::test_dialogue_attribution ... ok
+test narrative::tests::test_hydrate_and_resolve ... ok
+test graph::schema::tests::test_schema_creates_vectors_relation ... ok
+test narrative::tests::test_new_instance ... ok
+test rag::chunker::tests::test_chunk_empty_text ... ok
+test rag::chunker::tests::test_chunk_long_text ... ok
+test rag::chunker::tests::test_chunk_preserves_order ... ok
+test rag::chunker::tests::test_chunk_short_text ... ok
+test narrative::tests::test_performance ... ok
+test rag::embeddings::tests::test_model_from_id ... ok
+test rag::embeddings::tests::test_fastembed_model_mapping ... ok
+test reality::algorithms::tests::test_algorithms_on_empty_graph ... ok
+test graph::schema::tests::test_schema_creates_edges_relation ... ok
+test rag::embeddings::tests::test_embedding_model_dimensions ... ok
+test narrative::tests::test_pronoun_resolution_with_context ... ok
+test reality::algorithms::tests::test_community_of ... ok
+test reality::algorithms::tests::test_community_detection_basic ... ok
+test reality::algorithms::tests::test_find_bridges ... ok
+test reality::algorithms::tests::test_neighborhood ... ok
+test reality::algorithms::tests::test_importance_analysis ... ok
+test reality::algorithms::tests::test_neighborhood_multi_hop ... ok
+test reality::algorithms::tests::test_shortest_path_direct ... ok
+test reality::algorithms::tests::test_pagerank_basic ... ok
+test reality::algorithms::tests::test_shortest_path_no_connection ... ok
+test reality::algorithms::tests::test_shortest_path_multi_hop ... ok
+test reality::algorithms::tests::test_top_entities ... ok
+test reality::engine::tests::test_engine_clear ... ok
+test reality::engine::tests::test_engine_graph_queries ... ok
+test reality::engine::tests::test_engine_ingest_attribution ... ok
+test reality::engine::tests::test_engine_ingest_quad ... ok
+test reality::engine::tests::test_engine_ingest_state_change ... ok
+test reality::engine::tests::test_engine_populate_from_projections ... ok
+test reality::engine::tests::test_engine_process_chain ... ok
+test reality::engine::tests::test_engine_process_simple ... ok
+test reality::engine::tests::test_engine_process_with_projections ... ok
+test reality::engine::tests::test_engine_reprocess ... ok
+test reality::engine::tests::test_engine_stats ... ok
+test reality::engine::tests::test_engine_synapse_populated ... ok
+test reality::engine::tests::test_evolution_1_5_integration ... ok
+test reality::entity_layer::tests::test_entity_layer_basic ... ok
+test reality::entity_layer::tests::test_entity_layer_clear_doc ... ok
+test reality::entity_layer::tests::test_entity_layer_cross_document ... ok
+test reality::entity_layer::tests::test_entity_layer_multiple_mentions ... ok
+test reality::entity_layer::tests::test_extract_context ... ok
+test graph::algorithms::tests::test_betweenness_centrality ... ok
+test reality::entity_layer::tests::test_normalize_id ... ok
+test reality::global::tests::test_clear ... ok
+test reality::global::tests::test_document_context_new ... ok
+test reality::global::tests::test_document_ids ... ok
+test reality::global::tests::test_global_graph_default ... ok
+test reality::global::tests::test_entity_documents_mapping ... ok
+test reality::global::tests::test_global_graph_new ... ok
+test reality::global::tests::test_process_multiple_documents ... ok
+test graph::schema::tests::test_schema_idempotent ... ok
+test reality::global::tests::test_process_single_document ... ok
+test reality::global::tests::test_related_documents ... ok
+test reality::global::tests::test_remove_document ... ok
+test reality::global::tests::test_unifier_integration ... ok
+test reality::graph::tests::test_connected_components ... ok
+test reality::graph::tests::test_critical_nodes ... ok
+test reality::graph::tests::test_degree_centrality ... ok
+test reality::graph::tests::test_edge_kind_attribution ... ok
+test reality::graph::tests::test_edge_kind_default ... ok
+test reality::graph::tests::test_edge_kind_modified_relation ... ok
+test reality::graph::tests::test_edge_kind_modified_relation_partial ... ok
+test reality::graph::tests::test_edge_kind_state_transition ... ok
+test reality::graph::tests::test_edge_kind_state_transition_no_trigger ... ok
+test reality::graph::tests::test_edge_provenance_builder ... ok
+test reality::graph::tests::test_edge_with_kind_builder ... ok
+test reality::graph::tests::test_graph_add_edge ... ok
+test reality::graph::tests::test_graph_add_edge_missing_nodes ... ok
+test reality::graph::tests::test_graph_add_edge_with_nodes ... ok
+test reality::graph::tests::test_graph_add_node ... ok
+test reality::graph::tests::test_graph_clear ... ok
+test reality::graph::tests::test_graph_edge_weights ... ok
+test reality::graph::tests::test_graph_get_node ... ok
+test reality::graph::tests::test_graph_iterate_edges ... ok
+test reality::graph::tests::test_graph_iterate_nodes ... ok
+test reality::graph::tests::test_graph_neighbors ... ok
+test reality::graph::tests::test_graph_no_duplicate_nodes ... ok
+test reality::graph::tests::test_graph_query_incoming ... ok
+test reality::graph::tests::test_graph_query_outgoing ... ok
+test reality::graph::tests::test_graph_with_edge_kinds ... ok
+test reality::graph::tests::test_narrative_health_score ... ok
+test reality::graph::tests::test_orphan_nodes ... ok
+test reality::graph::tests::test_subgraph_depth_0 ... ok
+test reality::graph::tests::test_subgraph_depth_1 ... ok
+test reality::graph::tests::test_subgraph_includes_edges ... ok
+test reality::intern::tests::test_contains ... ok
+test reality::intern::tests::test_intern_dedup ... ok
+test reality::intern::tests::test_intern_different ... ok
+test reality::intern::tests::test_intern_roundtrip ... ok
+test reality::metadata_layer::tests::test_metadata_aliases ... ok
+test reality::metadata_layer::tests::test_metadata_by_frequency ... ok
+test reality::metadata_layer::tests::test_metadata_cross_document ... ok
+test reality::metadata_layer::tests::test_metadata_entities_in_doc ... ok
+test reality::metadata_layer::tests::test_metadata_frequency ... ok
+test reality::metadata_layer::tests::test_metadata_layer_basic ... ok
+test reality::parser::enhanced_parser_tests::test_chunk_kind_to_syntax_kind ... ok
+test reality::parser::enhanced_parser_tests::test_enhanced_zipper_empty_text ... ok
+test reality::parser::enhanced_parser_tests::test_enhanced_zipper_no_chunks ... ok
+test reality::parser::parser_tests::test_contractions_curly_apostrophe ... ok
+test reality::parser::parser_tests::test_contractions_dont ... ok
+test reality::parser::parser_tests::test_contractions_twas ... ok
+test reality::parser::parser_tests::test_paragraph_detection_basic ... ok
+test reality::parser::enhanced_parser_tests::test_enhanced_zipper_includes_verb_phrase ... ok
+test reality::parser::enhanced_parser_tests::test_enhanced_zipper_includes_prep_phrase ... ok
+test reality::parser::enhanced_parser_tests::test_enhanced_zipper_includes_noun_phrase ... ok
+test reality::parser::parser_tests::test_paragraph_detection_single_newline ... ok
+test reality::parser::enhanced_parser_tests::test_enhanced_zipper_preserves_sentences ... ok
+test reality::parser::parser_tests::test_paragraph_detection_windows_newlines ... ok
+test reality::parser::enhanced_parser_tests::test_entities_take_priority_over_chunks ... ok
+test reality::parser::enhanced_parser_tests::test_prep_phrase_contains_noun_phrase ... ok
+test reality::parser::parser_tests::test_sentence_detection_abbreviations ... ok
+test reality::parser::parser_tests::test_sentence_detection_basic ... ok
+test reality::parser::parser_tests::test_sentence_detection_exclamation ... ok
+test reality::parser::parser_tests::test_sentence_detection_initials ... ok
+test reality::parser::parser_tests::test_unicode_curly_quotes ... ok
+test reality::parser::parser_tests::test_unicode_punctuation_emdash ... ok
+test reality::parser::parser_tests::test_zipper_produces_sentences ... ok
+test reality::projection::tests::test_attribution_has_required_fields ... ok
+test reality::projection::tests::test_classify_modifiers_location ... ok
+test reality::projection::tests::test_common_adjectives ... ok
+test reality::projection::tests::test_dialogue_verbs_recognized ... ok
+test reality::projection::tests::test_location_prepositions ... ok
+test reality::projection::tests::test_manner_prepositions ... ok
+test reality::projection::tests::test_non_dialogue_verbs_not_matched ... ok
+test reality::projection::tests::test_projection_enum_variants ... ok
+test reality::projection::tests::test_projection_stats_default ... ok
+test reality::projection::tests::test_quadplus_has_modifiers ... ok
+test reality::projection::tests::test_quadplus_modifiers_optional ... ok
+test reality::projection::tests::test_state_change_has_required_fields ... ok
+test reality::projection::tests::test_state_change_verbs_recognized ... ok
+test reality::projection::tests::test_time_prepositions ... ok
+test reality::projection::tests::test_triple_has_required_fields ... ok
+test reality::synapse::tests::test_synapse_boundary_conditions ... ok
+test reality::synapse::tests::test_synapse_clear ... ok
+test reality::synapse::tests::test_synapse_entity_ids ... ok
+test reality::synapse::tests::test_synapse_iteration ... ok
+test reality::synapse::tests::test_synapse_link_and_query ... ok
+test reality::synapse::tests::test_synapse_multiple_occurrences ... ok
+test reality::synapse::tests::test_synapse_offset_convenience ... ok
+test reality::synapse::tests::test_synapse_offset_lookup ... ok
+test reality::synapse::tests::test_synapse_overlapping_spans ... ok
+test reality::synapse::tests::test_synapse_unlink_entity ... ok
+test reality::synapse::tests::test_synapse_unlink_range ... ok
+test reality::temporal::tests::test_add_event ... ok
+test reality::temporal::tests::test_causality_graph_new ... ok
+test reality::temporal::tests::test_causes_of ... ok
+test reality::temporal::tests::test_cyclic_detection ... ok
+test reality::temporal::tests::test_effects_of ... ok
+test reality::temporal::tests::test_is_acyclic ... ok
+test reality::temporal::tests::test_stats ... ok
+test reality::temporal::tests::test_temporal_validation_invalid ... ok
+test reality::temporal::tests::test_temporal_validation_valid ... ok
+test reality::unification::tests::test_unifier_aliases_of ... ok
+test reality::unification::tests::test_unifier_bulk_add ... ok
+test reality::unification::tests::test_unifier_case_insensitive ... ok
+test reality::unification::tests::test_unifier_chain_resolution ... ok
+test reality::unification::tests::test_unifier_clear ... ok
+test reality::unification::tests::test_unifier_has_aliases ... ok
+test reality::unification::tests::test_unifier_new_empty ... ok
+test reality::unification::tests::test_unifier_no_infinite_loop ... ok
+test reality::unification::tests::test_unifier_resolve_alias ... ok
+test reality::unification::tests::test_unifier_self_reference_ignored ... ok
+test reality::unification::tests::test_unifier_unknown_returns_normalized ... ok
+test relation::tests::test_find_entity_in_span ... ok
+test relation::tests::test_normalize_verb ... ok
+test relation::tests::test_relation_engine_creation ... ok
+test relation::tests::test_relation_source_serializes ... ok
+test relation::tests::test_unified_relation_default ... ok
+test relation::tests::test_unified_to_extracted_conversion ... ok
+test relation_filter::tests::test_configurable_threshold ... ok
+test relation_filter::tests::test_cross_sentence_penalty ... ok
+test relation_filter::tests::test_distance_decay ... ok
+test relation::tests::test_extract_full_pipeline ... ok
+test relation_filter::tests::test_filter_drops_low_confidence ... ok
+test relation_filter::tests::test_filter_keeps_high_confidence ... ok
+test relation_filter::tests::test_same_sentence_bonus ... ok
+test relation_schema::tests::test_kind_set_any ... ok
+test relation_schema::tests::test_kind_set_contains ... ok
+test relation_schema::tests::test_kind_set_contains_str ... ok
+test relation_schema::tests::test_relation_as_str ... ok
+test relation::tests::test_project_from_cst_svo ... ok
+test relation_schema::tests::test_relation_from_str ... ok
+test relation_schema::tests::test_schema_count ... ok
+test relation_schema::tests::test_schema_registry ... ok
+test relation_schema::tests::test_schema_validation ... ok
+test relation_schema::tests::test_symmetric_relations ... ok
+test relation_schema::tests::test_transitivity_lookup ... ok
+test resolver::tests::test_alias_resolution ... ok
+test resolver::tests::test_neutral_pronoun ... ok
+test resolver::tests::test_pronoun_gender_switch ... ok
+test resolver::tests::test_pronoun_resolution_simple ... ok
+test resolver::tests::test_stack_update_order ... ok
+test resorank::config::tests::test_corpus_size_classification ... ok
+test resorank::config::tests::test_corpus_stats_default ... ok
+test resorank::config::tests::test_default_config ... ok
+test resorank::config::tests::test_field_params ... ok
+test resorank::entropy::tests::test_entropy_cache_basic ... ok
+test resorank::entropy::tests::test_query_entropy_stats ... ok
+test resorank::math::tests::test_adaptive_alpha ... ok
+test resorank::entropy::tests::test_entropy_cache_lru_eviction ... ok
+test resorank::math::tests::test_adaptive_segment_count ... ok
+test resorank::math::tests::test_calculate_idf ... ok
+test resorank::math::tests::test_pop_count ... ok
+test resorank::math::tests::test_saturate ... ok
+test resorank::math::tests::test_normalized_term_frequency ... ok
+test resorank::math::tests::test_sigmoid ... ok
+test resorank::proximity::tests::test_global_proximity ... ok
+test resorank::proximity::tests::test_global_proximity_no_overlap ... ok
+test resorank::proximity::tests::test_idf_weighted_proximity ... ok
+test resorank::proximity::tests::test_pairwise_proximity ... ok
+test resorank::proximity::tests::test_per_term_proximity ... ok
+test resorank::proximity::tests::test_phrase_detection ... ok
+test resorank::proximity::tests::test_strategy_parsing ... ok
+test resorank::scorer::tests::test_explain_score ... ok
+test resorank::scorer::tests::test_index_and_score ... ok
+test resorank::scorer::tests::test_multi_term_query ... ok
+test resorank::scorer::tests::test_remove_document ... ok
+test resorank::scorer::tests::test_scorer_stats ... ok
+test resorank::scorer::tests::test_search ... ok
+test resorank::types::tests::test_document_accumulator ... ok
+test resorank::types::tests::test_document_metadata ... ok
+test resorank::types::tests::test_score_explanation_empty ... ok
+test resorank::types::tests::test_token_metadata ... ok
+test scan_worker::tests::test_content_hash ... ok
+test scan_worker::tests::test_queue_deduplication ... ok
+test scan_worker::tests::test_queue_length ... ok
+test scan_worker::tests::test_queue_push_pop_basic ... ok
+test scan_worker::tests::test_worker_graceful_shutdown ... ok
+test structured_relation::tests::test_multiple_vps ... ok
+test structured_relation::tests::test_intransitive_verb ... ok
+test structured_relation::tests::test_simple_svo ... ok
+test structured_relation::tests::test_passive_voice_detection ... ok
+test structured_relation::tests::test_unknown_verb_uses_verb_as_type ... ok
+test temporal::tests::test_connector_direction ... ok
+test temporal::tests::test_era_marker ... ok
+test time_registry::tests::test_time_registry_init ... ok
+test time_registry::tests::test_edge_history ... ok
+test time_registry::tests::test_entity_history ... ok
+test temporal::tests::test_word_boundary ... ok
+test temporal::tests::test_narrative_marker_with_number ... ok
+test temporal::tests::test_relative_phrase ... ok
+test temporal::tests::test_weekday_detection ... ok
+test scanner::tests::test_wikilink ... ok
+test triple::tests::test_backward_arrow ... ok
+test scanner::tests::test_basic_entity ... ok
+test scanner::tests::test_triple ... ok
+test scanner::tests::test_overlap_resolution ... ok
+test triple::tests::test_empty_text ... ok
+test triple::tests::test_mixed_case_predicate ... ok
+test triple::tests::test_basic_wiki_triple ... ok
+test triple::tests::test_multiple_triples ... ok
+test triple::tests::test_forward_arrow ... ok
+test verb_morphology::tests::test_case_insensitive ... ok
+test verb_morphology::tests::test_form_count ... ok
+test triple::tests::test_bidirectional_arrow ... ok
+test verb_morphology::tests::test_get_relation_basic ... ok
+test verb_morphology::tests::test_get_relation_synonyms ... ok
+test verb_morphology::tests::test_is_verb ... ok
+test verb_morphology::tests::test_irregular_verb_forms ... ok
+test triple::tests::test_parenthesized_triple ... ok
+test triple::tests::test_no_triples ... ok
+test triple::tests::test_position_tracking ... ok
+test triple::tests::test_whitespace_handling ... ok
+test scan_worker::tests::test_worker_processes_queue ... ok
+
+test result: ok. 405 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.33s
+

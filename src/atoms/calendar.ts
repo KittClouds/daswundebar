@@ -1,11 +1,13 @@
 /**
- * Calendar Atoms - SQLite-backed state management for Fantasy Calendar
+ * Calendar Atoms - SurrealDB-backed state management for Fantasy Calendar
  * Uses lazy loading pattern: hydrates when CalendarContext mounts
+ * 
+ * MIGRATED: Now uses SurrealDB via calendarAPI (Tauri backend)
  */
 import { atom, type WritableAtom } from 'jotai';
-import { dbClient } from '@/lib/db/client/db-client';
 import { generateId } from '@/lib/utils/ids';
-import type { SQLiteNode, SQLiteNodeInput } from '@/lib/db/client/types';
+import { isTauri } from '@/lib/tauri/bridge';
+import { calendarAPI } from '@/lib/tauri/calendar-api';
 import type {
     CalendarDefinition,
     CalendarEvent,
@@ -159,89 +161,11 @@ export const periodsForFocusedEntityAtom = atom((get) => {
 
 
 // ============================================
-// TRANSFORMATION UTILITIES
-// ============================================
-
-function transformNodeToCalendar(node: SQLiteNode): CalendarDefinition {
-    try {
-        const data = node.content ? JSON.parse(node.content) : {};
-        return {
-            ...data,
-            id: node.id,
-            name: node.label,
-        };
-    } catch {
-        throw new Error(`Invalid calendar data for node ${node.id}`);
-    }
-}
-
-function transformNodeToEvent(node: SQLiteNode): CalendarEvent {
-    try {
-        const data = node.content ? JSON.parse(node.content) : {};
-        return {
-            ...data,
-            id: node.id,
-            title: node.label,
-            calendarId: node.parent_id || '',
-        };
-    } catch {
-        throw new Error(`Invalid event data for node ${node.id}`);
-    }
-}
-
-function transformNodeToPeriod(node: SQLiteNode): Period {
-    try {
-        const data = node.content ? JSON.parse(node.content) : {};
-        return {
-            ...data,
-            id: node.id,
-            name: node.label,
-            calendarId: node.parent_id || '',
-        };
-    } catch {
-        throw new Error(`Invalid period data for node ${node.id}`);
-    }
-}
-
-function transformCalendarToNode(calendar: CalendarDefinition): SQLiteNodeInput {
-    const { id, name, ...rest } = calendar;
-    return {
-        id,
-        type: 'CALENDAR',
-        label: name,
-        content: JSON.stringify(rest),
-        parent_id: null,
-    };
-}
-
-function transformEventToNode(event: CalendarEvent): SQLiteNodeInput {
-    const { id, title, calendarId, ...rest } = event;
-    return {
-        id,
-        type: 'CALENDAR_EVENT',
-        label: title,
-        content: JSON.stringify(rest),
-        parent_id: calendarId,
-    };
-}
-
-function transformPeriodToNode(period: Period): SQLiteNodeInput {
-    const { id, name, calendarId, ...rest } = period;
-    return {
-        id,
-        type: 'CALENDAR_PERIOD',
-        label: name,
-        content: JSON.stringify(rest),
-        parent_id: calendarId,
-    };
-}
-
-// ============================================
 // HYDRATION ATOM (Lazy Load)
 // ============================================
 
 /**
- * Hydrate calendar data from SQLite
+ * Hydrate calendar data from SurrealDB
  * Called when CalendarProvider mounts
  */
 export const hydrateCalendarAtom = atom(
@@ -255,25 +179,23 @@ export const hydrateCalendarAtom = atom(
         set(_isLoadingAtom, true);
 
         try {
-            const allNodes = await dbClient.getAllNodes();
-
-            // Filter by type
-            const calendarNodes = allNodes.filter(n => n.type === 'CALENDAR');
-            const eventNodes = allNodes.filter(n => n.type === 'CALENDAR_EVENT');
-            const periodNodes = allNodes.filter(n => n.type === 'CALENDAR_PERIOD');
-
-            // Transform and set
-            if (calendarNodes.length > 0) {
-                set(_calendarAtom, transformNodeToCalendar(calendarNodes[0]));
+            if (!isTauri()) {
+                console.log('[Calendar] Not in Tauri mode, using empty data');
+                set(_isHydratedAtom, true);
+                return;
             }
-            set(_eventsAtom, eventNodes.map(transformNodeToEvent));
-            set(_periodsAtom, periodNodes.map(transformNodeToPeriod));
+
+            const { events, periods } = await calendarAPI.loadCalendarData();
+
+            set(_eventsAtom, events);
+            set(_periodsAtom, periods);
             set(_isHydratedAtom, true);
 
-            console.log(`[Calendar] Hydrated: ${calendarNodes.length} calendars, ${eventNodes.length} events, ${periodNodes.length} periods`);
+            console.log(`[Calendar] Hydrated: ${events.length} events, ${periods.length} periods`);
         } catch (error) {
             console.error('[Calendar] Hydration failed:', error);
-            throw error;
+            // Don't throw - calendar is optional
+            set(_isHydratedAtom, true);
         } finally {
             set(_isLoadingAtom, false);
         }
@@ -286,6 +208,8 @@ export const hydrateCalendarAtom = atom(
 
 /**
  * Create or update calendar definition
+ * Note: Calendar definitions are stored in memory for now
+ * TODO: Persist to SurrealDB when needed
  */
 export const saveCalendarAtom = atom(
     null,
@@ -295,27 +219,8 @@ export const saveCalendarAtom = atom(
         // Optimistic update
         set(_calendarAtom, calendar);
 
-        try {
-            const nodeInput = transformCalendarToNode(calendar);
-
-            if (previous?.id === calendar.id) {
-                // Update existing
-                await dbClient.updateNode(calendar.id, {
-                    label: calendar.name,
-                    content: nodeInput.content,
-                });
-            } else {
-                // Insert new
-                await dbClient.insertNode(nodeInput);
-            }
-
-            console.log(`[Calendar] Saved calendar: ${calendar.name}`);
-        } catch (error) {
-            // Rollback
-            set(_calendarAtom, previous);
-            console.error('[Calendar] Failed to save calendar:', error);
-            throw error;
-        }
+        console.log(`[Calendar] Saved calendar: ${calendar.name} (in-memory)`);
+        // TODO: Persist to SurrealDB if needed
     }
 );
 
@@ -340,7 +245,17 @@ export const createEventAtom = atom(
         set(_eventsAtom, [...currentEvents, newEvent]);
 
         try {
-            await dbClient.insertNode(transformEventToNode(newEvent));
+            if (isTauri()) {
+                const created = await calendarAPI.createEvent(event);
+                // Update with server-assigned ID if different
+                if (created.id !== newEvent.id) {
+                    set(_eventsAtom, get(_eventsAtom).map(e =>
+                        e.id === newEvent.id ? { ...e, id: created.id } : e
+                    ));
+                    console.log(`[Calendar] Created event: ${created.title} (server ID: ${created.id})`);
+                    return { ...newEvent, id: created.id };
+                }
+            }
             console.log(`[Calendar] Created event: ${newEvent.title}`);
             return newEvent;
         } catch (error) {
@@ -373,11 +288,9 @@ export const updateEventAtom = atom(
         set(_eventsAtom, currentEvents.map(e => e.id === id ? updatedEvent : e));
 
         try {
-            const nodeInput = transformEventToNode(updatedEvent);
-            await dbClient.updateNode(id, {
-                label: nodeInput.label,
-                content: nodeInput.content,
-            });
+            if (isTauri()) {
+                await calendarAPI.updateEvent(id, updates);
+            }
             console.log(`[Calendar] Updated event: ${updatedEvent.title}`);
         } catch (error) {
             // Rollback
@@ -400,7 +313,9 @@ export const deleteEventAtom = atom(
         set(_eventsAtom, currentEvents.filter(e => e.id !== eventId));
 
         try {
-            await dbClient.deleteNode(eventId);
+            if (isTauri()) {
+                await calendarAPI.deleteEvent(eventId);
+            }
             console.log(`[Calendar] Deleted event: ${eventId}`);
         } catch (error) {
             // Rollback
@@ -432,7 +347,17 @@ export const createPeriodAtom = atom(
         set(_periodsAtom, [...currentPeriods, newPeriod]);
 
         try {
-            await dbClient.insertNode(transformPeriodToNode(newPeriod));
+            if (isTauri()) {
+                const created = await calendarAPI.createPeriod(period);
+                // Update with server-assigned ID if different
+                if (created.id !== newPeriod.id) {
+                    set(_periodsAtom, get(_periodsAtom).map(p =>
+                        p.id === newPeriod.id ? { ...p, id: created.id } : p
+                    ));
+                    console.log(`[Calendar] Created period: ${created.name} (server ID: ${created.id})`);
+                    return { ...newPeriod, id: created.id };
+                }
+            }
             console.log(`[Calendar] Created period: ${newPeriod.name}`);
             return newPeriod;
         } catch (error) {
@@ -465,11 +390,9 @@ export const updatePeriodAtom = atom(
         set(_periodsAtom, currentPeriods.map(p => p.id === id ? updatedPeriod : p));
 
         try {
-            const nodeInput = transformPeriodToNode(updatedPeriod);
-            await dbClient.updateNode(id, {
-                label: nodeInput.label,
-                content: nodeInput.content,
-            });
+            if (isTauri()) {
+                await calendarAPI.updatePeriod(id, updates);
+            }
             console.log(`[Calendar] Updated period: ${updatedPeriod.name}`);
         } catch (error) {
             // Rollback
@@ -497,7 +420,9 @@ export const deletePeriodAtom = atom(
         ));
 
         try {
-            await dbClient.deleteNode(periodId);
+            if (isTauri()) {
+                await calendarAPI.deletePeriod(periodId);
+            }
             console.log(`[Calendar] Deleted period: ${periodId}`);
         } catch (error) {
             // Rollback

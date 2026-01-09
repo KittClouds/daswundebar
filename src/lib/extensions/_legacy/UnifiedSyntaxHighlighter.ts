@@ -8,7 +8,7 @@ import type { NEREntity } from '../extraction';
 import { smartGraphRegistry } from '@/lib/tauri';
 import { patternRegistry, type PatternDefinition, type RefKind } from '../refs';
 import { mentionEventQueue } from '@/lib/scanner/mention-event-queue';
-import type { EntityMentionEvent, PositionType } from '../cozo/types';
+import type { EntityMentionEvent, PositionType } from '@/lib/cozo-stubs/types';
 import { getOrBuildText } from '@/lib/highlighter/positionMapCache'; // M3: Shared cache
 
 // Legacy scanner-v3 stubs (Rust scanner handles this now)

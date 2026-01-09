@@ -17,9 +17,8 @@ import { BlueprintHubProvider } from "@/features/blueprint-hub/context/Blueprint
 import { BlueprintHubPanel } from "@/features/blueprint-hub/components/BlueprintHubPanel";
 import { NERProvider } from "@/contexts/NERContext";
 import { EntityThemeProvider } from "@/contexts/EntityThemeContext";
-import { initializeSQLiteAndHydrate } from "@/lib/db";
-import { initCozoGraphSchema } from '@/lib/cozo/schema/init';
-import { bindingEngine } from '@/lib/bindings';
+// REMOVED: SQLite hydration - entities now come from Rust CozoDB
+import { bindingEngineAdapter } from '@/lib/bindings';
 import { EntitySelectionProvider } from '@/contexts/EntitySelectionContext';
 
 const queryClient = new QueryClient();
@@ -43,6 +42,8 @@ const App = () => {
                 if (pipeline === 'tauri' && isTauri()) {
                     await tauriOrchestrator.init();
                     console.log("Tauri orchestrator ready");
+                    // SurrealDB is initialized by Tauri backend (connection.rs)
+                    // No need to call surreal.init() here - it would cause lock conflicts on HMR
                 } else {
                     // WASM fallback: Initialize just the highlighter
                     const { initializeHighlighter } = await import("@/lib/scanner");
@@ -50,21 +51,9 @@ const App = () => {
                     console.log("WASM highlighter ready");
                 }
 
-                // Initialize Unified Registry (CozoDB)
-                setInitStatus("Initializing knowledge graph...");
-                const { entityRegistry, relationshipRegistry } = await import("@/lib/cozo/graph/adapters");
-                await entityRegistry.init();
-                await relationshipRegistry.init();
-
-                // Initialize Layer 2 Schemas (required for EntityStoreImpl / BlueprintHub)
-                await initCozoGraphSchema();
-
-                console.log("Unified Registry and Layer 2 Schemas initialized");
-
-                // Initialize Legacy SQLite (if needed for other components)
-                setInitStatus("Initializing legacy storage...");
-                const { nodesLoaded, embeddingsLoaded } = await initializeSQLiteAndHydrate();
-                console.log(`SQLite initialized: ${nodesLoaded} nodes, ${embeddingsLoaded} embeddings`);
+                // REMOVED: Browser CozoDB registry init - entities come from SmartGraphRegistry
+                // The Tauri orchestrator already loads 18 entities from Rust CozoDB
+                console.log("Knowledge graph ready (via Rust CozoDB + SmartGraphRegistry)");
 
                 setInitStatus("Initializing storage service...");
                 await initializeStorage();
@@ -105,10 +94,10 @@ const App = () => {
                     }
                 }
 
-                // Initialize Binding Engine
+                // Initialize Binding Engine (SurrealDB via Tauri)
                 setInitStatus("Initializing binding engine...");
-                await bindingEngine.initialize();
-                console.log("Binding engine initialized");
+                await bindingEngineAdapter.initialize();
+                console.log("Binding engine initialized (SurrealDB)");
 
                 setStorageReady(true);
             } catch (e) {

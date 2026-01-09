@@ -33,7 +33,7 @@ import {
 import { EntityKind, ENTITY_KINDS, ENTITY_COLORS } from '@/lib/types/entityTypes';
 import type { NEREntity } from '@/lib/extraction';
 import type { HighlightMode } from '@/atoms/highlightingAtoms';
-import type { EntityMentionEvent, PositionType } from '@/lib/cozo/types';
+import type { EntityMentionEvent, PositionType } from '@/lib/cozo-stubs/types';
 
 // Pattern registry (shared with KittHighlighter)
 import { patternRegistry, type PatternDefinition, type RefKind } from '@/lib/refs';

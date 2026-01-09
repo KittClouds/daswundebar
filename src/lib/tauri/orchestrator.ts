@@ -12,6 +12,7 @@
 
 import { tauriScanner, isTauri, version } from './bridge';
 import { smartGraphRegistry, type RegisteredEntity } from './smart-graph-registry';
+import { initSurrealDb } from './surreal-bridge';
 import type { EntityDefinition } from './bridge';
 
 // =============================================================================
@@ -46,6 +47,7 @@ export class TauriOrchestrator {
     private lastError: string | null = null;
     private initPromise: Promise<void> | null = null;
     private readyCallbacks: Array<() => void> = [];
+    private _surrealReady = false;
 
     /**
      * Full initialization - connects, loads entities, hydrates scanner
@@ -76,6 +78,18 @@ export class TauriOrchestrator {
             this.backendVersion = await version();
             this.state = TauriState.Connected;
             console.log(`[TauriOrchestrator] Connected: ${this.backendVersion}`);
+
+            // Phase 1.5: Initialize SurrealDB (required before notes/calendar atoms)
+            console.log('[TauriOrchestrator] Initializing SurrealDB...');
+            try {
+                await initSurrealDb();
+                this._surrealReady = true;
+                console.log('[TauriOrchestrator] SurrealDB ready');
+            } catch (surrealError) {
+                // Graceful degradation - SurrealDB failure doesn't block the app
+                console.error('[TauriOrchestrator] SurrealDB init failed (app will continue with limited functionality):', surrealError);
+                this._surrealReady = false;
+            }
 
             // Phase 2: Load entities from GraphRegistry
             this.state = TauriState.LoadingEntities;
@@ -114,6 +128,13 @@ export class TauriOrchestrator {
      */
     isReady(): boolean {
         return this.state === TauriState.Ready;
+    }
+
+    /**
+     * Check if SurrealDB is ready for notes/calendar operations
+     */
+    isSurrealReady(): boolean {
+        return this._surrealReady;
     }
 
     /**

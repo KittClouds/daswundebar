@@ -8,8 +8,9 @@
  * - getCalendarDictionary(calendarId) -> for scanner hydration
  */
 
-import { cozoDb } from '@/lib/cozo/db';
-import { TIME_UNIT_QUERIES, TimeUnitType } from '@/lib/cozo/schema/layer2-time-registry';
+import { cozoDb } from '@/lib/cozo-stubs/db';
+import { TIME_UNIT_QUERIES } from '@/lib/cozo-stubs/schema';
+import type { TimeUnitType } from '@/lib/cozo-stubs/schema';
 
 export interface MonthInfo {
     id: string;

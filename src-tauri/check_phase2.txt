@@ -1,0 +1,4086 @@
+﻿cargo :     Checking varant 
+v0.1.0 (C:\Users\shuga\1kitt
+root\1code\daswundebar\src-t
+auri)
+At line:1 char:1
++ cargo check 2>&1 | 
+Out-File -FilePath 
+"check_phase2.txt" 
+-Encoding ut ...
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (    C  
+  hecking va...ebar\src-t   
+ auri):String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+warning: unused import: 
+`std::collections::HashMap`
+  --> src\temporal.rs:18:5
+   |
+18 | use 
+std::collections::HashMap;
+   |     
+^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: 
+`#[warn(unused_imports)]` 
+(part of `#[warn(unused)]`) 
+on by default
+
+warning: unused import: 
+`TextRange`
+  --> src\attacher.rs:25:40
+   |
+25 | use 
+super::chunker::{Chunk, 
+ChunkKind, TextRange};
+   |                        
+                ^^^^^^^^^
+
+warning: unused imports: 
+`ProjectionStats`, 
+`project_all`, 
+`project_attributions`, 
+`project_quads`, and 
+`project_state_changes`
+  --> 
+src\reality\engine.rs:16:22
+   |
+16 |     project_triples, 
+project_quads, 
+project_attributions, 
+project_state_changes,
+   |                      
+^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^^
+17 |     project_all, 
+project_all_with_stats,
+   |     ^^^^^^^^^^^
+18 |     Triple, QuadPlus, 
+Attribution, StateChange, 
+Projection, ProjectionStats,
+   |                        
+                            
+         ^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+  --> 
+src\reality\engine.rs:20:60
+   |
+20 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+   |                        
+                            
+        ^^^^^^^^
+
+warning: unused import: 
+`ConceptEdge`
+  --> 
+src\reality\global.rs:11:47
+   |
+11 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge};
+   |                        
+                       
+^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge` and 
+`ConceptNode`
+ --> src\reality\algorithms.
+rs:9:34
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge};
+  |                         
+         ^^^^^^^^^^^  
+^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+ --> 
+src\reality\temporal.rs:9:60
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+  |                         
+                            
+       ^^^^^^^^
+
+warning: unused imports: 
+`RealityLanguage` and 
+`SyntaxKind`
+  --> 
+src\reality\mod.rs:21:18
+   |
+21 | pub use 
+syntax::{SyntaxKind, 
+RealityLanguage};
+   |                  
+^^^^^^^^^^  ^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge`, 
+`ConceptGraph`, 
+`ConceptNode`, and 
+`EdgeKind`
+  --> 
+src\reality\mod.rs:22:17
+   |
+22 | pub use 
+graph::{ConceptGraph, 
+ConceptNode, ConceptEdge, 
+EdgeKind};
+   |                 
+^^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^
+
+warning: unused import: 
+`synapse::SynapseBridge`
+  --> 
+src\reality\mod.rs:23:9
+   |
+23 | pub use 
+synapse::SynapseBridge;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`engine::RealityEngine`
+  --> 
+src\reality\mod.rs:24:9
+   |
+24 | pub use 
+engine::RealityEngine;
+   |         
+^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Attribution`, 
+`Projection`, `QuadPlus`, 
+`StateChange`, and `Triple`
+  --> 
+src\reality\mod.rs:25:22
+   |
+25 | pub use 
+projection::{Triple, 
+QuadPlus, Attribution, 
+StateChange, Projection};
+   |                      
+^^^^^^  ^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^
+
+warning: unused import: 
+`global::GlobalGraph`
+  --> 
+src\reality\mod.rs:26:9
+   |
+26 | pub use 
+global::GlobalGraph;
+   |         
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`unification::EntityUnifier`
+  --> 
+src\reality\mod.rs:27:9
+   |
+27 | pub use 
+unification::EntityUnifier;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`NamedRows`
+ --> 
+src\graph\registry.rs:6:35
+  |
+6 | use cozo::{DbInstance, 
+DataValue, NamedRows};
+  |                         
+          ^^^^^^^^^
+
+warning: unused import: 
+`schema::*`
+  --> src\graph\mod.rs:23:9
+   |
+23 | pub use schema::*;
+   |         ^^^^^^^^^
+
+warning: unused import: 
+`queries::*`
+  --> src\graph\mod.rs:26:9
+   |
+26 | pub use queries::*;
+   |         ^^^^^^^^^^
+
+warning: unused import: 
+`algorithms::*`
+  --> src\graph\mod.rs:27:9
+   |
+27 | pub use algorithms::*;
+   |         ^^^^^^^^^^^^^
+
+warning: unused import: 
+`commands::*`
+  --> src\rag\mod.rs:15:9
+   |
+15 | pub use commands::*;
+   |         ^^^^^^^^^^^
+
+warning: unused import: `emb
+eddings::EmbeddingService`
+  --> src\rag\mod.rs:16:9
+   |
+16 | pub use embeddings::Emb
+eddingService;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`chunker::RagChunker`
+  --> src\rag\mod.rs:17:9
+   |
+17 | pub use 
+chunker::RagChunker;
+   |         
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`CorpusSize`, 
+`FieldParams`, and 
+`ResoRankConfig`
+  --> 
+src\resorank\mod.rs:21:18
+   |
+21 | pub use 
+config::{ResoRankConfig, 
+CorpusStatistics, 
+FieldParams, CorpusSize};
+   |                  
+^^^^^^^^^^^^^^              
+      ^^^^^^^^^^^  
+^^^^^^^^^^
+
+warning: unused import: `pro
+ximity::ProximityStrategy`
+  --> 
+src\resorank\mod.rs:22:9
+   |
+22 | pub use proximity::Prox
+imityStrategy;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`ScorerStats`
+  --> 
+src\resorank\mod.rs:23:34
+   |
+23 | pub use 
+scorer::{ResoRankScorer, 
+ScorerStats};
+   |                        
+          ^^^^^^^^^^^
+
+warning: unused imports: 
+`FieldContribution`, 
+`FieldOccurrence`, 
+`ScoreExplanation`, and 
+`TermBreakdown`
+  --> 
+src\resorank\mod.rs:25:38
+   |
+25 |     DocumentMetadata, 
+TokenMetadata, 
+FieldOccurrence,
+   |                        
+              
+^^^^^^^^^^^^^^^
+26 |     SearchResult, 
+ScoreExplanation, 
+TermBreakdown, 
+FieldContribution,
+   |                   
+^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`error::SurrealError`
+  --> 
+src\surreal\mod.rs:16:9
+   |
+16 | pub use 
+error::SurrealError;
+   |         
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`types::*`
+  --> 
+src\surreal\mod.rs:17:9
+   |
+17 | pub use types::*;
+   |         ^^^^^^^^
+
+warning: value assigned to 
+`head_idx` is never read
+   --> src\chunker.rs:464:28
+    |
+464 |         let mut 
+head_idx = None;
+    |                       
+     ^^^^
+    |
+    = help: maybe it is 
+overwritten before being 
+read?
+    = note: `#[warn(unused_a
+ssignments)]` (part of 
+`#[warn(unused)]`) on by 
+default
+
+warning: unused variable: 
+`query`
+   --> 
+src\graph\queries.rs:392:13
+    |
+392 |         let query = 
+r#"
+    |             ^^^^^ 
+help: if this is 
+intentional, prefix it with 
+an underscore: `_query`
+    |
+    = note: 
+`#[warn(unused_variables)]` 
+(part of `#[warn(unused)]`) 
+on by default
+
+warning: variable does not 
+need to be mutable
+   --> 
+src\rag\chunker.rs:110:62
+    |
+110 |     fn 
+find_break_point(&self, 
+chars: &[char], start: 
+usize, mut end: usize) -> 
+usize {
+    |                       
+                            
+           ----^^^
+    |                       
+                            
+           |
+    |                       
+                            
+           help: remove 
+this `mut`
+    |
+    = note: 
+`#[warn(unused_mut)]` (part 
+of `#[warn(unused)]`) on by 
+default
+
+warning: methods 
+`add_entity` and `clear` 
+are never used
+   --> 
+src\implicit.rs:343:12
+    |
+196 | impl ImplicitCortex {
+    | ------------------- 
+methods in this 
+implementation
+...
+343 |     pub fn 
+add_entity(&mut self, 
+entity: EntityDefinition) {
+    |            ^^^^^^^^^^
+...
+390 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+    |
+    = note: 
+`#[warn(dead_code)]` (part 
+of `#[warn(unused)]`) on by 
+default
+
+warning: methods 
+`hydrate_calendar` and 
+`is_ready` are never used
+   --> 
+src\temporal.rs:363:12
+    |
+267 | impl TemporalCortex {
+    | ------------------- 
+methods in this 
+implementation
+...
+363 |     pub fn 
+hydrate_calendar(
+    |            
+^^^^^^^^^^^^^^^^
+...
+407 |     pub fn 
+is_ready(&self) -> bool {
+    |            ^^^^^^^^
+
+warning: variant 
+`DoubleConsonant` is never 
+constructed
+  --> 
+src\verb_morphology.rs:25:5
+   |
+19 | pub enum VerbPattern {
+   |          ----------- 
+variant in this enum
+...
+25 |     DoubleConsonant,
+   |     ^^^^^^^^^^^^^^^
+   |
+   = note: `VerbPattern` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: variants 
+`Ambitransitive` and 
+`Ditransitive` are never 
+constructed
+  --> 
+src\verb_morphology.rs:61:5
+   |
+55 | pub enum Transitivity {
+   |          ------------ 
+variants in this enum
+...
+61 |     Ambitransitive,
+   |     ^^^^^^^^^^^^^^
+62 |     /// Takes two 
+objects: "X gave Y to Z"
+63 |     Ditransitive,
+   |     ^^^^^^^^^^^^
+   |
+   = note: `Transitivity` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: associated 
+function `double_consonant` 
+is never used
+  --> 
+src\verb_morphology.rs:97:18
+   |
+76 | impl VerbEntry {
+   | -------------- 
+associated function in this 
+implementation
+...
+97 |     pub const fn 
+double_consonant(base: 
+&'static str, relation: 
+&'static str, domain: 
+VerbDomain) -> Self {
+   |                  
+^^^^^^^^^^^^^^^^
+
+warning: methods 
+`get_domain`, 
+`get_transitivity`, and 
+`form_count` are never used
+   --> src\verb_morphology.r
+s:501:12
+    |
+452 | impl VerbLexicon {
+    | ---------------- 
+methods in this 
+implementation
+...
+501 |     pub fn 
+get_domain(&self, word: 
+&str) -> Option<VerbDomain> 
+{
+    |            ^^^^^^^^^^
+...
+506 |     pub fn 
+get_transitivity(&self, 
+word: &str) -> 
+Option<Transitivity> {
+    |            
+^^^^^^^^^^^^^^^^
+...
+511 |     pub fn 
+form_count(&self) -> usize {
+    |            ^^^^^^^^^^
+
+warning: method `as_str` is 
+never used
+  --> src\chunker.rs:41:12
+   |
+40 | impl ChunkKind {
+   | -------------- method 
+in this implementation
+41 |     pub fn 
+as_str(&self) -> &'static 
+str {
+   |            ^^^^^^
+
+warning: methods `len`, 
+`is_empty`, `contains`, and 
+`overlaps` are never used
+  --> src\chunker.rs:69:12
+   |
+59 | impl TextRange {
+   | -------------- methods 
+in this implementation
+...
+69 |     pub fn len(&self) 
+-> usize {
+   |            ^^^
+...
+73 |     pub fn 
+is_empty(&self) -> bool {
+   |            ^^^^^^^^
+...
+83 |     pub fn 
+contains(&self, other: 
+&TextRange) -> bool {
+   |            ^^^^^^^^
+...
+88 |     pub fn 
+overlaps(&self, other: 
+&TextRange) -> bool {
+   |            ^^^^^^^^
+
+warning: method `head_text` 
+is never used
+   --> src\chunker.rs:128:12
+    |
+112 | impl Chunk {
+    | ---------- method in 
+this implementation
+...
+128 |     pub fn 
+head_text<'a>(&self, 
+source: &'a str) -> &'a str 
+{
+    |            ^^^^^^^^^
+
+warning: methods 
+`is_verbal` and 
+`is_modifier` are never used
+   --> src\chunker.rs:173:12
+    |
+168 | impl POS {
+    | -------- methods in 
+this implementation
+...
+173 |     pub fn 
+is_verbal(&self) -> bool {
+    |            ^^^^^^^^^
+...
+177 |     pub fn 
+is_modifier(&self) -> bool {
+    |            ^^^^^^^^^^^
+
+warning: struct 
+`ChunkStats` is never 
+constructed
+   --> src\chunker.rs:211:12
+    |
+211 | pub struct ChunkStats 
+{
+    |            ^^^^^^^^^^
+
+warning: associated 
+function `from_chunks` is 
+never used
+   --> src\chunker.rs:221:12
+    |
+220 | impl ChunkStats {
+    | --------------- 
+associated function in this 
+implementation
+221 |     pub fn 
+from_chunks(chunks: 
+&[Chunk], token_count: 
+usize) -> Self {
+    |            ^^^^^^^^^^^
+
+warning: method `get_stats` 
+is never used
+   --> src\chunker.rs:295:12
+    |
+263 | impl Chunker {
+    | ------------ method 
+in this implementation
+...
+295 |     pub fn 
+get_stats(&self, text: 
+&str) -> ChunkStats {
+    |            ^^^^^^^^^
+
+warning: struct 
+`ExtractedRelation` is 
+never constructed
+  --> src\relation.rs:28:12
+   |
+28 | pub struct 
+ExtractedRelation {
+   |            
+^^^^^^^^^^^^^^^^^
+
+warning: method 
+`to_extracted` is never used
+  --> src\relation.rs:95:12
+   |
+93 | impl UnifiedRelation {
+   | -------------------- 
+method in this 
+implementation
+94 |     /// Convert to 
+backward-compatible 
+ExtractedRelation
+95 |     pub fn 
+to_extracted(&self) -> 
+ExtractedRelation {
+   |            ^^^^^^^^^^^^
+
+warning: type alias 
+`RelationCortex` is never 
+used
+   --> 
+src\relation.rs:126:10
+    |
+126 | pub type 
+RelationCortex = 
+RelationEngine;
+    |          
+^^^^^^^^^^^^^^
+
+warning: methods 
+`set_cst_threshold`, 
+`set_inference_enabled`, 
+`build`, and 
+`pattern_count` are never 
+used
+   --> 
+src\relation.rs:154:12
+    |
+144 | impl RelationEngine {
+    | ------------------- 
+methods in this 
+implementation
+...
+154 |     pub fn 
+set_cst_threshold(&mut 
+self, threshold: f32) {
+    |            
+^^^^^^^^^^^^^^^^^
+...
+159 |     pub fn 
+set_inference_enabled(&mut 
+self, enabled: bool) {
+    |            
+^^^^^^^^^^^^^^^^^^^^^
+...
+164 |     pub fn build(&mut 
+self) -> Result<(), String> 
+{
+    |            ^^^^^
+...
+169 |     pub fn 
+pattern_count(&self) -> 
+usize {
+    |            
+^^^^^^^^^^^^^
+
+warning: function 
+`normalize_verb` is never 
+used
+   --> src\relation.rs:473:8
+    |
+473 | pub fn 
+normalize_verb(verb: &str) 
+-> String {
+    |        ^^^^^^^^^^^^^^
+
+warning: function 
+`find_entity_in_span` is 
+never used
+   --> src\relation.rs:484:8
+    |
+484 | pub fn 
+find_entity_in_span<'a>(
+    |        
+^^^^^^^^^^^^^^^^^^^
+
+warning: field 
+`max_distance` is never read
+   --> src\structured_relati
+on.rs:153:5
+    |
+145 | pub struct 
+StructuredRelationExtractor 
+{
+    |            
+--------------------------- 
+field in this struct
+...
+153 |     max_distance: 
+usize,
+    |     ^^^^^^^^^^^^
+
+warning: method 
+`set_max_distance` is never 
+used
+   --> src\structured_relati
+on.rs:496:12
+    |
+162 | impl 
+StructuredRelationExtractor 
+{
+    | ----------------------
+---------- method in this 
+implementation
+...
+496 |     pub fn 
+set_max_distance(&mut self, 
+distance: usize) {
+    |            
+^^^^^^^^^^^^^^^^
+
+warning: method `is_empty` 
+is never used
+  --> 
+src\incremental.rs:68:12
+   |
+52 | impl Chunk {
+   | ---------- method in 
+this implementation
+...
+68 |     pub fn 
+is_empty(&self) -> bool {
+   |            ^^^^^^^^
+
+warning: enum `Kind` is 
+never used
+  --> 
+src\relation_schema.rs:22:10
+   |
+22 | pub enum Kind {
+   |          ^^^^
+
+warning: struct `KindSet` 
+is never constructed
+  --> 
+src\relation_schema.rs:39:12
+   |
+39 | pub struct 
+KindSet(u16);
+   |            ^^^^^^^
+
+warning: associated items 
+`new`, `with`, `contains`, 
+and `contains_str` are 
+never used
+  --> 
+src\relation_schema.rs:42:18
+   |
+41 | impl KindSet {
+   | ------------ 
+associated items in this 
+implementation
+42 |     pub const fn new() 
+-> Self {
+   |                  ^^^
+...
+46 |     pub const fn 
+with(self, kind: Kind) -> 
+Self {
+   |                  ^^^^
+...
+50 |     pub const fn 
+contains(&self, kind: Kind) 
+-> bool {
+   |                  
+^^^^^^^^
+...
+54 |     pub fn 
+contains_str(&self, 
+kind_str: &str) -> bool {
+   |            ^^^^^^^^^^^^
+
+warning: enum `Relation` is 
+never used
+  --> 
+src\relation_schema.rs:92:10
+   |
+92 | pub enum Relation {
+   |          ^^^^^^^^
+
+warning: associated items 
+`as_str` and `from_str` are 
+never used
+   --> src\relation_schema.r
+s:229:12
+    |
+227 | impl Relation {
+    | ------------- 
+associated items in this 
+implementation
+228 |     /// Convert 
+relation enum to canonical 
+string form
+229 |     pub fn 
+as_str(&self) -> &'static 
+str {
+    |            ^^^^^^
+...
+367 |     pub fn 
+from_str(s: &str) -> 
+Option<Self> {
+    |            ^^^^^^^^
+
+warning: enum `Role` is 
+never used
+   --> src\relation_schema.r
+s:503:10
+    |
+503 | pub enum Role {
+    |          ^^^^
+
+warning: struct `SlotSpec` 
+is never constructed
+   --> src\relation_schema.r
+s:515:12
+    |
+515 | pub struct SlotSpec {
+    |            ^^^^^^^^
+
+warning: associated 
+functions `new` and 
+`optional` are never used
+   --> src\relation_schema.r
+s:522:18
+    |
+521 | impl SlotSpec {
+    | ------------- 
+associated functions in 
+this implementation
+522 |     pub const fn 
+new(role: Role, kinds: 
+KindSet) -> Self {
+    |                  ^^^
+...
+526 |     pub const fn 
+optional(role: Role, kinds: 
+KindSet) -> Self {
+    |                  
+^^^^^^^^
+
+warning: struct 
+`RelationSchema` is never 
+constructed
+   --> src\relation_schema.r
+s:537:12
+    |
+537 | pub struct 
+RelationSchema {
+    |            
+^^^^^^^^^^^^^^
+
+warning: methods `arity`, 
+`is_binary`, and `is_unary` 
+are never used
+   --> src\relation_schema.r
+s:546:12
+    |
+545 | impl RelationSchema {
+    | ------------------- 
+methods in this 
+implementation
+546 |     pub fn 
+arity(&self) -> usize {
+    |            ^^^^^
+...
+550 |     pub fn 
+is_binary(&self) -> bool {
+    |            ^^^^^^^^^
+...
+554 |     pub fn 
+is_unary(&self) -> bool {
+    |            ^^^^^^^^
+
+warning: struct 
+`SchemaRegistry` is never 
+constructed
+   --> src\relation_schema.r
+s:565:12
+    |
+565 | pub struct 
+SchemaRegistry {
+    |            
+^^^^^^^^^^^^^^
+
+warning: associated items 
+`new`, `get`, `get_by_str`, 
+`get_inverse`, 
+`get_transitivity`, and 
+`is_symmetric` are never 
+used
+   --> src\relation_schema.r
+s:571:12
+    |
+570 | impl SchemaRegistry {
+    | ------------------- 
+associated items in this 
+implementation
+571 |     pub fn 
+new(schemas: &'static 
+[RelationSchema]) -> Self {
+    |            ^^^
+...
+583 |     pub fn get(&self, 
+rel: Relation) -> 
+Option<&'static 
+RelationSchema> {
+    |            ^^^
+...
+587 |     pub fn 
+get_by_str(&self, rel_str: 
+&str) -> Option<&'static 
+RelationSchema> {
+    |            ^^^^^^^^^^
+...
+591 |     pub fn 
+get_inverse(&self, rel: 
+Relation) -> 
+Option<Relation> {
+    |            ^^^^^^^^^^^
+...
+595 |     pub fn 
+get_transitivity(&self, 
+rel: Relation) -> 
+Option<f32> {
+    |            
+^^^^^^^^^^^^^^^^
+...
+599 |     pub fn 
+is_symmetric(&self, rel: 
+Relation) -> bool {
+    |            
+^^^^^^^^^^^^
+
+warning: enum `SchemaError` 
+is never used
+   --> src\relation_schema.r
+s:610:10
+    |
+610 | pub enum SchemaError {
+    |          ^^^^^^^^^^^
+
+warning: function 
+`validate_schemas` is never 
+used
+   --> 
+src\relation_schema.rs:634:8
+    |
+634 | pub fn 
+validate_schemas(all: 
+&[RelationSchema]) -> 
+Result<(), SchemaError> {
+    |        
+^^^^^^^^^^^^^^^^
+
+warning: function `kinds` 
+is never used
+   --> src\relation_schema.r
+s:671:10
+    |
+671 | const fn kinds(k: 
+Kind) -> KindSet {
+    |          ^^^^^
+
+warning: function `kinds2` 
+is never used
+   --> src\relation_schema.r
+s:675:10
+    |
+675 | const fn kinds2(a: 
+Kind, b: Kind) -> KindSet {
+    |          ^^^^^^
+
+warning: function `kinds3` 
+is never used
+   --> src\relation_schema.r
+s:679:10
+    |
+679 | const fn kinds3(a: 
+Kind, b: Kind, c: Kind) -> 
+KindSet {
+    |          ^^^^^^
+
+warning: static 
+`RELATION_SCHEMAS` is never 
+used
+   --> src\relation_schema.r
+s:684:12
+    |
+684 | pub static 
+RELATION_SCHEMAS: 
+&[RelationSchema] = &[
+    |            
+^^^^^^^^^^^^^^^^
+
+warning: method `skip_rate` 
+is never used
+   --> src\document.rs:108:8
+    |
+ 81 | impl ChangeDetector {
+    | ------------------- 
+method in this 
+implementation
+...
+108 |     fn 
+skip_rate(&self) -> f64 {
+    |        ^^^^^^^^^
+
+warning: method `skip_rate` 
+is never used
+   --> 
+src\document.rs:173:12
+    |
+150 | impl DocumentCortex {
+    | ------------------- 
+method in this 
+implementation
+...
+173 |     pub fn 
+skip_rate(&self) -> f64 {
+    |            ^^^^^^^^^
+
+warning: method `is_ready` 
+is never used
+  --> src\conductor.rs:87:12
+   |
+54 | impl ScanConductor {
+   | ------------------ 
+method in this 
+implementation
+...
+87 |     pub fn 
+is_ready(&self) -> bool {
+   |            ^^^^^^^^
+
+warning: struct 
+`FilteredRelation` is never 
+constructed
+  --> 
+src\relation_filter.rs:22:12
+   |
+22 | pub struct 
+FilteredRelation {
+   |            
+^^^^^^^^^^^^^^^^
+
+warning: struct 
+`FilterConfig` is never 
+constructed
+  --> 
+src\relation_filter.rs:39:12
+   |
+39 | pub struct 
+FilterConfig {
+   |            ^^^^^^^^^^^^
+
+warning: struct 
+`FilterStats` is never 
+constructed
+  --> 
+src\relation_filter.rs:66:12
+   |
+66 | pub struct FilterStats 
+{
+   |            ^^^^^^^^^^^
+
+warning: struct 
+`RelationFilter` is never 
+constructed
+  --> 
+src\relation_filter.rs:80:12
+   |
+80 | pub struct 
+RelationFilter {
+   |            
+^^^^^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> 
+src\relation_filter.rs:92:12
+    |
+ 90 | impl RelationFilter {
+    | ------------------- 
+associated items in this 
+implementation
+ 91 |     /// Create a new 
+RelationFilter with default 
+config
+ 92 |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+ 99 |     pub fn 
+with_config(config: 
+FilterConfig) -> Self {
+    |            ^^^^^^^^^^^
+...
+104 |     pub fn 
+set_min_confidence(&mut 
+self, threshold: f64) {
+    |            
+^^^^^^^^^^^^^^^^^^
+...
+109 |     pub fn 
+set_distance_decay(&mut 
+self, enabled: bool) {
+    |            
+^^^^^^^^^^^^^^^^^^
+...
+114 |     pub fn set_same_se
+ntence_bonus(&mut self, 
+bonus: f64) {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^
+...
+119 |     pub fn set_cross_s
+entence_penalty(&mut self, 
+penalty: f64) {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+124 |     pub fn 
+set_max_distance(&mut self, 
+distance: usize) {
+    |            
+^^^^^^^^^^^^^^^^
+...
+129 |     pub fn 
+config(&self) -> 
+&FilterConfig {
+    |            ^^^^^^
+...
+134 |     pub fn filter(
+    |            ^^^^^^
+...
+231 |     pub fn 
+filter_kept(&self, text: 
+&str, relations: 
+Vec<ExtractedRelation>) -> 
+Vec<FilteredRelation> {
+    |            ^^^^^^^^^^^
+...
+237 |     fn 
+calculate_distance(&self, 
+relation: 
+&ExtractedRelation) -> 
+usize {
+    |        
+^^^^^^^^^^^^^^^^^^
+...
+248 |     fn 
+distance_factor(&self, 
+distance: usize) -> f64 {
+    |        ^^^^^^^^^^^^^^^
+...
+261 |     fn 
+same_sentence(&self, text: 
+&str, pos1: usize, pos2: 
+usize) -> bool {
+    |        ^^^^^^^^^^^^^
+
+warning: enum 
+`DependencyKind` is never 
+used
+  --> src\attacher.rs:33:10
+   |
+33 | pub enum 
+DependencyKind {
+   |          ^^^^^^^^^^^^^^
+
+warning: struct 
+`Dependency` is never 
+constructed
+  --> src\attacher.rs:53:12
+   |
+53 | pub struct Dependency {
+   |            ^^^^^^^^^^
+
+warning: associated 
+function `new` is never used
+  --> src\attacher.rs:65:12
+   |
+64 | impl Dependency {
+   | --------------- 
+associated function in this 
+implementation
+65 |     pub fn 
+new(head_idx: usize, 
+dep_idx: usize, kind: 
+DependencyKind, score: f64) 
+-> Self {
+   |            ^^^
+
+warning: struct 
+`DependencyGraph` is never 
+constructed
+  --> src\attacher.rs:77:12
+   |
+77 | pub struct 
+DependencyGraph {
+   |            
+^^^^^^^^^^^^^^^
+
+warning: struct `Attacher` 
+is never constructed
+  --> src\attacher.rs:88:12
+   |
+88 | pub struct Attacher {
+   |            ^^^^^^^^
+
+warning: associated items 
+`new`, `attach`, 
+`find_best_attachment`, 
+`score_attachment`, and 
+`determine_relation` are 
+never used
+   --> 
+src\attacher.rs:101:12
+    |
+100 | impl Attacher {
+    | ------------- 
+associated items in this 
+implementation
+101 |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+109 |     pub fn 
+attach(&self, chunks: 
+&[Chunk]) -> 
+DependencyGraph {
+    |            ^^^^^^
+...
+140 |     fn 
+find_best_attachment(
+    |        
+^^^^^^^^^^^^^^^^^^^^
+...
+170 |     fn 
+score_attachment(
+    |        
+^^^^^^^^^^^^^^^^
+...
+214 |     fn 
+determine_relation(
+    |        
+^^^^^^^^^^^^^^^^^^
+
+warning: field 
+`max_history` is never read
+  --> src\resolver.rs:69:5
+   |
+63 | pub struct 
+NarrativeContext {
+   |            
+---------------- field in 
+this struct
+...
+69 |     max_history: usize,
+   |     ^^^^^^^^^^^
+   |
+   = note: 
+`NarrativeContext` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: methods `register` 
+and `push_mention` are 
+never used
+   --> 
+src\resolver.rs:114:12
+    |
+ 79 | impl NarrativeContext 
+{
+    | --------------------- 
+methods in this 
+implementation
+...
+114 |     pub fn 
+register(&mut self, entity: 
+EntityMetadata) {
+    |            ^^^^^^^^
+...
+119 |     pub fn 
+push_mention(&mut self, 
+entity_id: &str) {
+    |            
+^^^^^^^^^^^^
+
+warning: methods 
+`observe_mention` and 
+`register_entity` are never 
+used
+   --> 
+src\resolver.rs:199:12
+    |
+170 | impl Resolver {
+    | ------------- methods 
+in this implementation
+...
+199 |     pub fn 
+observe_mention(&mut self, 
+entity_id: &str) {
+    |            
+^^^^^^^^^^^^^^^
+...
+204 |     pub fn 
+register_entity(
+    |            
+^^^^^^^^^^^^^^^
+
+warning: associated 
+function `attribute_simple` 
+is never used
+  --> src\dialogue.rs:79:12
+   |
+39 | impl 
+DialogueAttributor {
+   | 
+----------------------- 
+associated function in this 
+implementation
+...
+79 |     pub fn 
+attribute_simple(
+   |            
+^^^^^^^^^^^^^^^^
+
+warning: function 
+`get_predicate_rules` is 
+never used
+  --> 
+src\constraints.rs:17:4
+   |
+17 | fn get_predicate_rules(
+entity_kind: &str) -> 
+Option<&'static [&'static 
+str]> {
+   |    ^^^^^^^^^^^^^^^^^^^
+
+warning: struct 
+`ConstraintResult` is never 
+constructed
+  --> 
+src\constraints.rs:43:12
+   |
+43 | pub struct 
+ConstraintResult {
+   |            
+^^^^^^^^^^^^^^^^
+
+warning: struct `RefInput` 
+is never constructed
+  --> 
+src\constraints.rs:51:12
+   |
+51 | pub struct RefInput {
+   |            ^^^^^^^^
+
+warning: struct 
+`RefPosition` is never 
+constructed
+  --> 
+src\constraints.rs:67:12
+   |
+67 | pub struct RefPosition 
+{
+   |            ^^^^^^^^^^^
+
+warning: struct 
+`RefPayload` is never 
+constructed
+  --> 
+src\constraints.rs:76:12
+   |
+76 | pub struct RefPayload {
+   |            ^^^^^^^^^^
+
+warning: struct 
+`ConstraintEngine` is never 
+constructed
+  --> 
+src\constraints.rs:91:12
+   |
+91 | pub struct 
+ConstraintEngine;
+   |            
+^^^^^^^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> 
+src\constraints.rs:94:12
+    |
+ 93 | impl ConstraintEngine 
+{
+    | --------------------- 
+associated items in this 
+implementation
+ 94 |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+ 99 |     pub fn 
+validate(&self, ref_input: 
+&RefInput) -> 
+ConstraintResult {
+    |            ^^^^^^^^
+...
+131 |     fn 
+validate_entity(
+    |        ^^^^^^^^^^^^^^^
+...
+158 |     fn 
+validate_triple(
+    |        ^^^^^^^^^^^^^^^
+...
+195 |     pub fn 
+validate_predicate(&self, 
+entity_kind: &str, 
+predicate: &str) -> bool {
+    |            
+^^^^^^^^^^^^^^^^^^
+...
+203 |     pub fn get_allowed
+_predicates(&self, 
+entity_kind: &str) -> 
+Vec<String> {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^
+...
+210 |     pub fn 
+enforce_uniqueness(&self, 
+refs: Vec<RefInput>) -> 
+Vec<RefInput> {
+    |            
+^^^^^^^^^^^^^^^^^^
+...
+230 |     fn 
+get_unique_key(&self, 
+ref_input: &RefInput) -> 
+String {
+    |        ^^^^^^^^^^^^^^
+...
+279 |     pub fn 
+filter_by_scope(
+    |            
+^^^^^^^^^^^^^^^
+
+warning: struct 
+`NarrativeResult` is never 
+constructed
+  --> src\narrative.rs:36:12
+   |
+36 | pub struct 
+NarrativeResult {
+   |            
+^^^^^^^^^^^^^^^
+
+warning: struct 
+`NarrativeStats` is never 
+constructed
+  --> src\narrative.rs:49:12
+   |
+49 | pub struct 
+NarrativeStats {
+   |            
+^^^^^^^^^^^^^^
+
+warning: struct 
+`EntityInput` is never 
+constructed
+  --> src\narrative.rs:60:12
+   |
+60 | pub struct EntityInput 
+{
+   |            ^^^^^^^^^^^
+
+warning: method `to_gender` 
+is never used
+  --> src\narrative.rs:71:8
+   |
+70 | impl EntityInput {
+   | ---------------- 
+method in this 
+implementation
+71 |     fn 
+to_gender(&self) -> Gender {
+   |        ^^^^^^^^^
+
+warning: struct 
+`NarrativeGraph` is never 
+constructed
+  --> src\narrative.rs:90:12
+   |
+90 | pub struct 
+NarrativeGraph {
+   |            
+^^^^^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> 
+src\narrative.rs:106:12
+    |
+104 | impl NarrativeGraph {
+    | ------------------- 
+associated items in this 
+implementation
+105 |     /// Create a new 
+NarrativeGraph engine
+106 |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+116 |     pub fn 
+analyze(&self, text: &str) 
+-> NarrativeResult {
+    |            ^^^^^^^
+...
+148 |     pub fn 
+hydrate_entities(&mut self, 
+entities: Vec<EntityInput>) 
+{
+    |            
+^^^^^^^^^^^^^^^^
+...
+156 |     pub fn 
+hydrate_entity(&mut self, 
+id: &str, name: &str, 
+gender: Gender, aliases: 
+Vec<String>) {
+    |            
+^^^^^^^^^^^^^^
+...
+161 |     pub fn 
+resolve(&mut self, text: 
+&str) -> Option<String> {
+    |            ^^^^^^^
+...
+166 |     pub fn 
+observe_mention(&mut self, 
+entity_id: &str) {
+    |            
+^^^^^^^^^^^^^^^
+...
+171 |     pub fn 
+attribute_speaker(&mut 
+self, text: &str, 
+quote_pos: QuotePosition) 
+-> Option<EntityId> {
+    |            
+^^^^^^^^^^^^^^^^^
+
+warning: struct 
+`ChangeResult` is never 
+constructed
+  --> src\change.rs:16:12
+   |
+16 | pub struct 
+ChangeResult {
+   |            ^^^^^^^^^^^^
+
+warning: fields 
+`check_count` and 
+`skip_count` are never read
+  --> src\change.rs:34:5
+   |
+30 | pub struct 
+ChangeDetector {
+   |            
+-------------- fields in 
+this struct
+...
+34 |     check_count: u64,
+   |     ^^^^^^^^^^^
+35 |     /// Number of 
+skipped (unchanged) checks
+36 |     skip_count: u64,
+   |     ^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> src\change.rs:55:12
+    |
+ 45 | impl ChangeDetector {
+    | ------------------- 
+associated items in this 
+implementation
+...
+ 55 |     pub fn 
+skip_rate(&self) -> f64 {
+    |            ^^^^^^^^^
+...
+ 63 |     pub fn 
+check_count(&self) -> u64 {
+    |            ^^^^^^^^^^^
+...
+ 68 |     pub fn 
+skip_count(&self) -> u64 {
+    |            ^^^^^^^^^^
+...
+ 73 |     pub fn reset(&mut 
+self) {
+    |            ^^^^^
+...
+ 81 |     pub fn 
+has_changed(&mut self, 
+text: &str) -> bool {
+    |            ^^^^^^^^^^^
+...
+100 |     pub fn check(&mut 
+self, text: &str) -> 
+ChangeResult {
+    |            ^^^^^
+...
+125 |     fn 
+compute_hash(text: &str) -> 
+u64 {
+    |        ^^^^^^^^^^^^
+...
+132 |     pub fn 
+last_hash(&self) -> 
+Option<u64> {
+    |            ^^^^^^^^^
+
+warning: struct 
+`RealityLanguage` is never 
+constructed
+  --> 
+src\reality\syntax.rs:53:12
+   |
+53 | pub struct 
+RealityLanguage;
+   |            
+^^^^^^^^^^^^^^^
+
+warning: type alias 
+`SyntaxNode` is never used
+ --> src\reality\ast.rs:4:10
+  |
+4 | pub type SyntaxNode = ro
+wan::SyntaxNode<RealityLangu
+age>;
+  |          ^^^^^^^^^^
+
+warning: type alias 
+`SyntaxToken` is never used
+ --> src\reality\ast.rs:5:10
+  |
+5 | pub type SyntaxToken = r
+owan::SyntaxToken<RealityLan
+guage>;
+  |          ^^^^^^^^^^^
+
+warning: type alias 
+`SyntaxElement` is never 
+used
+ --> src\reality\ast.rs:6:10
+  |
+6 | pub type SyntaxElement 
+= rowan::SyntaxElement<Reali
+tyLanguage>;
+  |          ^^^^^^^^^^^^^
+
+warning: struct `Document` 
+is never constructed
+  --> 
+src\reality\ast.rs:33:14
+   |
+33 | reality_ast!(Document, 
+Document);
+   |              ^^^^^^^^
+   |
+   = note: this warning 
+originates in the macro 
+`reality_ast` (in Nightly 
+builds, run with -Z 
+macro-backtrace for more 
+info)
+
+warning: struct `Paragraph` 
+is never constructed
+  --> 
+src\reality\ast.rs:34:14
+   |
+34 | 
+reality_ast!(Paragraph, 
+Paragraph);
+   |              ^^^^^^^^^
+   |
+   = note: this warning 
+originates in the macro 
+`reality_ast` (in Nightly 
+builds, run with -Z 
+macro-backtrace for more 
+info)
+
+warning: struct 
+`EntitySpan` is never 
+constructed
+  --> 
+src\reality\ast.rs:35:14
+   |
+35 | 
+reality_ast!(EntitySpan, 
+EntitySpan);
+   |              ^^^^^^^^^^
+   |
+   = note: this warning 
+originates in the macro 
+`reality_ast` (in Nightly 
+builds, run with -Z 
+macro-backtrace for more 
+info)
+
+warning: trait 
+`SemanticSpan` is never used
+ --> 
+src\reality\parser.rs:9:11
+  |
+9 | pub trait SemanticSpan {
+  |           ^^^^^^^^^^^^
+
+warning: function 
+`detect_paragraphs` is 
+never used
+  --> 
+src\reality\parser.rs:21:8
+   |
+21 | pub fn 
+detect_paragraphs(text: 
+&str) -> Vec<(usize, 
+usize)> {
+   |        
+^^^^^^^^^^^^^^^^^
+
+warning: constant 
+`ABBREVIATIONS` is never 
+used
+   --> 
+src\reality\parser.rs:114:7
+    |
+114 | const ABBREVIATIONS: 
+&[&str] = &[
+    |       ^^^^^^^^^^^^^
+
+warning: function 
+`detect_sentences` is never 
+used
+   --> 
+src\reality\parser.rs:124:8
+    |
+124 | pub fn 
+detect_sentences(text: 
+&str) -> Vec<(usize, 
+usize)> {
+    |        
+^^^^^^^^^^^^^^^^
+
+warning: function 
+`is_abbreviation` is never 
+used
+   --> 
+src\reality\parser.rs:216:4
+    |
+216 | fn 
+is_abbreviation(text: &str, 
+period_offset: usize) -> 
+bool {
+    |    ^^^^^^^^^^^^^^^
+
+warning: function 
+`zip_reality` is never used
+   --> 
+src\reality\parser.rs:245:8
+    |
+245 | pub fn zip_reality<S: 
+SemanticSpan>(text: &str, 
+spans: &[S]) -> GreenNode {
+    |        ^^^^^^^^^^^
+
+warning: function 
+`zip_range` is never used
+   --> 
+src\reality\parser.rs:309:4
+    |
+309 | fn zip_range<S: 
+SemanticSpan>(
+    |    ^^^^^^^^^
+
+warning: function 
+`tokenize_range` is never 
+used
+   --> 
+src\reality\parser.rs:377:4
+    |
+377 | fn 
+tokenize_range(builder: 
+&mut GreenNodeBuilder, 
+text: &str) {
+    |    ^^^^^^^^^^^^^^
+
+warning: function 
+`is_punctuation_char` is 
+never used
+   --> 
+src\reality\parser.rs:391:4
+    |
+391 | fn 
+is_punctuation_char(c: 
+char) -> bool {
+    |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`is_contraction_apostrophe` 
+is never used
+   --> 
+src\reality\parser.rs:406:4
+    |
+406 | fn is_contraction_apos
+trophe(c: char) -> bool {
+    |    
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`lex_next_token` is never 
+used
+   --> 
+src\reality\parser.rs:410:4
+    |
+410 | fn 
+lex_next_token(text: &str) 
+-> (usize, SyntaxKind) {
+    |    ^^^^^^^^^^^^^^
+
+warning: enum `MixedSpan` 
+is never used
+   --> 
+src\reality\parser.rs:650:10
+    |
+650 | pub enum 
+MixedSpan<'a, S: 
+SemanticSpan> {
+    |          ^^^^^^^^^
+
+warning: methods `start`, 
+`end`, and `syntax_kind` 
+are never used
+   --> 
+src\reality\parser.rs:656:8
+    |
+655 | impl<'a, S: 
+SemanticSpan> MixedSpan<'a, 
+S> {
+    | ----------------------
+-------------------- 
+methods in this 
+implementation
+656 |     fn start(&self) 
+-> usize {
+    |        ^^^^^
+...
+663 |     fn end(&self) -> 
+usize {
+    |        ^^^
+...
+670 |     fn 
+syntax_kind(&self) -> 
+SyntaxKind {
+    |        ^^^^^^^^^^^
+
+warning: function 
+`chunk_kind_to_syntax_kind` 
+is never used
+   --> 
+src\reality\parser.rs:679:8
+    |
+679 | pub fn chunk_kind_to_s
+yntax_kind(kind: ChunkKind) 
+-> SyntaxKind {
+    |        
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`zip_reality_enhanced` is 
+never used
+   --> 
+src\reality\parser.rs:714:8
+    |
+714 | pub fn 
+zip_reality_enhanced<S: 
+SemanticSpan>(
+    |        
+^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`zip_range_enhanced` is 
+never used
+   --> 
+src\reality\parser.rs:800:4
+    |
+800 | fn 
+zip_range_enhanced<S: 
+SemanticSpan>(
+    |    ^^^^^^^^^^^^^^^^^^
+
+warning: struct `Triple` is 
+never constructed
+  --> src\reality\projection
+.rs:31:12
+   |
+31 | pub struct Triple {
+   |            ^^^^^^
+
+warning: function 
+`project_triples` is never 
+used
+  --> src\reality\projection
+.rs:41:8
+   |
+41 | pub fn 
+project_triples(root: &Synta
+xNode<RealityLanguage>) -> 
+Vec<Triple> {
+   |        ^^^^^^^^^^^^^^^
+
+warning: struct `QuadPlus` 
+is never constructed
+  --> src\reality\projection
+.rs:87:12
+   |
+87 | pub struct QuadPlus {
+   |            ^^^^^^^^
+
+warning: function 
+`project_quads` is never 
+used
+   --> src\reality\projectio
+n.rs:109:8
+    |
+109 | pub fn 
+project_quads(root: &SyntaxN
+ode<RealityLanguage>) -> 
+Vec<QuadPlus> {
+    |        ^^^^^^^^^^^^^
+
+warning: function 
+`find_pp_modifiers` is 
+never used
+   --> src\reality\projectio
+n.rs:156:4
+    |
+156 | fn 
+find_pp_modifiers(node: &Syn
+taxNode<RealityLanguage>) 
+-> Vec<SyntaxNode<RealityLan
+guage>> {
+    |    ^^^^^^^^^^^^^^^^^
+
+warning: function 
+`classify_modifiers` is 
+never used
+   --> src\reality\projectio
+n.rs:180:4
+    |
+180 | fn 
+classify_modifiers(pps: &[Sy
+ntaxNode<RealityLanguage>]) 
+-> (Option<String>, 
+Option<String>, 
+Option<String>) {
+    |    ^^^^^^^^^^^^^^^^^^
+
+warning: struct 
+`Attribution` is never 
+constructed
+   --> src\reality\projectio
+n.rs:234:12
+    |
+234 | pub struct 
+Attribution {
+    |            ^^^^^^^^^^^
+
+warning: constant 
+`DIALOGUE_VERBS` is never 
+used
+   --> src\reality\projectio
+n.rs:248:7
+    |
+248 | const DIALOGUE_VERBS: 
+&[&str] = &[
+    |       ^^^^^^^^^^^^^^
+
+warning: function 
+`project_attributions` is 
+never used
+   --> src\reality\projectio
+n.rs:273:8
+    |
+273 | pub fn 
+project_attributions(root: &
+SyntaxNode<RealityLanguage>)
+ -> Vec<Attribution> {
+    |        
+^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`try_extract_attribution` 
+is never used
+   --> src\reality\projectio
+n.rs:299:4
+    |
+299 | fn 
+try_extract_attribution(
+    |    
+^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`find_quote_near` is never 
+used
+   --> src\reality\projectio
+n.rs:324:4
+    |
+324 | fn 
+find_quote_near(node: &Synta
+xNode<RealityLanguage>, 
+root: &SyntaxNode<RealityLan
+guage>) -> Option<(String, 
+(usize, usize))> {
+    |    ^^^^^^^^^^^^^^^
+
+warning: struct 
+`StateChange` is never 
+constructed
+   --> src\reality\projectio
+n.rs:373:12
+    |
+373 | pub struct 
+StateChange {
+    |            ^^^^^^^^^^^
+
+warning: constant 
+`STATE_CHANGE_VERBS` is 
+never used
+   --> src\reality\projectio
+n.rs:387:7
+    |
+387 | const 
+STATE_CHANGE_VERBS: &[&str] 
+= &[
+    |       
+^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`project_state_changes` is 
+never used
+   --> src\reality\projectio
+n.rs:404:8
+    |
+404 | pub fn 
+project_state_changes(root: 
+&SyntaxNode<RealityLanguage>
+) -> Vec<StateChange> {
+    |        
+^^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`try_extract_state_change` 
+is never used
+   --> src\reality\projectio
+n.rs:427:4
+    |
+427 | fn try_extract_state_c
+hange(verb_node: &SyntaxNode
+<RealityLanguage>) -> 
+Option<StateChange> {
+    |    
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`find_state_after` is never 
+used
+   --> src\reality\projectio
+n.rs:449:4
+    |
+449 | fn 
+find_state_after(node: &Synt
+axNode<RealityLanguage>) -> 
+Option<String> {
+    |    ^^^^^^^^^^^^^^^^
+
+warning: function 
+`is_common_adjective` is 
+never used
+   --> src\reality\projectio
+n.rs:497:4
+    |
+497 | fn 
+is_common_adjective(word: 
+&str) -> bool {
+    |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`find_trigger_after` is 
+never used
+   --> src\reality\projectio
+n.rs:508:4
+    |
+508 | fn 
+find_trigger_after(node: &Sy
+ntaxNode<RealityLanguage>) 
+-> Option<String> {
+    |    ^^^^^^^^^^^^^^^^^^
+
+warning: enum `Projection` 
+is never used
+   --> src\reality\projectio
+n.rs:544:10
+    |
+544 | pub enum Projection {
+    |          ^^^^^^^^^^
+
+warning: struct 
+`ProjectionStats` is never 
+constructed
+   --> src\reality\projectio
+n.rs:553:12
+    |
+553 | pub struct 
+ProjectionStats {
+    |            
+^^^^^^^^^^^^^^^
+
+warning: function 
+`project_all` is never used
+   --> src\reality\projectio
+n.rs:565:8
+    |
+565 | pub fn 
+project_all(root: &SyntaxNod
+e<RealityLanguage>) -> 
+Vec<Projection> {
+    |        ^^^^^^^^^^^
+
+warning: function 
+`project_all_with_stats` is 
+never used
+   --> src\reality\projectio
+n.rs:600:8
+    |
+600 | pub fn project_all_wit
+h_stats(root: &SyntaxNode<Re
+alityLanguage>) -> 
+(Vec<Projection>, 
+ProjectionStats) {
+    |        
+^^^^^^^^^^^^^^^^^^^^^^
+
+warning: enum `Direction` 
+is never used
+   --> src\reality\projectio
+n.rs:627:6
+    |
+627 | enum Direction {
+    |      ^^^^^^^^^
+
+warning: function 
+`find_neighbor_entity` is 
+never used
+   --> src\reality\projectio
+n.rs:632:4
+    |
+632 | fn 
+find_neighbor_entity(node: &
+SyntaxNode<RealityLanguage>,
+ dir: Direction) -> Option<S
+yntaxNode<RealityLanguage>> 
+{
+    |    
+^^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`is_trivia` is never used
+   --> src\reality\projectio
+n.rs:674:4
+    |
+674 | fn is_trivia(kind: 
+SyntaxKind) -> bool {
+    |    ^^^^^^^^^
+
+warning: struct 
+`ConceptNode` is never 
+constructed
+  --> 
+src\reality\graph.rs:20:12
+   |
+20 | pub struct ConceptNode 
+{
+   |            ^^^^^^^^^^^
+
+warning: associated 
+function `new` is never used
+  --> 
+src\reality\graph.rs:30:12
+   |
+29 | impl ConceptNode {
+   | ---------------- 
+associated function in this 
+implementation
+30 |     pub fn new(id: 
+impl Into<String>, label: 
+impl Into<String>, kind: 
+impl Into<String>) -> Self {
+   |            ^^^
+
+warning: struct 
+`ConceptEdge` is never 
+constructed
+  --> 
+src\reality\graph.rs:41:12
+   |
+41 | pub struct ConceptEdge 
+{
+   |            ^^^^^^^^^^^
+
+warning: enum `EdgeKind` is 
+never used
+  --> 
+src\reality\graph.rs:62:10
+   |
+62 | pub enum EdgeKind {
+   |          ^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> 
+src\reality\graph.rs:99:12
+    |
+ 98 | impl ConceptEdge {
+    | ---------------- 
+associated items in this 
+implementation
+ 99 |     pub fn 
+new(relation: impl 
+Into<String>, weight: f64) 
+-> Self {
+    |            ^^^
+...
+111 |     pub fn 
+unweighted(relation: impl 
+Into<String>) -> Self {
+    |            ^^^^^^^^^^
+...
+116 |     pub fn 
+with_doc(mut self, doc_id: 
+impl Into<String>) -> Self {
+    |            ^^^^^^^^
+...
+122 |     pub fn 
+with_span(mut self, start: 
+u32, end: u32) -> Self {
+    |            ^^^^^^^^^
+...
+128 |     pub fn 
+with_timestamp(mut self, 
+ts: u64) -> Self {
+    |            
+^^^^^^^^^^^^^^
+...
+134 |     pub fn 
+with_kind(mut self, kind: 
+EdgeKind) -> Self {
+    |            ^^^^^^^^^
+...
+140 |     pub fn 
+attribution(verb: impl 
+Into<String>) -> Self {
+    |            ^^^^^^^^^^^
+...
+152 |     pub fn 
+state_transition(to_state: 
+impl Into<String>, trigger: 
+Option<String>) -> Self {
+    |            
+^^^^^^^^^^^^^^^^
+...
+164 |     pub fn 
+modified_relation(
+    |            
+^^^^^^^^^^^^^^^^^
+
+warning: struct 
+`ConceptGraph` is never 
+constructed
+   --> 
+src\reality\graph.rs:191:12
+    |
+191 | pub struct 
+ConceptGraph {
+    |            
+^^^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> 
+src\reality\graph.rs:206:12
+    |
+204 | impl ConceptGraph {
+    | ----------------- 
+associated items in this 
+implementation
+205 |     /// Create a new 
+empty graph
+206 |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+217 |     pub fn 
+ensure_node(&mut self, 
+node: ConceptNode) -> 
+NodeIndex {
+    |            ^^^^^^^^^^^
+...
+231 |     pub fn 
+add_edge(&mut self, 
+source_id: &str, target_id: 
+&str, edge: ConceptEdge) -> 
+Option<EdgeIndex> {
+    |            ^^^^^^^^
+...
+241 |     pub fn 
+add_edge_with_nodes(
+    |            
+^^^^^^^^^^^^^^^^^^^
+...
+253 |     pub fn 
+get_node(&self, id: &str) 
+-> Option<&ConceptNode> {
+    |            ^^^^^^^^
+...
+259 |     pub fn 
+get_index(&self, id: &str) 
+-> Option<NodeIndex> {
+    |            ^^^^^^^^^
+...
+266 |     pub fn 
+outgoing_edges(&self, id: 
+&str) -> Vec<(&ConceptNode, 
+&ConceptEdge)> {
+    |            
+^^^^^^^^^^^^^^
+...
+283 |     pub fn 
+incoming_edges(&self, id: 
+&str) -> Vec<(&ConceptNode, 
+&ConceptEdge)> {
+    |            
+^^^^^^^^^^^^^^
+...
+298 |     pub fn 
+neighbors(&self, id: &str) 
+-> Vec<&ConceptNode> {
+    |            ^^^^^^^^^
+...
+310 |     pub fn 
+node_count(&self) -> usize {
+    |            ^^^^^^^^^^
+...
+315 |     pub fn 
+edge_count(&self) -> usize {
+    |            ^^^^^^^^^^
+...
+320 |     pub fn 
+is_empty(&self) -> bool {
+    |            ^^^^^^^^
+...
+325 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+...
+331 |     pub fn 
+nodes(&self) -> impl 
+Iterator<Item = 
+&ConceptNode> {
+    |            ^^^^^
+...
+336 |     pub fn 
+edges(&self) -> impl 
+Iterator<Item = 
+(&ConceptNode, 
+&ConceptNode, 
+&ConceptEdge)> {
+    |            ^^^^^
+...
+347 |     pub fn 
+raw_graph(&self) -> 
+&DiGraph<ConceptNode, 
+ConceptEdge> {
+    |            ^^^^^^^^^
+...
+352 |     pub fn 
+graph(&self) -> 
+&DiGraph<ConceptNode, 
+ConceptEdge> {
+    |            ^^^^^
+...
+365 |     pub fn 
+subgraph(&self, center_id: 
+&str, depth: usize) -> 
+ConceptGraph {
+    |            ^^^^^^^^
+...
+424 |     pub fn 
+centrality_degree(&self) -> 
+Vec<(String, f64)> {
+    |            
+^^^^^^^^^^^^^^^^^
+...
+444 |     pub fn 
+orphan_nodes(&self) -> 
+Vec<&ConceptNode> {
+    |            
+^^^^^^^^^^^^
+...
+460 |     pub fn connected_c
+omponent_count(&self) -> 
+usize {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+497 |     pub fn 
+critical_nodes(&self) -> 
+Vec<&ConceptNode> {
+    |            
+^^^^^^^^^^^^^^
+...
+545 |     pub fn narrative_h
+ealth_score(&self) -> u32 {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^
+
+warning: struct 
+`SynapseBridge` is never 
+constructed
+  --> 
+src\reality\synapse.rs:24:12
+   |
+24 | pub struct 
+SynapseBridge {
+   |            
+^^^^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> 
+src\reality\synapse.rs:36:12
+    |
+ 34 | impl SynapseBridge {
+    | ------------------ 
+associated items in this 
+implementation
+ 35 |     /// Create a new 
+empty synapse bridge
+ 36 |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+ 46 |     pub fn link(&mut 
+self, range: TextRange, 
+entity_id: String, index: 
+NodeIndex) {
+    |            ^^^^
+...
+ 58 |     pub fn 
+link_offsets(&mut self, 
+start: u32, end: u32, 
+entity_id: String, index: 
+NodeIndex) {
+    |            
+^^^^^^^^^^^^
+...
+ 64 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+...
+ 70 |     pub fn 
+node_for_range(&self, 
+range: TextRange) -> 
+Option<(&str, NodeIndex)> {
+    |            
+^^^^^^^^^^^^^^
+...
+ 79 |     pub fn 
+node_at(&self, offset: u32) 
+-> Option<(&str, 
+NodeIndex)> {
+    |            ^^^^^^^
+...
+ 93 |     pub fn 
+spans_of(&self, entity_id: 
+&str) -> &[TextRange] {
+    |            ^^^^^^^^
+...
+101 |     pub fn 
+span_offsets_of(&self, 
+entity_id: &str) -> 
+Vec<(u32, u32)> {
+    |            
+^^^^^^^^^^^^^^^
+...
+109 |     pub fn 
+contains_range(&self, 
+range: TextRange) -> bool {
+    |            
+^^^^^^^^^^^^^^
+...
+114 |     pub fn 
+contains_entity(&self, 
+entity_id: &str) -> bool {
+    |            
+^^^^^^^^^^^^^^^
+...
+119 |     pub fn 
+link_count(&self) -> usize {
+    |            ^^^^^^^^^^
+...
+124 |     pub fn 
+entity_count(&self) -> 
+usize {
+    |            
+^^^^^^^^^^^^
+...
+129 |     pub fn 
+is_empty(&self) -> bool {
+    |            ^^^^^^^^
+...
+134 |     pub fn 
+iter(&self) -> impl 
+Iterator<Item = (TextRange, 
+&str, NodeIndex)> {
+    |            ^^^^
+...
+141 |     pub fn 
+entity_ids(&self) -> impl 
+Iterator<Item = &str> {
+    |            ^^^^^^^^^^
+...
+146 |     pub fn 
+unlink_entity(&mut self, 
+entity_id: &str) {
+    |            
+^^^^^^^^^^^^^
+...
+155 |     pub fn 
+unlink_range(&mut self, 
+range: TextRange) {
+    |            
+^^^^^^^^^^^^
+
+warning: type alias 
+`SyntaxNode` is never used
+  --> 
+src\reality\engine.rs:24:10
+   |
+24 | pub type SyntaxNode = r
+owan::SyntaxNode<RealityLang
+uage>;
+   |          ^^^^^^^^^^
+
+warning: struct 
+`RealityEngine` is never 
+constructed
+  --> 
+src\reality\engine.rs:37:12
+   |
+37 | pub struct 
+RealityEngine {
+   |            
+^^^^^^^^^^^^^
+
+warning: struct 
+`ProcessStats` is never 
+constructed
+  --> 
+src\reality\engine.rs:53:12
+   |
+53 | pub struct 
+ProcessStats {
+   |            ^^^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> 
+src\reality\engine.rs:65:12
+    |
+ 63 | impl RealityEngine {
+    | ------------------ 
+associated items in this 
+implementation
+ 64 |     /// Create a new 
+empty engine
+ 65 |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+ 78 |     pub fn process<S: 
+SemanticSpan>(&mut self, 
+text: &str, spans: &[S]) -> 
+usize {
+    |            ^^^^^^^
+...
+106 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+...
+114 |     pub fn 
+syntax_root(&self) -> 
+Option<SyntaxNode> {
+    |            ^^^^^^^^^^^
+...
+119 |     pub fn 
+graph(&self) -> 
+&ConceptGraph {
+    |            ^^^^^
+...
+124 |     pub fn 
+graph_mut(&mut self) -> 
+&mut ConceptGraph {
+    |            ^^^^^^^^^
+...
+129 |     pub fn 
+synapse(&self) -> 
+&SynapseBridge {
+    |            ^^^^^^^
+...
+134 |     pub fn 
+last_stats(&self) -> 
+Option<&ProcessStats> {
+    |            ^^^^^^^^^^
+...
+139 |     pub fn 
+stats(&self) -> EngineStats 
+{
+    |            ^^^^^
+...
+153 |     fn 
+ingest_triple(&mut self, 
+triple: &Triple, stats: 
+&mut ProcessStats) {
+    |        ^^^^^^^^^^^^^
+...
+198 |     fn link_standalone
+_entities(&mut self, root: 
+&SyntaxNode, stats: &mut 
+ProcessStats) {
+    |        
+^^^^^^^^^^^^^^^^^^^^^^^^
+...
+221 |     fn 
+make_entity_id(&self, 
+label: &str) -> String {
+    |        ^^^^^^^^^^^^^^
+...
+239 |     pub fn 
+process_with_projections<S: 
+SemanticSpan>(
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^^
+...
+276 |     pub fn populate_fr
+om_projections(&mut self, 
+projections: &[Projection], 
+stats: &mut ProcessStats) {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+288 |     fn 
+ingest_quad(&mut self, 
+quad: &QuadPlus, stats: 
+&mut ProcessStats) {
+    |        ^^^^^^^^^^^
+...
+325 |     fn 
+ingest_attribution(&mut 
+self, attr: &Attribution, 
+stats: &mut ProcessStats) {
+    |        
+^^^^^^^^^^^^^^^^^^
+...
+354 |     fn 
+ingest_state_change(&mut 
+self, change: &StateChange, 
+stats: &mut ProcessStats) {
+    |        
+^^^^^^^^^^^^^^^^^^^
+
+warning: struct 
+`EngineStats` is never 
+constructed
+   --> 
+src\reality\engine.rs:385:12
+    |
+385 | pub struct 
+EngineStats {
+    |            ^^^^^^^^^^^
+
+warning: struct 
+`SpanRecord` is never 
+constructed
+  --> src\reality\entity_lay
+er.rs:24:12
+   |
+24 | pub struct SpanRecord {
+   |            ^^^^^^^^^^
+
+warning: struct 
+`EntityRecord` is never 
+constructed
+  --> src\reality\entity_lay
+er.rs:37:12
+   |
+37 | pub struct 
+EntityRecord {
+   |            ^^^^^^^^^^^^
+
+warning: associated items 
+`new`, `frequency`, and 
+`first_mention` are never 
+used
+  --> src\reality\entity_lay
+er.rs:50:12
+   |
+48 | impl EntityRecord {
+   | ----------------- 
+associated items in this 
+implementation
+49 |     /// Create a new 
+entity record
+50 |     pub fn new(id: 
+String, label: String, 
+kind: String) -> Self {
+   |            ^^^
+...
+60 |     pub fn 
+frequency(&self) -> usize {
+   |            ^^^^^^^^^
+...
+65 |     pub fn 
+first_mention(&self) -> 
+Option<&SpanRecord> {
+   |            
+^^^^^^^^^^^^^
+
+warning: struct 
+`EntityLayer` is never 
+constructed
+  --> src\reality\entity_lay
+er.rs:79:12
+   |
+79 | pub struct EntityLayer 
+{
+   |            ^^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> src\reality\entity_la
+yer.rs:88:12
+    |
+ 86 | impl EntityLayer {
+    | ---------------- 
+associated items in this 
+implementation
+ 87 |     /// Create a new 
+empty EntityLayer
+ 88 |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+ 98 |     pub fn 
+record_span(
+    |            ^^^^^^^^^^^
+...
+124 |     pub fn 
+unique_entities(&self) -> 
+usize {
+    |            
+^^^^^^^^^^^^^^^
+...
+129 |     pub fn 
+total_spans(&self) -> usize 
+{
+    |            ^^^^^^^^^^^
+...
+134 |     pub fn 
+all_spans_for(&self, 
+entity_id: &str) -> 
+&[SpanRecord] {
+    |            
+^^^^^^^^^^^^^
+...
+141 |     pub fn 
+get_entity(&self, 
+entity_id: &str) -> 
+Option<&EntityRecord> {
+    |            ^^^^^^^^^^
+...
+146 |     pub fn 
+iter(&self) -> impl 
+Iterator<Item = (&String, 
+&EntityRecord)> {
+    |            ^^^^
+...
+151 |     pub fn 
+entity_ids(&self) -> impl 
+Iterator<Item = &String> {
+    |            ^^^^^^^^^^
+...
+156 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+...
+162 |     pub fn 
+clear_doc(&mut self, 
+doc_id: &str) {
+    |            ^^^^^^^^^
+
+warning: function 
+`normalize_id` is never used
+   --> src\reality\entity_la
+yer.rs:183:8
+    |
+183 | pub fn 
+normalize_id(label: &str) 
+-> String {
+    |        ^^^^^^^^^^^^
+
+warning: function 
+`extract_context` is never 
+used
+   --> src\reality\entity_la
+yer.rs:188:4
+    |
+188 | fn 
+extract_context(text: &str, 
+start: usize, end: usize) 
+-> String {
+    |    ^^^^^^^^^^^^^^^
+
+warning: function 
+`floor_char_boundary` is 
+never used
+   --> src\reality\entity_la
+yer.rs:203:4
+    |
+203 | fn 
+floor_char_boundary(s: 
+&str, pos: usize) -> usize {
+    |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function 
+`ceil_char_boundary` is 
+never used
+   --> src\reality\entity_la
+yer.rs:215:4
+    |
+215 | fn 
+ceil_char_boundary(s: &str, 
+pos: usize) -> usize {
+    |    ^^^^^^^^^^^^^^^^^^
+
+warning: struct 
+`EntityMetadata` is never 
+constructed
+  --> src\reality\metadata_l
+ayer.rs:23:12
+   |
+23 | pub struct 
+EntityMetadata {
+   |            
+^^^^^^^^^^^^^^
+
+warning: associated items 
+`from_record`, 
+`is_cross_document`, and 
+`add_alias` are never used
+  --> src\reality\metadata_l
+ayer.rs:42:12
+   |
+40 | impl EntityMetadata {
+   | ------------------- 
+associated items in this 
+implementation
+41 |     /// Create new 
+metadata from an entity 
+record
+42 |     pub fn 
+from_record(id: &str, 
+record: &EntityRecord) -> 
+Self {
+   |            ^^^^^^^^^^^
+...
+62 |     pub fn 
+is_cross_document(&self) -> 
+bool {
+   |            
+^^^^^^^^^^^^^^^^^
+...
+67 |     pub fn 
+add_alias(&mut self, alias: 
+String) {
+   |            ^^^^^^^^^
+
+warning: struct 
+`MetadataLayer` is never 
+constructed
+  --> src\reality\metadata_l
+ayer.rs:83:12
+   |
+83 | pub struct 
+MetadataLayer {
+   |            
+^^^^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> src\reality\metadata_
+layer.rs:92:12
+    |
+ 90 | impl MetadataLayer {
+    | ------------------ 
+associated items in this 
+implementation
+ 91 |     /// Create a new 
+empty MetadataLayer
+ 92 |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+ 99 |     pub fn compute_fro
+m_entity_layer(&mut self, 
+entity_layer: &EntityLayer) 
+{
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+124 |     fn compute_importa
+nce_scores(&mut self) {
+    |        
+^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+143 |     pub fn get(&self, 
+entity_id: &str) -> 
+Option<&EntityMetadata> {
+    |            ^^^
+...
+148 |     pub fn 
+get_mut(&mut self, 
+entity_id: &str) -> 
+Option<&mut EntityMetadata> 
+{
+    |            ^^^^^^^
+...
+153 |     pub fn 
+iter(&self) -> impl 
+Iterator<Item = (&String, 
+&EntityMetadata)> {
+    |            ^^^^
+...
+158 |     pub fn 
+by_frequency(&self) -> 
+Vec<&EntityMetadata> {
+    |            
+^^^^^^^^^^^^
+...
+165 |     pub fn 
+by_importance(&self) -> 
+Vec<&EntityMetadata> {
+    |            
+^^^^^^^^^^^^^
+...
+172 |     pub fn cross_docum
+ent_entities(&self) -> 
+Vec<&EntityMetadata> {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^
+...
+180 |     pub fn 
+entities_in_doc(&self, 
+doc_id: &str) -> 
+Vec<&EntityMetadata> {
+    |            
+^^^^^^^^^^^^^^^
+...
+188 |     pub fn len(&self) 
+-> usize {
+    |            ^^^
+...
+193 |     pub fn 
+is_empty(&self) -> bool {
+    |            ^^^^^^^^
+...
+198 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+...
+204 |     pub fn 
+add_alias(&mut self, 
+entity_id: &str, alias: 
+&str) {
+    |            ^^^^^^^^^
+...
+211 |     pub fn 
+is_stale(&self, 
+max_age_secs: u64) -> bool {
+    |            ^^^^^^^^
+
+warning: struct 
+`EntityUnifier` is never 
+constructed
+  --> src\reality\unificatio
+n.rs:21:12
+   |
+21 | pub struct 
+EntityUnifier {
+   |            
+^^^^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> src\reality\unificati
+on.rs:28:12
+    |
+ 26 | impl EntityUnifier {
+    | ------------------ 
+associated items in this 
+implementation
+ 27 |     /// Create a new 
+empty unifier
+ 28 |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+ 35 |     pub fn 
+add_alias(&mut self, alias: 
+&str, canonical: &str) {
+    |            ^^^^^^^^^
+...
+ 49 |     pub fn 
+resolve(&self, entity_id: 
+&str) -> String {
+    |            ^^^^^^^
+...
+ 70 |     pub fn 
+add_aliases(&mut self, 
+mappings: &[(&str, &str)]) {
+    |            ^^^^^^^^^^^
+...
+ 77 |     pub fn 
+aliases_of(&self, 
+canonical: &str) -> 
+Vec<String> {
+    |            ^^^^^^^^^^
+...
+ 87 |     pub fn 
+has_aliases(&self, 
+entity_id: &str) -> bool {
+    |            ^^^^^^^^^^^
+...
+ 96 |     pub fn 
+alias_count(&self) -> usize 
+{
+    |            ^^^^^^^^^^^
+...
+101 |     pub fn 
+is_empty(&self) -> bool {
+    |            ^^^^^^^^
+...
+106 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+
+warning: struct 
+`DocumentContext` is never 
+constructed
+  --> 
+src\reality\global.rs:24:12
+   |
+24 | pub struct 
+DocumentContext {
+   |            
+^^^^^^^^^^^^^^^
+
+warning: associated 
+function `new` is never used
+  --> 
+src\reality\global.rs:37:12
+   |
+35 | impl DocumentContext {
+   | -------------------- 
+associated function in this 
+implementation
+36 |     /// Create a new 
+document context
+37 |     pub fn new(doc_id: 
+impl Into<String>) -> Self {
+   |            ^^^
+
+warning: struct 
+`ProcessDocResult` is never 
+constructed
+  --> 
+src\reality\global.rs:53:12
+   |
+53 | pub struct 
+ProcessDocResult {
+   |            
+^^^^^^^^^^^^^^^^
+
+warning: struct 
+`MergeStats` is never 
+constructed
+  --> 
+src\reality\global.rs:66:8
+   |
+66 | struct MergeStats {
+   |        ^^^^^^^^^^
+
+warning: struct 
+`GlobalGraph` is never 
+constructed
+  --> 
+src\reality\global.rs:83:12
+   |
+83 | pub struct GlobalGraph 
+{
+   |            ^^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> 
+src\reality\global.rs:104:12
+    |
+ 98 | impl GlobalGraph {
+    | ---------------- 
+associated items in this 
+implementation
+...
+104 |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+117 |     pub fn 
+graph(&self) -> 
+&ConceptGraph {
+    |            ^^^^^
+...
+122 |     pub fn 
+graph_mut(&mut self) -> 
+&mut ConceptGraph {
+    |            ^^^^^^^^^
+...
+127 |     pub fn 
+unifier(&self) -> 
+&EntityUnifier {
+    |            ^^^^^^^
+...
+132 |     pub fn 
+unifier_mut(&mut self) -> 
+&mut EntityUnifier {
+    |            ^^^^^^^^^^^
+...
+137 |     pub fn 
+document(&self, doc_id: 
+&str) -> 
+Option<&DocumentContext> {
+    |            ^^^^^^^^
+...
+142 |     pub fn 
+document_ids(&self) -> 
+Vec<&str> {
+    |            
+^^^^^^^^^^^^
+...
+147 |     pub fn 
+document_count(&self) -> 
+usize {
+    |            
+^^^^^^^^^^^^^^
+...
+152 |     pub fn 
+is_empty(&self) -> bool {
+    |            ^^^^^^^^
+...
+166 |     pub fn 
+process_document<S: 
+SemanticSpan>(
+    |            
+^^^^^^^^^^^^^^^^
+...
+212 |     pub fn 
+entity_documents(&self) -> 
+HashMap<String, 
+Vec<String>> {
+    |            
+^^^^^^^^^^^^^^^^
+...
+236 |     pub fn 
+linked_documents(&self, 
+doc_id: &str) -> 
+Vec<String> {
+    |            
+^^^^^^^^^^^^^^^^
+...
+244 |     pub fn 
+related_documents(&self, 
+doc_id: &str) -> 
+Vec<String> {
+    |            
+^^^^^^^^^^^^^^^^^
+...
+277 |     pub fn 
+remove_document(&mut self, 
+doc_id: &str) -> bool {
+    |            
+^^^^^^^^^^^^^^^
+...
+282 |     pub fn clear(&mut 
+self) {
+    |            ^^^^^
+...
+293 |     fn 
+merge_graph(&mut self, 
+local: &ConceptGraph) -> 
+MergeStats {
+    |        ^^^^^^^^^^^
+...
+327 |     fn 
+extract_entity_ids(&self, 
+projections: &[Projection]) 
+-> Vec<String> {
+    |        
+^^^^^^^^^^^^^^^^^^
+...
+359 |     fn 
+extract_wikilinks(&self, 
+_projections: 
+&[Projection]) -> 
+Vec<String> {
+    |        
+^^^^^^^^^^^^^^^^^
+
+warning: struct `Community` 
+is never constructed
+  --> src\reality\algorithms
+.rs:20:12
+   |
+20 | pub struct Community {
+   |            ^^^^^^^^^
+
+warning: struct 
+`BridgeEntity` is never 
+constructed
+  --> src\reality\algorithms
+.rs:29:12
+   |
+29 | pub struct 
+BridgeEntity {
+   |            ^^^^^^^^^^^^
+
+warning: struct `Path` is 
+never constructed
+  --> src\reality\algorithms
+.rs:38:12
+   |
+38 | pub struct Path {
+   |            ^^^^
+
+warning: struct 
+`RankedEntity` is never 
+constructed
+  --> src\reality\algorithms
+.rs:47:12
+   |
+47 | pub struct 
+RankedEntity {
+   |            ^^^^^^^^^^^^
+
+warning: struct 
+`ImportanceReport` is never 
+constructed
+  --> src\reality\algorithms
+.rs:57:12
+   |
+57 | pub struct 
+ImportanceReport {
+   |            
+^^^^^^^^^^^^^^^^
+
+warning: struct 
+`OutlierEntity` is never 
+constructed
+  --> src\reality\algorithms
+.rs:65:12
+   |
+65 | pub struct 
+OutlierEntity {
+   |            
+^^^^^^^^^^^^^
+
+warning: multiple methods 
+are never used
+   --> src\reality\algorithm
+s.rs:86:12
+    |
+ 77 | impl ConceptGraph {
+    | ----------------- 
+methods in this 
+implementation
+...
+ 86 |     pub fn 
+detect_communities(&self, 
+max_iterations: usize) -> 
+Vec<Community> {
+    |            
+^^^^^^^^^^^^^^^^^^
+...
+188 |     pub fn 
+community_of<'a>(&self, 
+entity_id: &str, 
+communities: &'a 
+[Community]) -> Option<&'a 
+Community> {
+    |            
+^^^^^^^^^^^^
+...
+194 |     pub fn 
+find_bridges(&self, 
+communities: &[Community]) 
+-> Vec<BridgeEntity> {
+    |            
+^^^^^^^^^^^^
+...
+245 |     fn 
+count_internal_edges(&self, 
+members: &[String]) -> 
+usize {
+    |        
+^^^^^^^^^^^^^^^^^^^^
+...
+265 |     pub fn 
+shortest_path(&self, 
+source: &str, target: &str) 
+-> Option<Path> {
+    |            
+^^^^^^^^^^^^^
+...
+322 |     pub fn 
+neighborhood(&self, 
+entity_id: &str, max_hops: 
+usize) -> Vec<(String, 
+usize)> {
+    |            
+^^^^^^^^^^^^
+...
+368 |     fn 
+reconstruct_path(
+    |        
+^^^^^^^^^^^^^^^^
+...
+406 |     fn generate_path_n
+arrative(&self, entity_ids: 
+&[String], edges: 
+&[String]) -> String {
+    |        
+^^^^^^^^^^^^^^^^^^^^^^^
+...
+436 |     pub fn 
+pagerank(&self, damping: 
+f64, iterations: usize) -> 
+Vec<RankedEntity> {
+    |            ^^^^^^^^
+...
+502 |     pub fn 
+top_entities(&self, n: 
+usize) -> Vec<RankedEntity> 
+{
+    |            
+^^^^^^^^^^^^
+...
+507 |     pub fn 
+importance_analysis(&self) 
+-> ImportanceReport {
+    |            
+^^^^^^^^^^^^^^^^^^^
+
+warning: enum `CausalType` 
+is never used
+  --> src\reality\temporal.r
+s:17:10
+   |
+17 | pub enum CausalType {
+   |          ^^^^^^^^^^
+
+warning: method `as_str` is 
+never used
+  --> src\reality\temporal.r
+s:27:12
+   |
+26 | impl CausalType {
+   | --------------- method 
+in this implementation
+27 |     pub fn 
+as_str(&self) -> &'static 
+str {
+   |            ^^^^^^
+
+warning: struct 
+`CausalChainItem` is never 
+constructed
+  --> src\reality\temporal.r
+s:38:12
+   |
+38 | pub struct 
+CausalChainItem {
+   |            
+^^^^^^^^^^^^^^^
+
+warning: struct 
+`TemporalViolation` is 
+never constructed
+  --> src\reality\temporal.r
+s:48:12
+   |
+48 | pub struct 
+TemporalViolation {
+   |            
+^^^^^^^^^^^^^^^^^
+
+warning: struct 
+`CausalityStats` is never 
+constructed
+  --> src\reality\temporal.r
+s:60:12
+   |
+60 | pub struct 
+CausalityStats {
+   |            
+^^^^^^^^^^^^^^
+
+warning: struct 
+`CausalityGraph` is never 
+constructed
+  --> src\reality\temporal.r
+s:77:12
+   |
+77 | pub struct 
+CausalityGraph {
+   |            
+^^^^^^^^^^^^^^
+
+warning: multiple 
+associated items are never 
+used
+   --> src\reality\temporal.
+rs:92:12
+    |
+ 90 | impl CausalityGraph {
+    | ------------------- 
+associated items in this 
+implementation
+ 91 |     /// Create a new 
+empty causality graph
+ 92 |     pub fn new() -> 
+Self {
+    |            ^^^
+...
+100 |     pub fn 
+from_graph(graph: 
+ConceptGraph, timestamps: 
+HashMap<String, i64>) -> 
+Self {
+    |            ^^^^^^^^^^
+...
+108 |     pub fn 
+add_event(&mut self, id: 
+&str, name: &str, 
+timestamp: Option<i64>) {
+    |            ^^^^^^^^^
+...
+116 |     pub fn 
+add_causal_link(
+    |            
+^^^^^^^^^^^^^^^
+...
+128 |     pub fn 
+timestamp(&self, event_id: 
+&str) -> Option<i64> {
+    |            ^^^^^^^^^
+...
+133 |     pub fn 
+graph(&self) -> 
+&ConceptGraph {
+    |            ^^^^^
+...
+138 |     pub fn 
+graph_mut(&mut self) -> 
+&mut ConceptGraph {
+    |            ^^^^^^^^^
+...
+147 |     pub fn 
+causes_of(&self, event_id: 
+&str, max_depth: usize) -> 
+Vec<CausalChainItem> {
+    |            ^^^^^^^^^
+...
+152 |     pub fn 
+effects_of(&self, event_id: 
+&str, max_depth: usize) -> 
+Vec<CausalChainItem> {
+    |            ^^^^^^^^^^
+...
+157 |     fn 
+traverse_causal_chain(
+    |        
+^^^^^^^^^^^^^^^^^^^^^
+...
+231 |     pub fn validate_te
+mporal_order(&self) -> 
+Vec<TemporalViolation> {
+    |            
+^^^^^^^^^^^^^^^^^^^^^^^
+...
+268 |     pub fn 
+is_acyclic(&self) -> bool {
+    |            ^^^^^^^^^^
+...
+282 |     fn has_cycle_dfs(
+    |        ^^^^^^^^^^^^^
+...
+310 |     pub fn 
+stats(&self) -> 
+CausalityStats {
+    |            ^^^^^
+
+warning: static `INTERNER` 
+is never used
+  --> 
+src\reality\intern.rs:11:8
+   |
+11 | static INTERNER: 
+OnceLock<ThreadedRodeo> = 
+OnceLock::new();
+   |        ^^^^^^^^
+
+warning: function 
+`interner` is never used
+  --> 
+src\reality\intern.rs:14:8
+   |
+14 | pub fn interner() -> 
+&'static ThreadedRodeo {
+   |        ^^^^^^^^
+
+warning: function `intern` 
+is never used
+  --> 
+src\reality\intern.rs:22:8
+   |
+22 | pub fn intern(s: &str) 
+-> Spur {
+   |        ^^^^^^
+
+warning: function `resolve` 
+is never used
+  --> 
+src\reality\intern.rs:29:8
+   |
+29 | pub fn resolve(spur: 
+&Spur) -> &'static str {
+   |        ^^^^^^^
+
+warning: function 
+`contains` is never used
+  --> 
+src\reality\intern.rs:34:8
+   |
+34 | pub fn contains(s: 
+&str) -> bool {
+   |        ^^^^^^^^
+
+warning: field 
+`label_contains` is never 
+read
+   --> 
+src\graph\types.rs:114:9
+    |
+110 | pub struct NodeFilter 
+{
+    |            ---------- 
+field in this struct
+...
+114 |     pub 
+label_contains: 
+Option<String>,
+    |         ^^^^^^^^^^^^^^
+    |
+    = note: `NodeFilter` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: struct 
+`NodeUpdate` is never 
+constructed
+   --> 
+src\graph\types.rs:119:12
+    |
+119 | pub struct NodeUpdate 
+{
+    |            ^^^^^^^^^^
+
+warning: struct 
+`EdgeUpdate` is never 
+constructed
+   --> 
+src\graph\types.rs:164:12
+    |
+164 | pub struct EdgeUpdate 
+{
+    |            ^^^^^^^^^^
+
+warning: struct 
+`EdgeTypeDef` is never 
+constructed
+   --> 
+src\graph\types.rs:184:12
+    |
+184 | pub struct 
+EdgeTypeDef {
+    |            ^^^^^^^^^^^
+
+warning: field `was_merged` 
+is never read
+   --> 
+src\graph\types.rs:203:9
+    |
+200 | pub struct 
+NodeRegistrationResult {
+    |            
+---------------------- 
+field in this struct
+...
+203 |     pub was_merged: 
+bool,
+    |         ^^^^^^^^^^
+    |
+    = note: 
+`NodeRegistrationResult` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: struct 
+`BatchResult` is never 
+constructed
+   --> 
+src\graph\types.rs:208:12
+    |
+208 | pub struct 
+BatchResult {
+    |            ^^^^^^^^^^^
+
+warning: variants 
+`NotInitialized`, 
+`DuplicateNode`, and 
+`InvalidEdge` are never 
+constructed
+   --> 
+src\graph\types.rs:218:5
+    |
+217 | pub enum GraphError {
+    |          ---------- 
+variants in this enum
+218 |     NotInitialized,
+    |     ^^^^^^^^^^^^^^
+...
+221 |     
+DuplicateNode(String),
+    |     ^^^^^^^^^^^^^
+222 |     
+InvalidEdge(String),
+    |     ^^^^^^^^^^^
+    |
+    = note: `GraphError` 
+has derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: struct `GraphPath` 
+is never constructed
+  --> 
+src\graph\queries.rs:22:12
+   |
+22 | pub struct GraphPath {
+   |            ^^^^^^^^^
+
+warning: struct `Subgraph` 
+is never constructed
+  --> 
+src\graph\queries.rs:33:12
+   |
+33 | pub struct Subgraph {
+   |            ^^^^^^^^
+
+warning: struct 
+`NeighborOptions` is never 
+constructed
+  --> 
+src\graph\queries.rs:40:12
+   |
+40 | pub struct 
+NeighborOptions {
+   |            
+^^^^^^^^^^^^^^^
+
+warning: multiple methods 
+are never used
+   --> 
+src\graph\queries.rs:55:12
+    |
+ 53 | impl GraphRegistry {
+    | ------------------ 
+methods in this 
+implementation
+ 54 |     /// Get neighbors 
+of a node up to n hops away
+ 55 |     pub fn 
+neighbors(&self, node_id: 
+&str, options: 
+NeighborOptions) -> 
+Result<Vec<Node>, 
+GraphError> {
+    |            ^^^^^^^^^
+...
+113 |     pub fn 
+shortest_path(&self, 
+from_id: &str, to_id: &str) 
+-> 
+Result<Option<GraphPath>, 
+GraphError> {
+    |            
+^^^^^^^^^^^^^
+...
+170 |     fn 
+shortest_path_manual(&self, 
+from_id: &str, to_id: &str) 
+-> 
+Result<Option<GraphPath>, 
+GraphError> {
+    |        
+^^^^^^^^^^^^^^^^^^^^
+...
+233 |     pub fn 
+all_paths(&self, from_id: 
+&str, to_id: &str, 
+max_depth: usize) -> 
+Result<Vec<GraphPath>, 
+GraphError> {
+    |            ^^^^^^^^^
+...
+253 |     fn dfs_all_paths(
+    |        ^^^^^^^^^^^^^
+...
+310 |     pub fn 
+subgraph(&self, node_ids: 
+&[&str]) -> 
+Result<Subgraph, 
+GraphError> {
+    |            ^^^^^^^^
+...
+340 |     pub fn 
+common_neighbors(&self, 
+node_a: &str, node_b: &str) 
+-> Result<Vec<Node>, 
+GraphError> {
+    |            
+^^^^^^^^^^^^^^^^
+...
+368 |     fn 
+run_query(&self, query: 
+&str, params: 
+BTreeMap<String, 
+DataValue>) -> 
+Result<cozo::NamedRows, 
+GraphError> {
+    |        ^^^^^^^^^
+...
+374 |     fn 
+extract_path_nodes(&self, 
+val: &DataValue) -> 
+Result<Vec<String>, 
+GraphError> {
+    |        
+^^^^^^^^^^^^^^^^^^
+...
+391 |     fn 
+find_edge_between(&self, 
+from: &str, to: &str) -> 
+Result<Option<Edge>, 
+GraphError> {
+    |        
+^^^^^^^^^^^^^^^^^
+
+warning: struct `Community` 
+is never constructed
+  --> src\graph\algorithms.r
+s:21:12
+   |
+21 | pub struct Community {
+   |            ^^^^^^^^^
+
+warning: enum 
+`CentralityMetric` is never 
+used
+  --> src\graph\algorithms.r
+s:32:10
+   |
+32 | pub enum 
+CentralityMetric {
+   |          
+^^^^^^^^^^^^^^^^
+
+warning: multiple methods 
+are never used
+   --> src\graph\algorithms.
+rs:62:12
+    |
+ 53 | impl GraphRegistry {
+    | ------------------ 
+methods in this 
+implementation
+...
+ 62 |     pub fn 
+pagerank(&self, damping: 
+f64, iterations: usize) -> 
+Result<Vec<(String, f64)>, 
+GraphError> {
+    |            ^^^^^^^^
+...
+143 |     pub fn 
+centrality(&self, metric: 
+CentralityMetric) -> 
+Result<Vec<(String, f64)>, 
+GraphError> {
+    |            ^^^^^^^^^^
+...
+153 |     fn 
+degree_centrality(&self) -> 
+Result<Vec<(String, f64)>, 
+GraphError> {
+    |        
+^^^^^^^^^^^^^^^^^
+...
+175 |     fn 
+in_degree_centrality(&self) 
+-> Result<Vec<(String, 
+f64)>, GraphError> {
+    |        
+^^^^^^^^^^^^^^^^^^^^
+...
+197 |     fn out_degree_cent
+rality(&self) -> 
+Result<Vec<(String, f64)>, 
+GraphError> {
+    |        
+^^^^^^^^^^^^^^^^^^^^^
+...
+219 |     fn betweenness_cen
+trality(&self) -> 
+Result<Vec<(String, f64)>, 
+GraphError> {
+    |        
+^^^^^^^^^^^^^^^^^^^^^^
+...
+288 |     fn 
+bfs_paths(&self, source: 
+&str) -> Result<(
+    |        ^^^^^^^^^
+...
+379 |     pub fn 
+communities(&self) -> 
+Result<Vec<Community>, 
+GraphError> {
+    |            ^^^^^^^^^^^
+
+warning: method 
+`is_hydrated` is never used
+   --> 
+src\graph\bridge.rs:263:12
+    |
+ 86 | impl ScannerBridge {
+    | ------------------ 
+method in this 
+implementation
+...
+263 |     pub fn 
+is_hydrated(&self) -> bool {
+    |            ^^^^^^^^^^^
+
+warning: field `note_title` 
+is never read
+   --> 
+src\rag\schema.rs:364:9
+    |
+359 | pub struct ChunkData {
+    |            --------- 
+field in this struct
+...
+364 |     pub note_title: 
+String,
+    |         ^^^^^^^^^^
+    |
+    = note: `ChunkData` has 
+derived impls for the 
+traits `Clone` and `Debug`, 
+but these are intentionally 
+ignored during dead code 
+analysis
+
+warning: method `embed` is 
+never used
+   --> 
+src\rag\embeddings.rs:120:12
+    |
+ 63 | impl EmbeddingService 
+{
+    | --------------------- 
+method in this 
+implementation
+...
+120 |     pub fn 
+embed(&self, text: &str) -> 
+Result<Vec<f32>, String> {
+    |            ^^^^^
+
+warning: enum 
+`ProvenanceType` is never 
+used
+  --> 
+src\surreal\types.rs:10:10
+   |
+10 | pub enum 
+ProvenanceType {
+   |          ^^^^^^^^^^^^^^
+
+warning: struct 
+`FolderUpdate` is never 
+constructed
+  --> 
+src\surreal\types.rs:64:12
+   |
+64 | pub struct 
+FolderUpdate {
+   |            ^^^^^^^^^^^^
+
+warning: struct 
+`ContainsEdge` is never 
+constructed
+   --> 
+src\surreal\types.rs:138:12
+    |
+138 | pub struct 
+ContainsEdge {
+    |            
+^^^^^^^^^^^^
+
+warning: function 
+`to_record_id` is never used
+   --> 
+src\surreal\types.rs:152:8
+    |
+152 | pub fn 
+to_record_id(table: &str, 
+id: &str) -> RecordId {
+    |        ^^^^^^^^^^^^
+
+warning: function 
+`from_record_id` is never 
+used
+   --> 
+src\surreal\types.rs:157:8
+    |
+157 | pub fn 
+from_record_id(record_id: 
+&RecordId) -> String {
+    |        ^^^^^^^^^^^^^^
+
+warning: `varant` (lib) 
+generated 228 warnings (run 
+`cargo fix --lib -p varant` 
+to apply 29 suggestions)
+    Finished `dev` profile 
+[optimized + debuginfo] 
+target(s) in 27.80s

@@ -2,7 +2,7 @@
 //!
 //! This module combines all reality components into a single cohesive engine:
 //! - CST (Rowan) for syntax tree operations
-//! - Graph (petgraph) for semantic relationships  
+//! - Graph for semantic relationships  
 //! - Synapse for text↔graph bridging
 //! - Interner for string deduplication
 //!
@@ -29,7 +29,7 @@ pub type SyntaxNode = rowan::SyntaxNode<RealityLanguage>;
 
 /// The unified reality engine
 /// 
-/// Holds: CST (Rowan) + Graph (petgraph) + Synapse (bridge)
+/// Holds: CST (Rowan) + Graph + Synapse (bridge)
 /// 
 /// This is the main entry point for processing documents and querying
 /// the semantic graph.
@@ -154,7 +154,7 @@ impl RealityEngine {
         // Create or get source node
         let source_id = self.make_entity_id(&triple.source);
         let source_node = ConceptNode::new(&source_id, &triple.source, "Entity");
-        let source_idx = self.graph.ensure_node(source_node);
+        let _source_idx = self.graph.ensure_node(source_node);
         if self.graph.node_count() > stats.nodes_created {
             stats.nodes_created = self.graph.node_count();
         }
@@ -162,7 +162,7 @@ impl RealityEngine {
         // Create or get target node
         let target_id = self.make_entity_id(&triple.target);
         let target_node = ConceptNode::new(&target_id, &triple.target, "Entity");
-        let target_idx = self.graph.ensure_node(target_node);
+        let _target_idx = self.graph.ensure_node(target_node);
         stats.nodes_created = self.graph.node_count();
         
         // Create edge
@@ -177,7 +177,6 @@ impl RealityEngine {
                 start as u32,
                 end as u32,
                 source_id.clone(),
-                source_idx,
             );
             stats.synapse_links += 1;
         }
@@ -188,7 +187,6 @@ impl RealityEngine {
                 start as u32,
                 end as u32,
                 target_id,
-                target_idx,
             );
             stats.synapse_links += 1;
         }
@@ -205,12 +203,12 @@ impl RealityEngine {
                 
                 // Ensure node exists in graph
                 let concept = ConceptNode::new(&entity_id, &text, "Entity");
-                let idx = self.graph.ensure_node(concept);
+                let _idx = self.graph.ensure_node(concept);
                 stats.nodes_created = self.graph.node_count();
                 
                 // Link if not already linked
                 if !self.synapse.contains_range(range) {
-                    self.synapse.link(range, entity_id, idx);
+                    self.synapse.link(range, entity_id);
                     stats.synapse_links += 1;
                 }
             }
@@ -291,10 +289,10 @@ impl RealityEngine {
         
         // Ensure nodes exist
         let subject_node = ConceptNode::new(&subject_id, &quad.subject, "Entity");
-        let subject_idx = self.graph.ensure_node(subject_node);
+        let _subject_idx = self.graph.ensure_node(subject_node);
         
         let object_node = ConceptNode::new(&object_id, &quad.object, "Entity");
-        let object_idx = self.graph.ensure_node(object_node);
+        let _object_idx = self.graph.ensure_node(object_node);
         
         stats.nodes_created = self.graph.node_count();
         
@@ -312,11 +310,11 @@ impl RealityEngine {
         
         // Link spans
         if let Some((start, end)) = quad.subject_span {
-            self.synapse.link_offsets(start as u32, end as u32, subject_id.clone(), subject_idx);
+            self.synapse.link_offsets(start as u32, end as u32, subject_id.clone());
             stats.synapse_links += 1;
         }
         if let Some((start, end)) = quad.object_span {
-            self.synapse.link_offsets(start as u32, end as u32, object_id, object_idx);
+            self.synapse.link_offsets(start as u32, end as u32, object_id);
             stats.synapse_links += 1;
         }
     }
@@ -328,7 +326,7 @@ impl RealityEngine {
         
         // Speaker node
         let speaker_node = ConceptNode::new(&speaker_id, &attr.speaker, "Character");
-        let speaker_idx = self.graph.ensure_node(speaker_node);
+        let _speaker_idx = self.graph.ensure_node(speaker_node);
         
         // Quote node (special type)
         let quote_node = ConceptNode::new(&quote_id, &attr.quote, "Quote");
@@ -345,7 +343,7 @@ impl RealityEngine {
         
         // Link speaker span
         if let Some((start, end)) = attr.speaker_span {
-            self.synapse.link_offsets(start as u32, end as u32, speaker_id, speaker_idx);
+            self.synapse.link_offsets(start as u32, end as u32, speaker_id);
             stats.synapse_links += 1;
         }
     }
@@ -357,7 +355,7 @@ impl RealityEngine {
         
         // Entity node
         let entity_node = ConceptNode::new(&entity_id, &change.entity, "Character");
-        let entity_idx = self.graph.ensure_node(entity_node);
+        let _entity_idx = self.graph.ensure_node(entity_node);
         
         // State node
         let state_node = ConceptNode::new(&state_id, &change.to_state, "State");
@@ -374,7 +372,7 @@ impl RealityEngine {
         
         // Link entity span
         if let Some((start, end)) = change.entity_span {
-            self.synapse.link_offsets(start as u32, end as u32, entity_id, entity_idx);
+            self.synapse.link_offsets(start as u32, end as u32, entity_id);
             stats.synapse_links += 1;
         }
     }

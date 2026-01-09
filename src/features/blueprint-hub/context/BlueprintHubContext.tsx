@@ -1,13 +1,12 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import type { CompiledBlueprint } from '../types';
 import {
-  getBlueprintMetaById,
+  getAllBlueprintMetas,
   createBlueprintMeta,
   getVersionsByBlueprintId,
   createVersion,
 } from '../api/storage';
 import { compileBlueprint } from '../services/compiler';
-import { getBlueprintStoreImpl } from '@/lib/storage/index';
 
 interface BlueprintHubContextType {
   activeBlueprint: CompiledBlueprint | null;
@@ -40,24 +39,35 @@ export function BlueprintHubProvider({ children }: { children: React.ReactNode }
     const initializeProject = async () => {
       setIsLoading(true);
       try {
-        let meta = await getBlueprintMetaById('default');
+        // First, try to find any existing blueprint (prefer system blueprints)
+        const allMetas = await getAllBlueprintMetas();
+        let meta = allMetas.find(m => m.is_system) ?? allMetas[0] ?? null;
 
         if (!meta) {
-          const blueprintStore = getBlueprintStoreImpl();
-          blueprintStore.createDefaultBlueprint('default');
-          meta = await getBlueprintMetaById('default');
+          // Create default blueprint using the storage API
+          meta = await createBlueprintMeta({
+            name: 'Default Knowledge Graph',
+            description: 'The default blueprint for your knowledge graph',
+            category: 'system',
+            is_system: true,
+            tags: ['default', 'system'],
+          });
+          console.log('[BlueprintHub] Created new default blueprint:', meta.blueprint_id);
         }
 
-        const versions = await getVersionsByBlueprintId('default');
+        // Use the actual blueprint ID from the meta
+        const blueprintId = meta.blueprint_id;
+        const versions = await getVersionsByBlueprintId(blueprintId);
 
         let activeVersion = versions.find(v => v.status === 'draft');
 
         if (!activeVersion) {
           activeVersion = await createVersion({
-            blueprint_id: 'default',
+            blueprint_id: blueprintId,
             status: 'draft',
             change_summary: 'Initial draft version',
           });
+          console.log('[BlueprintHub] Created initial version:', activeVersion.version_id);
         }
 
         setVersionId(activeVersion.version_id);

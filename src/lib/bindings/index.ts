@@ -45,8 +45,12 @@ export {
     getAggregationDescription,
 } from './aggregations';
 
-// Engine
+// Engine (legacy - uses SQLite)
+/** @deprecated Use BindingEngineAdapter instead */
 export { BindingEngine, bindingEngine } from './BindingEngine';
+
+// Engine Adapter (new - uses SurrealDB via Tauri)
+export { BindingEngineAdapter, bindingEngineAdapter } from './BindingEngineAdapter';
 
 // Atoms
 export {

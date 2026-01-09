@@ -1,10 +1,13 @@
 /**
  * Async atoms for database operations
  * Handles initialization, hydration, and write operations
+ * 
+ * MIGRATED: Now uses SurrealDB via notesAPI (Tauri backend)
  */
 import { atom } from 'jotai';
-import { dbClient } from '@/lib/db/client/db-client';
 import { generateId } from '@/lib/utils/ids';
+import { isTauri } from '@/lib/tauri/bridge';
+import { notesAPI } from '@/lib/tauri/notes-api';
 import {
     notesAtom,
     foldersAtom,
@@ -13,99 +16,6 @@ import {
     lastSavedAtom,
 } from './notes';
 import type { Note, Folder } from '@/types/noteTypes';
-import type { SQLiteNode, SQLiteNodeInput } from '@/lib/db/client/types';
-
-// ============================================
-// TRANSFORMATION UTILITIES
-// ============================================
-
-/**
- * Transform SQLite node to Note type
- */
-function transformToNote(node: SQLiteNode): Note {
-    return {
-        ...node,
-        type: 'NOTE',
-        parentId: node.parent_id,
-        folderId: node.parent_id,
-        title: node.label,
-        createdAt: node.created_at,
-        updatedAt: node.updated_at,
-        connections: node.extraction ? JSON.parse(node.extraction) : undefined,
-        // Entity fields - critical for entity sidebar
-        isEntity: Boolean(node.is_entity),
-        entityKind: node.entity_kind,
-        entityLabel: node.is_entity ? node.label : undefined, // Entity notes use label as entityLabel
-        entitySubtype: node.entity_subtype,
-    } as unknown as Note;
-}
-
-
-/**
- * Transform SQLite node to Folder type
- */
-function transformToFolder(node: SQLiteNode): Folder {
-    // Parse attributes to extract fantasy_date if present
-    let fantasyDate = null;
-    if (node.attributes) {
-        try {
-            const attrs = typeof node.attributes === 'string'
-                ? JSON.parse(node.attributes)
-                : node.attributes;
-            fantasyDate = attrs?.fantasy_date || null;
-        } catch {
-            // Ignore parse errors
-        }
-    }
-
-    return {
-        ...node,
-        type: 'FOLDER',
-        parentId: node.parent_id,
-        name: node.label,
-        isEntity: Boolean(node.is_entity),
-        createdAt: node.created_at,
-        updatedAt: node.updated_at,
-        fantasy_date: fantasyDate,
-    } as unknown as Folder;
-}
-
-/**
- * Transform Note updates to SQLite format
- */
-function transformNoteUpdates(updates: Partial<Note>): Record<string, any> {
-    const dbUpdates: Record<string, any> = { ...updates };
-
-    // Map Note fields to SQLite column names
-    if (updates.title !== undefined) dbUpdates.label = updates.title;
-    if (updates.folderId !== undefined) dbUpdates.parent_id = updates.folderId;
-    if ('favorite' in updates) dbUpdates.favorite = updates.favorite ? 1 : 0;
-    if (updates.connections !== undefined) {
-        dbUpdates.extraction = JSON.stringify(updates.connections);
-    }
-
-    // Remove Note-specific fields not in SQLite schema
-    delete dbUpdates.title;
-    delete dbUpdates.folderId;
-    delete dbUpdates.connections;
-
-    return dbUpdates;
-}
-
-/**
- * Transform Folder updates to SQLite format
- */
-function transformFolderUpdates(updates: Partial<Folder>): Record<string, any> {
-    const dbUpdates: Record<string, any> = { ...updates };
-
-    if (updates.name !== undefined) dbUpdates.label = updates.name;
-    if (updates.parentId !== undefined) dbUpdates.parent_id = updates.parentId;
-
-    delete dbUpdates.name;
-    delete dbUpdates.parentId;
-
-    return dbUpdates;
-}
 
 // ============================================
 // INITIALIZATION ATOMS
@@ -118,20 +28,19 @@ function transformFolderUpdates(updates: Partial<Folder>): Record<string, any> {
 export const dbInitAtom = atom(async () => {
     console.log('[Atoms] Loading data from database...');
 
-    await dbClient.init();
-    const allNodes = await dbClient.getAllNodes();
+    if (!isTauri()) {
+        console.log('[Atoms] Not in Tauri mode, returning empty data');
+        return { notes: [], folders: [] };
+    }
 
-    const notes = allNodes
-        .filter(n => n.type === 'NOTE')
-        .map(transformToNote);
-
-    const folders = allNodes
-        .filter(n => n.type === 'FOLDER')
-        .map(transformToFolder);
-
-    console.log(`[Atoms] Loaded ${notes.length} notes, ${folders.length} folders`);
-
-    return { notes, folders };
+    try {
+        const { notes, folders } = await notesAPI.loadAllNotesAndFolders();
+        console.log(`[Atoms] Loaded ${notes.length} notes, ${folders.length} folders`);
+        return { notes, folders };
+    } catch (error) {
+        console.error('[Atoms] Failed to load from SurrealDB:', error);
+        return { notes: [], folders: [] };
+    }
 });
 
 /**
@@ -188,8 +97,9 @@ export const updateNoteContentAtom = atom(
         set(isSavingAtom, true);
 
         try {
-            // Persist to database
-            await dbClient.updateNode(id, { content });
+            if (isTauri()) {
+                await notesAPI.updateNoteContent(id, content);
+            }
             set(lastSavedAtom, new Date());
             console.log(`[Atoms] ✅ Updated note ${id}`);
         } catch (error) {
@@ -232,8 +142,10 @@ export const updateNoteAtom = atom(
         set(isSavingAtom, true);
 
         try {
-            const dbUpdates = transformNoteUpdates(updates);
-            await dbClient.updateNode(id, dbUpdates);
+            if (isTauri()) {
+                await notesAPI.updateNote(id, updates);
+            }
+
             set(lastSavedAtom, new Date());
             console.log(`[Atoms] ✅ Updated note ${id}`, updates);
         } catch (error) {
@@ -291,20 +203,21 @@ export const createNoteAtom = atom(
         set(notesAtom, [...get(notesAtom), newNote]);
 
         try {
-            const nodeInput: SQLiteNodeInput = {
-                id: newNoteId,
-                type: 'NOTE',
-                label: newNote.title,
-                content: '',
-                parent_id: params.folderId || null,
-                source_note_id: params.sourceNoteId,
-                is_entity: false,
-                // Entity ownership context
-                owner_entity_id: params.ownerEntityId || null,
-                fantasy_date_created: params.fantasyDate || null,
-            };
-
-            await dbClient.insertNode(nodeInput);
+            if (isTauri()) {
+                const created = await notesAPI.createNote({
+                    title: newNote.title,
+                    content: '',
+                    folderId: params.folderId,
+                });
+                // Update with server ID if different
+                if (created.id !== newNoteId) {
+                    set(notesAtom, get(notesAtom).map(n =>
+                        n.id === newNoteId ? { ...n, id: created.id } : n
+                    ));
+                    console.log(`[Atoms] ✅ Created note ${created.id} (server assigned)`);
+                    return created.id;
+                }
+            }
 
             if (params.ownerEntityId) {
                 console.log(`[Atoms] ✅ Created note ${newNoteId} (owned by entity: ${params.ownerEntityId})`);
@@ -343,7 +256,9 @@ export const deleteNoteAtom = atom(
         }
 
         try {
-            await dbClient.deleteNode(noteId);
+            if (isTauri()) {
+                await notesAPI.deleteNote(noteId);
+            }
             console.log(`[Atoms] ✅ Deleted note ${noteId}`);
         } catch (error) {
             console.error(`[Atoms] ❌ Failed to delete note ${noteId}:`, error);
@@ -412,25 +327,24 @@ export const createFolderAtom = atom(
         set(foldersAtom, [...get(foldersAtom), newFolder]);
 
         try {
-            const nodeInput: SQLiteNodeInput = {
-                id: newFolderId,
-                type: 'FOLDER',
-                label: params.name,
-                parent_id: params.parentId || null,
-                content: null,
-                entity_kind: params.entityKind,
-                entity_subtype: params.entitySubtype,
-                is_typed_root: params.isTypedRoot,
-                is_subtype_root: params.isSubtypeRoot,
-                color: params.color,
-                // Store fantasy_date in attributes field
-                attributes: params.fantasy_date ? { fantasy_date: params.fantasy_date } : null,
-                // Entity ownership context
-                owner_entity_id: params.ownerEntityId || null,
-                fantasy_date_created: params.fantasy_date || null,
-            };
-
-            await dbClient.insertNode(nodeInput);
+            if (isTauri()) {
+                const created = await notesAPI.createFolder({
+                    name: params.name,
+                    parentId: params.parentId,
+                    entityKind: params.entityKind,
+                    entitySubtype: params.entitySubtype,
+                    color: params.color,
+                    isTypedRoot: params.isTypedRoot,
+                });
+                // Update with server ID if different
+                if (created.id !== newFolderId) {
+                    set(foldersAtom, get(foldersAtom).map(f =>
+                        f.id === newFolderId ? { ...f, id: created.id } : f
+                    ));
+                    console.log(`[Atoms] ✅ Created folder ${created.id} (server assigned)`);
+                    return created.id;
+                }
+            }
 
             if (params.ownerEntityId) {
                 console.log(`[Atoms] ✅ Created folder ${newFolderId} (owned by entity: ${params.ownerEntityId})`);
@@ -464,8 +378,13 @@ export const updateFolderAtom = atom(
         ));
 
         try {
-            const dbUpdates = transformFolderUpdates(updates);
-            await dbClient.updateNode(id, dbUpdates);
+            if (isTauri()) {
+                if (updates.name) {
+                    await notesAPI.renameFolder(id, updates.name);
+                }
+                // TODO: Add more update fields if needed
+            }
+
             console.log(`[Atoms] ✅ Updated folder ${id}`);
         } catch (error) {
             console.error(`[Atoms] ❌ Failed to update folder ${id}:`, error);
@@ -497,7 +416,9 @@ export const deleteFolderAtom = atom(
         ));
 
         try {
-            await dbClient.deleteNode(folderId);
+            if (isTauri()) {
+                await notesAPI.deleteFolder(folderId);
+            }
             console.log(`[Atoms] ✅ Deleted folder ${folderId}`);
         } catch (error) {
             console.error(`[Atoms] ❌ Failed to delete folder ${folderId}:`, error);

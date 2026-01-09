@@ -88,6 +88,232 @@ pub const CREATE_HNSW_INDEX: &str = r#"
 "#;
 
 // =============================================================================
+// Content Schema (SurrealDB Replacement)
+// =============================================================================
+
+/// Notes relation
+pub const CREATE_NOTES: &str = r#"
+:create notes {
+    id: String =>
+    world_id: String,
+    title: String,
+    content: String,
+    folder_id: String default '',
+    entity_kind: String default '',
+    entity_subtype: String default '',
+    is_entity: Bool default false,
+    is_pinned: Bool default false,
+    favorite: Bool default false,
+    created_at: Float,
+    updated_at: Float
+}
+"#;
+
+/// Folders relation
+pub const CREATE_FOLDERS: &str = r#"
+:create folders {
+    id: String =>
+    world_id: String,
+    name: String,
+    parent_id: String default '',
+    entity_kind: String default '',
+    entity_subtype: String default '',
+    color: String default '',
+    is_typed_root: Bool default false,
+    network_id: String default '',
+    collapsed: Bool default false,
+    fantasy_year: Int default 0,
+    fantasy_month: Int default 0,
+    fantasy_day: Int default 0,
+    created_at: Float,
+    updated_at: Float
+}
+"#;
+
+/// Networks relation
+pub const CREATE_NETWORKS: &str = r#"
+:create networks {
+    id: String =>
+    world_id: String,
+    name: String,
+    schema_id: String,
+    root_folder_id: String default '',
+    root_entity_id: String default '',
+    namespace: String default '',
+    description: String default '',
+    tags: String default '[]',
+    member_count: Int default 0,
+    relationship_count: Int default 0,
+    max_depth: Int default 0,
+    created_at: Float,
+    updated_at: Float
+}
+"#;
+
+/// Domain entities relation (separate from knowledge graph nodes)
+pub const CREATE_ENTITIES: &str = r#"
+:create entities {
+    id: String =>
+    world_id: String,
+    label: String,
+    entity_kind: String,
+    entity_subtype: String default '',
+    note_id: String default '',
+    folder_id: String default '',
+    is_active: Bool default true,
+    aliases: String default '[]',
+    attributes: String default '{}',
+    created_at: Float,
+    updated_at: Float
+}
+"#;
+
+/// Network membership edge
+pub const CREATE_IN_NETWORK: &str = r#"
+:create in_network {
+    id: String =>
+    world_id: String,
+    network_id: String,
+    entity_id: String,
+    role: String default 'MEMBER',
+    depth_level: Int default 0,
+    group_id: String default '',
+    joined_at: Float
+}
+"#;
+
+/// Relationship edge between entities
+pub const CREATE_RELATES_TO: &str = r#"
+:create relates_to {
+    id: String =>
+    world_id: String,
+    source_id: String,
+    target_id: String,
+    network_id: String default '',
+    relationship_code: String,
+    inverse_id: String default '',
+    strength: Float default 1.0,
+    start_date: Float default 0,
+    end_date: Float default 0,
+    notes: String default '',
+    attributes: String default '{}',
+    created_at: Float
+}
+"#;
+
+/// Calendar events relation
+pub const CREATE_CAL_EVENTS: &str = r#"
+:create cal_events {
+    id: String =>
+    world_id: String,
+    calendar_id: String,
+    title: String,
+    description: String default '',
+    date_year: Int,
+    date_month: Int,
+    date_day: Int,
+    date_hour: Int default -1,
+    date_minute: Int default -1,
+    era_id: String default '',
+    end_year: Int default 0,
+    end_month: Int default 0,
+    end_day: Int default 0,
+    is_all_day: Bool default true,
+    recurrence: String default '{}',
+    parent_event_id: String default '',
+    importance: String default 'minor',
+    category: String default 'event',
+    tags: String default '[]',
+    color: String default '',
+    icon: String default '',
+    entity_id: String default '',
+    entity_kind: String default '',
+    source_note_id: String default '',
+    created_at: Float,
+    updated_at: Float
+}
+"#;
+
+/// Periods (eras, ages, epochs)
+pub const CREATE_PERIODS: &str = r#"
+:create periods {
+    id: String =>
+    world_id: String,
+    calendar_id: String,
+    name: String,
+    description: String default '',
+    start_year: Int,
+    start_month: Int default 1,
+    end_year: Int default 0,
+    end_month: Int default 0,
+    parent_period_id: String default '',
+    period_type: String default 'era',
+    color: String,
+    icon: String default '',
+    abbreviation: String default '',
+    direction: String default 'ascending',
+    triggered_by: String default '',
+    ends_when: String default '',
+    major_events: String default '[]',
+    arc_type: String default '',
+    dominant_theme: String default '',
+    protagonist_id: String default '',
+    antagonist_id: String default '',
+    summary: String default '',
+    detailed_notes: String default '',
+    show_on_timeline: Bool default true,
+    timeline_color: String default '',
+    timeline_icon: String default '',
+    created_at: Float,
+    updated_at: Float
+}
+"#;
+
+/// Entity-event participation link
+pub const CREATE_OCCURS_ON: &str = r#"
+:create occurs_on {
+    id: String =>
+    world_id: String,
+    entity_id: String,
+    event_id: String,
+    role: String default 'participant',
+    significance: String default 'minor',
+    notes: String default '',
+    created_at: Float
+}
+"#;
+
+/// Field bindings for inheritance/aggregation
+pub const CREATE_FIELD_BINDINGS: &str = r#"
+:create field_bindings {
+    id: String =>
+    world_id: String,
+    source_entity_id: String,
+    source_field_name: String,
+    target_entity_id: String,
+    target_field_name: String,
+    binding_type: String default 'inherit',
+    transform: String default '{}',
+    aggregation_fn: String default '',
+    aggregation_filter: String default '{}',
+    allow_override: Bool default true,
+    is_active: Bool default true,
+    created_at: Float,
+    updated_at: Float
+}
+"#;
+
+/// Decoration span cache for highlighting
+pub const CREATE_DECORATION_SPANS: &str = r#"
+:create decoration_spans {
+    note_id: String =>
+    content_hash: String,
+    spans_json: String,
+    created_at: Float
+}
+"#;
+
+// =============================================================================
 // Schema Management
 // =============================================================================
 
@@ -135,6 +361,36 @@ pub fn init_schema(db: &DbInstance) -> Result<(), String> {
         
         // Try to create index (will fail silently if exists)
         let _ = db.run_script(CREATE_HNSW_INDEX, Default::default(), cozo::ScriptMutability::Mutable);
+    }
+
+    // Also initialize content schema
+    init_content_schema(db)?;
+
+    Ok(())
+}
+
+/// Initialize content schema (notes, folders, networks, etc.) - SurrealDB replacement
+pub fn init_content_schema(db: &DbInstance) -> Result<(), String> {
+    let content_relations = [
+        ("notes", CREATE_NOTES),
+        ("folders", CREATE_FOLDERS),
+        ("networks", CREATE_NETWORKS),
+        ("entities", CREATE_ENTITIES),
+        ("in_network", CREATE_IN_NETWORK),
+        ("relates_to", CREATE_RELATES_TO),
+        ("cal_events", CREATE_CAL_EVENTS),
+        ("periods", CREATE_PERIODS),
+        ("occurs_on", CREATE_OCCURS_ON),
+        ("field_bindings", CREATE_FIELD_BINDINGS),
+        ("decoration_spans", CREATE_DECORATION_SPANS),
+    ];
+
+    for (name, query) in content_relations {
+        if !relation_exists(db, name) {
+            db.run_script(query, Default::default(), cozo::ScriptMutability::Mutable)
+                .map_err(|e| format!("Failed to create content relation {}: {}", name, e))?;
+            log::info!("[ContentSchema] Created relation: {}", name);
+        }
     }
 
     Ok(())

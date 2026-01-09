@@ -1,5 +1,5 @@
-import { cozoDb } from '@/lib/cozo';
-import { ENTITY_QUERIES } from '@/lib/cozo/schema/layer2-entities';
+import { cozoDb } from '@/lib/cozo-stubs/db';
+import { ENTITY_QUERIES } from '@/lib/cozo-stubs/schema';
 import { generateId } from '@/lib/utils/ids';
 import { MemoryCache } from '../MemoryCache';
 import { DebouncedWriter, type WriteOperation } from '../DebouncedWriter';

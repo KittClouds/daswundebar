@@ -25,6 +25,11 @@ mod reality;  // Reality Engine - Graph + CST (ported from kittcore)
 mod graph;    // Graph Registry - Unified nodes + edges (CozoDB)
 mod rag;      // RAG Pipeline - Embeddings + HNSW (CozoDB native)
 mod resorank; // ResoRank - BM25F + Proximity scoring (ported from kittcore)
+mod blueprint; // Blueprint Hub - Entity/Relationship type definitions
+mod time_registry; // Time Registry - Change history tracking (V2 Phase 2)
+mod scan_worker; // Scan Worker - Background note scanning (Phase 1)
+
+// (SurrealDB REMOVED - migrated to CozoDB content_repos.rs)
 
 #[cfg(test)]
 mod benchmark_tests;
@@ -75,6 +80,12 @@ static CONDUCTOR: Lazy<Mutex<conductor::ScanConductor>> = Lazy::new(|| {
     let mut conductor = conductor::ScanConductor::new();
     conductor.init();
     Mutex::new(conductor)
+});
+
+// Global ScanQueue for background note scanning
+static SCAN_QUEUE: Lazy<std::sync::Arc<scan_worker::ScanQueue>> = Lazy::new(|| {
+    log::info!("Initializing ScanQueue...");
+    std::sync::Arc::new(scan_worker::ScanQueue::new())
 });
 
 // ============================================================================
@@ -433,6 +444,47 @@ fn conductor_reset() -> Result<String, String> {
 }
 
 // ============================================================================
+// Scan Worker Commands (Phase 1: Background Scanning)
+// ============================================================================
+
+/// Get cached decoration spans for a note
+#[tauri::command]
+fn get_decoration_spans(
+    note_id: String,
+    content_hash: String,
+) -> Result<Option<String>, String> {
+    let registry = graph::commands::GRAPH_REGISTRY.lock().map_err(|e| e.to_string())?;
+    let db = registry.db();
+    
+    match scan_worker::DecorationCache::get(db, &note_id, &content_hash) {
+        Ok(Some(spans)) => {
+            let json = serde_json::to_string(&spans)
+                .map_err(|e| format!("Serialization error: {}", e))?;
+            Ok(Some(json))
+        }
+        Ok(None) => Ok(None),
+        Err(e) => Err(e),
+    }
+}
+
+/// Queue a note for background scanning
+#[tauri::command]
+fn queue_note_scan(note_id: String) -> Result<(), String> {
+    SCAN_QUEUE.push(note_id.clone());
+    log::debug!("[ScanWorker] Queued note for scan: {}", note_id);
+    Ok(())
+}
+
+/// Get scan queue status
+#[tauri::command]
+fn scan_queue_status() -> Result<String, String> {
+    Ok(format!(
+        r#"{{"queue_length": {}}}"#,
+        SCAN_QUEUE.len()
+    ))
+}
+
+// ============================================================================
 // Tauri App Entry Point
 // ============================================================================
 
@@ -482,6 +534,10 @@ pub fn run() {
             conductor_scan_force,
             conductor_status,
             conductor_reset,
+            // Scan Worker commands (Phase 1: Background Scanning)
+            get_decoration_spans,
+            queue_note_scan,
+            scan_queue_status,
             // Graph Registry commands (Phase 2.1)
             graph::commands::graph_register_node,
             graph::commands::graph_get_node,
@@ -506,6 +562,83 @@ pub fn run() {
             rag::commands::rag_search,
             rag::commands::rag_get_chunks,
             rag::commands::rag_delete_note_chunks,
+            // Blueprint Hub commands (V2 Phase 1)
+            blueprint::commands::blueprint_init,
+            blueprint::commands::blueprint_create,
+            blueprint::commands::blueprint_get,
+            blueprint::commands::blueprint_list,
+            blueprint::commands::blueprint_update,
+            blueprint::commands::blueprint_delete,
+            // Blueprint Version commands
+            blueprint::commands::blueprint_version_create,
+            blueprint::commands::blueprint_version_list,
+            blueprint::commands::blueprint_version_delete,
+            // Blueprint EntityType commands
+            blueprint::commands::blueprint_entity_type_create,
+            blueprint::commands::blueprint_entity_type_list,
+            blueprint::commands::blueprint_entity_type_delete,
+            // Blueprint Field commands
+            blueprint::commands::blueprint_field_create,
+            blueprint::commands::blueprint_field_list,
+            blueprint::commands::blueprint_field_delete,
+            // Blueprint RelationshipType commands
+            blueprint::commands::blueprint_relationship_type_create,
+            blueprint::commands::blueprint_relationship_type_list,
+            blueprint::commands::blueprint_relationship_type_delete,
+            // Time Registry commands (V2 Phase 2)
+            time_registry::commands::time_registry_init,
+            time_registry::commands::time_registry_record_entity_change,
+            time_registry::commands::time_registry_get_entity_history,
+            time_registry::commands::time_registry_record_edge_change,
+            time_registry::commands::time_registry_get_edge_history,
+            // ============================================================
+            // CozoDB Content Commands (SurrealDB Replacement)
+            // ============================================================
+            graph::content_commands::cozo_create_note,
+            graph::content_commands::cozo_get_note,
+            graph::content_commands::cozo_list_notes,
+            graph::content_commands::cozo_update_note,
+            graph::content_commands::cozo_delete_note,
+            graph::content_commands::cozo_create_folder,
+            graph::content_commands::cozo_get_folder,
+            graph::content_commands::cozo_list_folders,
+            graph::content_commands::cozo_get_folder_tree,
+            graph::content_commands::cozo_update_folder,
+            graph::content_commands::cozo_delete_folder,
+            // Networks
+            graph::content_commands::cozo_create_network,
+            graph::content_commands::cozo_get_network,
+            graph::content_commands::cozo_list_networks,
+            graph::content_commands::cozo_delete_network,
+            // Entities
+            graph::content_commands::cozo_create_entity,
+            graph::content_commands::cozo_get_entity,
+            graph::content_commands::cozo_list_entities_by_kind,
+            graph::content_commands::cozo_list_entities,
+            graph::content_commands::cozo_delete_entity,
+            // Relationships
+            graph::content_commands::cozo_create_relationship,
+            graph::content_commands::cozo_get_relationship,
+            graph::content_commands::cozo_get_entity_relationships,
+            graph::content_commands::cozo_delete_relationship,
+            // Calendar Events
+            graph::content_commands::cozo_create_cal_event,
+            graph::content_commands::cozo_get_cal_event,
+            graph::content_commands::cozo_list_cal_events,
+            graph::content_commands::cozo_list_cal_events_by_month,
+            graph::content_commands::cozo_delete_cal_event,
+            // Periods
+            graph::content_commands::cozo_create_period,
+            graph::content_commands::cozo_get_period,
+            graph::content_commands::cozo_list_periods,
+            graph::content_commands::cozo_get_period_children,
+            graph::content_commands::cozo_delete_period,
+            // Field Bindings
+            graph::content_commands::cozo_create_binding,
+            graph::content_commands::cozo_get_binding,
+            graph::content_commands::cozo_list_bindings,
+            graph::content_commands::cozo_list_bindings_by_entity,
+            graph::content_commands::cozo_delete_binding,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
