@@ -66,7 +66,7 @@ pub static SCANNER_BRIDGE: Lazy<Mutex<ScannerBridge>> = Lazy::new(|| {
 // Request/Response Types (JSON serializable)
 // =============================================================================
 
-#[derive(Debug, Deserialize)]
+#[taurpc::ipc_type]
 pub struct RegisterNodeRequest {
     pub label: String,
     pub kind: String,
@@ -81,7 +81,7 @@ pub struct RegisterNodeRequest {
 
 fn default_created_by() -> String { "user".to_string() }
 
-#[derive(Debug, Serialize)]
+#[taurpc::ipc_type]
 pub struct NodeResponse {
     pub id: String,
     pub label: String,
@@ -91,7 +91,7 @@ pub struct NodeResponse {
     pub is_new: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[taurpc::ipc_type]
 pub struct CreateEdgeRequest {
     pub source_id: String,
     pub target_id: String,
@@ -102,7 +102,7 @@ pub struct CreateEdgeRequest {
     pub source_note: Option<String>,
 }
 
-#[derive(Debug, Serialize)]
+#[taurpc::ipc_type]
 pub struct EdgeResponse {
     pub id: String,
     pub source_id: String,
@@ -111,7 +111,7 @@ pub struct EdgeResponse {
     pub confidence: f64,
 }
 
-#[derive(Debug, Deserialize)]
+#[taurpc::ipc_type]
 pub struct IngestRequest {
     pub source_note: String,
     #[serde(default)]
@@ -120,13 +120,13 @@ pub struct IngestRequest {
     pub relations: Vec<RelationInput>,
 }
 
-#[derive(Debug, Deserialize)]
+#[taurpc::ipc_type]
 pub struct MentionInput {
     pub entity_label: String,
     pub entity_kind: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[taurpc::ipc_type]
 pub struct RelationInput {
     pub head_label: String,
     pub tail_label: String,
@@ -140,7 +140,7 @@ pub struct RelationInput {
 fn default_confidence() -> f64 { 0.8 }
 fn default_source() -> String { "extraction".to_string() }
 
-#[derive(Debug, Serialize)]
+#[taurpc::ipc_type]
 pub struct IngestResponse {
     pub entities_created: usize,
     pub entities_updated: usize,
@@ -148,14 +148,14 @@ pub struct IngestResponse {
     pub edges_updated: usize,
 }
 
-#[derive(Debug, Serialize)]
+#[taurpc::ipc_type]
 pub struct HydrateResponse {
     pub entity_count: usize,
     pub needs_hydration: bool,
     pub entities: Option<Vec<EntityDef>>,
 }
 
-#[derive(Debug, Serialize)]
+#[taurpc::ipc_type]
 pub struct EntityDef {
     pub id: String,
     pub label: String,

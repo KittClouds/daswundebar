@@ -11,7 +11,7 @@ use std::collections::BTreeMap;
 // Types
 // =============================================================================
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[taurpc::ipc_type]
 pub struct BlueprintMeta {
     pub blueprint_id: String,
     pub name: String,
@@ -24,7 +24,7 @@ pub struct BlueprintMeta {
     pub updated_at: i64,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[taurpc::ipc_type]
 pub struct BlueprintVersion {
     pub version_id: String,
     pub blueprint_id: String,
@@ -35,7 +35,7 @@ pub struct BlueprintVersion {
     pub created_at: i64,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[taurpc::ipc_type]
 pub struct EntityTypeDef {
     pub entity_type_id: String,
     pub version_id: String,
@@ -50,7 +50,7 @@ pub struct EntityTypeDef {
     pub created_at: i64,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 pub struct FieldDef {
     pub field_id: String,
     pub entity_type_id: String,
@@ -68,7 +68,7 @@ pub struct FieldDef {
     pub created_at: i64,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[taurpc::ipc_type]
 pub struct RelationshipTypeDef {
     pub relationship_type_id: String,
     pub version_id: String,
@@ -655,7 +655,7 @@ pub mod commands {
     use crate::graph::commands::GRAPH_REGISTRY;
 
     /// Create blueprint input
-    #[derive(Debug, Clone, Serialize, Deserialize)]
+    #[taurpc::ipc_type]
     pub struct CreateBlueprintInput {
         pub name: String,
         pub description: Option<String>,
@@ -754,7 +754,7 @@ pub mod commands {
     // Version Commands
     // =========================================================================
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
+    #[taurpc::ipc_type]
     pub struct CreateVersionInput {
         pub blueprint_id: String,
         pub version_number: i32,
@@ -798,7 +798,7 @@ pub mod commands {
     // EntityType Commands
     // =========================================================================
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
+    #[taurpc::ipc_type]
     pub struct CreateEntityTypeInput {
         pub version_id: String,
         pub entity_kind: String,
@@ -851,7 +851,7 @@ pub mod commands {
     // Field Commands
     // =========================================================================
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
+    #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
     pub struct CreateFieldInput {
         pub entity_type_id: String,
         pub field_name: String,
@@ -910,7 +910,7 @@ pub mod commands {
     // RelationshipType Commands
     // =========================================================================
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
+    #[taurpc::ipc_type]
     pub struct CreateRelationshipTypeInput {
         pub version_id: String,
         pub relationship_name: String,

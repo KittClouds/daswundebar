@@ -20,7 +20,6 @@ import { GraphLogo } from '@/components/ui/GraphLogo';
 import RichEditor from '@/components/editor/RichEditor';
 import { useTheme } from '@/hooks/useTheme';
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
-import { CozoProvider } from '@/contexts/CozoContext';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { SchemaProvider } from '@/contexts/SchemaContext';
@@ -330,11 +329,9 @@ const Index = () => {
   return (
     <ErrorBoundary>
       <SchemaProvider>
-        <CozoProvider>
-          <TemporalHighlightProvider>
-            <NotesApp />
-          </TemporalHighlightProvider>
-        </CozoProvider>
+        <TemporalHighlightProvider>
+          <NotesApp />
+        </TemporalHighlightProvider>
       </SchemaProvider>
     </ErrorBoundary>
   );

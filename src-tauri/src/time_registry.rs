@@ -15,7 +15,7 @@ use serde::{Deserialize, Serialize};
 // Data Models
 // =============================================================================
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[taurpc::ipc_type]
 pub struct HistoryEntry {
     pub entry_id: String,
     pub entity_id: String,
@@ -24,7 +24,7 @@ pub struct HistoryEntry {
     pub timestamp: i64,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[taurpc::ipc_type]
 pub struct EdgeHistoryEntry {
     pub entry_id: String,
     pub source_id: String,
@@ -241,14 +241,14 @@ pub mod commands {
     use super::*;
     use crate::graph::commands::GRAPH_REGISTRY;
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
+    #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
     pub struct RecordChangeInput {
         pub entity_id: String,
         pub action: String,
         pub data: serde_json::Value,
     }
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
+    #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
     pub struct RecordEdgeChangeInput {
         pub source_id: String,
         pub target_id: String,

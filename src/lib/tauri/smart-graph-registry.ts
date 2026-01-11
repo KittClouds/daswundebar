@@ -204,6 +204,31 @@ export class SmartGraphRegistry {
         }
     }
 
+    /**
+     * Add an entity from NER acceptance directly to cache
+     * 
+     * Called when user accepts a NER suggestion - adds to local cache
+     * without needing a full refresh from Rust.
+     */
+    addEntityFromNER(entityId: string, label: string, kind: string): void {
+        const entity: RegisteredEntity = {
+            id: entityId,
+            label,
+            aliases: [],
+            kind: kind as EntityKind,
+            subtype: undefined,
+            firstNote: '',
+            mentionsByNote: new Map(),
+            totalMentions: 1,
+            lastSeenDate: new Date(),
+            createdAt: new Date(),
+            createdBy: 'extraction',
+            attributes: {},
+        };
+        this.addToCache(entity);
+        console.log(`[SmartGraphRegistry] Added NER entity: ${label} (${kind})`);
+    }
+
     // =========================================================================
     // SYNC READS (from cache - fast!)
     // =========================================================================

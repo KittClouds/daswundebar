@@ -16,6 +16,7 @@ import { initializeStorage, getBlueprintStore } from "@/lib/storage/index";
 import { BlueprintHubProvider } from "@/features/blueprint-hub/context/BlueprintHubContext";
 import { BlueprintHubPanel } from "@/features/blueprint-hub/components/BlueprintHubPanel";
 import { NERProvider } from "@/contexts/NERContext";
+import { CozoProvider } from "@/contexts/CozoContext";
 import { EntityThemeProvider } from "@/contexts/EntityThemeContext";
 // REMOVED: SQLite hydration - entities now come from Rust CozoDB
 import { bindingEngineAdapter } from '@/lib/bindings';
@@ -124,26 +125,28 @@ const App = () => {
         <JotaiProvider store={jotaiStore}>
             <QueryClientProvider client={queryClient}>
                 <TooltipProvider>
-                    <NERProvider>
-                        <EntityThemeProvider>
-                            <BlueprintHubProvider>
-                                <EntitySelectionProvider>
-                                    <Toaster />
-                                    <Sonner />
-                                    <BlueprintHubPanel />
-                                    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-                                        <Routes>
-                                            <Route path="/" element={<Index />} />
-                                            <Route path="/calendar" element={<FantasyCalendarPage />} />
-                                            <Route path="/graph" element={<GraphExplorerPage />} />
-                                            <Route path="/wiki/*" element={<WikiPage />} />
-                                            <Route path="*" element={<NotFound />} />
-                                        </Routes>
-                                    </BrowserRouter>
-                                </EntitySelectionProvider>
-                            </BlueprintHubProvider>
-                        </EntityThemeProvider>
-                    </NERProvider>
+                    <CozoProvider>
+                        <NERProvider>
+                            <EntityThemeProvider>
+                                <BlueprintHubProvider>
+                                    <EntitySelectionProvider>
+                                        <Toaster />
+                                        <Sonner />
+                                        <BlueprintHubPanel />
+                                        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+                                            <Routes>
+                                                <Route path="/" element={<Index />} />
+                                                <Route path="/calendar" element={<FantasyCalendarPage />} />
+                                                <Route path="/graph" element={<GraphExplorerPage />} />
+                                                <Route path="/wiki/*" element={<WikiPage />} />
+                                                <Route path="*" element={<NotFound />} />
+                                            </Routes>
+                                        </BrowserRouter>
+                                    </EntitySelectionProvider>
+                                </BlueprintHubProvider>
+                            </EntityThemeProvider>
+                        </NERProvider>
+                    </CozoProvider>
                 </TooltipProvider>
             </QueryClientProvider>
         </JotaiProvider>

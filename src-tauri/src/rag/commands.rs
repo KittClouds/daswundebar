@@ -16,27 +16,27 @@ use crate::graph::commands::GRAPH_REGISTRY;
 // Request/Response Types
 // =============================================================================
 
-#[derive(Debug, Serialize)]
+#[taurpc::ipc_type]
 pub struct InitEmbedderResponse {
     pub dimensions: usize,
     pub model_id: String,
 }
 
-#[derive(Debug, Serialize)]
+#[taurpc::ipc_type]
 pub struct EmbedResponse {
     pub embeddings: Vec<Vec<f32>>,
     pub dimensions: usize,
     pub model_id: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[taurpc::ipc_type]
 pub struct NoteInput {
     pub id: String,
     pub title: String,
     pub content: String,
 }
 
-#[derive(Debug, Serialize)]
+#[taurpc::ipc_type]
 pub struct ChunkOutput {
     pub chunk_id: String,
     pub note_id: String,
@@ -46,13 +46,13 @@ pub struct ChunkOutput {
     pub end: usize,
 }
 
-#[derive(Debug, Serialize)]
+#[taurpc::ipc_type]
 pub struct IndexResult {
     pub chunks_created: usize,
     pub note_id: String,
 }
 
-#[derive(Debug, Serialize)]
+#[taurpc::ipc_type]
 pub struct SearchResult {
     pub chunk_id: String,
     pub note_id: String,

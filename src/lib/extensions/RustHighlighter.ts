@@ -29,6 +29,12 @@ import {
     type TemporalMention
 } from '@/lib/tauri/bridge';
 
+// NER Bridge for suggestions
+import {
+    type NerSuggestion,
+    suggestionToCharOffsets,
+} from '@/lib/tauri/ner-bridge';
+
 // Types
 import { EntityKind, ENTITY_KINDS, ENTITY_COLORS } from '@/lib/types/entityTypes';
 import type { NEREntity } from '@/lib/extraction';
@@ -56,7 +62,13 @@ export interface RustHighlighterOptions {
     onNEREntityClick?: (entity: NEREntity) => void;
     onRefClick?: (kind: RefKind, target: string, payload?: any) => void;
 
-    // NER entities getter
+    // NER suggestion handlers (Rust backend)
+    nerSuggestions?: NerSuggestion[] | (() => NerSuggestion[]);
+    onNerSuggestionClick?: (suggestion: NerSuggestion) => void;
+    onNerSuggestionAccept?: (suggestionId: string) => Promise<boolean>;
+    onNerSuggestionReject?: (suggestionId: string) => Promise<boolean>;
+
+    // Legacy NER entities getter (deprecated, use nerSuggestions)
     nerEntities?: NEREntity[] | (() => NEREntity[]);
 
     // Note context
@@ -425,7 +437,7 @@ function buildPatternDecorations(
                     decorations.push(
                         Decoration.widget(from, widget, {
                             side: -1,
-                            key: `${pattern.id}-${from}-${fullMatch}`,
+                            key: `${pattern.id}-${from}-${fullMatch}-${mode}`,
                         })
                     );
 
@@ -541,6 +553,110 @@ function buildNERDecorations(
     return decorations;
 }
 
+/**
+ * Build decorations for Rust NER suggestions (from Tauri backend)
+ * 
+ * These are styled with amber dashed underlines and include suggestion ID
+ * for accept/reject actions.
+ */
+function buildNerSuggestionDecorations(
+    doc: ProseMirrorNode,
+    options: RustHighlighterOptions,
+    processedRanges: Range[]
+): Decoration[] {
+    const decorations: Decoration[] = [];
+
+    try {
+        const mode = options.getHighlightMode?.() ?? 'vivid';
+
+        // Skip in off or clean mode
+        if (mode === 'off' || mode === 'clean') return decorations;
+
+        // Safely get suggestions - handle both array and getter function
+        let nerSuggestions: NerSuggestion[] = [];
+        try {
+            const raw = typeof options.nerSuggestions === 'function'
+                ? options.nerSuggestions()
+                : options.nerSuggestions;
+            nerSuggestions = Array.isArray(raw) ? raw : [];
+        } catch {
+            // Getter threw - return empty
+            return decorations;
+        }
+
+        if (nerSuggestions.length === 0) return decorations;
+
+        // Extract full document text for byte-to-char offset conversion
+        const fullText = extractText(doc);
+        if (!fullText || fullText.length === 0) return decorations;
+
+        const positionMap = buildPositionMap(doc);
+        if (!positionMap || positionMap.length === 0) return decorations;
+
+        for (const suggestion of nerSuggestions) {
+            if (!suggestion || !suggestion.id) continue;
+
+            // Convert byte offsets to character offsets
+            const charOffsets = suggestionToCharOffsets(suggestion, fullText);
+
+            // Validate offsets are within bounds
+            if (charOffsets.start < 0 || charOffsets.end <= charOffsets.start) continue;
+            if (charOffsets.start >= fullText.length) continue;
+            if (charOffsets.end > fullText.length) continue;
+
+            // Map text indices to ProseMirror positions - with safety
+            const from = positionMap[charOffsets.start];
+            if (from === undefined || typeof from !== 'number' || isNaN(from)) continue;
+
+            const endIdx = Math.min(charOffsets.end - 1, positionMap.length - 1);
+            const toBase = positionMap[endIdx];
+            if (toBase === undefined || typeof toBase !== 'number' || isNaN(toBase)) continue;
+
+            const to = toBase + 1;
+
+            // Final validation - positions must be valid for doc
+            if (from < 0 || to <= from || to > doc.content.size + 1) continue;
+
+            // Check overlap with already-processed ranges
+            if (rangesOverlap(processedRanges, charOffsets.start, charOffsets.end)) continue;
+            insertRange(processedRanges, charOffsets.start, charOffsets.end);
+
+            // Confidence-based styling intensity
+            const confidencePercent = Math.round((suggestion.confidence || 0) * 100);
+            const bgOpacity = mode === 'vivid' ? 0.20 : 0.15;
+
+            // Style: amber dashed underline (matches reference images)
+            const style = `
+                background-color: hsl(45 93% 47% / ${bgOpacity});
+                border-bottom: 2px dashed hsl(45 93% 47%);
+                padding: 0px 2px;
+                cursor: pointer;
+            `;
+
+            const className = mode === 'vivid' ? 'ner-suggestion vivid' : 'ner-suggestion';
+            const tooltip = `${suggestion.entity_type || 'entity'}: ${suggestion.text || '?'} (${confidencePercent}% confidence)`;
+
+            decorations.push(
+                Decoration.inline(from, to, {
+                    class: className,
+                    style,
+                    // Data attributes for click handlers
+                    'data-ner-suggestion-id': suggestion.id,
+                    'data-ner-suggestion-text': suggestion.text || '',
+                    'data-ner-suggestion-type': suggestion.entity_type || '',
+                    'data-ner-suggestion-confidence': String(suggestion.confidence || 0),
+                    'data-ner-suggestion-label': suggestion.label || '',
+                    'title': tooltip,
+                }, { inclusiveStart: false, inclusiveEnd: false })
+            );
+        }
+    } catch (err) {
+        console.error('[RustHighlighter] Error building NER suggestion decorations:', err);
+    }
+
+    return decorations;
+}
+
 // ==================== MAIN DECORATION BUILDER ====================
 
 // Last scan result storage (sync access for decoration building)
@@ -572,9 +688,14 @@ function buildAllDecorations(
         allDecorations.push(...tauriDecorations);
     }
 
-    // 3. NER suggestions
+    // 3. Legacy NER suggestions (frontend entities)
     const nerDecorations = buildNERDecorations(doc, options, docProcessedRanges);
     allDecorations.push(...nerDecorations);
+
+    // 4. Rust NER suggestions (from Tauri backend)
+    // TEMPORARILY DISABLED - debugging ProseMirror crash
+    // const nerSuggestionDecorations = buildNerSuggestionDecorations(doc, options, docProcessedRanges);
+    // allDecorations.push(...nerSuggestionDecorations);
 
     return DecorationSet.create(doc, allDecorations);
 }
@@ -725,6 +846,10 @@ export const RustHighlighter = Extension.create<RustHighlighterOptions>({
             onImplicitClick: undefined,
             onNEREntityClick: undefined,
             onRefClick: undefined,
+            nerSuggestions: undefined,
+            onNerSuggestionClick: undefined,
+            onNerSuggestionAccept: undefined,
+            onNerSuggestionReject: undefined,
             nerEntities: undefined,
             currentNoteId: undefined,
             useWidgetMode: false,
@@ -851,7 +976,7 @@ export const RustHighlighter = Extension.create<RustHighlighterOptions>({
                                 return true;
                             }
 
-                            // NER clicks
+                            // Legacy NER clicks (frontend entities)
                             const nerEntity = target.getAttribute('data-ner-entity');
                             if (nerEntity && options.onNEREntityClick) {
                                 event.preventDefault();
@@ -866,6 +991,36 @@ export const RustHighlighter = Extension.create<RustHighlighterOptions>({
                                     end: nerEnd,
                                     score: 0,
                                 });
+                                return true;
+                            }
+
+                            // Rust NER suggestion clicks (from Tauri backend)
+                            const suggestionId = target.getAttribute('data-ner-suggestion-id');
+                            if (suggestionId) {
+                                event.preventDefault();
+                                event.stopPropagation();
+
+                                // Extract suggestion data from attributes
+                                const suggestionText = target.getAttribute('data-ner-suggestion-text') || '';
+                                const suggestionType = target.getAttribute('data-ner-suggestion-type') || '';
+                                const suggestionConfidence = parseFloat(target.getAttribute('data-ner-suggestion-confidence') || '0');
+                                const suggestionLabel = target.getAttribute('data-ner-suggestion-label') || '';
+
+                                // Call the suggestion click handler if provided
+                                if (options.onNerSuggestionClick) {
+                                    options.onNerSuggestionClick({
+                                        id: suggestionId,
+                                        world_id: '', // Not stored in DOM
+                                        source_note_id: resolveNoteId(options.currentNoteId),
+                                        text: suggestionText,
+                                        label: suggestionLabel,
+                                        entity_type: suggestionType,
+                                        byte_start: 0, // Byte offsets not stored in DOM
+                                        byte_end: 0,
+                                        confidence: suggestionConfidence,
+                                        inferred_at: 0,
+                                    });
+                                }
                                 return true;
                             }
 

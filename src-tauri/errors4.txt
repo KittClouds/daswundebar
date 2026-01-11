@@ -5,7 +5,7 @@ auri)
 At line:1 char:1
 + cargo build --lib 2>&1 | 
 Out-File -Encoding utf8 
-errors.txt; Select-S ...
+errors4.txt; Select- ...
 + ~~~~~~~~~~~~~~~~~~~~~~
     + CategoryInfo          
     : NotSpecified: (   Co  
@@ -209,6 +209,18 @@ DataValue, NamedRows};
   |                         
           ^^^^^^^^^
 
+warning: unused imports: 
+`Deserialize` and 
+`Serialize`
+ --> 
+src\graph\commands.rs:7:13
+  |
+7 | use 
+serde::{Deserialize, 
+Serialize};
+  |             ^^^^^^^^^^^ 
+ ^^^^^^^^^
+
 warning: unused import: 
 `schema::*`
   --> src\graph\mod.rs:31:9
@@ -272,6 +284,18 @@ warning: unused import:
 graph_backend::*;
    |         
 ^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Deserialize` and 
+`Serialize`
+ --> 
+src\rag\commands.rs:6:13
+  |
+6 | use 
+serde::{Deserialize, 
+Serialize};
+  |             ^^^^^^^^^^^ 
+ ^^^^^^^^^
 
 warning: unused import: 
 `commands::*`
@@ -358,6 +382,29 @@ FieldContribution,
 ^^^^^^^^^^^^^  
 ^^^^^^^^^^^^^^^^^
 
+warning: unused imports: 
+`Deserialize` and 
+`Serialize`
+ --> src\blueprint.rs:7:13
+  |
+7 | use 
+serde::{Deserialize, 
+Serialize};
+  |             ^^^^^^^^^^^ 
+ ^^^^^^^^^
+
+warning: unused imports: 
+`Deserialize` and 
+`Serialize`
+  --> 
+src\time_registry.rs:12:13
+   |
+12 | use 
+serde::{Deserialize, 
+Serialize};
+   |             
+^^^^^^^^^^^  ^^^^^^^^^
+
 warning: unused import: 
 `std::sync::Arc`
  --> 
@@ -380,6 +427,16 @@ warning: unused import:
   |
 5 | use std::sync::Arc;
   |     ^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Deserialize` and 
+`Serialize`
+ --> src\ai\commands.rs:8:13
+  |
+8 | use serde::{Serialize, 
+Deserialize};
+  |             ^^^^^^^^^  
+^^^^^^^^^^^
 
 warning: unused import: 
 `AnalysisResult`
@@ -420,21 +477,6 @@ AcceptResult};
                             
      ^^^^^^^^^^^^^^^^  
 ^^^^^^^^^^^^
-
-warning: unused imports: 
-`EdgeResponse`, 
-`IngestResponse`, and 
-`NodeResponse`
-  --> src\api\graph.rs:14:5
-   |
-14 |     NodeResponse,
-   |     ^^^^^^^^^^^^
-15 |     CreateEdgeRequest,
-16 |     EdgeResponse,
-   |     ^^^^^^^^^^^^
-17 |     IngestRequest,
-18 |     IngestResponse,
-   |     ^^^^^^^^^^^^^^
 
 warning: unused macro 
 definition: `parse_call`
@@ -484,8 +526,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-11850003603
-776660096.txt'
+pp_lib.long-type-16488679684
+631839453.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -565,8 +607,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-17056535275
-223506364.txt'
+pp_lib.long-type-61566873033
+88157020.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -574,16 +616,16 @@ console
 
 error[E0271]: expected 
 `{async block@src\api\graph.
-rs:126:11: 126:13}` to be a 
+rs:103:11: 103:13}` to be a 
 future that resolves to 
 `Result<String, String>`, 
 but it resolves to 
 `Result<HydrateResponse, 
 String>`
    --> 
-src\api\graph.rs:126:11
+src\api\graph.rs:103:11
     |
-126 |     async fn get_entit
+103 |     async fn get_entit
 ies_for_hydration(self) -> 
 Result<String, String> {
     |           ^^ expected 
@@ -601,8 +643,8 @@ sponse, _>`
     = note: required for 
 the cast from 
 `Pin<Box<{async block@src\ap
-i\graph.rs:126:11: 
-126:13}>>` to `Pin<Box<dyn 
+i\graph.rs:103:11: 
+103:13}>>` to `Pin<Box<dyn 
 Future<Output = 
 Result<String, String>> + 
 Send>>`
@@ -611,8 +653,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-17056535275
-223506364.txt'
+pp_lib.long-type-61566873033
+88157020.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -650,8 +692,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-11930480260
-034110025.txt'
+pp_lib.long-type-69181406842
+36603801.txt'
    = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -696,9 +738,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:100:31
     |
@@ -752,8 +793,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-36143744516
-31119579.txt'
+pp_lib.long-type-14282015494
+321876882.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -794,8 +835,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-38185772313
-74712592.txt'
+pp_lib.long-type-67373802996
+65242124.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -834,9 +875,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:113:31
     |
@@ -886,8 +926,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-41829144043
-86248523.txt'
+pp_lib.long-type-89717505916
+66013752.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -935,9 +975,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:121:31
     |
@@ -991,8 +1030,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-14429913151
-387003276.txt'
+pp_lib.long-type-17090998791
+832003765.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -1030,8 +1069,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-79783881175
-70980044.txt'
+pp_lib.long-type-19424261623
+9199155.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -1076,9 +1115,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:134:31
     |
@@ -1126,8 +1164,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-13839989075
-886034953.txt'
+pp_lib.long-type-51030192509
+22244537.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -1170,8 +1208,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-25522967841
-68053607.txt'
+pp_lib.long-type-15473810256
+138182838.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -1210,9 +1248,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:147:31
     |
@@ -1257,8 +1294,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-65624652331
-18939778.txt'
+pp_lib.long-type-13824369867
+621198923.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -1297,9 +1334,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:152:31
     |
@@ -1348,8 +1384,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-49881225434
-33958858.txt'
+pp_lib.long-type-15418235627
+300967333.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -1394,9 +1430,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:160:31
     |
@@ -1449,8 +1484,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-14429913151
-387003276.txt'
+pp_lib.long-type-17090998791
+832003765.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -1489,8 +1524,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-37213793126
-13651637.txt'
+pp_lib.long-type-87425695875
+55211797.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -1537,9 +1572,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:173:31
     |
@@ -1589,8 +1623,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-11005701812
-040618059.txt'
+pp_lib.long-type-13192051724
+242909893.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -1633,8 +1667,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-30543457269
-94125722.txt'
+pp_lib.long-type-16479660065
+447923027.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -1673,9 +1707,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:186:31
     |
@@ -1725,8 +1758,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-14429913151
-387003276.txt'
+pp_lib.long-type-17090998791
+832003765.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -1764,8 +1797,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-16988022225
-393906094.txt'
+pp_lib.long-type-17557220581
+598258740.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -1812,9 +1845,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:199:31
     |
@@ -1863,8 +1895,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-93076575476
-34864239.txt'
+pp_lib.long-type-45968559770
+14021239.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -1907,8 +1939,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-27245774508
-18938158.txt'
+pp_lib.long-type-18313704012
+281697335.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -1947,9 +1979,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:212:31
     |
@@ -1994,8 +2025,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-15621156268
-245721216.txt'
+pp_lib.long-type-10715091765
+890345909.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -2034,9 +2065,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:217:31
     |
@@ -2086,8 +2116,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-14429913151
-387003276.txt'
+pp_lib.long-type-17090998791
+832003765.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -2129,8 +2159,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-18807646412
-92638722.txt'
+pp_lib.long-type-17798212984
+946186381.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -2179,9 +2209,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:230:31
     |
@@ -2231,8 +2260,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-18012718201
-141698746.txt'
+pp_lib.long-type-13813110137
+195645113.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -2276,8 +2305,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-12745422699
-792689208.txt'
+pp_lib.long-type-99292801250
+76324724.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -2318,9 +2347,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:243:31
     |
@@ -2371,8 +2399,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-14429913151
-387003276.txt'
+pp_lib.long-type-17090998791
+832003765.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -2469,8 +2497,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-16336485163
-852365083.txt'
+pp_lib.long-type-92783502499
+19292221.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -2530,9 +2558,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:256:31
     |
@@ -2588,8 +2615,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-10587974162
-259985784.txt'
+pp_lib.long-type-17269596787
+938625788.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -2632,8 +2659,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-16118229476
-360751736.txt'
+pp_lib.long-type-53910921332
+88633283.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -2672,9 +2699,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:269:31
     |
@@ -2721,8 +2747,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-87318385456
-14544765.txt'
+pp_lib.long-type-76445202921
+12138707.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -2763,9 +2789,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:274:31
     |
@@ -2816,8 +2841,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-14429913151
-387003276.txt'
+pp_lib.long-type-17090998791
+832003765.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -3102,8 +3127,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-57323971549
-43079322.txt'
+pp_lib.long-type-17373058906
+468441881.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -3165,9 +3190,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:287:31
     |
@@ -3225,8 +3249,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-16682757206
-074937211.txt'
+pp_lib.long-type-77862979458
+61300310.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -3269,8 +3293,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-44532564182
-28713792.txt'
+pp_lib.long-type-62165208949
+2293678.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -3309,9 +3333,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:300:31
     |
@@ -3357,8 +3380,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-29731790858
-27430947.txt'
+pp_lib.long-type-37139333661
+56845173.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -3398,9 +3421,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:305:31
     |
@@ -3451,8 +3473,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-14429913151
-387003276.txt'
+pp_lib.long-type-17090998791
+832003765.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -3500,8 +3522,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-14741343210
-559280881.txt'
+pp_lib.long-type-78417659215
+40902111.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -3554,9 +3576,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:318:31
     |
@@ -3610,8 +3631,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-12988014824
-636378639.txt'
+pp_lib.long-type-58769058729
+6907752.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -3654,8 +3675,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-21891097456
-90652090.txt'
+pp_lib.long-type-42413321913
+06329550.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -3694,9 +3715,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:331:31
     |
@@ -3742,8 +3762,8 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-12252021069
-050445696.txt'
+pp_lib.long-type-66729158114
+32404682.txt'
     = note: consider using 
 `--verbose` to print the 
 full type name to the 
@@ -3784,9 +3804,8 @@ ack.html>
     = help: specify the 
 types explicitly
 note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
+requirement `!: Serialize` 
+will fail
    --> 
 src\api\content.rs:336:31
     |
@@ -3837,442 +3856,9 @@ for the type has been
 written to 'C:\Users\shuga\1
 kittroot\1code\daswundebar\s
 rc-tauri\target\debug\deps\a
-pp_lib.long-type-14429913151
-387003276.txt'
+pp_lib.long-type-17090998791
+832003765.txt'
     = note: consider using 
-`--verbose` to print the 
-full type name to the 
-console
-
-error[E0277]: the `?` 
-operator can only be 
-applied to values that 
-implement `Try`
-  --> src\api\rag.rs:31:22
-   |
-31 |         let result = cm
-d::rag_init_embedder(model_i
-d)?;
-   |                      ^^
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-^^^ the `?` operator cannot 
-be applied to type `impl 
-Future<Output = Result<InitE
-mbedderResponse, String>>`
-   |
-   = help: the trait `Try` 
-is not implemented for 
-`impl Future<Output = Result
-<InitEmbedderResponse, 
-String>>`
-   = note: the full name 
-for the type has been 
-written to 'C:\Users\shuga\1
-kittroot\1code\daswundebar\s
-rc-tauri\target\debug\deps\a
-pp_lib.long-type-84152829234
-28033352.txt'
-   = note: consider using 
-`--verbose` to print the 
-full type name to the 
-console
-help: consider `await`ing 
-on the `Future`
-   |
-31 |         let result = cm
-d::rag_init_embedder(model_i
-d).await?;
-   |                        
-                            
-  ++++++
-
-error: this function 
-depends on never type 
-fallback being `()`
-  --> src\api\rag.rs:28:1
-   |
-28 | #[taurpc::resolvers]
-   | ^^^^^^^^^^^^^^^^^^^^
-   |
-   = warning: this was 
-previously accepted by the 
-compiler but is being 
-phased out; it will become 
-a hard error in Rust 2024 
-and in a future release in 
-all editions!
-   = note: for more 
-information, see <https://do
-c.rust-lang.org/edition-guid
-e/rust-2024/never-type-fallb
-ack.html>
-   = help: specify the 
-types explicitly
-note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
-  --> src\api\rag.rs:32:31
-   |
-32 |         serde_json::to_
-string(&result).map_err(|e| 
-e.to_string())
-   |                        
-       ^^^^^^^
-help: use `()` annotations 
-to avoid fallback changes
-   |
-31 |         let result: () 
-= cmd::rag_init_embedder(mod
-el_id)?;
-   |                   ++++
-
-error[E0277]: the `?` 
-operator can only be 
-applied to values that 
-implement `Try`
-  --> src\api\rag.rs:36:22
-   |
-36 |         let result = 
-cmd::rag_embed(texts)?;
-   |                      
-^^^^^^^^^^^^^^^^^^^^^^ the 
-`?` operator cannot be 
-applied to type `impl 
-futures_util::Future<Output 
-= std::result::Result<EmbedR
-esponse, 
-std::string::String>>`
-   |
-   = help: the trait `Try` 
-is not implemented for 
-`impl 
-futures_util::Future<Output 
-= std::result::Result<EmbedR
-esponse, 
-std::string::String>>`
-help: consider `await`ing 
-on the `Future`
-   |
-36 |         let result = cm
-d::rag_embed(texts).await?;
-   |                        
-                   ++++++
-
-error: this function 
-depends on never type 
-fallback being `()`
-  --> src\api\rag.rs:28:1
-   |
-28 | #[taurpc::resolvers]
-   | ^^^^^^^^^^^^^^^^^^^^
-   |
-   = warning: this was 
-previously accepted by the 
-compiler but is being 
-phased out; it will become 
-a hard error in Rust 2024 
-and in a future release in 
-all editions!
-   = note: for more 
-information, see <https://do
-c.rust-lang.org/edition-guid
-e/rust-2024/never-type-fallb
-ack.html>
-   = help: specify the 
-types explicitly
-note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
-  --> src\api\rag.rs:37:31
-   |
-37 |         serde_json::to_
-string(&result).map_err(|e| 
-e.to_string())
-   |                        
-       ^^^^^^^
-help: use `()` annotations 
-to avoid fallback changes
-   |
-36 |         let result: () 
-= cmd::rag_embed(texts)?;
-   |                   ++++
-
-error[E0277]: the `?` 
-operator can only be 
-applied to values that 
-implement `Try`
-  --> src\api\rag.rs:52:22
-   |
-52 |         let result = 
-cmd::rag_index_note(input)?;
-   |                      
-^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
-the `?` operator cannot be 
-applied to type `impl 
-futures_util::Future<Output 
-= std::result::Result<IndexR
-esult, 
-std::string::String>>`
-   |
-   = help: the trait `Try` 
-is not implemented for 
-`impl 
-futures_util::Future<Output 
-= std::result::Result<IndexR
-esult, 
-std::string::String>>`
-help: consider `await`ing 
-on the `Future`
-   |
-52 |         let result = cm
-d::rag_index_note(input).awa
-it?;
-   |                        
-                        
-++++++
-
-error: this function 
-depends on never type 
-fallback being `()`
-  --> src\api\rag.rs:28:1
-   |
-28 | #[taurpc::resolvers]
-   | ^^^^^^^^^^^^^^^^^^^^
-   |
-   = warning: this was 
-previously accepted by the 
-compiler but is being 
-phased out; it will become 
-a hard error in Rust 2024 
-and in a future release in 
-all editions!
-   = note: for more 
-information, see <https://do
-c.rust-lang.org/edition-guid
-e/rust-2024/never-type-fallb
-ack.html>
-   = help: specify the 
-types explicitly
-note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
-  --> src\api\rag.rs:53:31
-   |
-53 |         serde_json::to_
-string(&result).map_err(|e| 
-e.to_string())
-   |                        
-       ^^^^^^^
-help: use `()` annotations 
-to avoid fallback changes
-   |
-52 |         let result: () 
-= 
-cmd::rag_index_note(input)?;
-   |                   ++++
-
-error[E0277]: the `?` 
-operator can only be 
-applied to values that 
-implement `Try`
-  --> src\api\rag.rs:57:22
-   |
-57 |         let result = 
-cmd::rag_search(query, k)?;
-   |                      
-^^^^^^^^^^^^^^^^^^^^^^^^^^ 
-the `?` operator cannot be 
-applied to type `impl 
-Future<Output = 
-Result<Vec<SearchResult>, 
-String>>`
-   |
-   = help: the trait `Try` 
-is not implemented for 
-`impl Future<Output = 
-Result<Vec<SearchResult>, 
-String>>`
-   = note: the full name 
-for the type has been 
-written to 'C:\Users\shuga\1
-kittroot\1code\daswundebar\s
-rc-tauri\target\debug\deps\a
-pp_lib.long-type-10969289070
-909143063.txt'
-   = note: consider using 
-`--verbose` to print the 
-full type name to the 
-console
-help: consider `await`ing 
-on the `Future`
-   |
-57 |         let result = 
-cmd::rag_search(query, 
-k).await?;
-   |                        
-                       
-++++++
-
-error: this function 
-depends on never type 
-fallback being `()`
-  --> src\api\rag.rs:28:1
-   |
-28 | #[taurpc::resolvers]
-   | ^^^^^^^^^^^^^^^^^^^^
-   |
-   = warning: this was 
-previously accepted by the 
-compiler but is being 
-phased out; it will become 
-a hard error in Rust 2024 
-and in a future release in 
-all editions!
-   = note: for more 
-information, see <https://do
-c.rust-lang.org/edition-guid
-e/rust-2024/never-type-fallb
-ack.html>
-   = help: specify the 
-types explicitly
-note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
-  --> src\api\rag.rs:58:31
-   |
-58 |         serde_json::to_
-string(&result).map_err(|e| 
-e.to_string())
-   |                        
-       ^^^^^^^
-help: use `()` annotations 
-to avoid fallback changes
-   |
-57 |         let result: () 
-= cmd::rag_search(query, 
-k)?;
-   |                   ++++
-
-error[E0277]: the `?` 
-operator can only be 
-applied to values that 
-implement `Try`
-  --> src\api\rag.rs:62:22
-   |
-62 |         let result = cm
-d::rag_get_chunks(note_id)?;
-   |                      ^^
-^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
-the `?` operator cannot be 
-applied to type `impl 
-Future<Output = 
-Result<Vec<ChunkOutput>, 
-String>>`
-   |
-   = help: the trait `Try` 
-is not implemented for 
-`impl Future<Output = 
-Result<Vec<ChunkOutput>, 
-String>>`
-   = note: the full name 
-for the type has been 
-written to 'C:\Users\shuga\1
-kittroot\1code\daswundebar\s
-rc-tauri\target\debug\deps\a
-pp_lib.long-type-18288667811
-128779173.txt'
-   = note: consider using 
-`--verbose` to print the 
-full type name to the 
-console
-help: consider `await`ing 
-on the `Future`
-   |
-62 |         let result = cm
-d::rag_get_chunks(note_id).a
-wait?;
-   |                        
-                          
-++++++
-
-error: this function 
-depends on never type 
-fallback being `()`
-  --> src\api\rag.rs:28:1
-   |
-28 | #[taurpc::resolvers]
-   | ^^^^^^^^^^^^^^^^^^^^
-   |
-   = warning: this was 
-previously accepted by the 
-compiler but is being 
-phased out; it will become 
-a hard error in Rust 2024 
-and in a future release in 
-all editions!
-   = note: for more 
-information, see <https://do
-c.rust-lang.org/edition-guid
-e/rust-2024/never-type-fallb
-ack.html>
-   = help: specify the 
-types explicitly
-note: in edition 2024, the 
-requirement `!: 
-_::_serde::Serialize` will 
-fail
-  --> src\api\rag.rs:63:31
-   |
-63 |         serde_json::to_
-string(&result).map_err(|e| 
-e.to_string())
-   |                        
-       ^^^^^^^
-help: use `()` annotations 
-to avoid fallback changes
-   |
-62 |         let result: () 
-= cmd::rag_get_chunks(note_i
-d)?;
-   |                   ++++
-
-error[E0271]: expected 
-`{async 
-block@src\api\rag.rs:66:11: 
-66:13}` to be a future that 
-resolves to `Result<usize, 
-String>`, but it resolves 
-to `impl Future<Output = 
-Result<usize, String>>`
-  --> src\api\rag.rs:66:11
-   |
-66 |     async fn 
-delete_note_chunks(self, 
-note_id: String) -> 
-Result<usize, String> {
-   |           ^^ expected 
-`Result<usize, String>`, 
-found future
-   |
-   = note: required for the 
-cast from `Pin<Box<{async 
-block@src\api\rag.rs:66:11: 
-66:13}>>` to `Pin<Box<dyn 
-Future<Output = 
-Result<usize, String>> + 
-Send>>`
-   = note: the full name 
-for the type has been 
-written to 'C:\Users\shuga\1
-kittroot\1code\daswundebar\s
-rc-tauri\target\debug\deps\a
-pp_lib.long-type-10110580819
-070436497.txt'
-   = note: consider using 
 `--verbose` to print the 
 full type name to the 
 console
@@ -4344,9 +3930,9 @@ handler())
                        
 ^^^^^^^^^^^^
    |
-  ::: src\api\graph.rs:38:1
+  ::: src\api\graph.rs:15:1
    |
-38 | 
+15 | 
 #[taurpc::procedures(path = 
 "graph", export_to = 
 "../src/bindings.ts")]
@@ -4356,7 +3942,7 @@ handler())
 method is available for 
 `GraphApiImpl` here
 ...
-70 | pub struct 
+47 | pub struct 
 GraphApiImpl;
    | 
 ----------------------- 
@@ -4390,69 +3976,11 @@ raw())
 
 error[E0599]: no method 
 named `into_handler` found 
-for struct `ContentApiImpl` 
-in the current scope
-  --> src\api\mod.rs:34:51
-   |
-34 |         .merge(content:
-:ContentApiImpl::default().i
-nto_handler())
-   |                        
-                           
-^^^^^^^^^^^^
-   |
-  ::: 
-src\api\content.rs:12:1
-   |
-12 | 
-#[taurpc::procedures(path = 
-"content", export_to = 
-"../src/bindings.ts")]
-   | -----------------------
-----------------------------
----------------------- the 
-method is available for 
-`ContentApiImpl` here
-...
-90 | pub struct 
-ContentApiImpl;
-   | 
-------------------------- 
-method `into_handler` not 
-found for this struct
-   |
-   = help: items from 
-traits can only be used if 
-the trait is in scope
-help: trait `ContentApi` 
-which provides 
-`into_handler` is 
-implemented but not in 
-scope; perhaps you want to 
-import it
-   |
-19 + use crate::api::content
-::ContentApi;
-   |
-help: there is a method 
-`into_raw` with a similar 
-name
-   |
-34 -         .merge(content:
-:ContentApiImpl::default().i
-nto_handler())
-34 +         .merge(content:
-:ContentApiImpl::default().i
-nto_raw())
-   |
-
-error[E0599]: no method 
-named `into_handler` found 
 for struct `NerApiImpl` in 
 the current scope
-  --> src\api\mod.rs:35:43
+  --> src\api\mod.rs:34:43
    |
-35 |         .merge(ner::Ner
+34 |         .merge(ner::Ner
 ApiImpl::default().into_hand
 ler())
    |                        
@@ -4492,10 +4020,10 @@ help: there is a method
 `into_raw` with a similar 
 name
    |
-35 -         .merge(ner::Ner
+34 -         .merge(ner::Ner
 ApiImpl::default().into_hand
 ler())
-35 +         .merge(ner::Ner
+34 +         .merge(ner::Ner
 ApiImpl::default().into_raw(
 ))
    |
@@ -4504,9 +4032,9 @@ error[E0599]: no method
 named `into_handler` found 
 for struct `RagApiImpl` in 
 the current scope
-  --> src\api\mod.rs:36:43
+  --> src\api\mod.rs:35:43
    |
-36 |         .merge(rag::Rag
+35 |         .merge(rag::Rag
 ApiImpl::default().into_hand
 ler())
    |                        
@@ -4546,10 +4074,10 @@ help: there is a method
 `into_raw` with a similar 
 name
    |
-36 -         .merge(rag::Rag
+35 -         .merge(rag::Rag
 ApiImpl::default().into_hand
 ler())
-36 +         .merge(rag::Rag
+35 +         .merge(rag::Rag
 ApiImpl::default().into_raw(
 ))
    |
@@ -4559,9 +4087,9 @@ named `into_handler` found
 for struct 
 `BlueprintApiImpl` in the 
 current scope
-  --> src\api\mod.rs:37:55
+  --> src\api\mod.rs:36:55
    |
-37 |         .merge(blueprin
+36 |         .merge(blueprin
 t::BlueprintApiImpl::default
 ().into_handler())
    |                        
@@ -4605,10 +4133,10 @@ help: there is a method
 `into_raw` with a similar 
 name
    |
-37 -         .merge(blueprin
+36 -         .merge(blueprin
 t::BlueprintApiImpl::default
 ().into_handler())
-37 +         .merge(blueprin
+36 +         .merge(blueprin
 t::BlueprintApiImpl::default
 ().into_raw())
    |
@@ -4618,9 +4146,9 @@ named `into_handler` found
 for struct 
 `TimeRegistryApiImpl` in 
 the current scope
-  --> src\api\mod.rs:38:62
+  --> src\api\mod.rs:37:62
    |
-38 |         .merge(time_reg
+37 |         .merge(time_reg
 istry::TimeRegistryApiImpl::
 default().into_handler())
    |                        
@@ -4665,12 +4193,70 @@ help: there is a method
 `into_raw` with a similar 
 name
    |
-38 -         .merge(time_reg
+37 -         .merge(time_reg
 istry::TimeRegistryApiImpl::
 default().into_handler())
-38 +         .merge(time_reg
+37 +         .merge(time_reg
 istry::TimeRegistryApiImpl::
 default().into_raw())
+   |
+
+error[E0599]: no method 
+named `into_handler` found 
+for struct `ContentApiImpl` 
+in the current scope
+  --> src\api\mod.rs:38:51
+   |
+38 |         .merge(content:
+:ContentApiImpl::default().i
+nto_handler())
+   |                        
+                           
+^^^^^^^^^^^^
+   |
+  ::: 
+src\api\content.rs:12:1
+   |
+12 | 
+#[taurpc::procedures(path = 
+"content", export_to = 
+"../src/bindings.ts")]
+   | -----------------------
+----------------------------
+---------------------- the 
+method is available for 
+`ContentApiImpl` here
+...
+90 | pub struct 
+ContentApiImpl;
+   | 
+------------------------- 
+method `into_handler` not 
+found for this struct
+   |
+   = help: items from 
+traits can only be used if 
+the trait is in scope
+help: trait `ContentApi` 
+which provides 
+`into_handler` is 
+implemented but not in 
+scope; perhaps you want to 
+import it
+   |
+19 + use crate::api::content
+::ContentApi;
+   |
+help: there is a method 
+`into_raw` with a similar 
+name
+   |
+38 -         .merge(content:
+:ContentApiImpl::default().i
+nto_handler())
+38 +         .merge(content:
+:ContentApiImpl::default().i
+nto_raw())
    |
 
 warning: value assigned to 
@@ -4752,8 +4338,8 @@ For more information about
 an error, try `rustc 
 --explain E0061`.
 warning: `varant` (lib) 
-generated 42 warnings
+generated 46 warnings
 error: could not compile 
-`varant` (lib) due to 114 
-previous errors; 42 
+`varant` (lib) due to 98 
+previous errors; 46 
 warnings emitted

@@ -376,6 +376,127 @@ impl RealityEngine {
             stats.synapse_links += 1;
         }
     }
+    
+    // -------------------------------------------------------------------------
+    // Phase 3: NER Inference Integration
+    // -------------------------------------------------------------------------
+    
+    /// Confidence thresholds for NER inference
+    const AUTO_PROMOTE_THRESHOLD: f32 = 0.90;
+    const SUGGEST_THRESHOLD: f32 = 0.60;
+    
+    /// Merge NER inference results into the graph
+    ///
+    /// Applies confidence tiers:
+    /// - >= 0.90: Auto-promote to graph immediately
+    /// - 0.60 - 0.89: Suggest (returned for UI to display)
+    /// - < 0.60: Ignore
+    ///
+    /// Explicit entities already in the graph are never overwritten.
+    pub fn merge_inference(
+        &mut self,
+        result: &crate::ai::AnalysisResult,
+        world_id: &str,
+    ) -> MergeResult {
+        let mut merge_result = MergeResult::default();
+        
+        for entity in &result.entities {
+            let entity_id = self.make_entity_id(&entity.text);
+            
+            // Check if explicit entity already exists
+            if self.graph.node_by_id(&entity_id).is_some() {
+                log::debug!(
+                    "[RealityEngine] Skipping inferred entity '{}' - explicit entity exists",
+                    entity.text
+                );
+                merge_result.skipped_explicit.push(entity.clone());
+                continue;
+            }
+            
+            // Apply confidence tiers
+            if entity.confidence >= Self::AUTO_PROMOTE_THRESHOLD {
+                // Auto-promote: Create node immediately
+                let node = ConceptNode::new(
+                    &entity_id,
+                    &entity.text,
+                    &entity.label,
+                );
+                self.graph.ensure_node(node);
+                
+                log::debug!(
+                    "[RealityEngine] Auto-promoted inferred entity '{}' (confidence: {:.2})",
+                    entity.text,
+                    entity.confidence
+                );
+                merge_result.auto_promoted.push(entity.clone());
+                
+            } else if entity.confidence >= Self::SUGGEST_THRESHOLD {
+                // Suggest: Return for UI to display
+                log::debug!(
+                    "[RealityEngine] Suggesting inferred entity '{}' (confidence: {:.2})",
+                    entity.text,
+                    entity.confidence
+                );
+                merge_result.suggested.push(entity.clone());
+                
+            } else {
+                // Ignore: Confidence too low
+                log::debug!(
+                    "[RealityEngine] Ignoring low-confidence entity '{}' (confidence: {:.2})",
+                    entity.text,
+                    entity.confidence
+                );
+                merge_result.ignored.push(entity.clone());
+            }
+        }
+        
+        log::info!(
+            "[RealityEngine] Merged inference for {}: {} auto, {} suggest, {} ignore, {} explicit-skipped",
+            result.doc_id,
+            merge_result.auto_promoted.len(),
+            merge_result.suggested.len(),
+            merge_result.ignored.len(),
+            merge_result.skipped_explicit.len(),
+        );
+        
+        merge_result
+    }
+    
+    /// Get dynamic labels from current graph ontology
+    ///
+    /// Returns the top N entity kinds from the graph, useful for
+    /// feeding to GLiNER as candidate labels.
+    pub fn get_entity_kinds(&self, limit: usize) -> Vec<String> {
+        use std::collections::HashMap;
+        
+        let mut kind_counts: HashMap<String, usize> = HashMap::new();
+        
+        for node in self.graph.nodes() {
+            *kind_counts.entry(node.kind.clone()).or_default() += 1;
+        }
+        
+        // Sort by count descending
+        let mut kinds: Vec<_> = kind_counts.into_iter().collect();
+        kinds.sort_by(|a, b| b.1.cmp(&a.1));
+        
+        kinds.into_iter()
+            .take(limit)
+            .map(|(kind, _)| kind)
+            .collect()
+    }
+}
+
+/// Result of merging NER inference into the graph
+#[derive(Debug, Clone, Default)]
+pub struct MergeResult {
+    /// Entities auto-promoted to graph (confidence >= 0.90)
+    pub auto_promoted: Vec<crate::ai::InferredEntity>,
+    /// Entities suggested for user review (0.60 <= confidence < 0.90)
+    pub suggested: Vec<crate::ai::InferredEntity>,
+    /// Entities ignored due to low confidence (< 0.60)
+    pub ignored: Vec<crate::ai::InferredEntity>,
+    /// Entities skipped because explicit entity already exists
+    pub skipped_explicit: Vec<crate::ai::InferredEntity>,
 }
 
 /// Current engine state statistics
@@ -804,5 +925,259 @@ mod tests {
         // Verify synapse was populated
         assert!(engine.synapse().link_count() >= 2, 
             "Synapse should have at least 2 links");
+    }
+    
+    // -------------------------------------------------------------------------
+    // Phase 3: NER Integration Tests (TDD)
+    // -------------------------------------------------------------------------
+    
+    #[test]
+    fn test_merge_inference_high_confidence_auto_promotes() {
+        let mut engine = RealityEngine::new();
+        
+        let result = crate::ai::AnalysisResult {
+            doc_id: "note1".to_string(),
+            entities: vec![
+                crate::ai::InferredEntity {
+                    text: "Zorian".to_string(),
+                    label: "CHARACTER".to_string(),
+                    start: 0,
+                    end: 6,
+                    confidence: 0.95, // High confidence - should auto-promote
+                },
+            ],
+            inference_time_ms: 50,
+        };
+        
+        let merge_result = engine.merge_inference(&result, "world1");
+        
+        assert_eq!(merge_result.auto_promoted.len(), 1);
+        assert_eq!(merge_result.suggested.len(), 0);
+        assert_eq!(merge_result.ignored.len(), 0);
+        
+        // Should have created a node in the graph
+        assert!(engine.graph().node_by_id("zorian").is_some());
+    }
+    
+    #[test]
+    fn test_merge_inference_medium_confidence_suggests() {
+        let mut engine = RealityEngine::new();
+        
+        let result = crate::ai::AnalysisResult {
+            doc_id: "note1".to_string(),
+            entities: vec![
+                crate::ai::InferredEntity {
+                    text: "Cyoria".to_string(),
+                    label: "LOCATION".to_string(),
+                    start: 20,
+                    end: 26,
+                    confidence: 0.75, // Medium confidence - should suggest
+                },
+            ],
+            inference_time_ms: 50,
+        };
+        
+        let merge_result = engine.merge_inference(&result, "world1");
+        
+        assert_eq!(merge_result.auto_promoted.len(), 0);
+        assert_eq!(merge_result.suggested.len(), 1);
+        assert_eq!(merge_result.ignored.len(), 0);
+        
+        // Should NOT create a node in the graph
+        assert!(engine.graph().node_by_id("cyoria").is_none());
+    }
+    
+    #[test]
+    fn test_merge_inference_low_confidence_ignores() {
+        let mut engine = RealityEngine::new();
+        
+        let result = crate::ai::AnalysisResult {
+            doc_id: "note1".to_string(),
+            entities: vec![
+                crate::ai::InferredEntity {
+                    text: "something".to_string(),
+                    label: "THING".to_string(),
+                    start: 50,
+                    end: 59,
+                    confidence: 0.45, // Low confidence - should ignore
+                },
+            ],
+            inference_time_ms: 50,
+        };
+        
+        let merge_result = engine.merge_inference(&result, "world1");
+        
+        assert_eq!(merge_result.auto_promoted.len(), 0);
+        assert_eq!(merge_result.suggested.len(), 0);
+        assert_eq!(merge_result.ignored.len(), 1);
+    }
+    
+    #[test]
+    fn test_merge_inference_explicit_entity_override() {
+        let mut engine = RealityEngine::new();
+        
+        // Pre-add an explicit entity "Zorian" to the graph
+        let explicit_node = ConceptNode::new("zorian", "Zorian", "Character");
+        engine.graph_mut().ensure_node(explicit_node);
+        
+        // Now try to infer the same entity via NER
+        let result = crate::ai::AnalysisResult {
+            doc_id: "note1".to_string(),
+            entities: vec![
+                crate::ai::InferredEntity {
+                    text: "Zorian".to_string(),
+                    label: "PERSON".to_string(), // Different type!
+                    start: 0,
+                    end: 6,
+                    confidence: 0.98, // Very high confidence
+                },
+            ],
+            inference_time_ms: 50,
+        };
+        
+        let merge_result = engine.merge_inference(&result, "world1");
+        
+        // Should be skipped because explicit entity exists
+        assert_eq!(merge_result.auto_promoted.len(), 0);
+        assert_eq!(merge_result.suggested.len(), 0);
+        assert_eq!(merge_result.skipped_explicit.len(), 1);
+        
+        // Original entity type should be preserved
+        let node = engine.graph().node_by_id("zorian").unwrap();
+        assert_eq!(node.kind, "Character"); // Not overwritten to "PERSON"
+    }
+    
+    #[test]
+    fn test_merge_inference_mixed_confidences() {
+        let mut engine = RealityEngine::new();
+        
+        let result = crate::ai::AnalysisResult {
+            doc_id: "note1".to_string(),
+            entities: vec![
+                crate::ai::InferredEntity {
+                    text: "High".to_string(),
+                    label: "TYPE".to_string(),
+                    start: 0,
+                    end: 4,
+                    confidence: 0.92,
+                },
+                crate::ai::InferredEntity {
+                    text: "Medium".to_string(),
+                    label: "TYPE".to_string(),
+                    start: 10,
+                    end: 16,
+                    confidence: 0.70,
+                },
+                crate::ai::InferredEntity {
+                    text: "Low".to_string(),
+                    label: "TYPE".to_string(),
+                    start: 20,
+                    end: 23,
+                    confidence: 0.40,
+                },
+            ],
+            inference_time_ms: 50,
+        };
+        
+        let merge_result = engine.merge_inference(&result, "world1");
+        
+        assert_eq!(merge_result.auto_promoted.len(), 1, "Should auto-promote 1");
+        assert_eq!(merge_result.suggested.len(), 1, "Should suggest 1");
+        assert_eq!(merge_result.ignored.len(), 1, "Should ignore 1");
+    }
+    
+    #[test]
+    fn test_confidence_thresholds() {
+        // Verify exact threshold boundaries
+        let mut engine = RealityEngine::new();
+        
+        // Exactly 0.90 should auto-promote
+        let result_90 = crate::ai::AnalysisResult {
+            doc_id: "note1".to_string(),
+            entities: vec![
+                crate::ai::InferredEntity {
+                    text: "Exact90".to_string(),
+                    label: "TYPE".to_string(),
+                    start: 0,
+                    end: 7,
+                    confidence: 0.90,
+                },
+            ],
+            inference_time_ms: 50,
+        };
+        let r = engine.merge_inference(&result_90, "world1");
+        assert_eq!(r.auto_promoted.len(), 1, "0.90 should auto-promote");
+        
+        // Exactly 0.60 should suggest
+        let result_60 = crate::ai::AnalysisResult {
+            doc_id: "note2".to_string(),
+            entities: vec![
+                crate::ai::InferredEntity {
+                    text: "Exact60".to_string(),
+                    label: "TYPE".to_string(),
+                    start: 0,
+                    end: 7,
+                    confidence: 0.60,
+                },
+            ],
+            inference_time_ms: 50,
+        };
+        let r = engine.merge_inference(&result_60, "world1");
+        assert_eq!(r.suggested.len(), 1, "0.60 should suggest");
+        
+        // 0.59 should be ignored
+        let result_59 = crate::ai::AnalysisResult {
+            doc_id: "note3".to_string(),
+            entities: vec![
+                crate::ai::InferredEntity {
+                    text: "Below60".to_string(),
+                    label: "TYPE".to_string(),
+                    start: 0,
+                    end: 7,
+                    confidence: 0.59,
+                },
+            ],
+            inference_time_ms: 50,
+        };
+        let r = engine.merge_inference(&result_59, "world1");
+        assert_eq!(r.ignored.len(), 1, "0.59 should be ignored");
+    }
+    
+    #[test]
+    fn test_get_entity_kinds() {
+        let mut engine = RealityEngine::new();
+        
+        // Add some entities with different kinds
+        engine.graph_mut().ensure_node(ConceptNode::new("zorian", "Zorian", "Character"));
+        engine.graph_mut().ensure_node(ConceptNode::new("zach", "Zach", "Character"));
+        engine.graph_mut().ensure_node(ConceptNode::new("kael", "Kael", "Character"));
+        engine.graph_mut().ensure_node(ConceptNode::new("cyoria", "Cyoria", "Location"));
+        engine.graph_mut().ensure_node(ConceptNode::new("sting", "Sting", "Item"));
+        
+        let kinds = engine.get_entity_kinds(10);
+        
+        // Should return kinds sorted by count
+        assert_eq!(kinds.len(), 3);
+        assert_eq!(kinds[0], "Character"); // 3 occurrences
+        // Location and Item could be in any order (both have 1)
+        assert!(kinds.contains(&"Location".to_string()));
+        assert!(kinds.contains(&"Item".to_string()));
+    }
+    
+    #[test]
+    fn test_get_entity_kinds_limit() {
+        let mut engine = RealityEngine::new();
+        
+        // Add entities with many different kinds
+        engine.graph_mut().ensure_node(ConceptNode::new("a", "A", "Kind1"));
+        engine.graph_mut().ensure_node(ConceptNode::new("b", "B", "Kind2"));
+        engine.graph_mut().ensure_node(ConceptNode::new("c", "C", "Kind3"));
+        engine.graph_mut().ensure_node(ConceptNode::new("d", "D", "Kind4"));
+        engine.graph_mut().ensure_node(ConceptNode::new("e", "E", "Kind5"));
+        
+        let kinds = engine.get_entity_kinds(2);
+        
+        // Should only return top 2
+        assert_eq!(kinds.len(), 2);
     }
 }

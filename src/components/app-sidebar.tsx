@@ -36,6 +36,7 @@ import {
   Boxes,
   Settings,
   Cpu,
+  Brain,
 } from "lucide-react";
 import {
   Select,
@@ -47,6 +48,7 @@ import {
 // DEPRECATED: TypeScript semantic search UI (libraries kept intact)
 // import { SemanticSearchPanel } from "@/components/search/SemanticSearchPanel";
 import { RustSearchPanel } from "@/components/search/RustSearchPanel";
+import { NerPanel } from "@/components/search/NerPanel";
 import { RankedSearchResults } from "@/components/search/RankedSearchResults";
 import { EntitiesPanel } from "@/components/EntitiesPanel";
 import { SettingsPanel } from "@/components/settings";
@@ -630,6 +632,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <span className="text-teal-400">Rust</span>
               </div>
             </SelectItem>
+            <SelectItem value="ner">
+              <div className="flex items-center gap-2">
+                <Brain className="h-4 w-4 text-purple-500" />
+                <span className="text-purple-400">NER</span>
+              </div>
+            </SelectItem>
           </SelectContent>
         </Select>
       </SidebarHeader>
@@ -709,6 +717,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <EntitiesPanel />
         ) : activeTab === 'rust' ? (
           <RustSearchPanel />
+        ) : activeTab === 'ner' ? (
+          <NerPanel />
         ) : null}
       </SidebarContent>
 

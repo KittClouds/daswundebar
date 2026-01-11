@@ -1,0 +1,896 @@
+﻿cargo :    Compiling varant 
+v0.1.0 (C:\Users\shuga\1kitt
+root\1code\daswundebar\src-t
+auri)
+At line:1 char:1
++ cargo build --lib 2>&1 | 
+Out-File -Encoding utf8 
+errors10.txt; Select ...
++ ~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (   Co  
+  mpiling va...ebar\src-t   
+ auri):String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+warning: unused import: 
+`std::collections::HashMap`
+  --> src\temporal.rs:18:5
+   |
+18 | use 
+std::collections::HashMap;
+   |     
+^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: 
+`#[warn(unused_imports)]` 
+(part of `#[warn(unused)]`) 
+on by default
+
+warning: unused import: 
+`TextRange`
+  --> src\attacher.rs:25:40
+   |
+25 | use 
+super::chunker::{Chunk, 
+ChunkKind, TextRange};
+   |                        
+                ^^^^^^^^^
+
+warning: unused imports: 
+`ProjectionStats`, 
+`project_all`, 
+`project_attributions`, 
+`project_quads`, and 
+`project_state_changes`
+  --> 
+src\reality\engine.rs:16:22
+   |
+16 |     project_triples, 
+project_quads, 
+project_attributions, 
+project_state_changes,
+   |                      
+^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^^
+17 |     project_all, 
+project_all_with_stats,
+   |     ^^^^^^^^^^^
+18 |     Triple, QuadPlus, 
+Attribution, StateChange, 
+Projection, ProjectionStats,
+   |                        
+                            
+         ^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+  --> 
+src\reality\engine.rs:20:60
+   |
+20 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+   |                        
+                            
+        ^^^^^^^^
+
+warning: unused import: 
+`ConceptEdge`
+  --> 
+src\reality\global.rs:11:47
+   |
+11 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge};
+   |                        
+                       
+^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge` and 
+`ConceptNode`
+  --> src\reality\algorithms
+.rs:11:34
+   |
+11 | use super::graph::{Conc
+eptGraph, ConceptNode, 
+ConceptEdge, NodeIndex};
+   |                        
+          ^^^^^^^^^^^  
+^^^^^^^^^^^
+
+warning: unused import: 
+`EdgeKind`
+ --> 
+src\reality\temporal.rs:9:60
+  |
+9 | use super::graph::{Conce
+ptGraph, ConceptNode, 
+ConceptEdge, EdgeKind};
+  |                         
+                            
+       ^^^^^^^^
+
+warning: unused imports: 
+`RealityLanguage` and 
+`SyntaxKind`
+  --> 
+src\reality\mod.rs:21:18
+   |
+21 | pub use 
+syntax::{SyntaxKind, 
+RealityLanguage};
+   |                  
+^^^^^^^^^^  ^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`ConceptEdge`, 
+`ConceptGraph`, 
+`ConceptNode`, and 
+`EdgeKind`
+  --> 
+src\reality\mod.rs:22:17
+   |
+22 | pub use 
+graph::{ConceptGraph, 
+ConceptNode, ConceptEdge, 
+EdgeKind};
+   |                 
+^^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^
+
+warning: unused import: 
+`synapse::SynapseBridge`
+  --> 
+src\reality\mod.rs:23:9
+   |
+23 | pub use 
+synapse::SynapseBridge;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`engine::RealityEngine`
+  --> 
+src\reality\mod.rs:24:9
+   |
+24 | pub use 
+engine::RealityEngine;
+   |         
+^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Attribution`, 
+`Projection`, `QuadPlus`, 
+`StateChange`, and `Triple`
+  --> 
+src\reality\mod.rs:25:22
+   |
+25 | pub use 
+projection::{Triple, 
+QuadPlus, Attribution, 
+StateChange, Projection};
+   |                      
+^^^^^^  ^^^^^^^^  
+^^^^^^^^^^^  ^^^^^^^^^^^  
+^^^^^^^^^^
+
+warning: unused import: 
+`global::GlobalGraph`
+  --> 
+src\reality\mod.rs:26:9
+   |
+26 | pub use 
+global::GlobalGraph;
+   |         
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`unification::EntityUnifier`
+  --> 
+src\reality\mod.rs:27:9
+   |
+27 | pub use 
+unification::EntityUnifier;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`NamedRows`
+ --> 
+src\graph\registry.rs:6:35
+  |
+6 | use cozo::{DbInstance, 
+DataValue, NamedRows};
+  |                         
+          ^^^^^^^^^
+
+warning: unused imports: 
+`Deserialize` and 
+`Serialize`
+ --> 
+src\graph\commands.rs:7:13
+  |
+7 | use 
+serde::{Deserialize, 
+Serialize};
+  |             ^^^^^^^^^^^ 
+ ^^^^^^^^^
+
+warning: unused import: 
+`schema::*`
+  --> src\graph\mod.rs:31:9
+   |
+31 | pub use schema::*;
+   |         ^^^^^^^^^
+
+warning: unused import: 
+`queries::*`
+  --> src\graph\mod.rs:34:9
+   |
+34 | pub use queries::*;
+   |         ^^^^^^^^^^
+
+warning: unused import: 
+`algorithms::*`
+  --> src\graph\mod.rs:35:9
+   |
+35 | pub use algorithms::*;
+   |         ^^^^^^^^^^^^^
+
+warning: unused import: 
+`cozo_graph::*`
+  --> src\graph\mod.rs:37:9
+   |
+37 | pub use cozo_graph::*;
+   |         ^^^^^^^^^^^^^
+
+warning: unused import: 
+`content_types::*`
+  --> src\graph\mod.rs:38:9
+   |
+38 | pub use 
+content_types::*;
+   |         
+^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`content_repos::*`
+  --> src\graph\mod.rs:39:9
+   |
+39 | pub use 
+content_repos::*;
+   |         
+^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`content_commands::*`
+  --> src\graph\mod.rs:40:9
+   |
+40 | pub use 
+content_commands::*;
+   |         
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`graph_backend::*`
+  --> src\graph\mod.rs:41:9
+   |
+41 | pub use 
+graph_backend::*;
+   |         
+^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Deserialize` and 
+`Serialize`
+ --> 
+src\rag\commands.rs:6:13
+  |
+6 | use 
+serde::{Deserialize, 
+Serialize};
+  |             ^^^^^^^^^^^ 
+ ^^^^^^^^^
+
+warning: unused import: 
+`commands::*`
+  --> src\rag\mod.rs:15:9
+   |
+15 | pub use commands::*;
+   |         ^^^^^^^^^^^
+
+warning: unused import: `emb
+eddings::EmbeddingService`
+  --> src\rag\mod.rs:16:9
+   |
+16 | pub use embeddings::Emb
+eddingService;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`chunker::RagChunker`
+  --> src\rag\mod.rs:17:9
+   |
+17 | pub use 
+chunker::RagChunker;
+   |         
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`CorpusSize`, 
+`FieldParams`, and 
+`ResoRankConfig`
+  --> 
+src\resorank\mod.rs:21:18
+   |
+21 | pub use 
+config::{ResoRankConfig, 
+CorpusStatistics, 
+FieldParams, CorpusSize};
+   |                  
+^^^^^^^^^^^^^^              
+      ^^^^^^^^^^^  
+^^^^^^^^^^
+
+warning: unused import: `pro
+ximity::ProximityStrategy`
+  --> 
+src\resorank\mod.rs:22:9
+   |
+22 | pub use proximity::Prox
+imityStrategy;
+   |         
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: 
+`ScorerStats`
+  --> 
+src\resorank\mod.rs:23:34
+   |
+23 | pub use 
+scorer::{ResoRankScorer, 
+ScorerStats};
+   |                        
+          ^^^^^^^^^^^
+
+warning: unused imports: 
+`FieldContribution`, 
+`FieldOccurrence`, 
+`ScoreExplanation`, and 
+`TermBreakdown`
+  --> 
+src\resorank\mod.rs:25:38
+   |
+25 |     DocumentMetadata, 
+TokenMetadata, 
+FieldOccurrence,
+   |                        
+              
+^^^^^^^^^^^^^^^
+26 |     SearchResult, 
+ScoreExplanation, 
+TermBreakdown, 
+FieldContribution,
+   |                   
+^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Deserialize` and 
+`Serialize`
+ --> src\blueprint.rs:7:13
+  |
+7 | use 
+serde::{Deserialize, 
+Serialize};
+  |             ^^^^^^^^^^^ 
+ ^^^^^^^^^
+
+warning: unused imports: 
+`Deserialize` and 
+`Serialize`
+  --> 
+src\time_registry.rs:12:13
+   |
+12 | use 
+serde::{Deserialize, 
+Serialize};
+   |             
+^^^^^^^^^^^  ^^^^^^^^^
+
+warning: unused import: 
+`std::sync::Arc`
+ --> 
+src\ai\model_manager.rs:7:5
+  |
+7 | use std::sync::Arc;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: 
+`std::sync::Arc`
+  --> src\ai\suggestion_laye
+r.rs:21:5
+   |
+21 | use std::sync::Arc;
+   |     ^^^^^^^^^^^^^^
+
+warning: unused import: 
+`std::sync::Arc`
+ --> src\ai\commands.rs:5:5
+  |
+5 | use std::sync::Arc;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`Deserialize` and 
+`Serialize`
+ --> src\ai\commands.rs:8:13
+  |
+8 | use serde::{Serialize, 
+Deserialize};
+  |             ^^^^^^^^^  
+^^^^^^^^^^^
+
+warning: unused import: 
+`AnalysisResult`
+  --> 
+src\ai\commands.rs:13:34
+   |
+13 |     SuggestionLayer, 
+Suggestion, AnalysisResult, 
+InferredEntity,
+   |                        
+          ^^^^^^^^^^^^^^
+
+warning: unused import: 
+`AnalysisRequest`
+  --> src\ai\mod.rs:25:53
+   |
+25 | pub use 
+ner_service::{NerService, 
+NerServiceConfig, 
+AnalysisRequest, 
+AnalysisResult, 
+InferredEntity};
+   |                        
+                            
+ ^^^^^^^^^^^^^^^
+
+warning: unused imports: 
+`AcceptResult` and 
+`SuggestionStatus`
+  --> src\ai\mod.rs:26:57
+   |
+26 | pub use suggestion_laye
+r::{SuggestionLayer, 
+Suggestion, 
+SuggestionStatus, 
+AcceptResult};
+   |                        
+                            
+     ^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^
+
+error[E0277]: the trait 
+bound `impl Fn(Invoke) -> 
+bool: TauRpcHandler<_>` is 
+not satisfied
+   --> src\lib.rs:471:52
+    |
+471 |         .invoke_handle
+r(taurpc::create_ipc_handler
+(api::create_router().into_h
+andler()))
+    |                       
+  
+-------------------------- ^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^ the trait 
+`TauRpcHandler<_>` is not 
+implemented for `impl 
+Fn(Invoke) -> bool`
+    |                       
+  |
+    |                       
+  required by a bound 
+introduced by this call
+    |
+    = help: the following 
+other types implement trait 
+`TauRpcHandler<R>`:
+              
+TauRpcBlueprintApiHandler<P>
+              
+TauRpcContentApiHandler<P>
+              
+TauRpcCoreApiHandler<P>
+              
+TauRpcGraphApiHandler<P>
+              
+TauRpcNerApiHandler<P>
+              
+TauRpcRagApiHandler<P>
+              TauRpcTimeRegi
+stryApiHandler<P>
+note: required by a bound 
+in `create_ipc_handler`
+   --> C:\Users\shuga\.cargo
+\registry\src\index.crates.i
+o-1949cf8c6b5b557f\taurpc-0.
+5.2\src\lib.rs:88:8
+    |
+ 84 | pub fn 
+create_ipc_handler<H, R: 
+Runtime>(
+    |        
+------------------ required 
+by a bound in this function
+...
+ 88 |     H: 
+TauRpcHandler<R> + Send + 
+Sync + 'static + Clone,
+    |        
+^^^^^^^^^^^^^^^^ required 
+by this bound in 
+`create_ipc_handler`
+
+error[E0277]: the trait 
+bound `impl Fn(Invoke) -> 
+bool: Clone` is not 
+satisfied
+   --> src\lib.rs:471:52
+    |
+471 |         .invoke_handle
+r(taurpc::create_ipc_handler
+(api::create_router().into_h
+andler()))
+    |                       
+  
+-------------------------- ^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^ the trait `Clone` is 
+not implemented for `impl 
+Fn(Invoke) -> bool`
+    |                       
+  |
+    |                       
+  required by a bound 
+introduced by this call
+    |
+note: required by a bound 
+in `create_ipc_handler`
+   --> C:\Users\shuga\.cargo
+\registry\src\index.crates.i
+o-1949cf8c6b5b557f\taurpc-0.
+5.2\src\lib.rs:88:51
+    |
+ 84 | pub fn 
+create_ipc_handler<H, R: 
+Runtime>(
+    |        
+------------------ required 
+by a bound in this function
+...
+ 88 |     H: 
+TauRpcHandler<R> + Send + 
+Sync + 'static + Clone,
+    |                       
+                            
+^^^^^ required by this 
+bound in 
+`create_ipc_handler`
+help: use parentheses to 
+call this opaque type
+    |
+471 |         .invoke_handle
+r(taurpc::create_ipc_handler
+(api::create_router().into_h
+andler()(/* Invoke */)))
+    |                       
+                            
+                            
+        ++++++++++++++
+
+error[E0277]: the trait 
+bound `impl Fn(Invoke) -> 
+bool: TauRpcHandler<_>` is 
+not satisfied
+   --> src\lib.rs:471:25
+    |
+471 |         .invoke_handle
+r(taurpc::create_ipc_handler
+(api::create_router().into_h
+andler()))
+    |                       
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^ the trait 
+`TauRpcHandler<_>` is not 
+implemented for `impl 
+Fn(Invoke) -> bool`
+    |
+    = help: the following 
+other types implement trait 
+`TauRpcHandler<R>`:
+              
+TauRpcBlueprintApiHandler<P>
+              
+TauRpcContentApiHandler<P>
+              
+TauRpcCoreApiHandler<P>
+              
+TauRpcGraphApiHandler<P>
+              
+TauRpcNerApiHandler<P>
+              
+TauRpcRagApiHandler<P>
+              TauRpcTimeRegi
+stryApiHandler<P>
+note: required by a bound 
+in `create_ipc_handler`
+   --> C:\Users\shuga\.cargo
+\registry\src\index.crates.i
+o-1949cf8c6b5b557f\taurpc-0.
+5.2\src\lib.rs:88:8
+    |
+ 84 | pub fn 
+create_ipc_handler<H, R: 
+Runtime>(
+    |        
+------------------ required 
+by a bound in this function
+...
+ 88 |     H: 
+TauRpcHandler<R> + Send + 
+Sync + 'static + Clone,
+    |        
+^^^^^^^^^^^^^^^^ required 
+by this bound in 
+`create_ipc_handler`
+
+error[E0277]: the trait 
+bound `impl Fn(Invoke) -> 
+bool: Clone` is not 
+satisfied
+   --> src\lib.rs:471:25
+    |
+471 |         .invoke_handle
+r(taurpc::create_ipc_handler
+(api::create_router().into_h
+andler()))
+    |                       
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^ the trait `Clone` 
+is not implemented for 
+`impl Fn(Invoke) -> bool`
+    |
+note: required by a bound 
+in `create_ipc_handler`
+   --> C:\Users\shuga\.cargo
+\registry\src\index.crates.i
+o-1949cf8c6b5b557f\taurpc-0.
+5.2\src\lib.rs:88:51
+    |
+ 84 | pub fn 
+create_ipc_handler<H, R: 
+Runtime>(
+    |        
+------------------ required 
+by a bound in this function
+...
+ 88 |     H: 
+TauRpcHandler<R> + Send + 
+Sync + 'static + Clone,
+    |                       
+                            
+^^^^^ required by this 
+bound in 
+`create_ipc_handler`
+
+error[E0277]: the trait 
+bound `impl Fn(Invoke) -> 
+bool: TauRpcHandler<tauri_ru
+ntime_wry::Wry<EventLoopMess
+age>>` is not satisfied
+   --> src\lib.rs:444:5
+    |
+444 | /     
+tauri::Builder::default()
+445 | |         
+.setup(|app| {
+446 | |             if 
+cfg!(debug_assertions) {
+447 | |                 
+app.handle().plugin(
+...   |
+471 | |         .invoke_hand
+ler(taurpc::create_ipc_handl
+er(api::create_router().into
+_handler()))
+    | |_____________________
+____________________________
+____________________________
+___________^ the trait `TauR
+pcHandler<tauri_runtime_wry:
+:Wry<EventLoopMessage>>` is 
+not implemented for `impl 
+Fn(Invoke) -> bool`
+    |
+    = help: the following 
+other types implement trait 
+`TauRpcHandler<R>`:
+              
+TauRpcBlueprintApiHandler<P>
+              
+TauRpcContentApiHandler<P>
+              
+TauRpcCoreApiHandler<P>
+              
+TauRpcGraphApiHandler<P>
+              
+TauRpcNerApiHandler<P>
+              
+TauRpcRagApiHandler<P>
+              TauRpcTimeRegi
+stryApiHandler<P>
+note: required by a bound 
+in `create_ipc_handler`
+   --> C:\Users\shuga\.cargo
+\registry\src\index.crates.i
+o-1949cf8c6b5b557f\taurpc-0.
+5.2\src\lib.rs:88:8
+    |
+ 84 | pub fn 
+create_ipc_handler<H, R: 
+Runtime>(
+    |        
+------------------ required 
+by a bound in this function
+...
+ 88 |     H: 
+TauRpcHandler<R> + Send + 
+Sync + 'static + Clone,
+    |        
+^^^^^^^^^^^^^^^^ required 
+by this bound in 
+`create_ipc_handler`
+
+error[E0277]: the trait 
+bound `impl Fn(Invoke) -> 
+bool: Clone` is not 
+satisfied
+   --> src\lib.rs:444:5
+    |
+444 | /     
+tauri::Builder::default()
+445 | |         
+.setup(|app| {
+446 | |             if 
+cfg!(debug_assertions) {
+447 | |                 
+app.handle().plugin(
+...   |
+471 | |         .invoke_hand
+ler(taurpc::create_ipc_handl
+er(api::create_router().into
+_handler()))
+    | |_____________________
+____________________________
+____________________________
+___________^ the trait 
+`Clone` is not implemented 
+for `impl Fn(Invoke) -> 
+bool`
+    |
+note: required by a bound 
+in `create_ipc_handler`
+   --> C:\Users\shuga\.cargo
+\registry\src\index.crates.i
+o-1949cf8c6b5b557f\taurpc-0.
+5.2\src\lib.rs:88:51
+    |
+ 84 | pub fn 
+create_ipc_handler<H, R: 
+Runtime>(
+    |        
+------------------ required 
+by a bound in this function
+...
+ 88 |     H: 
+TauRpcHandler<R> + Send + 
+Sync + 'static + Clone,
+    |                       
+                            
+^^^^^ required by this 
+bound in 
+`create_ipc_handler`
+
+warning: value assigned to 
+`head_idx` is never read
+   --> src\chunker.rs:464:28
+    |
+464 |         let mut 
+head_idx = None;
+    |                       
+     ^^^^
+    |
+    = help: maybe it is 
+overwritten before being 
+read?
+    = note: `#[warn(unused_a
+ssignments)]` (part of 
+`#[warn(unused)]`) on by 
+default
+
+warning: unused variable: 
+`world_id`
+   --> 
+src\reality\engine.rs:399:9
+    |
+399 |         world_id: 
+&str,
+    |         ^^^^^^^^ 
+help: if this is 
+intentional, prefix it with 
+an underscore: `_world_id`
+    |
+    = note: 
+`#[warn(unused_variables)]` 
+(part of `#[warn(unused)]`) 
+on by default
+
+warning: unused variable: 
+`query`
+   --> 
+src\graph\queries.rs:392:13
+    |
+392 |         let query = 
+r#"
+    |             ^^^^^ 
+help: if this is 
+intentional, prefix it with 
+an underscore: `_query`
+
+warning: variable does not 
+need to be mutable
+   --> 
+src\rag\chunker.rs:110:62
+    |
+110 |     fn 
+find_break_point(&self, 
+chars: &[char], start: 
+usize, mut end: usize) -> 
+usize {
+    |                       
+                            
+           ----^^^
+    |                       
+                            
+           |
+    |                       
+                            
+           help: remove 
+this `mut`
+    |
+    = note: 
+`#[warn(unused_mut)]` (part 
+of `#[warn(unused)]`) on by 
+default
+
+For more information about 
+this error, try `rustc 
+--explain E0277`.
+warning: `varant` (lib) 
+generated 45 warnings
+error: could not compile 
+`varant` (lib) due to 6 
+previous errors; 45 
+warnings emitted

@@ -312,6 +312,11 @@ impl ConceptGraph {
         self.nodes.get(idx.0)
     }
     
+    /// Alias for get_node - find a node by ID
+    pub fn node_by_id(&self, id: &str) -> Option<&ConceptNode> {
+        self.get_node(id)
+    }
+    
     /// Get the NodeIndex for a given ID
     pub fn get_index(&self, id: &str) -> Option<NodeIndex> {
         self.id_to_index.get(id).copied()

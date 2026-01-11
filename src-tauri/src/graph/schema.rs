@@ -313,6 +313,26 @@ pub const CREATE_DECORATION_SPANS: &str = r#"
 }
 "#;
 
+/// Inferred entities from NER (GLiNER)
+/// Status: 'pending' | 'accepted' | 'rejected'
+pub const CREATE_INFERRED_ENTITIES: &str = r#"
+:create inferred_entities {
+    id: String =>
+    world_id: String,
+    source_note_id: String,
+    text: String,
+    label: String,
+    entity_type: String,
+    byte_start: Int,
+    byte_end: Int,
+    confidence: Float,
+    status: String default 'pending',
+    promoted_entity_id: String default '',
+    inferred_at: Float,
+    reviewed_at: Float default 0
+}
+"#;
+
 // =============================================================================
 // Schema Management
 // =============================================================================
@@ -383,6 +403,7 @@ pub fn init_content_schema(db: &DbInstance) -> Result<(), String> {
         ("occurs_on", CREATE_OCCURS_ON),
         ("field_bindings", CREATE_FIELD_BINDINGS),
         ("decoration_spans", CREATE_DECORATION_SPANS),
+        ("inferred_entities", CREATE_INFERRED_ENTITIES),
     ];
 
     for (name, query) in content_relations {

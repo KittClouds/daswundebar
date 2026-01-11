@@ -43,13 +43,21 @@ chrono = "0.4"  # Date/time handling
 # RAG Embeddings (Phase 2)
 fastembed = "4"  # Fast ONNX-based text embeddings (BGE, etc.)
 
-# SurrealDB Backend (Phase 1)
-surrealdb = { version = "2", features = ["kv-rocksdb"] }
-tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync"] }
+# NER (GLiNER via gline-rs)
+gline-rs = { version = "1", default-features = false, features = ["load-dynamic"] }
+reqwest = { version = "0.12", features = ["stream"] }  # For model download
+futures-util = "0.3"  # For streaming download
+
+# Async Runtime + Error Handling
+tokio = { version = "1", features = ["full"] }
 thiserror = "2"
 anyhow = "1"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# TauRPC - Typed IPC layer (Phase 2.2)
+taurpc = "0.5.2"
+specta = { version = "=2.0.0-rc.22", features = ["derive"] }
 
 # Phase 2: Will add kittcore as workspace member
 # kittcore = { path = "../rust/kittcore", default-features = false }

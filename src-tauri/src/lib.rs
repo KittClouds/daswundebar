@@ -28,6 +28,8 @@ mod resorank; // ResoRank - BM25F + Proximity scoring (ported from kittcore)
 mod blueprint; // Blueprint Hub - Entity/Relationship type definitions
 mod time_registry; // Time Registry - Change history tracking (V2 Phase 2)
 mod scan_worker; // Scan Worker - Background note scanning (Phase 1)
+mod ai;          // AI Subsystem - NER and Inference (Phase 1 NER)
+mod api;         // TauRPC API - Typed IPC layer (Phase 2.2)
 
 // (SurrealDB REMOVED - migrated to CozoDB content_repos.rs)
 
@@ -465,6 +467,9 @@ pub fn run() {
             
             Ok(())
         })
+        // NOTE: TauRPC is enabled but frontend still uses legacy invoke() calls.
+        // Keep both until frontend migrates to TauRPC bindings.
+        // TauRPC router: api::create_router().into_handler()
         .invoke_handler(tauri::generate_handler![
             greet,
             version,
@@ -479,15 +484,12 @@ pub fn run() {
             resorank_clear,
             resorank_stats,
             conductor_hydrate,
-            // conductor_scan removed (Phase 4) - use get_decoration_spans
             conductor_status,
             conductor_reset,
-            // Scan Worker commands (Phase 1: Background Scanning)
             get_decoration_spans,
             queue_note_scan,
             scan_queue_status,
             invalidate_all_decoration_spans,
-            // Graph Registry commands (Phase 2.1)
             graph::commands::graph_register_node,
             graph::commands::graph_get_node,
             graph::commands::graph_find_node,
@@ -499,10 +501,9 @@ pub fn run() {
             graph::commands::graph_delete_edge,
             graph::commands::graph_get_entities_for_hydration,
             graph::commands::graph_get_all_entities,
-            graph::commands::graph_ingest_scan_result,
             graph::commands::graph_invalidate_hydration,
+            graph::commands::graph_ingest_scan_result,
             graph::commands::graph_stats,
-            // RAG Pipeline commands (Phase 3 - Embeddings + HNSW)
             rag::commands::rag_init_embedder,
             rag::commands::rag_embed,
             rag::commands::rag_embedder_ready,
@@ -511,38 +512,29 @@ pub fn run() {
             rag::commands::rag_search,
             rag::commands::rag_get_chunks,
             rag::commands::rag_delete_note_chunks,
-            // Blueprint Hub commands (V2 Phase 1)
             blueprint::commands::blueprint_init,
             blueprint::commands::blueprint_create,
             blueprint::commands::blueprint_get,
             blueprint::commands::blueprint_list,
             blueprint::commands::blueprint_update,
             blueprint::commands::blueprint_delete,
-            // Blueprint Version commands
             blueprint::commands::blueprint_version_create,
             blueprint::commands::blueprint_version_list,
             blueprint::commands::blueprint_version_delete,
-            // Blueprint EntityType commands
             blueprint::commands::blueprint_entity_type_create,
             blueprint::commands::blueprint_entity_type_list,
             blueprint::commands::blueprint_entity_type_delete,
-            // Blueprint Field commands
             blueprint::commands::blueprint_field_create,
             blueprint::commands::blueprint_field_list,
             blueprint::commands::blueprint_field_delete,
-            // Blueprint RelationshipType commands
             blueprint::commands::blueprint_relationship_type_create,
             blueprint::commands::blueprint_relationship_type_list,
             blueprint::commands::blueprint_relationship_type_delete,
-            // Time Registry commands (V2 Phase 2)
             time_registry::commands::time_registry_init,
             time_registry::commands::time_registry_record_entity_change,
             time_registry::commands::time_registry_get_entity_history,
             time_registry::commands::time_registry_record_edge_change,
             time_registry::commands::time_registry_get_edge_history,
-            // ============================================================
-            // CozoDB Content Commands (SurrealDB Replacement)
-            // ============================================================
             graph::content_commands::cozo_create_note,
             graph::content_commands::cozo_get_note,
             graph::content_commands::cozo_list_notes,
@@ -554,43 +546,47 @@ pub fn run() {
             graph::content_commands::cozo_get_folder_tree,
             graph::content_commands::cozo_update_folder,
             graph::content_commands::cozo_delete_folder,
-            // Networks
             graph::content_commands::cozo_create_network,
             graph::content_commands::cozo_get_network,
             graph::content_commands::cozo_list_networks,
             graph::content_commands::cozo_delete_network,
-            // Entities
             graph::content_commands::cozo_create_entity,
             graph::content_commands::cozo_get_entity,
             graph::content_commands::cozo_list_entities_by_kind,
             graph::content_commands::cozo_list_entities,
             graph::content_commands::cozo_delete_entity,
-            // Relationships
             graph::content_commands::cozo_create_relationship,
             graph::content_commands::cozo_get_relationship,
             graph::content_commands::cozo_get_entity_relationships,
             graph::content_commands::cozo_delete_relationship,
-            // Calendar Events
             graph::content_commands::cozo_create_cal_event,
             graph::content_commands::cozo_get_cal_event,
             graph::content_commands::cozo_list_cal_events,
             graph::content_commands::cozo_list_cal_events_by_month,
             graph::content_commands::cozo_delete_cal_event,
-            // Periods
             graph::content_commands::cozo_create_period,
             graph::content_commands::cozo_get_period,
             graph::content_commands::cozo_list_periods,
             graph::content_commands::cozo_get_period_children,
             graph::content_commands::cozo_delete_period,
-            // Field Bindings
             graph::content_commands::cozo_create_binding,
             graph::content_commands::cozo_get_binding,
             graph::content_commands::cozo_list_bindings,
             graph::content_commands::cozo_list_bindings_by_entity,
             graph::content_commands::cozo_delete_binding,
+            ai::commands::ner_get_model_status,
+            ai::commands::ner_download_model,
+            ai::commands::ner_request_analysis,
+            ai::commands::ner_get_suggestions,
+            ai::commands::ner_get_all_suggestions,
+            ai::commands::ner_accept_suggestion,
+            ai::commands::ner_reject_suggestion,
+            ai::commands::ner_get_settings,
+            ai::commands::ner_update_settings,
+            ai::commands::ner_pending_count,
+            ai::commands::ner_clear_note_suggestions,
+            ai::commands::ner_add_suggestion,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
-
-
