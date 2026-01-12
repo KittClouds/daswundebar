@@ -11,6 +11,8 @@ use std::collections::{HashMap, HashSet, VecDeque};
 
 use super::registry::GraphRegistry;
 use super::types::*;
+use super::projection::GraphProjection;
+use super::graph_backend::GraphBackend;
 
 // =============================================================================
 // Types
@@ -51,86 +53,28 @@ pub struct GraphStats {
 // =============================================================================
 
 impl GraphRegistry {
-    /// Calculate PageRank scores for all nodes
+    /// Create an in-memory projection of the graph for algorithm execution
+    pub fn project(&self) -> Result<GraphProjection, GraphError> {
+        let mut proj = GraphProjection::new();
+        proj.hydrate(&self.db).map_err(|e| GraphError::QueryError(e))?;
+        Ok(proj)
+    }
+
+    /// Calculate PageRank scores using optimized in-memory projection
     /// 
     /// # Arguments
-    /// * `damping` - Damping factor (typically 0.85)
-    /// * `iterations` - Number of iterations to run
+    /// * `_damping` - Ignored (uses standard 0.85)
+    /// * `_iterations` - Ignored (uses convergence check)
     /// 
     /// # Returns
     /// Vector of (node_id, score) tuples sorted by score descending
-    pub fn pagerank(&self, damping: f64, iterations: usize) -> Result<Vec<(String, f64)>, GraphError> {
-        let nodes = self.get_nodes(NodeFilter::default())?;
-        let n = nodes.len();
+    pub fn pagerank(&self, _damping: f64, _iterations: usize) -> Result<Vec<(String, f64)>, GraphError> {
+        let proj = self.project()?;
         
-        if n == 0 {
-            return Ok(vec![]);
-        }
+        let ranked = proj.pagerank()
+            .map_err(|e| GraphError::QueryError(e))?;
         
-        // Build adjacency info
-        let mut outgoing: HashMap<String, Vec<String>> = HashMap::new();
-        let mut incoming: HashMap<String, Vec<String>> = HashMap::new();
-        
-        for node in &nodes {
-            outgoing.insert(node.id.clone(), vec![]);
-            incoming.insert(node.id.clone(), vec![]);
-        }
-        
-        for node in &nodes {
-            let edges = self.get_edges(&node.id, Direction::Outgoing)?;
-            for edge in edges {
-                outgoing.get_mut(&node.id).unwrap().push(edge.target_id.clone());
-                incoming.get_mut(&edge.target_id).unwrap().push(node.id.clone());
-            }
-        }
-        
-        // Track dangling nodes (no outgoing edges)
-        let dangling: Vec<_> = outgoing.iter()
-            .filter(|(_, targets)| targets.is_empty())
-            .map(|(id, _)| id.clone())
-            .collect();
-        
-        // Initialize scores
-        let initial_score = 1.0 / n as f64;
-        let mut scores: HashMap<String, f64> = nodes.iter()
-            .map(|n| (n.id.clone(), initial_score))
-            .collect();
-        
-        // Iterate
-        for _ in 0..iterations {
-            // Calculate dangling node contribution
-            let dangling_sum: f64 = dangling.iter()
-                .map(|id| scores.get(id).unwrap_or(&0.0))
-                .sum();
-            let dangling_contrib = damping * dangling_sum / n as f64;
-            
-            let mut new_scores: HashMap<String, f64> = HashMap::new();
-            
-            for node in &nodes {
-                let base = (1.0 - damping) / n as f64;
-                
-                // Sum contributions from incoming edges
-                let incoming_contrib: f64 = incoming.get(&node.id)
-                    .unwrap_or(&vec![])
-                    .iter()
-                    .map(|source| {
-                        let source_score = scores.get(source).unwrap_or(&0.0);
-                        let source_out_degree = outgoing.get(source).map(|v| v.len()).unwrap_or(1);
-                        damping * source_score / source_out_degree as f64
-                    })
-                    .sum();
-                
-                new_scores.insert(node.id.clone(), base + incoming_contrib + dangling_contrib);
-            }
-            
-            scores = new_scores;
-        }
-        
-        // Sort by score descending
-        let mut result: Vec<_> = scores.into_iter().collect();
-        result.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap_or(std::cmp::Ordering::Equal));
-        
-        Ok(result)
+        Ok(ranked.into_iter().map(|r| (r.id, r.score)).collect())
     }
 
     /// Calculate centrality scores for all nodes
@@ -332,43 +276,11 @@ impl GraphRegistry {
     /// # Returns
     /// Vector of components, each containing node IDs
     pub fn connected_components(&self) -> Result<Vec<Vec<String>>, GraphError> {
-        let nodes = self.get_nodes(NodeFilter::default())?;
-        let mut visited: HashSet<String> = HashSet::new();
-        let mut components = Vec::new();
+        let proj = self.project()?;
         
-        for node in &nodes {
-            if !visited.contains(&node.id) {
-                let mut component = Vec::new();
-                let mut queue = VecDeque::new();
-                
-                queue.push_back(node.id.clone());
-                visited.insert(node.id.clone());
-                
-                while let Some(current) = queue.pop_front() {
-                    component.push(current.clone());
-                    
-                    let edges = self.get_edges(&current, Direction::Both)?;
-                    for edge in edges {
-                        let neighbor = if edge.source_id == current {
-                            &edge.target_id
-                        } else {
-                            &edge.source_id
-                        };
-                        
-                        if !visited.contains(neighbor) {
-                            visited.insert(neighbor.clone());
-                            queue.push_back(neighbor.clone());
-                        }
-                    }
-                }
-                
-                components.push(component);
-            }
-        }
-        
-        // Sort by size descending
-        components.sort_by(|a, b| b.len().cmp(&a.len()));
-        
+        let components = proj.connected_components()
+             .map_err(|e| GraphError::QueryError(e))?;
+             
         Ok(components)
     }
 

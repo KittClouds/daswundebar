@@ -58,6 +58,10 @@ tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 # TauRPC - Typed IPC layer (Phase 2.2)
 taurpc = "0.5.2"
 specta = { version = "=2.0.0-rc.22", features = ["derive"] }
+unicode-segmentation = "1.12.0"
+strsim = "0.11.1"
+petgraph = "0.8.3"
+fixedbitset = "0.5.7"
 
 # Phase 2: Will add kittcore as workspace member
 # kittcore = { path = "../rust/kittcore", default-features = false }

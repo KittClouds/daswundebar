@@ -14,6 +14,9 @@ use crate::graph::{
     RelationSource,
 };
 
+// FST-NER commands for reactive updates
+use crate::ner::commands::{fst_add_entity, fst_remove_entity};
+
 // =============================================================================
 // Global State
 // =============================================================================
@@ -185,6 +188,18 @@ pub fn graph_register_node(request: RegisterNodeRequest) -> Result<NodeResponse,
     let result = registry.register_node(input)
         .map_err(|e| e.to_string())?;
     
+    // Reactive FST update: add new entity to gazetteer
+    if result.is_new {
+        if let Err(e) = fst_add_entity(
+            &result.node.id,
+            &result.node.label,
+            result.node.kind.as_str(),
+            result.node.aliases.clone(),
+        ) {
+            log::warn!("[GraphRegistry] FST add_entity failed: {}", e);
+        }
+    }
+    
     Ok(NodeResponse {
         id: result.node.id,
         label: result.node.label,
@@ -255,6 +270,12 @@ pub fn graph_get_nodes(kind: Option<String>) -> Result<Vec<NodeResponse>, String
 #[tauri::command]
 pub fn graph_delete_node(id: String) -> Result<bool, String> {
     let registry = GRAPH_REGISTRY.lock().map_err(|e| e.to_string())?;
+    
+    // Reactive FST update: remove entity from gazetteer
+    if let Err(e) = fst_remove_entity(&id) {
+        log::warn!("[GraphRegistry] FST remove_entity failed: {}", e);
+    }
+    
     registry.delete_node(&id).map_err(|e| e.to_string())
 }
 

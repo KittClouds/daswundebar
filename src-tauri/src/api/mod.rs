@@ -9,6 +9,7 @@
 //! ├── core.*         (version, scan, relations)
 //! ├── graph.*        (entities, edges, hydration)
 //! ├── ner.*          (model, analysis, suggestions)
+//! ├── fst_ner.*      (hot-path entity recognition)
 //! ├── rag.*          (embeddings, search)
 //! ├── blueprint.*    (types, fields, relationships)
 //! └── time_registry.* (change history)
@@ -19,6 +20,7 @@
 pub mod core;
 pub mod graph;
 pub mod ner;
+pub mod fst_ner;
 pub mod rag;
 pub mod blueprint;
 pub mod time_registry;
@@ -30,6 +32,7 @@ use taurpc::Router;
 use core::CoreApi;
 use graph::GraphApi;
 use ner::NerApi;
+use fst_ner::FstNerApi;
 use rag::RagApi;
 use blueprint::BlueprintApi;
 use time_registry::TimeRegistryApi;
@@ -41,8 +44,10 @@ pub fn create_router() -> Router<tauri::Wry> {
         .merge(core::CoreApiImpl::default().into_handler())
         .merge(graph::GraphApiImpl::default().into_handler())
         .merge(ner::NerApiImpl::default().into_handler())
+        .merge(fst_ner::FstNerApiImpl::default().into_handler())
         .merge(rag::RagApiImpl::default().into_handler())
         .merge(blueprint::BlueprintApiImpl::default().into_handler())
         .merge(time_registry::TimeRegistryApiImpl::default().into_handler())
         .merge(content::ContentApiImpl::default().into_handler())
 }
+

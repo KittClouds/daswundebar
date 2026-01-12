@@ -22,13 +22,16 @@ mod constraints;
 mod narrative;
 mod change;
 mod reality;  // Reality Engine - Graph + CST (ported from kittcore)
-mod graph;    // Graph Registry - Unified nodes + edges (CozoDB)
+pub mod graph;    // Graph Registry - Unified nodes + edges (CozoDB)
 mod rag;      // RAG Pipeline - Embeddings + HNSW (CozoDB native)
 mod resorank; // ResoRank - BM25F + Proximity scoring (ported from kittcore)
 mod blueprint; // Blueprint Hub - Entity/Relationship type definitions
 mod time_registry; // Time Registry - Change history tracking (V2 Phase 2)
 mod scan_worker; // Scan Worker - Background note scanning (Phase 1)
 mod ai;          // AI Subsystem - NER and Inference (Phase 1 NER)
+mod ner;         // FST-NER Engine - Hot-path NER (Phase 1)
+mod crossdoc;    // Cross-Doc Entity Linking (Phase 1)
+mod mention;     // Unified Mention Contract - Single type for all extractors
 mod api;         // TauRPC API - Typed IPC layer (Phase 2.2)
 
 // (SurrealDB REMOVED - migrated to CozoDB content_repos.rs)
@@ -586,6 +589,17 @@ pub fn run() {
             ai::commands::ner_pending_count,
             ai::commands::ner_clear_note_suggestions,
             ai::commands::ner_add_suggestion,
+            // FST-NER Hot-path commands
+            ner::commands::ner_fst_scan,
+            ner::commands::ner_fst_hydrate,
+            ner::commands::ner_fst_clear,
+            ner::commands::ner_fst_add_entity,
+            ner::commands::ner_fst_stats,
+            // CrossDoc Commands
+            crossdoc::commands::crossdoc_find_duplicates,
+            crossdoc::commands::crossdoc_find_similar,
+            crossdoc::commands::crossdoc_stats,
+            crossdoc::commands::crossdoc_embed_all_missing,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

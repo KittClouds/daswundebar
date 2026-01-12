@@ -27,6 +27,7 @@ pub mod content_types;
 pub mod content_repos;
 pub mod content_commands;
 pub mod graph_backend;
+pub mod projection;
 
 pub use schema::*;
 pub use types::*;
@@ -39,6 +40,7 @@ pub use content_types::*;
 pub use content_repos::*;
 pub use content_commands::*;
 pub use graph_backend::*;
+pub use projection::*;
 
 #[cfg(test)]
 mod tests;
