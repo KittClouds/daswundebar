@@ -19,6 +19,7 @@ import { getDisplayName } from '@/lib/utils/titleParser';
 interface ArboristTreeNodeProps extends NodeRendererProps<ArboristNode> {
     onContextMenu?: (node: ArboristNode, e: React.MouseEvent) => void;
     isHovered?: boolean;
+    folderViewTheme?: 'default' | 'structured' | 'minimal';
 }
 
 /**
@@ -43,6 +44,7 @@ export function ArboristTreeNode({
     dragHandle,
     onContextMenu,
     isHovered = false,
+    folderViewTheme = 'structured', // Default to VS Code style
 }: ArboristTreeNodeProps) {
     const data = node.data;
     const isFolder = data.type === 'folder';
@@ -88,25 +90,30 @@ export function ArboristTreeNode({
             )}
             onClick={() => node.isInternal && node.toggle()}
         >
-            {/* V2: Continuous flowing tree lines */}
-            {level > 0 && (() => {
+            {/* V2: Continuous flowing tree lines - Theme Aware */}
+            {/* V2: Continuous flowing tree lines - Theme Aware */}
+            {level > 0 && folderViewTheme !== 'minimal' && (() => {
                 const lines: React.ReactNode[] = [];
                 const isLastChild = !node.nextSibling;
 
-                // Draw vertical ancestor lines for each level
-                // These create the continuous "│" for each ancestor that has more siblings
+                // Structured = VS Code style (Strict vertical guides, no horizontal/curves)
+                // Default = L-brackets + Animated particles
+                const isStructured = folderViewTheme === 'structured';
+                const showParticles = folderViewTheme === 'default';
+                const lineOpacity = isStructured ? 'opacity-40' : 'opacity-30';
+
+                // 1. Draw vertical ancestor lines (The "Tree Guides")
+                // These appear for every ancestor level that has subsequent siblings
                 for (let i = 0; i < level - 1; i++) {
-                    // Walk up the tree to check if ancestor at this level has more siblings
                     let ancestor = node.parent;
                     for (let j = level - 2; j > i; j--) {
                         ancestor = ancestor?.parent ?? null;
                     }
-                    // Only draw if this ancestor has a next sibling (more items below)
                     if (ancestor?.nextSibling) {
                         lines.push(
                             <div
                                 key={`vline-${i}`}
-                                className="absolute top-0 bottom-0 opacity-30"
+                                className={`absolute top-0 bottom-0 ${lineOpacity}`}
                                 style={{
                                     left: `${i * indent + 8}px`,
                                     width: '1px',
@@ -117,12 +124,15 @@ export function ArboristTreeNode({
                     }
                 }
 
-                // Draw the connector at current level
-                // Vertical part: full height if not last, half height if last (L-shape)
+                // 2. Draw Current Level Connector
+                // For 'structured': We WANT the vertical part (to show hierarchy/indent guide)
+                // VS Code style: If it's the last child, the guide usually stops.
+                // If we want FULL GRID, we would make bottom: 0 always.
+                // But traditional Tree Guide stops at the node.
                 lines.push(
                     <div
                         key="vline-current"
-                        className="absolute opacity-30"
+                        className={`absolute ${lineOpacity}`}
                         style={{
                             left: `${(level - 1) * indent + 8}px`,
                             top: 0,
@@ -131,33 +141,38 @@ export function ArboristTreeNode({
                             backgroundColor: iconColor,
                         }}
                     >
-                        {/* Animated particle flowing down */}
-                        <div
-                            className="tree-line-particle"
-                            style={{
-                                left: '-1px',
-                                backgroundColor: iconColor,
-                                color: iconColor,
-                                animationDelay: `${Math.random() * 2}s`,
-                            }}
-                        />
+                        {/* Animated particle (Default only) */}
+                        {showParticles && (
+                            <div
+                                className="tree-line-particle"
+                                style={{
+                                    left: '-1px',
+                                    backgroundColor: iconColor,
+                                    color: iconColor,
+                                    animationDelay: `${Math.random() * 2}s`,
+                                }}
+                            />
+                        )}
                     </div>
                 );
 
-                // Horizontal connector
-                lines.push(
-                    <div
-                        key="hline"
-                        className="absolute opacity-30"
-                        style={{
-                            left: `${(level - 1) * indent + 8}px`,
-                            top: '14px',
-                            width: '10px',
-                            height: '1px',
-                            backgroundColor: iconColor,
-                        }}
-                    />
-                );
+                // 3. Horizontal Connector (L-shape part)
+                // ONLY for 'default'. 'structured' (VS Code) skips this for cleaner look.
+                if (!isStructured) {
+                    lines.push(
+                        <div
+                            key="hline"
+                            className={`absolute ${lineOpacity}`}
+                            style={{
+                                left: `${(level - 1) * indent + 8}px`,
+                                top: '14px',
+                                width: '10px',
+                                height: '1px',
+                                backgroundColor: iconColor,
+                            }}
+                        />
+                    );
+                }
 
                 return <>{lines}</>;
             })()}

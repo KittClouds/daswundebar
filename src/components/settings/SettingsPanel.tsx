@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {
     Dialog,
     DialogContent,
+    DialogDescription,
     DialogHeader,
     DialogTitle,
 } from '@/components/ui/dialog';
@@ -43,6 +44,7 @@ export function SettingsPanel({ open, onOpenChange }: SettingsPanelProps) {
     const [extractorModel, setExtractorModel] = useState<ModelId>(settings.llm.extractorModel);
     const [agentModel, setAgentModel] = useState<ModelId>(settings.llm.agentModel);
     const [embeddingModel, setEmbeddingModel] = useState(settings.embeddings.defaultModel);
+    const [folderViewTheme, setFolderViewTheme] = useState(settings.appearance.folderViewTheme);
 
     const [testingGemini, setTestingGemini] = useState(false);
     const [testingOpenrouter, setTestingOpenrouter] = useState(false);
@@ -81,8 +83,13 @@ export function SettingsPanel({ open, onOpenChange }: SettingsPanelProps) {
         });
         SettingsManager.update({
             embeddings: {
-                ...settings.embeddings,
                 defaultModel: embeddingModel,
+            }
+        });
+        SettingsManager.update({
+            appearance: {
+                ...settings.appearance,
+                folderViewTheme,
             }
         });
         onOpenChange(false);
@@ -153,6 +160,9 @@ export function SettingsPanel({ open, onOpenChange }: SettingsPanelProps) {
                         <Sparkles className="h-5 w-5" />
                         LLM Settings
                     </DialogTitle>
+                    <DialogDescription>
+                        Configure global application settings including LLM providers, appearance, and models.
+                    </DialogDescription>
                 </DialogHeader>
 
                 <div className="space-y-6">
@@ -317,6 +327,37 @@ export function SettingsPanel({ open, onOpenChange }: SettingsPanelProps) {
                         </CardContent>
                     </Card>
 
+
+                    {/* Appearance Section */}
+                    <Card>
+                        <CardHeader className="pb-3">
+                            <CardTitle className="text-base flex items-center gap-2">
+                                <Sparkles className="h-4 w-4" />
+                                Appearance
+                            </CardTitle>
+                            <CardDescription>
+                                Customize the look and feel of the application.
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                            <div className="space-y-2">
+                                <Label htmlFor="folder-theme">Folder View Theme</Label>
+                                <Select value={folderViewTheme} onValueChange={(v: any) => setFolderViewTheme(v)}>
+                                    <SelectTrigger id="folder-theme">
+                                        <SelectValue />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="default">Default</SelectItem>
+                                        <SelectItem value="structured">Structured (VS Code)</SelectItem>
+                                        <SelectItem value="minimal">Minimal</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                                <p className="text-sm text-muted-foreground">
+                                    Choose the visual style for the sidebar file tree.
+                                </p>
+                            </div>
+                        </CardContent>
+                    </Card>
 
                     {/* Embedding Models Section */}
                     <Card>

@@ -16,6 +16,7 @@ import {
 import { useJotaiNotes } from '@/hooks/useJotaiNotes';
 import { cn } from '@/lib/utils';
 import { Pencil, Plus, X, FolderPlus, Star, StarOff, LinkIcon } from 'lucide-react';
+import { SettingsManager } from '@/lib/settings/SettingsManager';
 
 interface ArboristTreeViewProps {
     searchTerm?: string;
@@ -59,6 +60,18 @@ export function ArboristTreeView({
     const containerRef = useRef<HTMLDivElement>(null);
     const [contextNode, setContextNode] = React.useState<ArboristNode | null>(null);
     const [contextMenuPos, setContextMenuPos] = React.useState({ x: 0, y: 0 });
+
+    // Settings Reactivity
+    const [settings, setSettings] = React.useState(() => SettingsManager.load());
+    const folderViewTheme = settings.appearance?.folderViewTheme || 'structured';
+
+    React.useEffect(() => {
+        const handleSettingsChange = () => {
+            setSettings(SettingsManager.load());
+        };
+        window.addEventListener('settings-changed', handleSettingsChange);
+        return () => window.removeEventListener('settings-changed', handleSettingsChange);
+    }, []);
 
     useEffect(() => {
         if (!containerRef.current) return;
@@ -293,6 +306,7 @@ export function ArboristTreeView({
                     <ArboristTreeNode
                         {...props}
                         onContextMenu={handleContextMenu}
+                        folderViewTheme={folderViewTheme}
                     />
                 )}
             </Tree>

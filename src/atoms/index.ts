@@ -10,6 +10,9 @@ export {
     selectedNoteIdAtom,
     isSavingAtom,
     lastSavedAtom,
+    openNoteIdsAtom,
+    openNoteAtom,
+    closeNoteAtom,
 } from './notes';
 
 // Derived atoms

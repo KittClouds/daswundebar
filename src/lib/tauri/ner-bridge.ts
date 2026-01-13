@@ -76,6 +76,35 @@ export interface DownloadResponse {
 }
 
 // =============================================================================
+// FST-NER Types
+// =============================================================================
+
+/** FST-NER match from the Rust backend (matches Rust FstMatch) */
+export interface FstMatch {
+    text: string;
+    kind: string;
+    confidence: number;
+    byte_start: number;
+    byte_end: number;
+    source: string; // "gazetteer" | "rule" | "orthographic"
+    entity_id?: string | null;
+    canonical_label?: string | null;
+}
+
+/** FST-NER scan result (matches Rust FstScanResult) */
+export interface FstScanResult {
+    matches: FstMatch[];
+    timing_us: number;
+    token_count: number;
+}
+
+/** FST-NER stats (matches Rust FstStats) */
+export interface FstStats {
+    gazetteer_patterns: number;
+    rule_count: number;
+}
+
+// =============================================================================
 // Model Management
 // =============================================================================
 
@@ -345,3 +374,56 @@ export function suggestionToCharOffsets(
         end: byteToCharOffset(text, suggestion.byte_end),
     };
 }
+
+// =============================================================================
+// FST-NER Functions
+// =============================================================================
+
+/**
+ * Scan text using the FST-NER pipeline (hot path)
+ * Returns matches from gazetteer, rules, and orthographic detection
+ */
+export async function fstNerScan(text: string): Promise<FstScanResult> {
+    if (!isTauriNer()) {
+        return { matches: [], timing_us: 0, token_count: 0 };
+    }
+
+    try {
+        // Rust returns FstScanResult directly (Tauri auto-serializes)
+        const result = await invoke<FstScanResult>('ner_fst_scan', { text });
+        return result;
+    } catch (error) {
+        console.error('[fstNerScan] Error:', error);
+        return { matches: [], timing_us: 0, token_count: 0 };
+    }
+}
+
+/**
+ * Get FST-NER pipeline stats
+ */
+export async function fstNerStats(): Promise<FstStats> {
+    if (!isTauriNer()) {
+        return { gazetteer_patterns: 0, rule_count: 0 };
+    }
+
+    try {
+        return await invoke<FstStats>('ner_fst_stats');
+    } catch (error) {
+        console.error('[fstNerStats] Error:', error);
+        return { gazetteer_patterns: 0, rule_count: 0 };
+    }
+}
+
+/**
+ * Convert FstMatch byte offsets to character offsets
+ */
+export function fstMatchToCharOffsets(
+    match: FstMatch,
+    text: string
+): { start: number; end: number } {
+    return {
+        start: byteToCharOffset(text, match.byte_start),
+        end: byteToCharOffset(text, match.byte_end),
+    };
+}
+

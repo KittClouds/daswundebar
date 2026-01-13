@@ -28,6 +28,7 @@ export class SettingsManager {
                     llm: { ...DEFAULT_SETTINGS.llm, ...parsed.llm },
                     embeddings: { ...DEFAULT_SETTINGS.embeddings, ...parsed.embeddings },
                     ui: { ...DEFAULT_SETTINGS.ui, ...parsed.ui },
+                    appearance: { ...DEFAULT_SETTINGS.appearance, ...parsed.appearance },
                 };
                 return this.settings!;
             }
@@ -55,6 +56,7 @@ export class SettingsManager {
         try {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
             this.settings = settings;
+            window.dispatchEvent(new CustomEvent('settings-changed', { detail: settings }));
         } catch (error) {
             console.error('Failed to save settings to localStorage:', error);
             throw new Error('Failed to save settings');
@@ -72,6 +74,7 @@ export class SettingsManager {
             llm: { ...current.llm, ...partial.llm },
             embeddings: { ...current.embeddings, ...partial.embeddings },
             ui: { ...current.ui, ...partial.ui },
+            appearance: { ...current.appearance, ...partial.appearance },
         };
         this.save(updated);
     }

@@ -1,7 +1,6 @@
 
 import { AppSidebar } from '@/components/app-sidebar';
 import { FooterLinksPanel } from '@/components/FooterLinksPanel';
-import { SettingsDropdown } from '@/components/header/SettingsDropdown';
 import { analyzeText, parseContentToPlainText } from '@/lib/analytics/textAnalytics';
 import { useBlueprintHub } from '@/features/blueprint-hub/hooks/useBlueprintHub';
 import {
@@ -15,7 +14,7 @@ import {
 import { Separator } from '@/components/ui/separator';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
-import { FileText, Trash2 } from 'lucide-react';
+import { FileText, Trash2, MoreVertical, Database } from 'lucide-react';
 import { GraphLogo } from '@/components/ui/GraphLogo';
 import RichEditor from '@/components/editor/RichEditor';
 import { useTheme } from '@/hooks/useTheme';
@@ -41,6 +40,15 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from '@/components/ui/dropdown-menu';
+import { NoteTabs } from '@/components/tabs/NoteTabs';
+
 
 import { useJotaiNotes } from '@/hooks/useJotaiNotes';
 
@@ -51,6 +59,8 @@ function NotesApp() {
     const saved = localStorage.getItem('editor-toolbar-visible');
     return saved !== null ? JSON.parse(saved) : true;
   });
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [schemaOpen, setSchemaOpen] = useState(false);
 
   const { selectedNote, updateNoteContent, deleteNote, createNote, selectNote, state } = useJotaiNotes();
   const { activateTimelineWithTemporal } = useTemporalHighlight();
@@ -189,80 +199,113 @@ function NotesApp() {
       <SidebarProvider>
         <div className="h-screen overflow-hidden flex w-full bg-background">
           {/* Left Sidebar */}
-          <AppSidebar />
+          {/* Left Sidebar */}
+          <AppSidebar
+            toolbarVisible={toolbarVisible}
+            onToolbarToggle={handleToolbarVisibilityChange}
+          />
 
           {/* Main Content Area */}
           <div className="flex flex-col flex-1 min-w-0 h-full overflow-hidden">
-            {/* Header */}
-            <header className="flex h-14 shrink-0 items-center gap-2 border-b border-border bg-background px-4">
-              <SidebarTrigger className="-ml-1" />
-              <Separator orientation="vertical" className="mr-2 h-4" />
-              <Breadcrumb className="flex-1">
-                <BreadcrumbList>
-                  <BreadcrumbItem className="hidden md:block">
-                    <BreadcrumbLink
-                      href="#"
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      Notes
-                    </BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator className="hidden md:block" />
-                  <BreadcrumbItem>
-                    <BreadcrumbPage className="text-foreground font-medium">
-                      {selectedNote ? getDisplayName(selectedNote.title) : 'Select a note'}
-                    </BreadcrumbPage>
-                  </BreadcrumbItem>
-                </BreadcrumbList>
-              </Breadcrumb>
+            {/* Header / Tabs Bar */}
+            <div className="flex h-9 shrink-0 items-center border-b border-border bg-background px-2 gap-2">
+              <SidebarTrigger className="-ml-1 h-8 w-8" />
 
-              {/* Header Actions */}
-              <div className="flex items-center gap-1">
-                {selectedNote && (
-                  <AlertDialog>
-                    <AlertDialogTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-8 w-8 text-muted-foreground hover:text-destructive"
-                        title="Delete note"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                      <AlertDialogHeader>
-                        <AlertDialogTitle>Delete note?</AlertDialogTitle>
-                        <AlertDialogDescription>
-                          This will permanently delete "{selectedNote.title}". This action cannot be
-                          undone.
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction
-                          onClick={handleDeleteNote}
-                          className="bg-destructive hover:bg-destructive/90"
-                        >
-                          Delete
-                        </AlertDialogAction>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog>
-                )}
+              <NoteTabs className="flex-1 mx-2" />
 
-                <SchemaManager />
-
-                <SettingsDropdown
-                  toolbarVisible={toolbarVisible}
-                  onToolbarToggle={handleToolbarVisibilityChange}
-                  schemaManagerTrigger={null}
-                />
-
-                <RightSidebarTrigger />
+              <div className="flex items-center gap-1 shrink-0">
                 <ThemeToggle />
+
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-8 w-8 text-muted-foreground hover:text-foreground"
+                      title="More actions"
+                    >
+                      <MoreVertical className="h-4 w-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-56">
+                    <DropdownMenuItem onClick={() => setSchemaOpen(true)}>
+                      <Database className="mr-2 h-4 w-4" />
+                      Schema Manager
+                    </DropdownMenuItem>
+
+                    {selectedNote && (
+                      <DropdownMenuItem
+                        className="text-destructive focus:text-destructive"
+                        onClick={() => setDeleteDialogOpen(true)}
+                      >
+                        <Trash2 className="mr-2 h-4 w-4" />
+                        Delete Note
+                      </DropdownMenuItem>
+                    )}
+
+                    <DropdownMenuSeparator />
+
+                    {/* Right Sidebar Trigger moved here or kept visible? 
+                        User said "Header bar shows only: Sidebar collapse + Theme/More dropdown".
+                        "Theme toggle + more control". 
+                        I'll put RightSidebarTrigger inside here as a toggle item for now.
+                        Actually, RightSidebarTrigger is a button that toggles the sidebar state.
+                        I'll use a custom item that acts like the trigger or just put the trigger component here if it fits. 
+                        Let's try to keep it clean. I'll add a menu item for it.
+                    */}
+                    <div className="p-1">
+                      <RightSidebarTrigger className="w-full justify-start pl-2" />
+                    </div>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+
+                {/* Dialogs */}
+                <SchemaManager open={schemaOpen} onOpenChange={setSchemaOpen} />
+
+                <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Delete note?</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        This will permanently delete "{selectedNote?.title}". This action cannot be
+                        undone.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction
+                        onClick={() => {
+                          handleDeleteNote();
+                          setDeleteDialogOpen(false);
+                        }}
+                        className="bg-destructive hover:bg-destructive/90"
+                      >
+                        Delete
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               </div>
-            </header>
+            </div>
+
+            {/* Breadcrumbs (Optional - placing below header if desired, or removing if strictly following 'only tabs') 
+                The user image showed a second row with breadcrumbs. I will add a small breadcrumb bar below.
+            */}
+            {selectedNote && (
+              <div className="flex h-8 shrink-0 items-center gap-2 border-b border-border bg-background/50 px-4 text-xs">
+                <Breadcrumb>
+                  <BreadcrumbList>
+                    <BreadcrumbItem>
+                      <BreadcrumbLink href="#" className="text-muted-foreground">Notes</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                      <BreadcrumbPage>{getDisplayName(selectedNote.title)}</BreadcrumbPage>
+                    </BreadcrumbItem>
+                  </BreadcrumbList>
+                </Breadcrumb>
+              </div>
+            )}
 
             {/* Editor Area */}
             <main className="flex-1 min-h-0 overflow-auto custom-scrollbar">

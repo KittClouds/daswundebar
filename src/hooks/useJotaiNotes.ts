@@ -22,6 +22,9 @@ import {
     createFolderAtom,
     updateFolderAtom,
     deleteFolderAtom,
+    openNoteIdsAtom,
+    openNoteAtom,
+    closeNoteAtom,
 } from '@/atoms';
 import type { Note, Folder, FolderWithChildren } from '@/types/noteTypes';
 
@@ -53,11 +56,21 @@ export function useJotaiNotes() {
     const updateFolder = useSetAtom(updateFolderAtom);
     const deleteFolder = useSetAtom(deleteFolderAtom);
 
+    // Open/Close tabs
+    const openNoteIds = useAtomValue(openNoteIdsAtom);
+    const openNoteAction = useSetAtom(openNoteAtom);
+    const closeNoteAction = useSetAtom(closeNoteAtom);
+
     /**
-     * Select a note by ID
+     * Select a note by ID (and ensure it's open)
      */
     const selectNote = (id: string) => {
-        setSelectedNoteId(id);
+        // setSelectedNoteId(id); // Old behavior
+        openNoteAction(id);       // New behavior: Open tab + Select
+    };
+
+    const closeNote = (id: string) => {
+        closeNoteAction(id);
     };
 
     /**
@@ -197,13 +210,16 @@ export function useJotaiNotes() {
             isSaving,
             lastSaved,
             searchQuery,
+            searchQuery,
             selectedNoteId,
+            openNoteIds,
         },
         selectedNote,
         favoriteNotes,
         globalNotes,
         folderTree,
         selectNote,
+        closeNote,
         setSearchQuery,
         createNote: handleCreateNote,
         updateNote: handleUpdateNote,

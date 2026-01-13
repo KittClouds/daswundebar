@@ -31,6 +31,9 @@ import {
     type NerModelStatus,
     type NerSuggestion,
 } from '@/lib/tauri/ner-bridge';
+import { Switch } from '@/components/ui/switch';
+import { useAtom } from 'jotai';
+import { fstNerEnabledAtom } from '@/atoms/highlightingAtoms';
 
 // Default labels for NER analysis
 const DEFAULT_LABELS = [
@@ -56,6 +59,9 @@ export function NerPanel() {
     // Context
     const { suggestions, refreshSuggestions, acceptSuggestion, rejectSuggestion } = useNER();
     const { state } = useJotaiNotes();
+
+    // FST-NER toggle
+    const [fstNerEnabled, setFstNerEnabled] = useAtom(fstNerEnabledAtom);
 
     // Helper to add log
     const addLog = useCallback((message: string) => {
@@ -228,6 +234,23 @@ export function NerPanel() {
                 <p className="text-xs text-muted-foreground">
                     Extract entities using GLiNER AI model
                 </p>
+            </div>
+
+            {/* FST Scanner Toggle */}
+            <div className="p-4 border-b border-border">
+                <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                        <span className="text-sm font-medium">FST Scanner</span>
+                        <p className="text-xs text-muted-foreground">
+                            Instant entity detection (no AI model)
+                        </p>
+                    </div>
+                    <Switch
+                        checked={fstNerEnabled}
+                        onCheckedChange={setFstNerEnabled}
+                        className="data-[state=checked]:bg-purple-500"
+                    />
+                </div>
             </div>
 
             {/* Model Status Section */}

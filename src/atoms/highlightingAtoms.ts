@@ -81,3 +81,31 @@ export const HIGHLIGHT_MODE_DESCRIPTIONS: Record<HighlightMode, string> = {
     focus: 'Only highlight selected entity types',
     off: 'No entity highlighting',
 };
+
+// =============================================================================
+// FST-NER Settings
+// =============================================================================
+
+/**
+ * FST-NER enabled state (persisted)
+ * When enabled, runs FST-based entity detection alongside ImplicitCortex
+ */
+export const fstNerEnabledAtom = atomWithStorage<boolean>(
+    'fst-ner-enabled',
+    false // Opt-in by default
+);
+
+/**
+ * FST-NER stats (runtime, not persisted)
+ */
+export interface FstNerStats {
+    gazetteerPatterns: number;
+    ruleCount: number;
+    lastScanMs?: number;
+}
+
+export const fstNerStatsAtom = atom<FstNerStats>({
+    gazetteerPatterns: 0,
+    ruleCount: 0,
+});
+

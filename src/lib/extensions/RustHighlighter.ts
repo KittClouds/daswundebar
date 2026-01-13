@@ -19,6 +19,7 @@ import { Extension } from '@tiptap/core';
 import { Plugin, PluginKey, Selection } from '@tiptap/pm/state';
 import { Decoration, DecorationSet } from '@tiptap/pm/view';
 import { Node as ProseMirrorNode } from '@tiptap/pm/model';
+import type { EditorView } from '@tiptap/pm/view';
 
 // Tauri Native bridge (replaces WASM)
 import {
@@ -33,6 +34,10 @@ import {
 import {
     type NerSuggestion,
     suggestionToCharOffsets,
+    fstNerScan,
+    fstMatchToCharOffsets,
+    type FstMatch,
+    type FstScanResult,
 } from '@/lib/tauri/ner-bridge';
 
 // Types
@@ -82,6 +87,9 @@ export interface RustHighlighterOptions {
     // Highlighting mode getters (reactive)
     getHighlightMode?: () => HighlightMode;
     getFocusEntityKinds?: () => EntityKind[];
+
+    // FST-NER toggle (reactive)
+    getFstNerEnabled?: () => boolean;
 }
 
 // ==================== HELPERS ====================
@@ -108,9 +116,28 @@ function computeContentHash(text: string): string {
 // Phase 3: Last cached spans per note (from CozoDB background scan)
 const cachedSpansCache = new Map<string, { hash: string; spans: DecorationSpanRecord[] }>();
 
+// ==================== DEBOUNCE ====================
+
+function debounce<T extends (...args: Parameters<T>) => void>(
+    fn: T,
+    ms: number
+): T & { cancel: () => void } {
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+    const debounced = (...args: Parameters<T>) => {
+        if (timeoutId) clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => fn(...args), ms);
+    };
+    debounced.cancel = () => {
+        if (timeoutId) clearTimeout(timeoutId);
+        timeoutId = null;
+    };
+    return debounced as T & { cancel: () => void };
+}
+
 // ==================== RANGE OVERLAP DETECTION ====================
 
-type Range = [number, number]; // [start, end)
+// Range as [start, end) tuple for efficient binary search
+type Range = [number, number];
 
 function rangesOverlap(ranges: Range[], start: number, end: number): boolean {
     let lo = 0, hi = ranges.length;
@@ -326,21 +353,33 @@ function buildTauriDecorations(
 }
 
 /**
+ * Build pattern registry decorations result
+ */
+interface PatternDecorationsResult {
+    decorations: Decoration[];
+    /** Document-level ranges covered by pattern matches */
+    coveredRanges: Range[];
+}
+
+/**
  * Build pattern registry decorations (wikilinks, tags, mentions)
  * Mode-aware: respects highlighting mode settings
+ * 
+ * Returns both decorations AND the ranges they cover (for FST exclusion)
  */
 function buildPatternDecorations(
     doc: ProseMirrorNode,
     options: RustHighlighterOptions,
     selection: { from: number; to: number } | undefined
-): Decoration[] {
+): PatternDecorationsResult {
     const decorations: Decoration[] = [];
+    const coveredRanges: Range[] = [];
     const useWidgets = options.useWidgetMode ?? false;
     const patterns = patternRegistry.getActivePatterns();
     const mode = options.getHighlightMode?.() ?? 'vivid';
 
     if (mode === 'off') {
-        return decorations;
+        return { decorations, coveredRanges };
     }
 
     doc.descendants((node, pos) => {
@@ -367,6 +406,9 @@ function buildPatternDecorations(
 
                 if (rangesOverlap(processedRanges, match.index, match.index + fullMatch.length)) continue;
                 insertRange(processedRanges, match.index, match.index + fullMatch.length);
+
+                // Track doc-level range for FST exclusion
+                insertRange(coveredRanges, from, to);
 
                 const isCurrentlyEditing = selection ? isEditing(selection, { from, to }) : false;
 
@@ -498,7 +540,7 @@ function buildPatternDecorations(
         }
     });
 
-    return decorations;
+    return { decorations, coveredRanges };
 }
 
 /**
@@ -662,6 +704,93 @@ function buildNerSuggestionDecorations(
 // Last scan result storage (sync access for decoration building)
 let lastScanResult: ConductorScanResult | null = null;
 
+// FST-NER scan result storage
+let lastFstResult: FstScanResult | null = null;
+
+/**
+ * Build FST-NER decorations
+ * Similar to implicit decorations but from the FST pipeline
+ */
+function buildFstDecorations(
+    doc: ProseMirrorNode,
+    fstResult: FstScanResult,
+    options: RustHighlighterOptions,
+    processedRanges: Range[]
+): Decoration[] {
+    const decorations: Decoration[] = [];
+    const mode = options.getHighlightMode?.() || 'clean';
+
+    if (mode === 'off') return decorations;
+
+    const docText = doc.textContent;
+    const positionMap = buildPositionMap(doc);
+
+    for (const match of fstResult.matches) {
+        // Convert byte to char offsets
+        const { start: charStart, end: charEnd } = fstMatchToCharOffsets(match, docText);
+
+        // Resolve to ProseMirror positions (positionMap is a number[])
+        const posStart = positionMap[charStart];
+        const posEnd = positionMap[charEnd];
+        if (posStart === undefined || posEnd === undefined) continue;
+
+        const from = posStart + 1; // +1 for doc node offset
+        const to = posEnd + 1;
+
+        if (from >= to || from < 1) continue;
+
+        // Check for overlap with already-processed ranges
+        const overlaps = processedRanges.some(r => (from < r.end && to > r.start));
+        if (overlaps) continue;
+
+        processedRanges.push({ start: from, end: to });
+
+        // Determine styling based on source type
+        const borderStyles: Record<string, string> = {
+            'gazetteer': 'solid',   // Known entity
+            'rule': 'dashed',       // Rule match
+            'orthographic': 'dotted' // Shape heuristic
+        };
+        const borderStyle = borderStyles[match.source] || 'solid';
+
+        // Get color based on entity kind
+        const kindNormalized = (match.kind || 'UNKNOWN').toUpperCase() as EntityKind;
+        const color = ENTITY_COLORS[kindNormalized] || ENTITY_COLORS.UNKNOWN || '#8b5cf6';
+
+        let style = '';
+        if (mode === 'vivid') {
+            style = `
+                background-color: ${color}20;
+                border-bottom: 2px ${borderStyle} ${color};
+                border-radius: 2px;
+                padding: 0 2px;
+                cursor: pointer;
+            `;
+        } else if (mode === 'clean') {
+            style = `
+                border-bottom: 1px ${borderStyle} ${color}60;
+                cursor: pointer;
+            `;
+        }
+
+        const tooltip = `${match.kind}: ${match.canonical_label || match.text} (${Math.round(match.confidence * 100)}% - ${match.source})`;
+
+        decorations.push(
+            Decoration.inline(from, to, {
+                class: `fst-match fst-${match.source}`,
+                style,
+                'data-fst-kind': match.kind,
+                'data-fst-source': match.source,
+                'data-fst-text': match.text,
+                'data-fst-entity-id': match.entity_id || '',
+                'title': tooltip,
+            }, { inclusiveStart: false, inclusiveEnd: false })
+        );
+    }
+
+    return decorations;
+}
+
 function buildAllDecorations(
     doc: ProseMirrorNode,
     options: RustHighlighterOptions,
@@ -670,11 +799,14 @@ function buildAllDecorations(
     const allDecorations: Decoration[] = [];
 
     // 1. Pattern decorations (wikilinks, tags, entities, etc.) - Highest Priority
-    const patternDecorations = buildPatternDecorations(doc, options, selection);
+    // These are processed first and their ranges are used to exclude FST/Tauri matches
+    const { decorations: patternDecorations, coveredRanges: patternRanges } =
+        buildPatternDecorations(doc, options, selection);
     allDecorations.push(...patternDecorations);
 
     // Doc-relative ranges for Tauri + NER (these share coordinate space)
-    const docProcessedRanges: Range[] = [];
+    // Pre-populate with pattern ranges so FST won't underline already-registered entities
+    const docProcessedRanges: Range[] = [...patternRanges];
 
     // 2. Tauri Native decorations (implicit entities + temporal)
     if (tauriScanner.isReady() && lastScanResult) {
@@ -686,6 +818,16 @@ function buildAllDecorations(
 
         const tauriDecorations = buildTauriDecorations(lastScanResult, positionMap, options, docProcessedRanges);
         allDecorations.push(...tauriDecorations);
+    }
+
+    // 2.5. FST-NER decorations (if enabled)
+    const fstEnabled = options.getFstNerEnabled?.() ?? false;
+    if (fstEnabled && lastFstResult && lastFstResult.matches.length > 0) {
+        if (options.logPerformance) {
+            console.log(`[RustHighlighter] FST: ${(lastFstResult.timing_us / 1000).toFixed(2)}ms, ${lastFstResult.matches.length} matches`);
+        }
+        const fstDecorations = buildFstDecorations(doc, lastFstResult, options, docProcessedRanges);
+        allDecorations.push(...fstDecorations);
     }
 
     // 3. Legacy NER suggestions (frontend entities)
@@ -832,6 +974,52 @@ function spansToScanResult(spans: DecorationSpanRecord[]): ConductorScanResult {
     };
 }
 
+// ==================== FST-NER SCAN ====================
+
+/**
+ * Trigger FST-NER scan if enabled.
+ * Stores result in lastFstResult for use by buildAllDecorations.
+ */
+async function triggerFstScan(doc: ProseMirrorNode, fstEnabled: boolean): Promise<void> {
+    if (!fstEnabled || !isTauri()) {
+        lastFstResult = null;
+        return;
+    }
+
+    const text = extractText(doc);
+    if (!text || text.length < 2) {
+        lastFstResult = null;
+        return;
+    }
+
+    try {
+        lastFstResult = await fstNerScan(text);
+    } catch (err) {
+        console.error('[RustHighlighter] FST scan error:', err);
+        lastFstResult = null;
+    }
+}
+
+/**
+ * Debounced FST-NER scan with view callback.
+ * 
+ * Waits 400ms after last keystroke before scanning, then dispatches
+ * `tauriScanComplete` meta to trigger decoration rebuild.
+ */
+const debouncedFstScan = debounce(async (
+    doc: ProseMirrorNode,
+    fstEnabled: boolean,
+    viewRef: { current: EditorView | null }
+) => {
+    await triggerFstScan(doc, fstEnabled);
+    // Dispatch transaction to trigger decoration rebuild with new FST results
+    if (viewRef.current && lastFstResult) {
+        viewRef.current.dispatch(
+            viewRef.current.state.tr.setMeta('tauriScanComplete', true)
+        );
+    }
+}, 400);
+
 // ==================== EXTENSION ====================
 
 export const RustHighlighter = Extension.create<RustHighlighterOptions>({
@@ -863,7 +1051,8 @@ export const RustHighlighter = Extension.create<RustHighlighterOptions>({
     addProseMirrorPlugins() {
         const options = this.options;
         let lastDocText = '';
-        let pendingScan: Promise<void> | null = null;
+        // Mutable ref to hold EditorView for debounced callback
+        const viewRef: { current: EditorView | null } = { current: null };
 
         return [
             // Main decoration plugin
@@ -907,6 +1096,12 @@ export const RustHighlighter = Extension.create<RustHighlighterOptions>({
                             if (tr.docChanged) {
                                 const noteId = resolveNoteId(options.currentNoteId);
                                 fetchCachedSpans(newState.doc, noteId);
+
+                                // FST-NER scan (debounced - waits 400ms after last keystroke)
+                                const fstEnabled = options.getFstNerEnabled?.() ?? false;
+                                if (fstEnabled) {
+                                    debouncedFstScan(newState.doc, fstEnabled, viewRef);
+                                }
                             }
 
                             const selection = { from: newState.selection.from, to: newState.selection.to };
@@ -933,6 +1128,17 @@ export const RustHighlighter = Extension.create<RustHighlighterOptions>({
 
                         return oldDecorations.map(tr.mapping, tr.doc);
                     },
+                },
+
+                // Capture view reference for debounced FST callback
+                view(editorView) {
+                    viewRef.current = editorView;
+                    return {
+                        destroy() {
+                            viewRef.current = null;
+                            debouncedFstScan.cancel();
+                        },
+                    };
                 },
 
                 props: {

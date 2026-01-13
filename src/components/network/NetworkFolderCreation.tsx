@@ -199,10 +199,10 @@ export function NetworkFolderCreationMenu({
                     <Button
                         variant="ghost"
                         size="icon"
-                        className={cn("h-5 w-5 p-0", className)}
+                        className={cn("h-6 w-6 p-0", className)}
                         aria-label="Create network folder"
                     >
-                        <Network className="h-3 w-3" />
+                        <Network className="h-4 w-4" />
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-64 bg-popover">

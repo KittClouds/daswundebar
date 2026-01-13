@@ -132,7 +132,8 @@ function createExtensions(
   getNEREntities?: () => any[],
   getNoteId?: () => string | undefined,  // Dynamic getter instead of static
   getHighlightMode?: () => HighlightMode,
-  getFocusEntityKinds?: () => EntityKind[]
+  getFocusEntityKinds?: () => EntityKind[],
+  getFstNerEnabled?: () => boolean
 ) {
   return [
     // Base Extensions
@@ -297,6 +298,7 @@ function createExtensions(
       logPerformance: true,
       getHighlightMode,
       getFocusEntityKinds,
+      getFstNerEnabled,
       onImplicitClick: (entityId, entityLabel) => {
         console.log('[RustHighlighter] Implicit clicked:', entityId, entityLabel);
       },
@@ -317,7 +319,7 @@ import {
   selectedNoteIdAtom,
 } from '@/atoms';
 import { editorInstanceAtom } from '@/atoms/editorAtoms';
-import { highlightSettingsAtom } from '@/atoms/highlightingAtoms';
+import { highlightSettingsAtom, fstNerEnabledAtom } from '@/atoms/highlightingAtoms';
 
 // ... extensions factory ...
 
@@ -350,6 +352,13 @@ const RichEditor = ({
   useEffect(() => {
     highlightSettingsRef.current = highlightSettings;
   }, [highlightSettings]);
+
+  // FST-NER enabled (reactive via ref)
+  const fstNerEnabled = useAtomValue(fstNerEnabledAtom);
+  const fstNerEnabledRef = useRef(fstNerEnabled);
+  useEffect(() => {
+    fstNerEnabledRef.current = fstNerEnabled;
+  }, [fstNerEnabled]);
 
   const previousContentRef = useRef<string>('');
   const previousNoteIdRef = useRef<string | undefined>(undefined);
@@ -484,7 +493,8 @@ const RichEditor = ({
       () => nerEntitiesRef.current,
       () => noteIdRef.current,  // Dynamic getter instead of static value
       () => highlightSettingsRef.current.mode,  // Highlighting mode getter
-      () => highlightSettingsRef.current.focusEntityKinds  // Focus kinds getter
+      () => highlightSettingsRef.current.focusEntityKinds,  // Focus kinds getter
+      () => fstNerEnabledRef.current  // FST-NER enabled getter
     ),
     []  // ← STABLE - never re-creates extensions
   );
@@ -561,6 +571,15 @@ const RichEditor = ({
       );
     }
   }, [highlightSettings, editor]);
+
+  // Dispatch transaction when FST-NER is toggled to trigger rescan
+  useEffect(() => {
+    if (editor) {
+      editor.view.dispatch(
+        editor.state.tr.setMeta('forceRescan', true)
+      );
+    }
+  }, [fstNerEnabled, editor]);
 
   // Force editor update when noteId changes (switching notes) creates a ref mismatch?
   // We use selectedNoteId vs internal previousNoteIdRef.

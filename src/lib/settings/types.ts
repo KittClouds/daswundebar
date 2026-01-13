@@ -4,6 +4,7 @@ export interface AppSettings {
     llm: LLMSettings;
     embeddings: EmbeddingSettings;
     ui: UISettings;
+    appearance: AppearanceSettings;
 }
 
 export interface LLMSettings {
@@ -25,6 +26,10 @@ export interface EmbeddingSettings {
     defaultModel: string; // 'modernbert-base', 'gemini-embedding-004', etc.
     cacheEmbeddings: boolean;
     batchSize: number;
+}
+
+export interface AppearanceSettings {
+    folderViewTheme: 'default' | 'structured' | 'minimal';
 }
 
 export interface UISettings {
@@ -49,5 +54,8 @@ export const DEFAULT_SETTINGS: AppSettings = {
         theme: 'system',
         sidebarCollapsed: false,
     },
+    appearance: {
+        folderViewTheme: 'structured', // Defaulting to VS Code style per user preference
+    }
 };
 

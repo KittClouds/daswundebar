@@ -36,21 +36,31 @@ import { AttributeTemplate, EntityBlueprint } from '@/types/blueprints';
 import { generateId } from '@/lib/utils/ids';
 import { toast } from 'sonner';
 
-export function SchemaManager() {
-  const [open, setOpen] = useState(false);
+interface SchemaManagerProps {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}
+
+export function SchemaManager({ open: controlledOpen, onOpenChange: setControlledOpen }: SchemaManagerProps = {}) {
+  const [internalOpen, setInternalOpen] = useState(false);
+  const isControlled = controlledOpen !== undefined;
+  const open = isControlled ? controlledOpen : internalOpen;
+  const setOpen = isControlled ? setControlledOpen! : setInternalOpen;
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-8 w-8"
-          title="Schema Manager"
-        >
-          <Database className="h-4 w-4" />
-        </Button>
-      </DialogTrigger>
+      {!isControlled && (
+        <DialogTrigger asChild>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            title="Schema Manager"
+          >
+            <Database className="h-4 w-4" />
+          </Button>
+        </DialogTrigger>
+      )}
       <DialogContent className="max-w-4xl h-[80vh] flex flex-col p-0">
         <DialogHeader className="px-6 pt-6 pb-4 border-b border-border">
           <DialogTitle className="flex items-center gap-2">
