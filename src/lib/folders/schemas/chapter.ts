@@ -15,6 +15,21 @@ export const CHAPTER_FOLDER_SCHEMA: FolderSchema = {
     description: 'A chapter or major section of narrative content',
 
     allowedSubfolders: [
+        // Temporal structure
+        {
+            entityKind: 'EVENT',
+            label: 'Events',
+            icon: 'Calendar',
+            description: 'Events that occur in this chapter',
+            relationship: {
+                relationshipType: 'CONTAINS',
+                sourceType: 'PARENT',
+                targetType: 'CHILD',
+                inverseType: 'PART_OF',
+                category: 'temporal',
+                defaultConfidence: 1.0,
+            },
+        },
         {
             entityKind: 'SCENE',
             label: 'Scenes',
@@ -43,11 +58,26 @@ export const CHAPTER_FOLDER_SCHEMA: FolderSchema = {
                 defaultConfidence: 1.0,
             },
         },
+        // Entity attachments
         {
             entityKind: 'CHARACTER',
             label: 'Characters',
             icon: 'User',
             description: 'Characters featured in this chapter',
+            relationship: {
+                relationshipType: 'FEATURES',
+                sourceType: 'PARENT',
+                targetType: 'CHILD',
+                inverseType: 'APPEARS_IN',
+                category: 'custom',
+                defaultConfidence: 1.0,
+            },
+        },
+        {
+            entityKind: 'NPC',
+            label: 'NPCs',
+            icon: 'Users2',
+            description: 'NPCs featured in this chapter',
             relationship: {
                 relationshipType: 'FEATURES',
                 sourceType: 'PARENT',
@@ -68,6 +98,20 @@ export const CHAPTER_FOLDER_SCHEMA: FolderSchema = {
                 targetType: 'CHILD',
                 inverseType: 'SETTING_FOR',
                 category: 'spatial',
+                defaultConfidence: 1.0,
+            },
+        },
+        {
+            entityKind: 'ITEM',
+            label: 'Items',
+            icon: 'Box',
+            description: 'Items featured in this chapter',
+            relationship: {
+                relationshipType: 'FEATURES',
+                sourceType: 'PARENT',
+                targetType: 'CHILD',
+                inverseType: 'FEATURED_IN',
+                category: 'custom',
                 defaultConfidence: 1.0,
             },
         },

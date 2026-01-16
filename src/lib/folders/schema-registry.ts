@@ -20,6 +20,7 @@ import {
     CHAPTER_FOLDER_SCHEMA,
     ARC_FOLDER_SCHEMA,
     ACT_FOLDER_SCHEMA,
+    BEAT_FOLDER_SCHEMA,
     NPC_FOLDER_SCHEMA,
     CONCEPT_FOLDER_SCHEMA,
     TIMELINE_FOLDER_SCHEMA,
@@ -53,6 +54,7 @@ export class FolderSchemaRegistry {
         this.registerSchema(CHAPTER_FOLDER_SCHEMA);
         this.registerSchema(ARC_FOLDER_SCHEMA);
         this.registerSchema(ACT_FOLDER_SCHEMA);
+        this.registerSchema(BEAT_FOLDER_SCHEMA);
         this.registerSchema(NPC_FOLDER_SCHEMA);
         this.registerSchema(CONCEPT_FOLDER_SCHEMA);
         this.registerSchema(TIMELINE_FOLDER_SCHEMA);

@@ -19,6 +19,22 @@ export const NARRATIVE_FOLDER_SCHEMA: FolderSchema = {
     description: 'A complete story, series, or narrative project with temporal structure',
 
     allowedSubfolders: [
+        // Story arcs (temporally ordered) - EQUAL PRIORITY WITH ACTS
+        {
+            entityKind: 'ARC',
+            label: 'Story Arcs',
+            icon: 'Waves',
+            description: 'Major storylines and arcs (temporally ordered)',
+            relationship: {
+                relationshipType: 'CONTAINS',
+                sourceType: 'PARENT',
+                targetType: 'CHILD',
+                inverseType: 'PART_OF',
+                category: 'temporal',
+                defaultConfidence: 1.0,
+            },
+        },
+
         // Acts - major story divisions (temporally ordered)
         {
             entityKind: 'ACT',
@@ -89,22 +105,6 @@ export const NARRATIVE_FOLDER_SCHEMA: FolderSchema = {
             label: 'Beats',
             icon: 'Zap',
             description: 'Story beats (temporally ordered)',
-            relationship: {
-                relationshipType: 'CONTAINS',
-                sourceType: 'PARENT',
-                targetType: 'CHILD',
-                inverseType: 'PART_OF',
-                category: 'temporal',
-                defaultConfidence: 1.0,
-            },
-        },
-
-        // Story arcs (temporally ordered)
-        {
-            entityKind: 'ARC',
-            label: 'Story Arcs',
-            icon: 'Waves',
-            description: 'Major storylines and arcs (temporally ordered)',
             relationship: {
                 relationshipType: 'CONTAINS',
                 sourceType: 'PARENT',

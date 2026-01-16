@@ -15,6 +15,21 @@ export const SCENE_FOLDER_SCHEMA: FolderSchema = {
     description: 'A continuous unit of action in a single location and time',
 
     allowedSubfolders: [
+        // Temporal structure
+        {
+            entityKind: 'EVENT',
+            label: 'Events',
+            icon: 'Calendar',
+            description: 'Events that occur within this scene',
+            relationship: {
+                relationshipType: 'CONTAINS',
+                sourceType: 'PARENT',
+                targetType: 'CHILD',
+                inverseType: 'PART_OF',
+                category: 'temporal',
+                defaultConfidence: 1.0,
+            },
+        },
         {
             entityKind: 'BEAT',
             label: 'Beats',
@@ -29,11 +44,26 @@ export const SCENE_FOLDER_SCHEMA: FolderSchema = {
                 defaultConfidence: 1.0,
             },
         },
+        // Entity attachments (WHO/WHERE/WHAT)
         {
             entityKind: 'CHARACTER',
             label: 'Characters Present',
             icon: 'User',
             description: 'Characters who appear in this scene',
+            relationship: {
+                relationshipType: 'FEATURES',
+                sourceType: 'PARENT',
+                targetType: 'CHILD',
+                inverseType: 'APPEARS_IN',
+                category: 'custom',
+                defaultConfidence: 1.0,
+            },
+        },
+        {
+            entityKind: 'NPC',
+            label: 'NPCs Present',
+            icon: 'Users2',
+            description: 'NPCs who appear in this scene',
             relationship: {
                 relationshipType: 'FEATURES',
                 sourceType: 'PARENT',
@@ -54,6 +84,20 @@ export const SCENE_FOLDER_SCHEMA: FolderSchema = {
                 targetType: 'CHILD',
                 inverseType: 'SETTING_FOR',
                 category: 'spatial',
+                defaultConfidence: 1.0,
+            },
+        },
+        {
+            entityKind: 'ITEM',
+            label: 'Items',
+            icon: 'Box',
+            description: 'Items featured in this scene',
+            relationship: {
+                relationshipType: 'FEATURES',
+                sourceType: 'PARENT',
+                targetType: 'CHILD',
+                inverseType: 'FEATURED_IN',
+                category: 'custom',
                 defaultConfidence: 1.0,
             },
         },
